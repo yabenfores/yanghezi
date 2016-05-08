@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\l\Android\sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\10\support-v4-18.0.0_dae29530cf0888c190cf8c2a15182f7080786330\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\locSDK_6.13.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="2cdb37444b41b42e1ce5a8a27e5d3c22e1c57479">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\locSDK_6.13_b559a03c93e05d3ebf311e72b24030ba75f997cd\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\baidumapapi_cloud_v3_7_3.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="1bfd60b172276bd6c127e1b020578ba8943cb817">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\baidumapapi_cloud_v3_7_3_06459e655d5b396fec4c43c5fd2eb89ca91a638c\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\baidumapapi_search_v3_7_3.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="dea8cea1cf2639d2a92718333f47f5a7bef25b17">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\baidumapapi_search_v3_7_3_731b8a1da3d41b5a4b24f32da3dc2b276f869228\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\baidumapapi_util_v3_7_3.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="77f23565c6bc14129d2ec152c809161343cdeaad">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\baidumapapi_util_v3_7_3_697e9073777ef3729a522afa7e4dd510403f2fd6\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\baidumapapi_base_v3_7_3.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="26aec1b74c9e42fb4f27432b79cf9e65365f5612">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\baidumapapi_base_v3_7_3_acde04c9d9a1278a1128616cddd240dfb851d5a0\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\baidumapapi_map_v3_7_3.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="b18498f0ff59163574118729da41b7e89971d713">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\baidumapapi_map_v3_7_3_4c28317987732ee0920076bf2086ea5959932628\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\android-async-http-1.4.5.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\android-async-http-1.4.5_1e3662b3edfc85817c94754979ff87e15b7de77b\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\hyphenatechat_3.1.1.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="22a4ff480112010d0af271770fa40bced7e68a70">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\hyphenatechat_3.1.1_29f391a3045da401d27fe44c3bb3c213969105a9\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="2a42f75f26a1e90405487b463eca2e2dc541b33f">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_d048112ca561679ca63f4501783170142ac2e0d4\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\baidumapapi_radar_v3_7_3.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="285cb61966027336b8cc418a6a3ec159039aa0c2">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\baidumapapi_radar_v3_7_3_2dd5c23581ac3edced96a26bc61486950d1bb126\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="165133d9c42fb7b6f62118b04a1951077343bedb">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_38e76b410e8915578351c01bd4a1cbc04124ee9c\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\APPayAssistEx.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="f56d44044286426a10103acd8129e0015b4d6901">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\APPayAssistEx_978740ef72ee1ad20082cea1d94abf4114879fc6\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\zxing.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="96b67e377ff4637ff1fa3bbe9ad7183773935f39">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\zxing_4cca03a62e29e9c316e36ef537197aed04b665ed\classes.dex" />
+    </item>
+    <item
+        jar="C:\YangMaTou\YangMaTou\libs\universal-image-loader-1.9.4-SNAPSHOT.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="831368dfdef2c9396955489e9058e6ad8a8e4244">
+        <dex dex="C:\YangMaTou\YangMaTou\build\intermediates\transforms\dex\debug\folders\1000\2\universal-image-loader-1.9.4-SNAPSHOT_bcc0f9164ae79a7d5344593173876864fc3a5709\classes.dex" />
+    </item>
+
+</items>

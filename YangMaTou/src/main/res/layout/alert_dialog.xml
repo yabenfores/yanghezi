@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pop_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_selector9"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/button_first"
+            style="@style/text02_type03"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/button_selector_background01"
+            android:text="测试"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/line01" />
+
+        <Button
+            android:id="@+id/button_second"
+            style="@style/text02_type03"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/button_selector_background01"
+            android:text="测试"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_cancel"
+        style="@style/text02_type03"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_selector9"
+        android:text="取消"
+        android:textStyle="bold" />
+
+</LinearLayout>
