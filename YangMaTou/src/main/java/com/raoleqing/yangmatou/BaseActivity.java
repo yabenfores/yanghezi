@@ -192,7 +192,7 @@ public class BaseActivity extends FragmentActivity {
 		System.gc();
 	}
 
-	protected Context getAppContext(){
+	public static Context getAppContext(){
 		return YangMaTouApplication.getAppContext();
 	}
 
