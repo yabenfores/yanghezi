@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="APPayAssistEx">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/YangMaTou/libs/APPayAssistEx.jar!/" />
+      <root url="jar://$PROJECT_DIR$/yangHeZi/libs/APPayAssistEx.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

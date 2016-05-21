@@ -3,8 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/YangMaTou.iml" filepath="$PROJECT_DIR$/YangMaTou.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easeui/easeui.iml" filepath="$PROJECT_DIR$/easeui/easeui.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/YangMaTou/yangMaTou.iml" filepath="$PROJECT_DIR$/YangMaTou/yangMaTou.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yangHeZi/yangHeZi.iml" filepath="$PROJECT_DIR$/yangHeZi/yangHeZi.iml" />
     </modules>
   </component>
 </project>

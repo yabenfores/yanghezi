@@ -8,15 +8,17 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/YangMaTou" />
+            <option value="$PROJECT_DIR$/easeui" />
             <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/yangHeZi" />
           </set>
         </option>
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/YangMaTou" />
+            <option value="$PROJECT_DIR$/easeui" />
             <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/yangHeZi" />
           </set>
         </option>
       </GradleProjectSettings>

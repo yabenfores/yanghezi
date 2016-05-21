@@ -1,2 +1,2 @@
-include ':library'
-include ':yangMaTou'
+include ':library', ':easeui'
+include ':yangHeZi'
