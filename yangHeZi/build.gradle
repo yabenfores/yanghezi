@@ -26,18 +26,9 @@ android {
 
 dependencies {
     compile project(':library')
-    compile 'com.android.support:support-v4:18.0.0'
     compile files('libs/android-async-http-1.4.5.jar')
-    compile files('libs/APPayAssistEx.jar')
-    compile files('libs/baidumapapi_base_v3_7_3.jar')
-    compile files('libs/baidumapapi_cloud_v3_7_3.jar')
-    compile files('libs/baidumapapi_map_v3_7_3.jar')
-    compile files('libs/baidumapapi_radar_v3_7_3.jar')
-    compile files('libs/baidumapapi_search_v3_7_3.jar')
-    compile files('libs/baidumapapi_util_v3_7_3.jar')
-    compile files('libs/hyphenatechat_3.1.1.jar')
-    compile files('libs/locSDK_6.13.jar')
     compile files('libs/universal-image-loader-1.9.4-SNAPSHOT.jar')
     compile files('libs/zxing.jar')
     compile project(':easeui')
+    compile files('libs/APPayAssistEx.jar')
 }

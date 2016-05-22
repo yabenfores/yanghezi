@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.android.internal.http.multipart.MultipartEntity;
@@ -22,6 +23,7 @@ import com.raoleqing.yangmatou.common.YangMaTouApplication;
 import com.raoleqing.yangmatou.ui.login.loginActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.UserUitls;
+import com.raoleqing.yangmatou.webserver.AsyncFileUpload;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetHelper;
@@ -205,6 +207,7 @@ public class SetActivity extends BaseActivity implements OnClickListener, MyDial
 		
 		try {
 
+			mProgressDialog.setCancelable(false);
 			mProgressDialog.show();
 			File file = new File(path);
 
@@ -215,28 +218,67 @@ public class SetActivity extends BaseActivity implements OnClickListener, MyDial
 				System.out.println("headImage: " + file.getPath());
 				//Home/Users/member_avatar  Home/Users/reviewImg
 //				NetHelper.reviewImg(file);
-
-				HttpUtil.post1(this, "Home/Users/member_avatar", req, new JsonHttpResponseHandler() {
-
+				new AsyncFileUpload(Constant.API_BASE + Constant.MEMBER_AVATAR, path,"image", new AsyncFileUpload.ResultCallback() {
 					@Override
-					public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-						super.onSuccess(statusCode, headers, response);
-						imageResolveJson(response);
-					}
-
-					@Override
-					public void onFailure(int statusCode, Header[] headers, Throwable throwable,
-							JSONObject errorResponse) {
-						super.onFailure(statusCode, headers, throwable, errorResponse);
-						//showShortToast("连接网络失败！");
-					}
-
-					@Override
-					public void onFinish() {
-						super.onFinish();
+					public void onNetError() {
 						mProgressDialog.dismiss();
+
 					}
-				});
+
+					@Override
+					public void onServerError(String error) {
+						try {
+							JSONObject jsonObject=new JSONObject(error);
+							if (!jsonObject.optString(Constant.INFO).isEmpty()){
+								makeShortToast(jsonObject.optString(Constant.INFO));
+								mProgressDialog.dismiss();
+							}
+							setProgressVisibility(View.GONE);
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+
+					}
+
+					@Override
+					public void onSuccess(String result, String filePath) {
+						try {
+							JSONObject jsonObject=new JSONObject(result);
+							imageResolveJson(jsonObject);
+							mProgressDialog.dismiss();
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+
+					}
+
+					@Override
+					public void onProgress(float percent) {
+
+					}
+				}).execute();
+
+//				HttpUtil.post1(this, "Home/Users/member_avatar", req, new JsonHttpResponseHandler() {
+//
+//					@Override
+//					public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//						super.onSuccess(statusCode, headers, response);
+//						imageResolveJson(response);
+//					}
+//
+//					@Override
+//					public void onFailure(int statusCode, Header[] headers, Throwable throwable,
+//							JSONObject errorResponse) {
+//						super.onFailure(statusCode, headers, throwable, errorResponse);
+//						//showShortToast("连接网络失败！");
+//					}
+//
+//					@Override
+//					public void onFinish() {
+//						super.onFinish();
+//						mProgressDialog.dismiss();
+//					}
+//				});
 
 			}
 
@@ -265,6 +307,7 @@ public class SetActivity extends BaseActivity implements OnClickListener, MyDial
 			JSONObject json = response.optJSONObject(Constant.DATA);
 			String filename = json.optString("filename");//图象地址
 			SharedPreferencesUtil.putString(getAppContext(),"member_avatar",filename);
+
 
 
 			

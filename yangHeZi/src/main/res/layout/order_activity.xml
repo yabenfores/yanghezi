@@ -41,7 +41,7 @@
                 <View
                     android:id="@+id/user_fragment_view01"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
+                    android:layout_height="1dp"
                     android:background="@color/line02"
                     android:visibility="visible" />
             </LinearLayout>
@@ -70,7 +70,7 @@
                 <View
                     android:id="@+id/user_fragment_view02"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
+                    android:layout_height="1dp"
                     android:background="@color/line02"
                     android:visibility="gone" />
             </LinearLayout>
@@ -98,7 +98,7 @@
                 <View
                     android:id="@+id/user_fragment_view03"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
+                    android:layout_height="1dp"
                     android:background="@color/line02"
                     android:visibility="gone" />
             </LinearLayout>
@@ -126,7 +126,7 @@
                 <View
                     android:id="@+id/user_fragment_view04"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
+                    android:layout_height="1dp"
                     android:background="@color/line02"
                     android:visibility="gone" />
             </LinearLayout>
@@ -154,7 +154,7 @@
                 <View
                     android:id="@+id/user_fragment_view05"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
+                    android:layout_height="1dp"
                     android:background="@color/line02"
                     android:visibility="gone" />
             </LinearLayout>
@@ -182,7 +182,7 @@
                 <View
                     android:id="@+id/user_fragment_view06"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"
+                    android:layout_height="1dp"
                     android:background="@color/line02"
                     android:visibility="gone" />
             </LinearLayout>

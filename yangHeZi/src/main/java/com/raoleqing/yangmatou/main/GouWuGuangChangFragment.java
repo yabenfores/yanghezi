@@ -422,7 +422,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 		// TODO Auto-generated method stub
 		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
 
-		HttpUtil.get(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
+		HttpUtil.post(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
 
 			// 获取数据成功会调用这里
 			@Override
@@ -457,6 +457,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 	 * 国家馆:
 	 **/
 	protected void pavilionResolveJson(JSONObject response) {
+		System.out.println("aaaaaaaaa"+response);
 		// TODO Auto-generated method stub
 
 		try {
@@ -469,7 +470,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 				return;
 			}
 
-			if (code == 1) {
+			if (code == 1||code==200) {
 				JSONArray data = response.optJSONArray("data");
 				if (pavilionList.size() > 0) {
 					pavilionList.retainAll(pavilionList);

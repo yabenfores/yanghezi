@@ -2,10 +2,10 @@ package com.raoleqing.yangmatou.adapter;
 
 import java.util.List;
 
-import com.baidu.mapapi.search.core.PoiInfo;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.AddressAdapter.ViewHolder;
 import com.raoleqing.yangmatou.ben.Address;
+import com.raoleqing.yangmatou.ben.PoiInfo;
 
 import android.content.Context;
 import android.os.Handler;
@@ -66,8 +66,8 @@ public class LocNearAddressAdapter extends BaseAdapter{
 		}
 
 		PoiInfo mPoiInfo = nearList.get(position);
-		holder.loc_near_name.setText("    " + mPoiInfo.name);
-		holder.loc_near_address.setText(mPoiInfo.address);
+//		holder.loc_near_name.setText("    " + mPoiInfo.name);
+//		holder.loc_near_address.setText(mPoiInfo.address);
 	
 		return convertView;
 	}

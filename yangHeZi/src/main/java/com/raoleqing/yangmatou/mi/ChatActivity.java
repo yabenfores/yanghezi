@@ -23,12 +23,12 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         activityInstance = this;
-        String type=getIntent().getExtras().getString("key");
+        String type = getIntent().getExtras().getString("key");
         setContentView(R.layout.activity_chat);
         if (type != null) {
-            if (type.equals("single")){
+            if (type.equals("single")) {
                 setView(0);
-            }else {
+            } else {
                 setView(1);
             }
         }
@@ -41,18 +41,29 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
 
+        try {
+            switch (v.getId()) {
+                case R.id.activity_return:
+                    finish();
+                default:
+                    break;
+            }
+
+
+        } catch (Exception e) {
+            throwEx(e);
+        }
+
     }
-
-
 
 
     private void setView(int i) {
         try {
-            switch (i){
+            switch (i) {
                 case 0:
                     setTitleText("客服");
                     //new出EaseChatFragment或其子类的实例
-                    String user=getIntent().getExtras().getString(EaseConstant.EXTRA_USER_ID);
+                    String user = getIntent().getExtras().getString(EaseConstant.EXTRA_USER_ID);
                     EaseChatFragment chatFragment = new EaseChatFragment();
                     //传入参数
                     Bundle args = new Bundle();
@@ -69,7 +80,7 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
 //                    getSupportFragmentManager().beginTransaction().add(R.id.container, chatFragment).commit();
                     break;
                 case 1:
-                    easeConversationListfragment=new EaseConversationListFragment();
+                    easeConversationListfragment = new EaseConversationListFragment();
                     setTitleText("消息");
 //        getSupportFragmentManager().beginTransaction().add(R.id.container, chatFragment).commit();
                     getSupportFragmentManager().beginTransaction().add(R.id.container, easeConversationListfragment).commit();

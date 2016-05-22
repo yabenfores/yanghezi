@@ -7,7 +7,6 @@ import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.baidu.mapapi.search.core.PoiInfo;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.raoleqing.yangmatou.BaseActivity;
@@ -551,7 +550,7 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
 		super.onActivityResult(arg0, arg1, arg2);
 		switch (arg1) {
 		case 1:
-			PoiInfo mPoiInfo = (PoiInfo) arg2.getSerializableExtra("PoiInfo");
+//			PoiInfo mPoiInfo = (PoiInfo) arg2.getSerializableExtra("PoiInfo");
 			//inent.putExtra("city", mPoiInfo.city);
 			//inent.putExtra("address", mPoiInfo.address);
 			addressText01 = arg2.getStringExtra("city");

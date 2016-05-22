@@ -8,6 +8,7 @@ import android.widget.Toast;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.common.YangMaTouApplication;
 import com.raoleqing.yangmatou.ui.login.loginActivity;
+import com.raoleqing.yangmatou.uitls.LogUtil;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 
@@ -44,9 +45,9 @@ import java.net.URLConnection;
                         String auth = null;
                         if (addAuth) {
                             auth = SharedPreferencesUtil.getString(BaseActivity.getAppContext(),"Authorization");
+                            urlConnection.addRequestProperty("Authorization", auth);
                         }
-                        urlConnection.addRequestProperty("Authorization", auth);
-                        Log.e(String.valueOf(this.getClass()), "auth:" + auth);
+                        LogUtil.loge(this.getClass(), "auth:" + auth);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

@@ -140,9 +140,6 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 	private void getData() {
 		// TODO Auto-generated method stub
 		// Home/Orders/getDefaultAddress
-		int uid = SharedPreferencesUtil.getInt(AddressActivity.this, "member_id");
-		RequestParams params = new RequestParams();
-		params.put("uid", uid);
 
 		NetHelper.getDefaultAddress(new NetConnectionInterface.iConnectListener3() {
 			@Override
@@ -256,7 +253,7 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 		RequestParams params = new RequestParams();
 		params.put("address_id", addressId);
 
-		HttpUtil.post(AddressActivity.this, HttpUtil.DEL_ADDRESS, params, new JsonHttpResponseHandler() {
+		HttpUtil.post1(AddressActivity.this, HttpUtil.DEL_ADDRESS, params, new JsonHttpResponseHandler() {
 
 			// 获取数据成功会调用这里
 			@Override

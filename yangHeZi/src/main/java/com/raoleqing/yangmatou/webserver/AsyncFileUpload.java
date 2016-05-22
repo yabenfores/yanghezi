@@ -1,9 +1,12 @@
 package com.raoleqing.yangmatou.webserver;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.raoleqing.yangmatou.BaseActivity;
+import com.raoleqing.yangmatou.uitls.LogUtil;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -16,12 +19,10 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by ybin on 2016/5/21.
- */
 public class AsyncFileUpload extends AsyncTask<Void, Void, String> {
+
     ResultCallback resultCallback;
-    String url, filePath;
+    String url, filePath,type;
     Result resultType = Result.None;
 
     public enum Result {
@@ -31,9 +32,10 @@ public class AsyncFileUpload extends AsyncTask<Void, Void, String> {
     public AsyncFileUpload() {
     }
 
-    public AsyncFileUpload(String url, String filePath, ResultCallback resultCallback) {
+    public AsyncFileUpload(String url, String filePath, String type ,ResultCallback resultCallback) {
         this.url = url;
         this.filePath = filePath;
+        this.type=type;
         this.resultCallback = resultCallback;
     }
 
@@ -43,7 +45,7 @@ public class AsyncFileUpload extends AsyncTask<Void, Void, String> {
             return upload();
         } catch (IOException e) {
             resultType = Result.NetError;
-            return null;
+            return "";
         }
     }
 
@@ -74,12 +76,11 @@ public class AsyncFileUpload extends AsyncTask<Void, Void, String> {
             con.setDoInput(true);
             con.setDoOutput(true);
             con.setUseCaches(false);
-            String auth = SharedPreferencesUtil.getString(BaseActivity.getAppContext(),"Authorization");
-            con.setRequestProperty("Authorization",auth);
-//            con.setRequestProperty("Connection", NetParams.KEEPALIVE);
-//            con.setRequestProperty("Charset", NetParams.CHARSET);
-            String BOUNDARY = "----------" + System.currentTimeMillis();
-            con.setRequestProperty("Content-Type", "image");
+            con.setRequestProperty("Connection", NetParams.KEEPALIVE);
+            con.setRequestProperty("Charset", NetParams.CHARSET);
+            String auth = SharedPreferencesUtil.getString(BaseActivity.getAppContext(), "Authorization");
+            con.addRequestProperty("Authorization", auth);
+            con.setRequestProperty("Content-Type", type);
             OutputStream out = con.getOutputStream();
             FileInputStream fInStream = new FileInputStream(file);
             BufferedInputStream bufferedInputStream = new BufferedInputStream(
@@ -103,7 +104,9 @@ public class AsyncFileUpload extends AsyncTask<Void, Void, String> {
             br.close();
             is.close();
             resultType = Result.Success;
+            Log.e("busd", builder.toString());
             return builder.toString();
+
         } catch (Exception e) {
             e.printStackTrace();
             return NetParams.NET_ERROR;
@@ -118,7 +121,5 @@ public class AsyncFileUpload extends AsyncTask<Void, Void, String> {
         void onSuccess(String result, String filePath);
 
         void onProgress(float percent);
-
-
     }
 }

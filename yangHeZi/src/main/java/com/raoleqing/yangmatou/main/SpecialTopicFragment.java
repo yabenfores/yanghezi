@@ -313,7 +313,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 		// TODO Auto-generated method stub
 		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
 
-		HttpUtil.get(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
+		HttpUtil.post(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
 
 			// 获取数据成功会调用这里
 			@Override

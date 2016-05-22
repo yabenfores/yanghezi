@@ -1,8 +1,12 @@
 package com.raoleqing.yangmatou.adapter;
 
 import java.util.List;
+
+import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.Address;
+import com.raoleqing.yangmatou.ui.goods.GoodsPayActivity;
+
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +19,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class AddressAdapter extends BaseAdapter {
@@ -113,6 +118,14 @@ public class AddressAdapter extends BaseAdapter {
 			}
 		});
 
+		holder.lyo_app_select_address.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Address address =addressList.get(position);
+				BaseActivity.sendNotifyUpdate(GoodsPayActivity.class,"",address);
+			}
+		});
+
 		return convertView;
 	}
 
@@ -123,6 +136,7 @@ public class AddressAdapter extends BaseAdapter {
 		CheckBox address_item_default;
 		TextView address_item_edit;
 		TextView address_item_del;
+		LinearLayout lyo_app_select_address;
 
 		public ViewHolder(View convertView) {
 
@@ -131,6 +145,7 @@ public class AddressAdapter extends BaseAdapter {
 			this.address_item_default = (CheckBox) convertView.findViewById(R.id.address_item_default);
 			this.address_item_edit = (TextView) convertView.findViewById(R.id.address_item_edit);
 			this.address_item_del = (TextView) convertView.findViewById(R.id.address_item_del);
+			this.lyo_app_select_address= (LinearLayout) convertView.findViewById(R.id.lyo_app_select_address);
 		}
 
 	}

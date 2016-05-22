@@ -136,20 +136,12 @@ public class HttpUtil extends NetWorkBase {
     }
     public static AsyncHttpClient post1(Context context, String method, RequestParams req, JsonHttpResponseHandler res) {
         AsyncHttpClient client = baseMethod(context);
-//        FileBody fileBody=new FileBody(req);
-        MultipartEntity entity =new MultipartEntity();
-//        Bitmap bitmap = BitmapFactory.decodeFile(req);
-//        byte[] datas=bitmap2Bytes(bitmap );
-//        FileBody fileBody=new FileBody(datas);
-//        entity.addPart("",datas);
         client.setTimeout(30000);
         String auth = SharedPreferencesUtil.getString(BaseActivity.getAppContext(),"Authorization");
         client.addHeader("Authorization", auth);
         String urlConnection = urlString + method;
         System.out.println("请求数据： " + urlConnection);
         System.out.println("参数： " + req.toString());
-//        client.post(urlConnection, null, res);
-//        client.post(context,urlConnection,entity,"image",res);
         client.post(urlConnection, null, res);
         return client;
 

@@ -3,6 +3,8 @@ package com.raoleqing.yangmatou.webserver;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.raoleqing.yangmatou.uitls.LogUtil;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
@@ -75,8 +77,8 @@ public class NetConnection {
                                 headerInterface.setHeader(uc);
                             break;
                     }
-                    Log.i("url:", uc.getURL().toString());
-                    Log.i("parama:", paramsBuffer.toString());
+                    LogUtil.loge(getClass(),"url:", uc.getURL().toString());
+                    LogUtil.loge(getClass(),"parama:", paramsBuffer.toString());
                     BufferedReader br = new BufferedReader(
                             new InputStreamReader(uc.getInputStream(), charset));
                     String line = null;

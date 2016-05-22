@@ -231,81 +231,87 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
-        switch (v.getId()) {
-            case R.id.activity_return:
-                GoodsDetail.this.onBackPressed();
-                break;
-            case R.id.goodsd_detail_buy:
+        try {
 
-                if (UserUitls.isLongin(GoodsDetail.this)) {
-                    if (whRrea == null) {
-                        makeShortToast("请选择订单受理");
-                        return;
+
+            // TODO Auto-generated method stub
+            switch (v.getId()) {
+                case R.id.activity_return:
+                    GoodsDetail.this.onBackPressed();
+                    break;
+                case R.id.goodsd_detail_buy:
+
+                    if (UserUitls.isLongin(GoodsDetail.this)) {
+                        if (whRrea == null) {
+                            makeShortToast("请选择订单受理");
+                            return;
+                        }
+                        Intent intent = new Intent(GoodsDetail.this, GoodsPayActivity.class);
+                        intent.putExtra("goodsNumber", goodsNumber);
+                        intent.putExtra("goods_promotion_price", goods_promotion_price);
+                        intent.putExtra("goods_marketprice", goods_marketprice);
+                        intent.putExtra("goods_lineposttax", goods_lineposttax);
+                        intent.putExtra("wh_id", whRrea.getWh_id());
+                        intent.putExtra("goods_id", goods_id);
+                        intent.putExtra("goodsName", goodsName);
+                        startActivity(intent);
+                        overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                    } else {
+                        UserUitls.longInDialog(GoodsDetail.this);
                     }
-                    Intent intent = new Intent(GoodsDetail.this, GoodsPayActivity.class);
-                    intent.putExtra("goodsNumber", goodsNumber);
-                    intent.putExtra("goods_promotion_price", goods_promotion_price);
-                    intent.putExtra("goods_marketprice", goods_marketprice);
-                    intent.putExtra("goods_lineposttax", goods_lineposttax);
-                    intent.putExtra("wh_id", whRrea.getWh_id());
-                    intent.putExtra("goods_id", goods_id);
-                    intent.putExtra("goodsName", goodsName);
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-                } else {
-                    UserUitls.longInDialog(GoodsDetail.this);
-                }
 
-                break;
-            case R.id.goods_add:
+                    break;
+                case R.id.goods_add:
 
-                goodsNumber++;
-                goods_number.setText(goodsNumber + "");
-
-
-                break;
-            case R.id.goods_del:
-                if (goodsNumber > 1) {
-                    goodsNumber--;
+                    goodsNumber++;
                     goods_number.setText(goodsNumber + "");
-                }
-                break;
-            case R.id.lyo_goods_shop_address:
-                showValuePicker(whRreaList, 1);
-                break;
-            case R.id.tv_goods_detail:
-                tv_goods_comment.setTextColor(getAppContext().getResources().getColor(R.color.text04));
-                divider_goods_comment.setVisibility(View.INVISIBLE);
-                goods_evaluation_list.setVisibility(View.GONE);
-                tv_goods_detail.setTextColor(getAppContext().getResources().getColor(R.color.text01));
-                divider_goods_detail.setVisibility(View.VISIBLE);
-                goods_detaile_webview.setVisibility(View.VISIBLE);
-                break;
-            case R.id.tv_goods_comment:
-                tv_goods_comment.setTextColor(getAppContext().getResources().getColor(R.color.text01));
-                divider_goods_comment.setVisibility(View.VISIBLE);
-                goods_evaluation_list.setVisibility(View.VISIBLE);
-                tv_goods_detail.setTextColor(getAppContext().getResources().getColor(R.color.text04));
-                divider_goods_detail.setVisibility(View.INVISIBLE);
-                goods_detaile_webview.setVisibility(View.GONE);
-                break;
-            case R.id.but_attention:
-                if (but_attention.isSelected()) {
-                    cancelShopStore(store_id);
-                } else {
-                    favoritesShopStore(store_id);
-                }
-                break;
-            case R.id.lyo_goods_favorite:
-                if (tv_product_favorite.isSelected()) {
-                    cancelPorductStore(goods_id);
-                } else {
-                    favoritesPorductStore(goods_id);
-                }
-                break;
-            default:
-                break;
+
+
+                    break;
+                case R.id.goods_del:
+                    if (goodsNumber > 1) {
+                        goodsNumber--;
+                        goods_number.setText(goodsNumber + "");
+                    }
+                    break;
+                case R.id.lyo_goods_shop_address:
+                    showValuePicker(whRreaList, 1);
+                    break;
+                case R.id.tv_goods_detail:
+                    tv_goods_comment.setTextColor(getAppContext().getResources().getColor(R.color.text04));
+                    divider_goods_comment.setVisibility(View.INVISIBLE);
+                    goods_evaluation_list.setVisibility(View.GONE);
+                    tv_goods_detail.setTextColor(getAppContext().getResources().getColor(R.color.text01));
+                    divider_goods_detail.setVisibility(View.VISIBLE);
+                    goods_detaile_webview.setVisibility(View.VISIBLE);
+                    break;
+                case R.id.tv_goods_comment:
+                    tv_goods_comment.setTextColor(getAppContext().getResources().getColor(R.color.text01));
+                    divider_goods_comment.setVisibility(View.VISIBLE);
+                    goods_evaluation_list.setVisibility(View.VISIBLE);
+                    tv_goods_detail.setTextColor(getAppContext().getResources().getColor(R.color.text04));
+                    divider_goods_detail.setVisibility(View.INVISIBLE);
+                    goods_detaile_webview.setVisibility(View.GONE);
+                    break;
+                case R.id.but_attention:
+                    if (but_attention.isSelected()) {
+                        cancelShopStore(store_id);
+                    } else {
+                        favoritesShopStore(store_id);
+                    }
+                    break;
+                case R.id.lyo_goods_favorite:
+                    if (tv_product_favorite.isSelected()) {
+                        cancelPorductStore(goods_id);
+                    } else {
+                        favoritesPorductStore(goods_id);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            throwEx(e);
         }
 
     }
@@ -336,7 +342,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
             @Override
             public void onFail(JSONObject result) {
-                ToastUtil.MakeShortToast(BaseActivity.getAppContext(),result.optString(Constant.INFO));
+                ToastUtil.MakeShortToast(BaseActivity.getAppContext(), result.optString(Constant.INFO));
             }
         });
 //        HttpUtil.post(GoodsDetail.this, HttpUtil.GOODS_DETAILS, params, new JsonHttpResponseHandler() {
@@ -388,73 +394,73 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             }
 
 
-                JSONObject data = response.optJSONObject("data");
-                JSONArray more_image = data.optJSONArray("more_image");
-                if (goodsImageList.size() > 0) {
-                    goodsImageList.removeAll(goodsImageList);
-                }
-                for (int i = 0; i < more_image.length(); i++) {
-                    String goods_image = more_image.optString(i);
-                    goodsImageList.add(goods_image);
-                }
+            JSONObject data = response.optJSONObject("data");
+            JSONArray more_image = data.optJSONArray("more_image");
+            if (goodsImageList.size() > 0) {
+                goodsImageList.removeAll(goodsImageList);
+            }
+            for (int i = 0; i < more_image.length(); i++) {
+                String goods_image = more_image.optString(i);
+                goodsImageList.add(goods_image);
+            }
 
-                setGoodsImage();
+            setGoodsImage();
 
-                geval_goodsid = data.optString("geval_goodsid");
-                store_id = data.optInt("store_id");
-                goodsName = data.optString("goods_name");
-                goods_name.setText(goodsName);
-                goods_price01.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-                goods_price01.setText("￥" + data.optDouble("goods_marketprice"));
-                // 0无促销，1团购，2限时折扣
-                int goods_promotion_type = data.optInt("goods_promotion_type");
-                goods_promotion_price = data.optDouble("goods_promotion_price");
-                goods_lineposttax = data.optDouble("goods_lineposttax");
-                goods_marketprice = data.optDouble("goods_marketprice");
+            geval_goodsid = data.optString("geval_goodsid");
+            store_id = data.optInt("store_id");
+            goodsName = data.optString("goods_name");
+            goods_name.setText(goodsName);
+            goods_price01.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            goods_price01.setText("￥" + data.optDouble("goods_marketprice"));
+            // 0无促销，1团购，2限时折扣
+            int goods_promotion_type = data.optInt("goods_promotion_type");
+            goods_promotion_price = data.optDouble("goods_promotion_price");
+            goods_lineposttax = data.optDouble("goods_lineposttax");
+            goods_marketprice = data.optDouble("goods_marketprice");
 //                but_attention.setSelected(data.);
-                double discount = goods_promotion_price / goods_marketprice * 10;
-                DecimalFormat df = new DecimalFormat("###.0");
-                goods_price.setText("￥" + goods_promotion_price);
-                goods_price01.setText("￥" + goods_marketprice);
-                goods_discount.setText(df.format(discount) + "");
+            double discount = goods_promotion_price / goods_marketprice * 10;
+            DecimalFormat df = new DecimalFormat("###.0");
+            goods_price.setText("￥" + goods_promotion_price);
+            goods_price01.setText("￥" + goods_marketprice);
+            goods_discount.setText(df.format(discount) + "");
 
-                if (goods_promotion_type == 0) {
-                    goods_discount.setVisibility(View.GONE);
-                } else if (goods_promotion_type == 1) {
-                    goods_discount.setText("团购");
-                    goods_discount.setVisibility(View.VISIBLE);
-                } else {
-                    goods_discount.setVisibility(View.VISIBLE);
-                }
+            if (goods_promotion_type == 0) {
+                goods_discount.setVisibility(View.GONE);
+            } else if (goods_promotion_type == 1) {
+                goods_discount.setText("团购");
+                goods_discount.setVisibility(View.VISIBLE);
+            } else {
+                goods_discount.setVisibility(View.VISIBLE);
+            }
 
-                goods_shipment.setText("运费：");
-                goods_sold.setText("已售：" + data.optString("goods_salenum"));
-                goods_stock.setText("(库存： " + data.optString("goods_storage") + ")");
-                goods_shop_address.setText("");
-                goods_shop_name.setText(data.optString("store_name"));
+            goods_shipment.setText("运费：");
+            goods_sold.setText("已售：" + data.optString("goods_salenum"));
+            goods_stock.setText("(库存： " + data.optString("goods_storage") + ")");
+            goods_shop_address.setText("");
+            goods_shop_name.setText(data.optString("store_name"));
 
-                ImageLoader.getInstance().displayImage("", goods_shop_iocn,
-                        YangMaTouApplication.imageOption(R.drawable.store_icon));
-                // html代码
-                String goods_body = data.optString("goods_body");
+            ImageLoader.getInstance().displayImage("", goods_shop_iocn,
+                    YangMaTouApplication.imageOption(R.drawable.store_icon));
+            // html代码
+            String goods_body = data.optString("goods_body");
 
-                whRreaList = new ArrayList<DefaultValueEntity>();
+            whRreaList = new ArrayList<DefaultValueEntity>();
 
 				/*"wh_area_info":"上海,江苏,浙江,安徽,福建,江西,湖北,湖南,广东,广西,海南,重庆,四川,贵州,云南,西藏,台湾,香港,澳门,海外",
                 "wh_id":"1","r_predeposit":"0.00","wh_name":"海南省海口市万国大都会"*/
-                JSONArray rgoodswh_list = data.optJSONArray("rgoodswh_list");
-                DefaultValueEntity defaultValueEntity;
-                for (int i = 0; i < rgoodswh_list.length(); i++) {
-                    JSONObject obj = rgoodswh_list.optJSONObject(i);
-                    WhRrea mWhRrea = new WhRrea();
-                    mWhRrea.setWh_id(obj.optInt("wh_id"));
-                    mWhRrea.setWh_name(obj.optString("wh_name"));
-                    mWhRrea.setWh_area_info(obj.optString("wh_area_info"));
-                    defaultValueEntity = new DefaultValueEntity(mWhRrea.getWh_id() + "", mWhRrea.getWh_name());
-                    defaultValueEntity.setObject(mWhRrea);
-                    whRreaList.add(defaultValueEntity);
-                }
-                setGoodsDesc(goods_body);
+            JSONArray rgoodswh_list = data.optJSONArray("rgoodswh_list");
+            DefaultValueEntity defaultValueEntity;
+            for (int i = 0; i < rgoodswh_list.length(); i++) {
+                JSONObject obj = rgoodswh_list.optJSONObject(i);
+                WhRrea mWhRrea = new WhRrea();
+                mWhRrea.setWh_id(obj.optInt("wh_id"));
+                mWhRrea.setWh_name(obj.optString("wh_name"));
+                mWhRrea.setWh_area_info(obj.optString("wh_area_info"));
+                defaultValueEntity = new DefaultValueEntity(mWhRrea.getWh_id() + "", mWhRrea.getWh_name());
+                defaultValueEntity.setObject(mWhRrea);
+                whRreaList.add(defaultValueEntity);
+            }
+            setGoodsDesc(goods_body);
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -515,7 +521,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
             @Override
             public void onFail(JSONObject result) {
-                ToastUtil.MakeShortToast(BaseActivity.getAppContext(),result.optString(Constant.INFO));
+                ToastUtil.MakeShortToast(BaseActivity.getAppContext(), result.optString(Constant.INFO));
 
             }
         });
@@ -559,30 +565,30 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         try {
 
 
-                // 04-11 15:57:15.069: I/System.out(12426): 评价：
-                if (evaluationList.size() > 0) {
-                    evaluationList.removeAll(evaluationList);
+            // 04-11 15:57:15.069: I/System.out(12426): 评价：
+            if (evaluationList.size() > 0) {
+                evaluationList.removeAll(evaluationList);
+            }
+            String dataStr = response.optString("data");
+            if (!dataStr.equals("该商品没有评价")) {
+                JSONArray data = response.optJSONArray("data");
+
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.getJSONObject(i);
+                    Evaluation mEvaluation = new Evaluation();
+                    mEvaluation.setMember_img(obj.optString("member_img"));
+                    mEvaluation.setGeval_addtime(obj.optLong("geval_addtime"));
+                    mEvaluation.setGeval_goodsname(obj.optString("geval_goodsname"));
+                    mEvaluation.setGeval_frommembername(obj.optString("geval_frommembername"));
+                    mEvaluation.setGeval_content(obj.optString("geval_content"));
+
+                    evaluationList.add(mEvaluation);
                 }
-                String dataStr = response.optString("data");
-                if (!dataStr.equals("该商品没有评价")) {
-                    JSONArray data = response.optJSONArray("data");
 
-                    for (int i = 0; i < data.length(); i++) {
-                        JSONObject obj = data.getJSONObject(i);
-                        Evaluation mEvaluation = new Evaluation();
-                        mEvaluation.setMember_img(obj.optString("member_img"));
-                        mEvaluation.setGeval_addtime(obj.optLong("geval_addtime"));
-                        mEvaluation.setGeval_goodsname(obj.optString("geval_goodsname"));
-                        mEvaluation.setGeval_frommembername(obj.optString("geval_frommembername"));
-                        mEvaluation.setGeval_content(obj.optString("geval_content"));
+                setListViewHeight(evaluationList.size());
+                adapter.notifyDataSetChanged();
 
-                        evaluationList.add(mEvaluation);
-                    }
-
-                    setListViewHeight(evaluationList.size());
-                    adapter.notifyDataSetChanged();
-
-                }
+            }
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -681,7 +687,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         params.put("uid", uid);
 //		params.put("uid", 1090);
 
-        NetHelper.favoritesstore(store_id+"", new NetConnectionInterface.iConnectListener3() {
+        NetHelper.favoritesstore(store_id + "", new NetConnectionInterface.iConnectListener3() {
             @Override
             public void onStart() {
 
@@ -704,8 +710,8 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                         setProgressVisibility(View.GONE);
                         return;
                     }
-                        but_attention.setSelected(true);
-                        but_attention.setText("取消关注");
+                    but_attention.setSelected(true);
+                    but_attention.setText("取消关注");
                     Toast.makeText(GoodsDetail.this, message, Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     // TODO: handle exception
@@ -717,7 +723,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
             @Override
             public void onFail(JSONObject result) {
-                ToastUtil.MakeShortToast(BaseActivity.getAppContext(),result.optString(Constant.INFO));
+                ToastUtil.MakeShortToast(BaseActivity.getAppContext(), result.optString(Constant.INFO));
 
             }
         });
@@ -763,8 +769,8 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                         return;
                     }
 
-                        but_attention.setSelected(false);
-                        but_attention.setText("+ 关注");
+                    but_attention.setSelected(false);
+                    but_attention.setText("+ 关注");
 
                     Toast.makeText(getAppContext(), message, Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
@@ -777,7 +783,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
             @Override
             public void onFail(JSONObject result) {
-                ToastUtil.MakeShortToast(BaseActivity.getAppContext(),result.optString(Constant.INFO));
+                ToastUtil.MakeShortToast(BaseActivity.getAppContext(), result.optString(Constant.INFO));
 
             }
         });
@@ -797,10 +803,9 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
         RequestParams params = new RequestParams();
         params.put("fid", goods_id);
-        params.put("uid", uid);
 //		params.put("uid", 1090);
 
-        HttpUtil.post(GoodsDetail.this, HttpUtil.FAVORITES_PORDUCT_STORE, params, new JsonHttpResponseHandler() {
+        HttpUtil.post1(GoodsDetail.this, HttpUtil.FAVORITES_PORDUCT_STORE, params, new JsonHttpResponseHandler() {
 
             // 获取数据成功会调用这里
             @Override
@@ -865,10 +870,9 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
         RequestParams params = new RequestParams();
         params.put("fid", goods_id);
-        params.put("uid", uid);
 //		params.put("uid", 1090);
 
-        HttpUtil.post(getAppContext(), HttpUtil.CANCEL_PORDUCT_STORE, params, new JsonHttpResponseHandler() {
+        HttpUtil.post1(getAppContext(), HttpUtil.CANCEL_PORDUCT_STORE, params, new JsonHttpResponseHandler() {
 
             // 获取数据成功会调用这里
             @Override
