@@ -21,6 +21,7 @@ import com.raoleqing.yangmatou.ben.WhRrea;
 import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.MyPagerAdapter;
 import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.uitls.LogUtil;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
@@ -28,6 +29,7 @@ import com.raoleqing.yangmatou.uitls.UserUitls;
 import com.raoleqing.yangmatou.view.DefaultValueEntity;
 import com.raoleqing.yangmatou.view.ValueEntity;
 import com.raoleqing.yangmatou.view.ValuePickerView;
+import com.raoleqing.yangmatou.webserver.BaseNetConnection;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
@@ -131,6 +133,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
         setTitleText("商品详情");
         myHandler.sendEmptyMessageDelayed(0, 50);
+
     }
 
     protected void viewInfo() {
@@ -149,6 +152,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         goods_discount = (TextView) findViewById(R.id.goods_discount);
         goods_shipment = (TextView) findViewById(R.id.goods_shipment);
         tv_product_favorite = (TextView) findViewById(R.id.tv_product_favorite);
+        tv_product_favorite.setSelected(false);
         goods_sold = (TextView) findViewById(R.id.goods_sold);
         goods_add = (Button) findViewById(R.id.goods_add);
         goods_number = (TextView) findViewById(R.id.goods_number);
@@ -262,7 +266,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
                     break;
                 case R.id.goods_add:
-
                     goodsNumber++;
                     goods_number.setText(goodsNumber + "");
 
@@ -345,35 +348,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                 ToastUtil.MakeShortToast(BaseActivity.getAppContext(), result.optString(Constant.INFO));
             }
         });
-//        HttpUtil.post(GoodsDetail.this, HttpUtil.GOODS_DETAILS, params, new JsonHttpResponseHandler() {
-//
-//            // 获取数据成功会调用这里
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                // TODO Auto-generated method stub
-//                System.out.println("Aaaaaaaaaaaa" + response.toString());
-//                super.onSuccess(statusCode, headers, response);
-//                resolveJson(response);
-//            }
-//
-//            // 失败
-//            @Override
-//            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-//                // TODO Auto-generated method stub
-//                super.onFailure(statusCode, headers, throwable, errorResponse);
-//                setProgressVisibility(View.GONE);
-//            }
-//
-//            // 结束
-//            @Override
-//            public void onFinish() {
-//                // TODO Auto-generated method stub
-//                super.onFinish();
-//                System.out.println("onFinish");
-//
-//            }
-//
-//        });
 
     }
 
@@ -465,7 +439,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            Toast.makeText(GoodsDetail.this, "数据加载失败", Toast.LENGTH_LONG).show();
         }
 
         setProgressVisibility(View.GONE);
@@ -480,19 +453,20 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
         if (goods_desc != null && !goods_desc.equals("")) {
 
+            goods_detaile_webview.loadUrl(goods_desc);
             // 能够的调用JavaScript代码
             // product_picture_html = new WebView(ProductDetails.this);
-            goods_detaile_webview.getSettings().setDefaultTextEncodingName("utf-8");
-            // 加载HTML字符串进行显示
-
-            goods_detaile_webview.getSettings().setJavaScriptEnabled(true);
-            goods_detaile_webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-            goods_detaile_webview.getSettings().setUseWideViewPort(true);
-            goods_detaile_webview.getSettings().setLoadWithOverviewMode(true);
-            goods_detaile_webview.setSaveEnabled(true);
-            goods_detaile_webview.getSettings().setRenderPriority(RenderPriority.HIGH);
-            goods_detaile_webview.getSettings().setSupportZoom(true);// 支持缩放
-            goods_detaile_webview.loadData(goods_desc, "text/html", "UTF-8");// 这种写法可以正确解码
+//            goods_detaile_webview.getSettings().setDefaultTextEncodingName("utf-8");
+//            // 加载HTML字符串进行显示
+//
+//            goods_detaile_webview.getSettings().setJavaScriptEnabled(true);
+//            goods_detaile_webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+//            goods_detaile_webview.getSettings().setUseWideViewPort(true);
+//            goods_detaile_webview.getSettings().setLoadWithOverviewMode(true);
+//            goods_detaile_webview.setSaveEnabled(true);
+//            goods_detaile_webview.getSettings().setRenderPriority(RenderPriority.HIGH);
+//            goods_detaile_webview.getSettings().setSupportZoom(true);// 支持缩放
+//            goods_detaile_webview.loadData(goods_desc, "text/html", "UTF-8");// 这种写法可以正确解码
         }
     }
 
@@ -593,7 +567,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            Toast.makeText(GoodsDetail.this, "数据加载失败", Toast.LENGTH_LONG).show();
         }
 
         setProgressVisibility(View.GONE);
@@ -680,12 +653,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         // Home/Index/favoritesstore
         setProgressVisibility(View.VISIBLE);
 
-        int uid = SharedPreferencesUtil.getInt(GoodsDetail.this, "member_id");
-
-        RequestParams params = new RequestParams();
-        params.put("fid", store_id);
-        params.put("uid", uid);
-//		params.put("uid", 1090);
 
         NetHelper.favoritesstore(store_id + "", new NetConnectionInterface.iConnectListener3() {
             @Override
@@ -706,7 +673,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     String message = result.optString("message");
 
                     if (result == null) {
-                        Toast.makeText(GoodsDetail.this, message, Toast.LENGTH_LONG).show();
                         setProgressVisibility(View.GONE);
                         return;
                     }
@@ -739,12 +705,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
         setProgressVisibility(View.VISIBLE);
 
-        int uid = SharedPreferencesUtil.getInt(getAppContext(), "member_id");
-
-        RequestParams params = new RequestParams();
-        params.put("fid", store_id);
-        params.put("uid", uid);
-//		params.put("uid", 1090);
         NetHelper.cancelStore(store_id + "", new NetConnectionInterface.iConnectListener3() {
             @Override
             public void onStart() {
@@ -799,34 +759,30 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         // Home/Index/favoritesstore
         setProgressVisibility(View.VISIBLE);
 
-        int uid = SharedPreferencesUtil.getInt(GoodsDetail.this, "member_id");
 
-        RequestParams params = new RequestParams();
-        params.put("fid", goods_id);
-//		params.put("uid", 1090);
-
-        HttpUtil.post1(GoodsDetail.this, HttpUtil.FAVORITES_PORDUCT_STORE, params, new JsonHttpResponseHandler() {
-
-            // 获取数据成功会调用这里
+        NetHelper.favoritespro(goods_id+"", new NetConnectionInterface.iConnectListener3() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                // TODO Auto-generated method stub
-                super.onSuccess(statusCode, headers, response);
-                try {
-                    int code = response.optInt("code");
-                    String message = response.optString("message");
+            public void onStart() {
 
-                    if (response == null) {
-                        Toast.makeText(GoodsDetail.this, message, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFinish() {
+                setProgressVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onSuccess(JSONObject result) {
+                try {
+                    LogUtil.loge(getClass(),result.toString());
+
+                    if (result == null) {
                         setProgressVisibility(View.GONE);
                         return;
                     }
-
-                    if (code == 1 || code == 200) {
                         tv_product_favorite.setSelected(true);
                         tv_product_favorite.setText("取消收藏");
-                    }
-                    Toast.makeText(GoodsDetail.this, message, Toast.LENGTH_LONG).show();
                 } catch (Exception e) {
                     // TODO: handle exception
                     e.printStackTrace();
@@ -834,26 +790,17 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                 }
 
                 setProgressVisibility(View.GONE);
+
             }
 
-            // 失败
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                // TODO Auto-generated method stub
-                super.onFailure(statusCode, headers, throwable, errorResponse);
+            public void onFail(JSONObject result) {
                 setProgressVisibility(View.GONE);
-            }
-
-            // 结束
-            @Override
-            public void onFinish() {
-                // TODO Auto-generated method stub
-                super.onFinish();
-                System.out.println("onFinish");
+                makeShortToast(result.optString("data"));
 
             }
-
         });
+
 
     }
 
@@ -866,62 +813,38 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
         setProgressVisibility(View.VISIBLE);
 
-        int uid = SharedPreferencesUtil.getInt(getAppContext(), "member_id");
 
         RequestParams params = new RequestParams();
         params.put("fid", goods_id);
 //		params.put("uid", 1090);
-
-        HttpUtil.post1(getAppContext(), HttpUtil.CANCEL_PORDUCT_STORE, params, new JsonHttpResponseHandler() {
-
-            // 获取数据成功会调用这里
+        NetHelper.cancelPro(goods_id + "", new NetConnectionInterface.iConnectListener3() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                // TODO Auto-generated method stub
-                super.onSuccess(statusCode, headers, response);
-                try {
-                    int code = response.optInt("code");
-                    String message = response.optString("message");
+            public void onStart() {
 
-                    if (response == null) {
-                        Toast.makeText(getAppContext(), message, Toast.LENGTH_LONG).show();
-                        setProgressVisibility(View.GONE);
-                        return;
-                    }
-
-                    if (code == 1 || code == 200) {
-                        tv_product_favorite.setSelected(false);
-                        tv_product_favorite.setText("收藏");
-                    }
-
-                    Toast.makeText(getAppContext(), message, Toast.LENGTH_LONG).show();
-                } catch (Exception e) {
-                    // TODO: handle exception
-                    e.printStackTrace();
-                    Toast.makeText(getAppContext(), "取消失败", Toast.LENGTH_LONG).show();
-                }
-
-                setProgressVisibility(View.GONE);
-                // TODO Auto-generated method stub
             }
 
-            // 失败
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                // TODO Auto-generated method stub
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-                setProgressVisibility(View.GONE);
-            }
-
-            // 结束
             @Override
             public void onFinish() {
-                // TODO Auto-generated method stub
-                super.onFinish();
-                System.out.println("onFinish");
+                setProgressVisibility(View.GONE);
 
             }
 
+            @Override
+            public void onSuccess(JSONObject result) {
+                if (result == null) {
+                    setProgressVisibility(View.GONE);
+                    return;
+                }
+
+                    tv_product_favorite.setSelected(false);
+                    tv_product_favorite.setText("收藏");
+
+            }
+
+            @Override
+            public void onFail(JSONObject result) {
+
+            }
         });
 
     }

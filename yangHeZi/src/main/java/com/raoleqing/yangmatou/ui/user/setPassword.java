@@ -54,7 +54,7 @@ public class setPassword extends BaseActivity  implements OnClickListener {
 
 	protected void viewInfo() {
 		mTvname=(TextView)findViewById(R.id.tv_username);
-		mTvname.setText(SharedPreferencesUtil.getString(BaseActivity.getAppContext(),"user_name"));
+		mTvname.setText(SharedPreferencesUtil.getString(BaseActivity.getAppContext(),"member_name"));
 		activity_return = (ImageView) findViewById(R.id.activity_return);
 		findViewById(R.id.btn_update_pwd).setOnClickListener(this);
 		activity_return.setOnClickListener(this);

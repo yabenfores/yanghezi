@@ -38,6 +38,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import entity.NotifyUpdateEntity;
+
 /**
  * 购买界面
  **/
@@ -367,7 +369,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            Toast.makeText(GoodsPayActivity.this, "数据加载失败", 1).show();
         }
 
         setProgressVisibility(View.GONE);
@@ -430,12 +431,10 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     pay_type	Y	string	支付方式	*/
     private void submitOrder(String userCard) {
         // TODO Auto-generated method stub
-        int uid = SharedPreferencesUtil.getInt(GoodsPayActivity.this, "member_id");
 
         RequestParams params = new RequestParams();
         params.put("wh_id", wh_id);
         params.put("quantity", goodsNumber);
-        params.put("uid", uid);
         params.put("pid", goods_id);
         params.put("order_message", "");
         params.put("sfzno", userCard);
@@ -509,6 +508,23 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 }
             }
             super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+    //---------------
+    public final static String ADDRESSSELECT = "addressSelect";
+    protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
+        super.notifyUpdate(notifyUpdateEntity);
+        try {
+            switch (notifyUpdateEntity.getNotifyTag()) {
+                case ADDRESSSELECT:
+                    Address address= (Address) notifyUpdateEntity.getObj();
+                    pay_phone.setText(address.getMob_phone());
+                    pay_name.setText(address.getTrue_name());
+                    pay_address.setText(address.getArea_info());
+                    break;
+            }
+        } catch (Exception ex) {
+            throwEx(ex);
         }
     }
 }

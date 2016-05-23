@@ -6,13 +6,17 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.hyphenate.easeui.EaseConstant;
+import com.hyphenate.easeui.controller.EaseUI;
+import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.ui.EaseChatFragment;
 import com.hyphenate.easeui.ui.EaseConversationListFragment;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 
 public class ChatActivity extends BaseActivity implements View.OnClickListener {
     private ImageView activity_return;
+    EaseUI easeUI=EaseUI.getInstance();
     public static ChatActivity activityInstance;
     private EaseChatFragment chatFragment;
     private EaseConversationListFragment easeConversationListfragment;
@@ -66,6 +70,17 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
                     String user = getIntent().getExtras().getString(EaseConstant.EXTRA_USER_ID);
                     EaseChatFragment chatFragment = new EaseChatFragment();
                     //传入参数
+                    easeUI.setUserProfileProvider(new EaseUI.EaseUserProfileProvider() {
+                        @Override
+                        public EaseUser getUser(String username) {
+                            EaseUser easeUser=new EaseUser(username);
+                            String member_avatar = SharedPreferencesUtil.getString(ChatActivity.this, "member_avatar");
+                            String member_name = SharedPreferencesUtil.getString(ChatActivity.this, "member_name");
+                            easeUser.setAvatar(member_avatar);
+                            easeUser.setNick(member_name);
+                            return easeUser;
+                        }
+                    });
                     Bundle args = new Bundle();
                     args.putInt(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_SINGLE);
                     args.putString(EaseConstant.EXTRA_USER_ID, user);
@@ -80,14 +95,12 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
 //                    getSupportFragmentManager().beginTransaction().add(R.id.container, chatFragment).commit();
                     break;
                 case 1:
-                    easeConversationListfragment = new EaseConversationListFragment();
                     setTitleText("消息");
+                    easeConversationListfragment = new EaseConversationListFragment();
 //        getSupportFragmentManager().beginTransaction().add(R.id.container, chatFragment).commit();
                     getSupportFragmentManager().beginTransaction().add(R.id.container, easeConversationListfragment).commit();
                     break;
-
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

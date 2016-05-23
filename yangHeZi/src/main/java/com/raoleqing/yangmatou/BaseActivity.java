@@ -40,7 +40,7 @@ public class BaseActivity extends FragmentActivity {
 	private TextView activity_title;// 标题布局
 	private ImageView activity_return;// 返回
 	private EditText activity_search;
-	private View progress;
+	protected View progress;
 	private int progressIndex = 1;
 
 	@Override

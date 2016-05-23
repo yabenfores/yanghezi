@@ -108,7 +108,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.gou_wu_guang_chang, null);
 		viewInfo(view);
-		getAdvertising();
+//		getAdvertising();
 		getPavilion();
 		return view;
 	}

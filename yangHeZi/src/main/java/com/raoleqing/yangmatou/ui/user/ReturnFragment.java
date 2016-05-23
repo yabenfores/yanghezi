@@ -171,7 +171,6 @@ public class ReturnFragment extends Fragment implements OnClickListener {
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            Toast.makeText(getActivity(), "数据加载失败", 1).show();
         }
 
         ((OrderActivity) getActivity()).setMainProgress(View.GONE);

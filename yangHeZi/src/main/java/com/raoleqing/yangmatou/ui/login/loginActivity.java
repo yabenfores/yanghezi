@@ -363,7 +363,6 @@ public class loginActivity extends BaseActivity implements OnClickListener {
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            Toast.makeText(loginActivity.this, "数据加载失败", 1).show();
         }
         finish();
         sendNotifyUpdate(MainActivity.class, USER_LOGIN, 20);
@@ -411,7 +410,6 @@ public class loginActivity extends BaseActivity implements OnClickListener {
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            Toast.makeText(loginActivity.this, "数据加载失败", 1).show();
         }
         setProgressVisibility(View.GONE);
         sendNotifyUpdate(MainActivity.class, USER_LOGIN, 20);

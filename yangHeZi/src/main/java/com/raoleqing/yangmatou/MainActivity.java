@@ -204,35 +204,36 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     }
 
     private void IMLogin() {
-        String user_name,user_pwd;
-        user_name= SharedPreferencesUtil.getString(getAppContext(),"user_name");
-        user_pwd= SharedPreferencesUtil.getString(getAppContext(),"user_pwd");
+        String user_name, user_pwd;
+        user_name = SharedPreferencesUtil.getString(getAppContext(), "user_name");
+        user_pwd = SharedPreferencesUtil.getString(getAppContext(), "user_pwd");
         // TODO Auto-generated method stub
         try {
-        EMClient.getInstance().login(user_name, user_pwd, new EMCallBack() {// 回调
-            @Override
-            public void onSuccess() {
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        EMClient.getInstance().groupManager().loadAllGroups();
-                        EMClient.getInstance().chatManager().loadAllConversations();
-                        System.out.println("登陆聊天服务器成功！");
+            EMClient.getInstance().login(user_name, user_pwd, new EMCallBack() {// 回调
+                @Override
+                public void onSuccess() {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            EMClient.getInstance().groupManager().loadAllGroups();
+                            EMClient.getInstance().chatManager().loadAllConversations();
 
-                    }
-                });
-            }
+                            System.out.println("登陆聊天服务器成功！");
 
-            @Override
-            public void onProgress(int progress, String status) {
+                        }
+                    });
+                }
 
-            }
+                @Override
+                public void onProgress(int progress, String status) {
 
-            @Override
-            public void onError(int code, String message) {
-                System.out.println("登陆聊天服务器失败！");
-            }
-        });
-        }catch (Exception e){
+                }
+
+                @Override
+                public void onError(int code, String message) {
+                    System.out.println("登陆聊天服务器失败！");
+                }
+            });
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -242,58 +243,66 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     public void onClick(View v) {
         // TODO Auto-generated method stub
 
-        switch (v.getId()) {
+        try {
+            if (progress.getVisibility()==View.VISIBLE){
+                v.setClickable(false);
+            }
+            switch (v.getId()) {
 
-            case R.id.gou_wu_advisory:
-                startActivity(new Intent(MainActivity.this, ChatActivity.class).putExtra(EaseConstant.EXTRA_USER_ID, "bbbb"));
-                break;
-            case R.id.main_host01:
-                if (contentIndex != 0)
-                    setView(0);
-                break;
-            case R.id.main_host02:
-                if (contentIndex != 1)
-                    setView(1);
-                break;
-            case R.id.main_host03:
-                if (contentIndex != 2)
-                    setView(2);
-                break;
-            case R.id.main_host04:
-                if (contentIndex != 3)
-                    setView(3);
-                break;
-            case R.id.main_host05:
-                if (contentIndex != 4) {
-                    if (UserUitls.isLongin(MainActivity.this)) {
-                        setView(4);
-                    } else {
-                        Intent intent = new Intent(MainActivity.this, loginActivity.class);
-                        startActivity(intent);
-                        overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                case R.id.gou_wu_advisory:
+                    startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                    break;
+                case R.id.main_host01:
+                    if (contentIndex != 0)
+                        setView(0);
+                    break;
+                case R.id.main_host02:
+                    if (contentIndex != 1)
+                        setView(1);
+                    break;
+                case R.id.main_host03:
+                    if (contentIndex != 2)
+                        setView(2);
+                    break;
+                case R.id.main_host04:
+                    if (contentIndex != 3)
+                        setView(3);
+                    break;
+                case R.id.main_host05:
+                    if (contentIndex != 4) {
+                        if (UserUitls.isLongin(MainActivity.this)) {
+                            setView(4);
+                        } else {
+                            Intent intent = new Intent(MainActivity.this, loginActivity.class);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                        }
+
                     }
 
-                }
+                    break;
+                case R.id.gou_wu_message:
+                    Intent intent = new Intent();
+                    intent.setClass(MainActivity.this, MipcaActivityCapture.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
+                    break;
+                case R.id.iv_app_to_top:
+                    gouWuGuangChangFragment.getListView().setSelection(0);
+                    break;
 
-                break;
-            case R.id.gou_wu_message:
-                Intent intent = new Intent();
-                intent.setClass(MainActivity.this, MipcaActivityCapture.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
-                break;
-            case R.id.iv_app_to_top:
-                gouWuGuangChangFragment.getListView().setSelection(0);
-                break;
-
-            default:
-                break;
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            throwEx(e);
         }
 
     }
 
 
     GouWuGuangChangFragment gouWuGuangChangFragment;
+
     public void setView(int i) {
         // TODO Auto-generated method stub
         int text01 = getResources().getColor(R.color.text01);
@@ -600,7 +609,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     }
 
     //-------------------------
-    public final static String USER_LOGIN ="user_login";
+    public final static String USER_LOGIN = "user_login";
+
     protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
         super.notifyUpdate(notifyUpdateEntity);
         try {

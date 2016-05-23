@@ -262,7 +262,6 @@ public class ClassificationActivity extends BaseActivity implements OnClickListe
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            Toast.makeText(ClassificationActivity.this, "数据加载失败", 1).show();
         }
 
         setProgressVisibility(View.GONE);

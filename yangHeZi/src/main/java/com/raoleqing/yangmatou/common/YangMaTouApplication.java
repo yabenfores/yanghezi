@@ -21,7 +21,7 @@ import android.graphics.Bitmap;
 
 public class YangMaTouApplication extends Application {
 	private static Context appContext;
-	public static String TAG = "YangMaTou";
+	public static String TAG = "YangHeZi";
 	private static ImageCache mImageCache;
 	private static YangMaTouApplication instance;
 

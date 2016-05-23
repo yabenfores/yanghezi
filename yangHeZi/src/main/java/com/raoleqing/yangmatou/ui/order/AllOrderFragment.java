@@ -77,13 +77,6 @@ public class AllOrderFragment extends Fragment implements OnClickListener {
 		payment_listview = (ListView) view.findViewById(R.id.payment_listview);
 
 		orderList.add(new Order());
-		orderList.add(new Order());
-		orderList.add(new Order());
-		orderList.add(new Order());
-		orderList.add(new Order());
-		orderList.add(new Order());
-		orderList.add(new Order());
-		orderList.add(new Order());
 
 		adapter = new OrderAdapter(getActivity(), orderList);
 
@@ -94,6 +87,12 @@ public class AllOrderFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		try {
+
+
+		} catch (Exception e) {
+			throw e;
+		}
 
 	}
 	
@@ -179,7 +178,6 @@ protected void resolveJson(JSONObject response) {
 	} catch (Exception e) {
 		// TODO: handle exception
 		e.printStackTrace();
-		Toast.makeText(getActivity(), "数据加载失败", 1).show();
 	}
 
 	((OrderActivity) getActivity()).setMainProgress(View.GONE);

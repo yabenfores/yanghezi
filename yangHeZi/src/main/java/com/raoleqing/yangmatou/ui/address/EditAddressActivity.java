@@ -233,9 +233,7 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
 			String tel_phone, String mob_phone) {
 		// TODO Auto-generated method stub
 
-		int uid = SharedPreferencesUtil.getInt(EditAddressActivity.this, "member_id");
 		RequestParams params = new RequestParams();
-		params.put("uid", uid);// 用户名id
 		params.put("true_name", true_name);
 		params.put("area_id", area_id);// 地区id
 		params.put("city_id", city_id);// 城市id
@@ -244,7 +242,7 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
 		params.put("tel_phone", tel_phone);// 座机电话
 		params.put("mob_phone", mob_phone);// 座机电话
 
-		HttpUtil.post(EditAddressActivity.this, HttpUtil.ADD_ADDRESS, params, new JsonHttpResponseHandler() {
+		HttpUtil.post1(EditAddressActivity.this, HttpUtil.ADD_ADDRESS, params, new JsonHttpResponseHandler() {
 
 			// 获取数据成功会调用这里
 			@Override
@@ -291,14 +289,12 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
 			if (code == 1 || code == 200) {
 
 				EditAddressActivity.this.onBackPressed();
-
 			}
 
 			Toast.makeText(EditAddressActivity.this, message, 1).show();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			Toast.makeText(EditAddressActivity.this, "数据加载失败", 1).show();
 		}
 
 		setProgressVisibility(View.GONE);
@@ -312,11 +308,9 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
 			String address, String tel_phone, String mob_phone) {
 		// TODO Auto-generated method stub
 
-		int uid = SharedPreferencesUtil.getInt(EditAddressActivity.this, "member_id");
 		RequestParams params = new RequestParams();
 		params.put("address_id", address_id);// 用户名id
 
-		params.put("uid", uid);// 用户名id
 		params.put("true_name", true_name);
 		params.put("area_id", area_id);// 地区id
 		params.put("city_id", city_id);// 城市id

@@ -102,7 +102,7 @@ public class SetActivity extends BaseActivity implements OnClickListener, MyDial
 
 		String member_name = SharedPreferencesUtil.getString(SetActivity.this, "member_name");
 		String member_avatar = SharedPreferencesUtil.getString(SetActivity.this, "member_avatar");
-		user_name.setText(member_name);
+		user_name.setText(member_name+" ");
 		ImageLoader.getInstance().displayImage(member_avatar, main_user_icon,
 				YangMaTouApplication.imageOption(R.drawable.user_icon));
 

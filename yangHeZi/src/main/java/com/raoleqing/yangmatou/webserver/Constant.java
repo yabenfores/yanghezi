@@ -34,6 +34,8 @@ public class Constant {
     public final static String MSGINFO="/Home/MsgInfo/Index";//获取短信
     public final static String BINDUSERMOBILE="/Home/Users/bindUserMobile";//绑定手机
     public final static String CUSTOMERINDEX="/Home/Customer/customerIndex";//绑定手机
-    public final static String MEMBER_AVATAR="/Home/Users/member_avatar";//绑定手机
+    public final static String MEMBER_AVATAR="/Home/Users/member_avatar";//修改头像
+    public final static String ABOUTYHZ="/Home/Index/aboutYhz";//关于
+    public final static String FLASHSALE="/Home/Index/flashSale";//热卖
 
 }

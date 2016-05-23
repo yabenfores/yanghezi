@@ -31,7 +31,7 @@ public class NetHelper {
         }
     //商店列表
     public static void getStoreList(String pag,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.STORELIST, NetParams.HttpMethod.Post,true,connectListener,"pag",pag);
+        new BaseNetConnection(Constant.STORELIST, NetParams.HttpMethod.Post,true,connectListener,"p",pag);
         }
     //广告
     public static void advManage(NetConnectionInterface.iConnectListener3 connectListener){
@@ -94,6 +94,22 @@ public class NetHelper {
     //获取环信帐号
     public static void customerIndex(NetConnectionInterface.iConnectListener3 connectListener){
         new BaseNetConnection(Constant.CUSTOMERINDEX, NetParams.HttpMethod.Post,true,connectListener);
+    }
+    //收藏商品
+    public static void favoritespro(String fid,NetConnectionInterface.iConnectListener3 connectListener){
+        new BaseNetConnection(HttpUtil.FAVORITES_PORDUCT_STORE, NetParams.HttpMethod.Post,true,connectListener,"fid",fid);
+    }
+    //取消收藏商品
+    public static void cancelPro(String fid,NetConnectionInterface.iConnectListener3 connectListener){
+        new BaseNetConnection(HttpUtil.CANCEL_PORDUCT_STORE, NetParams.HttpMethod.Post,true,connectListener,"fid",fid);
+    }
+    //关于
+    public static void aboutYhz(NetConnectionInterface.iConnectListener3 connectListener){
+        new BaseNetConnection(Constant.ABOUTYHZ, NetParams.HttpMethod.Post,false,connectListener);
+    }
+    //热卖
+    public static void flashSale(NetConnectionInterface.iConnectListener3 connectListener){
+        new BaseNetConnection(Constant.FLASHSALE, NetParams.HttpMethod.Post,false,connectListener);
     }
 
 

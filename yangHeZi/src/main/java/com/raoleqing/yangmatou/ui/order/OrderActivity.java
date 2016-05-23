@@ -98,7 +98,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 
 		getData();
 
-		setView(0);
+		setView(getIntent().getIntExtra("index",0));
 
 	}
 

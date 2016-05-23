@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.hyphenate.chat.EMChatManager;
 import com.hyphenate.easeui.EaseConstant;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
@@ -161,8 +162,7 @@ public class UserFragment extends Fragment implements OnClickListener {
 			break;
 		case R.id.user_fragemnt_tiem05:
 			// 关于我们
-			
-			
+
 			Intent intent5 = new Intent(getActivity(), AboutActivity.class);
 			startActivity(intent5);
 			getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
@@ -181,28 +181,26 @@ public class UserFragment extends Fragment implements OnClickListener {
 			break;
 
 		case R.id.navBtn01:
-
-			setView(0);
+			setView(1);
 
 			break;
 		case R.id.navBtn02:
-
-			setView(1);
+			setView(2);
 
 			break;
 		case R.id.navBtn03:
 
-			setView(2);
+			setView(3);
 
 			break;
 		case R.id.navBtn04:
 
-			setView(3);
+			setView(4);
 
 			break;
 		case R.id.navBtn05:
 
-			setView(4);
+			setView(5);
 
 			break;
 
@@ -221,28 +219,4 @@ public class UserFragment extends Fragment implements OnClickListener {
 		getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
 	}
-//	/**
-//	 * 获取网落图片资源
-//	 * @param url
-//	 * @return
-//	 */
-//	public static Bitmap getHttpBitmap(String url){
-//		Bitmap bitmap=null;
-//		try {
-//			URL myFileUrl = new URL(url);
-//			HttpURLConnection conn = (HttpURLConnection) myFileUrl.openConnection();
-//			conn.setDoInput(true);
-//			conn.connect();
-//			InputStream is = conn.getInputStream();
-//			bitmap = BitmapFactory.decodeStream(is);
-//			is.close();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			return null;
-//		}
-//		return bitmap;
-//	}
-
-
-
 }

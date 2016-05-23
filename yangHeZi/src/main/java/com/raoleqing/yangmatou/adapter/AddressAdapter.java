@@ -5,6 +5,7 @@ import java.util.List;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.Address;
+import com.raoleqing.yangmatou.ui.address.AddressActivity;
 import com.raoleqing.yangmatou.ui.goods.GoodsPayActivity;
 
 import android.content.Context;
@@ -26,14 +27,14 @@ public class AddressAdapter extends BaseAdapter {
 
 	private List<Address> addressList;
 	private LayoutInflater mInflater;
-	private Context context;
+	private AddressActivity context;
 	private Handler myHandler;
 
 	AddressAdapter() {
 
 	}
 
-	public AddressAdapter(Context context, List<Address> addressList, Handler myHandler) {
+	public AddressAdapter(AddressActivity context, List<Address> addressList, Handler myHandler) {
 		this.addressList = addressList;
 		this.context = context;
 		this.myHandler = myHandler;
@@ -77,9 +78,8 @@ public class AddressAdapter extends BaseAdapter {
 
 		int isdefault = mAddress.getIs_default();
 		if (isdefault == 1) {
-			holder.address_item_default.setClickable(true);
-		} else {
-			holder.address_item_default.setClickable(false);
+			holder.address_item_default.isChecked();
+
 		}
 
 		holder.address_item_edit.setOnClickListener(new OnClickListener() {
@@ -114,7 +114,7 @@ public class AddressAdapter extends BaseAdapter {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				// TODO Auto-generated method stub
-				
+
 			}
 		});
 
@@ -122,7 +122,8 @@ public class AddressAdapter extends BaseAdapter {
 			@Override
 			public void onClick(View v) {
 				Address address =addressList.get(position);
-				BaseActivity.sendNotifyUpdate(GoodsPayActivity.class,"",address);
+				BaseActivity.sendNotifyUpdate(GoodsPayActivity.class,ADDRESSSELECT,address);
+				context.onBackPressed();
 			}
 		});
 
@@ -149,5 +150,7 @@ public class AddressAdapter extends BaseAdapter {
 		}
 
 	}
+	//----------------
+	public final static String ADDRESSSELECT = "addressSelect";
 
 }

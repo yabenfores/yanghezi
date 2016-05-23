@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
+<items version="2" />
 
-    <item
-        jar="C:\YangMaTou\yangHeZi\build\intermediates\exploded-aar\YangMaTou\library\unspecified\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.3"
-        sha1="a487711d86472ac54ea7468a17c12a3fe8950d9e">
-        <dex dex="C:\YangMaTou\yangHeZi\build\intermediates\pre-dexed\release\YangMaTou-library-unspecified_bbe5117d14cc6e8929aec18e8f9be872544950a6.jar" />
-    </item>
-
-</items>

@@ -208,23 +208,23 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/goods_add"
+                            android:id="@+id/goods_del"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:text="+" />
+                            android:text="-" />
 
                         <TextView
                             android:id="@+id/goods_number"
                             android:layout_width="60dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
+                            android:gravity="center_horizontal"
                             android:text="1" />
 
                         <Button
-                            android:id="@+id/goods_del"
+                            android:id="@+id/goods_add"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:text="-" />
+                            android:text="+" />
 
                         <TextView
                             android:id="@+id/goods_stock"

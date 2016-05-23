@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="订单叼：" />
+            android:text="订单号：" />
 
         <TextView
             android:id="@+id/order_time"
@@ -180,22 +180,55 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:id="@+id/order_but01"
+                android:id="@+id/btn_order_cancel"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
                 android:background="@drawable/button_selector_background05"
                 android:gravity="center"
                 android:text="取消定单"
                 android:visibility="gone" />
 
             <TextView
-                android:id="@+id/order_but02"
+                android:id="@+id/btn_order_pay"
                 android:layout_width="80dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/button_selector_background02"
                 android:gravity="center"
                 android:text="去支付" />
+            <TextView
+                android:id="@+id/btn_order_tip"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_selector_background02"
+                android:gravity="center"
+                android:text="提现发货" />
+            <TextView
+                android:id="@+id/btn_order_confirm"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_selector_background02"
+                android:gravity="center"
+                android:text="确认收货" />
+            <TextView
+                android:id="@+id/btn_order_eval"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_selector_background02"
+                android:gravity="center"
+                android:text="去评价" />
+            <TextView
+                android:id="@+id/btn_order_back"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_selector_background02"
+                android:gravity="center"
+                android:text="申请售后" />
         </LinearLayout>
     </LinearLayout>
 

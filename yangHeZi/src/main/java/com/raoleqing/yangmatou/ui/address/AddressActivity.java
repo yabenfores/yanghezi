@@ -85,7 +85,7 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.address_activity);
-		setTitleText("绑定手机");
+		setTitleText("收货地址");
 		myHandler.sendEmptyMessageDelayed(0, 50);
 	}
 
@@ -211,11 +211,9 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 				}
 
 
-			Toast.makeText(AddressActivity.this, message, 1).show();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			Toast.makeText(AddressActivity.this, "数据加载失败", 1).show();
 		}
 
 		setProgressVisibility(View.GONE);
@@ -308,11 +306,9 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 				adapter.notifyDataSetChanged();
 			}
 
-			Toast.makeText(AddressActivity.this, message, 1).show();
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			Toast.makeText(AddressActivity.this, "数据加载失败", 1).show();
 		}
 
 		setProgressVisibility(View.GONE);
