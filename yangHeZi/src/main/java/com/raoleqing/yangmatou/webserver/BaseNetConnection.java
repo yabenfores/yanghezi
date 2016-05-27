@@ -1,16 +1,10 @@
 package com.raoleqing.yangmatou.webserver;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.raoleqing.yangmatou.BaseActivity;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
-import com.raoleqing.yangmatou.ui.login.loginActivity;
 import com.raoleqing.yangmatou.uitls.LogUtil;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
-import com.raoleqing.yangmatou.uitls.ToastUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;

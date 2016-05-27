@@ -5,7 +5,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.Evaluation;
 import com.raoleqing.yangmatou.common.CircleImageView;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.uitls.TimeUitls;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -65,7 +65,7 @@ public class EvaluationAdapter extends BaseAdapter {
 		Evaluation mEvaluation = goodsList.get(position);
 
 		ImageLoader.getInstance().displayImage(mEvaluation.getMember_img(), holder.evaluation_user_icon,
-				YangMaTouApplication.imageOption(R.drawable.user_icon));
+				YangHeZiApplication.imageOption(R.drawable.user_icon));
 		holder.evaluation_user_name.setText(mEvaluation.getGeval_storename());
 		holder.evaluation_content.setText(mEvaluation.getGeval_content());
 		

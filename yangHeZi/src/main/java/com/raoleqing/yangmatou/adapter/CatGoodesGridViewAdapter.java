@@ -4,7 +4,7 @@ import java.util.List;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.ThreeData;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,7 +61,7 @@ public class CatGoodesGridViewAdapter extends BaseAdapter {
 		ThreeData mThreeData = goodsList.get(position);
 			
 		ImageLoader.getInstance().displayImage(mThreeData.getGc_thumb(), holder.cat_goodes_image,
-				YangMaTouApplication.imageOption(R.drawable.image_icon01));
+				YangHeZiApplication.imageOption(R.drawable.image_icon01));
 		holder.cat_goodes_text.setText(mThreeData.getGc_name());
 		
 		return convertView;

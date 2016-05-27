@@ -2,13 +2,24 @@ package com.raoleqing.yangmatou.adapter;
 
 import java.util.List;
 
+import com.allinpay.appayassistex.APPayAssistEx;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.adapter.ShowShatAdapter.ViewHolder;
 import com.raoleqing.yangmatou.ben.Order;
-import com.raoleqing.yangmatou.ben.Shop;
-import com.raoleqing.yangmatou.ben.ShowShat;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
+import com.raoleqing.yangmatou.ui.order.EvalActivity;
+import com.raoleqing.yangmatou.ui.order.OrderActivity;
+import com.raoleqing.yangmatou.uitls.PaaCreator;
+import com.raoleqing.yangmatou.uitls.TimeUitls;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,6 +27,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class OrderAdapter extends BaseAdapter {
 
@@ -32,6 +46,7 @@ public class OrderAdapter extends BaseAdapter {
 
     public OrderAdapter(Context context, List<Order> orderList) {
         this.orderList = orderList;
+        this.context = context;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -67,20 +82,32 @@ public class OrderAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        Order mOrder = orderList.get(position);
+        final Order mOrder = orderList.get(position);
         holder.store_name.setText(mOrder.getStore_name());
-        holder.store_orderId.setText("订单号: " + mOrder.getOrder_id());
-        holder.order_time.setText("下单时间 : " + mOrder.getCreatetime());
-        holder.goods_price.setText("￥" + mOrder.getGoods_amount());
-        holder.goods_price01.setText("原价： ");
-        holder.order_number.setText("数量：1件        共计： ￥" + mOrder.getOrder_amount());
+        holder.store_orderId.setText("订单号: " + mOrder.getOrder_sn());
+        holder.order_time.setText("下单时间 : " + TimeUitls.getDate(mOrder.getAdd_time()));
+
+        holder.order_number.setText("数量：" + mOrder.getGoods_num() + "件        共计： ￥" + mOrder.getOrder_amount());
         holder.order_shipping.setText("（含运费" + mOrder.getShipping_fee() + "元）");
+        ImageLoader.getInstance().displayImage(mOrder.getStore_label(), holder.store_icon,
+                YangHeZiApplication.imageOption(R.drawable.image_icon01));
+        JSONObject object = mOrder.getExtend_order_goods();
+        if (object != null) {
+            ImageLoader.getInstance().displayImage(object.optString("goods_image"), holder.goods_image,
+                    YangHeZiApplication.imageOption(R.drawable.image_icon01));
+            holder.goods_name.setText(object.optString("goods_name"));
+
+            holder.goods_price.setText("￥" + object.optString("goods_price"));
+            holder.goods_price01.setText("原价： " + object.optString("goods_marketprice"));
+        }
         /*
-		 * 10代付款 20待发货
+         * 10代付款 20待发货
 		30待收货 40已完成
 		0已取消 50待评价*/
 
         switch (mOrder.getOrder_state()) {
+            case 0:
+                holder.order_state.setText("已取消");
             case 10:
                 //待支付
                 holder.order_state.setText("待支付");
@@ -128,20 +155,86 @@ public class OrderAdapter extends BaseAdapter {
         }
 
         holder.btn_order_pay.setOnClickListener(new OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
+                NetHelper.order_conpay(mOrder.getOrder_id() + "", new NetConnectionInterface.iConnectListener3() {
+                    @Override
+                    public void onStart() {
+                        ((OrderActivity) context).setProgressVisibility(View.VISIBLE);
+
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                        ((OrderActivity) context).setProgressVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onSuccess(JSONObject result) {
+
+                        JSONObject object=result.optJSONObject("data");
+                        try {
+                            object.put("productName",mOrder.getExtend_order_goods().optString("goods_name").trim());
+                            object.put("orderAmount",((int) mOrder.getOrder_amount()*100)+"");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        JSONObject payData = PaaCreator.randomPaa(object);
+
+                        System.out.println("aaaaaaaaa:" + payData.toString());
+                        APPayAssistEx.startPay((OrderActivity) context, payData.toString(), APPayAssistEx.MODE_DEBUG);
+
+                    }
+
+                    @Override
+                    public void onFail(JSONObject result) {
+                        ToastUtil.MakeShortToast(context,result.optString(Constant.INFO));
+                    }
+                });
 
 
             }
         });
+        holder.btn_order_eval.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(context, EvalActivity.class);
+                context.startActivity(intent);
 
-			
-	/*	ImageLoader.getInstance().displayImage(mThreeData.getGc_thumb(), holder.cat_goodes_image,
-				YangMaTouApplication.imageOption(R.drawable.image_icon01));
-		holder.cat_goodes_text.setText(mThreeData.getGc_name());
-		*/
+            }
+        });
+        holder.btn_order_cancel.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                NetHelper.ordercancel(mOrder.getOrder_id() + "", new NetConnectionInterface.iConnectListener3() {
+                    @Override
+                    public void onStart() {
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onSuccess(JSONObject result) {
+                        BaseActivity.sendNotifyUpdate(OrderActivity.class, ORDERCHAGE);
+                    }
+
+                    @Override
+                    public void onFail(JSONObject result) {
+                        ToastUtil.MakeShortToast(context, result.optString(Constant.INFO));
+                    }
+                });
+
+            }
+        });
+
 
         return convertView;
     }
@@ -186,6 +279,9 @@ public class OrderAdapter extends BaseAdapter {
         }
 
     }
+
+    //----------------
+    public final static String ORDERCHAGE = "ORDERCHAGE";
 
 
 }

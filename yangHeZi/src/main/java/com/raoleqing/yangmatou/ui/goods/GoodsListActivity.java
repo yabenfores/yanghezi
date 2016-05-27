@@ -59,6 +59,7 @@ public class GoodsListActivity extends BaseActivity implements OnClickListener, 
     private LinearLayout goods_list_key03;
     private ImageView goods_list_keyview02;// 人气
     private ImageView goods_list_keyview03;// 价格
+    private ImageView iv_app_search;// 搜索
 
     private GridView goods_list_gridView;
     private XListView goods_list_listView;
@@ -126,9 +127,11 @@ public class GoodsListActivity extends BaseActivity implements OnClickListener, 
         goods_list_keyview03 = (ImageView) findViewById(R.id.goods_list_keyview03);
         goods_list_listView = (XListView) findViewById(R.id.goods_list_listView);
 
+        iv_app_search = (ImageView) findViewById(R.id.iv_app_search);
         gridAdapter = new GoodsGridAdapter(GoodsListActivity.this, goodsList);
         goods_list_gridView.setAdapter(gridAdapter);
 
+        iv_app_search.setOnClickListener(this);
         goods_list_listView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
         listAdapter = new GoodsListAdapter(GoodsListActivity.this, goodsList);
         goods_list_listView.setAdapter(listAdapter);
@@ -166,7 +169,6 @@ public class GoodsListActivity extends BaseActivity implements OnClickListener, 
                     case EditorInfo.IME_ACTION_SEARCH:
                         String search_str = activity_search.getText().toString();
                         if (search_str != null && !search_str.trim().equals("")) {
-                            RequestParams params = new RequestParams();
                             page = 1;
                             keyword = search_str;
                             NetHelper.goodsList(cid + "", page + "", key + "", order + "", keyword, new NetConnectionInterface.iConnectListener3() {
@@ -177,6 +179,7 @@ public class GoodsListActivity extends BaseActivity implements OnClickListener, 
 
                                 @Override
                                 public void onFinish() {
+                                    setProgressVisibility(View.GONE);
 
                                 }
 
@@ -188,7 +191,7 @@ public class GoodsListActivity extends BaseActivity implements OnClickListener, 
 
                                 @Override
                                 public void onFail(JSONObject result) {
-                                    setProgressVisibility(View.GONE);
+
                                     makeShortToast(result.optString(Constant.INFO));
 
                                 }
@@ -238,11 +241,13 @@ public class GoodsListActivity extends BaseActivity implements OnClickListener, 
                     contentIndex = 1;
                     goods_list_gridView.setVisibility(View.GONE);
                     goods_list_listView.setVisibility(View.VISIBLE);
+                    switching.setImageResource(R.drawable.goods_filter);
                     listAdapter.notifyDataSetChanged();
 
                 } else {
                     goods_list_gridView.setVisibility(View.VISIBLE);
                     goods_list_listView.setVisibility(View.GONE);
+                    switching.setImageResource(R.drawable.goods_filter_list);
                     gridAdapter.notifyDataSetChanged();
                     contentIndex = 0;
 
@@ -276,7 +281,6 @@ public class GoodsListActivity extends BaseActivity implements OnClickListener, 
                 break;
             case R.id.goods_list_key03:
                 // 价格
-                key = 3;
                 if (key != 3) {
                     key = 3;
                     order = 1;
@@ -287,6 +291,38 @@ public class GoodsListActivity extends BaseActivity implements OnClickListener, 
                 }
                 page = 1;
                 getData();
+                break;
+            case R.id.iv_app_search:
+                String search_str = activity_search.getText().toString();
+                if (search_str != null && !search_str.trim().equals("")) {
+                    page = 1;
+                    keyword = search_str;
+                    NetHelper.goodsList(cid + "", page + "", key + "", order + "", keyword, new NetConnectionInterface.iConnectListener3() {
+                        @Override
+                        public void onStart() {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            setProgressVisibility(View.GONE);
+
+                        }
+
+                        @Override
+                        public void onSuccess(JSONObject result) {
+                            resolveJson(result);
+
+                        }
+
+                        @Override
+                        public void onFail(JSONObject result) {
+
+                            makeShortToast(result.optString(Constant.INFO));
+
+                        }
+                    });
+                }
                 break;
             default:
                 break;
@@ -341,15 +377,14 @@ public class GoodsListActivity extends BaseActivity implements OnClickListener, 
         System.out.println("商品： " + response);
 
         try {
-            int code = response.optInt("code");
-            String message = response.optString("message");
-            if (response == null) {
-                Toast.makeText(GoodsListActivity.this, message, 1).show();
+
+            JSONArray data = response.optJSONArray("data");
+
+            if (data == null) {
+                makeShortToast("暂无商品");
                 setProgressVisibility(View.GONE);
                 return;
             }
-            JSONArray data = response.optJSONArray("data");
-
             if (page == 1 && goodsList.size() > 0) {
                 goodsList.retainAll(goodsList);
             }

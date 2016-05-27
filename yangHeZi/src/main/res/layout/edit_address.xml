@@ -9,12 +9,12 @@
         android:id="@+id/base_title_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/bg05"
+        android:background="@color/encode_view"
         android:gravity="center_vertical" >
 
         <TextView
             android:id="@+id/address_edit_title"
-            style="@style/text01_type04"
+            style="@style/text18sp_typeblack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -26,11 +26,11 @@
             android:layout_height="50dp"
             android:background="@drawable/button_selector_background01"
             android:scaleType="center"
-            android:src="@drawable/return_icon" />
+            android:src="@drawable/ic_app_back" />
 
         <TextView
             android:id="@+id/address_edit_save"
-            style="@style/text01_type02"
+            style="@style/text14sp_typeblack"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
@@ -203,7 +203,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:checked="true"
+                    android:checked="false"
                     android:layout_centerVertical="true" />
             </RelativeLayout>
         </LinearLayout>

@@ -24,8 +24,7 @@ import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.ChildViewPager.OnSingleTouchListener;
 import com.raoleqing.yangmatou.ui.goods.GoodsListActivity;
 import com.raoleqing.yangmatou.common.MyPagerAdapter;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
-import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.uitls.WindowManagerUtils;
@@ -35,8 +34,6 @@ import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
 import com.raoleqing.yangmatou.xlist.XListView;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -69,9 +66,11 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 	private StoreAdapter storeAdapter;
 	private List<Pavilion> pavilionList = new ArrayList<Pavilion>();
 	private int page = 1;
+
 	private boolean isData = true;
 	private int pagerIndex = 0;// 广告页面
 	private int pointsCount = 0;
+
 
 	private int width;
 	private int height;
@@ -213,7 +212,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 
 			@Override
 			public void onFail(JSONObject result) {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
 
 			}
 		});
@@ -274,7 +272,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			img.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
 			ImageLoader.getInstance().displayImage(nAdvManage.getAdv_image(), img,
-					YangMaTouApplication.imageOption(R.drawable.adv_manage_image));
+					YangHeZiApplication.imageOption(R.drawable.adv_manage_image));
 			viewList.add(img);
 		}
 
@@ -331,6 +329,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 
 			@Override
 			public void onSuccess(JSONObject result) {
+				listView.stopRefresh();
 				StoreListResolveJson(result);
 			}
 
@@ -350,7 +349,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			String message = response.optString("message");
 
 			if (response == null) {
-				Toast.makeText(getActivity(), message, 1).show();
 				((MainActivity) getActivity()).setMainProgress(View.GONE);
 				onLoad();
 				return;
@@ -408,7 +406,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			Toast.makeText(getActivity(), "数据加载失败", 1).show();
 		}
 
 		((MainActivity) getActivity()).setMainProgress(View.GONE);
@@ -465,7 +462,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			String message = response.optString("message");
 
 			if (response == null) {
-				Toast.makeText(getActivity(), message, 1).show();
 				((MainActivity) getActivity()).setMainProgress(View.GONE);
 				return;
 			}
@@ -567,7 +563,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			String message = response.optString("message");
 
 			if (response == null) {
-				Toast.makeText(getActivity(), message, 1).show();
 				((MainActivity) getActivity()).setMainProgress(View.GONE);
 				return;
 			}
@@ -579,7 +574,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			Toast.makeText(getActivity(), "关注失败", 1).show();
 		}
 
 		((MainActivity) getActivity()).setMainProgress(View.GONE);
@@ -670,7 +664,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			final Pavilion mPavilion = pavilionList.get(i);
 			ImageView radio = new ImageView(getActivity());
 			ImageLoader.getInstance().displayImage(mPavilion.getFlag_imgSrc(), radio,
-					YangMaTouApplication.imageOption(R.drawable.pavilion_icon));
+					YangHeZiApplication.imageOption(R.drawable.pavilion_icon));
 
 			LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(UnitConverterUtils.dip2px(getActivity(), 100),
 					UnitConverterUtils.dip2px(getActivity(), 80));
@@ -731,11 +725,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 	public void onRefresh() {
 		// TODO Auto-generated method stub
 
-		if (isData) {
 			getStoreList();
-		} else {
-			onLoad();
-		}
 	}
 
 	@Override

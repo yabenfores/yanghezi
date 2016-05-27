@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/goods_gridview_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:background="@drawable/image_icon01"
-        android:scaleType="center" />
+        android:scaleType="fitCenter" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
 
     <TextView
         android:id="@+id/goods_content"
-        style="@style/text03_type01"
+        style="@style/text03_type02"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:lines="3"

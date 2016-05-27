@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import com.allinpay.appayassistex.APPayAssistEx;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.Address;
@@ -51,8 +52,12 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     private TextView pay_name;
     private TextView pay_phone;
     private TextView pay_address;
-    private EditText user_card;
+    private EditText user_card,et_app_massage;
 
+    private ImageView goods_image;
+    private String pay_type;
+    private String url;
+    private Address mMaddress;
     private TextView goods_name;
     private TextView goods_price;
     private TextView goods_discount;
@@ -71,6 +76,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     private String goodsName;
     private String orderPrice;
     private double tax;
+    double price;
     private List<Address> addressList = new ArrayList<Address>();
     private int addressIndex = 0;
 
@@ -106,6 +112,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         goodsName = intent.getStringExtra("goodsName");
         tax = intent.getDoubleExtra("goods_lineposttax", 0);
 
+        url=intent.getStringExtra("goods_image");
         setTitleVisibility(View.GONE);
         pay_name = (TextView) findViewById(R.id.pay_name);
         pay_phone = (TextView) findViewById(R.id.pay_phone);
@@ -121,6 +128,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         activity_return = (ImageView) findViewById(R.id.goods_pay_return);
         goods_pay_address_layout = (LinearLayout) findViewById(R.id.goods_pay_address_layout);
         user_card = (EditText) findViewById(R.id.user_card);
+        et_app_massage = (EditText) findViewById(R.id.et_app_massage);
         goods_pay_explanation = (TextView) findViewById(R.id.goods_pay_explanation);
         goods_name = (TextView) findViewById(R.id.goods_name);
         goods_price = (TextView) findViewById(R.id.goods_price);
@@ -131,6 +139,9 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         goods_pay_price = (TextView) findViewById(R.id.goods_pay_price);
         goods_del = (Button) findViewById(R.id.goods_del);
         goodsd_detail_buy = (Button) findViewById(R.id.goodsd_detail_buy);
+
+        goods_image= (ImageView) findViewById(R.id.goods_image);
+        ImageLoader.getInstance().displayImage(url,goods_image);
 
         String member_card = SharedPreferencesUtil.getString(GoodsPayActivity.this, "member_card");
         user_card.setText(member_card);
@@ -161,7 +172,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     private void setPrice() {
         // TODO Auto-generated method stub
         DecimalFormat df = new DecimalFormat("###.0");
-        double price = (goods_promotion_price+tax) * goodsNumber;
+        price = (goods_promotion_price+tax) * goodsNumber;
         orderPrice = df.format(price);
         goods_pay_price.setText(orderPrice);
         tv_goods_tax.setText("￥" + (tax * goodsNumber));
@@ -183,7 +194,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 GoodsPayActivity.this.onBackPressed();
                 break;
             case R.id.goods_pay_explanation:
-
                 Intent intent5 = new Intent(GoodsPayActivity.this, AboutActivity.class);
                 intent5.putExtra("type", 1);
                 startActivity(intent5);
@@ -194,7 +204,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 Intent intent = new Intent(GoodsPayActivity.this, AddressActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-                GoodsPayActivity.this.onBackPressed();
                 break;
 
             case R.id.goods_add:
@@ -253,80 +262,17 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
 
             @Override
             public void onFail(JSONObject result) {
-                makeLongToast(result.optString(Constant.INFO));
             }
         });
-
-//        HttpUtil.post(GoodsPayActivity.this, HttpUtil.GET_DEFAULT_ADDRESS, params, new JsonHttpResponseHandler() {
-//
-//            // 获取数据成功会调用这里
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                // TODO Auto-generated method stub
-//                super.onSuccess(statusCode, headers, response);
-//                addressResolveJson(response);
-//            }
-//
-//            // 失败
-//            @Override
-//            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-//                // TODO Auto-generated method stub
-//                super.onFailure(statusCode, headers, throwable, errorResponse);
-//                setProgressVisibility(View.GONE);
-//            }
-//
-//            // 结束
-//            @Override
-//            public void onFinish() {
-//                // TODO Auto-generated method stub
-//                super.onFinish();
-//            }
-//
-//        });
-
-    }
-
-    private void getTax() {
-
-//        HttpUtil.post(GoodsPayActivity.this, HttpUtil.GET_TAX, params, new JsonHttpResponseHandler() {
-//
-//            // 获取数据成功会调用这里
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                // TODO Auto-generated method stub
-//                super.onSuccess(statusCode, headers, response);
-//                tax = response.optInt("data", 0);
-//                setPrice();
-//            }
-//
-//            // 失败
-//            @Override
-//            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-//                // TODO Auto-generated method stub
-//                super.onFailure(statusCode, headers, throwable, errorResponse);
-////				setProgressVisibility(View.GONE);
-//            }
-//
-//            // 结束
-//            @Override
-//            public void onFinish() {
-//                // TODO Auto-generated method stub
-//                super.onFinish();
-//            }
-//
-//        });
-
     }
 
     protected void addressResolveJson(JSONObject response) {
         // TODO Auto-generated method stub
 
         try {
-            int code = response.optInt("code");
             String message = response.optString("message");
 
             if (response == null) {
-                Toast.makeText(GoodsPayActivity.this, message, 1).show();
                 setProgressVisibility(View.GONE);
                 return;
             }
@@ -350,7 +296,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 mAddress.setMob_phone(obj.optString("mob_phone"));
                 int is_default = obj.optInt("is_default");
                 if (is_default == 1) {
-                    addressIndex = is_default;
+                    addressIndex = i;
                 }
                 mAddress.setIs_default(is_default);
 
@@ -359,13 +305,12 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
 
             if (addressList.size() > 0) {
 
-                Address mAddress = addressList.get(addressIndex);
-                pay_phone.setText(mAddress.getMob_phone());
-                pay_name.setText(mAddress.getTrue_name());
-                pay_address.setText(mAddress.getArea_info());
+                mMaddress = addressList.get(addressIndex);
+                pay_phone.setText(mMaddress.getMob_phone());
+                pay_name.setText(mMaddress.getTrue_name());
+                pay_address.setText(mMaddress.getArea_info());
             }
 
-            Toast.makeText(GoodsPayActivity.this, message, Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
@@ -375,51 +320,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
 
     }
 
-//    private void getData() {
-//        // TODO Auto-generated method stub
-//        // Home/Orders/getGoodsList
-//
-//        RequestParams params = new RequestParams();
-//        params.put("pid", goods_id);
-//
-//        HttpUtil.post(GoodsPayActivity.this, "Home/Orders/getTax", params, new JsonHttpResponseHandler() {
-//
-//            // 获取数据成功会调用这里
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                // TODO Auto-generated method stub
-//                super.onSuccess(statusCode, headers, response);
-//                resolveJson(response);
-//            }
-//
-//            // 失败
-//            @Override
-//            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-//                // TODO Auto-generated method stub
-//                super.onFailure(statusCode, headers, throwable, errorResponse);
-//                setProgressVisibility(View.GONE);
-//            }
-//
-//            // 结束
-//            @Override
-//            public void onFinish() {
-//                // TODO Auto-generated method stub
-//                super.onFinish();
-//                System.out.println("onFinish");
-//
-//            }
-//
-//        });
-//
-//    }
-//
-//
-//    protected void resolveJson(JSONObject response) {
-//        // TODO Auto-generated method stub
-//
-//        System.out.println(response);
-//
-//    }
 
 
     /*wh_id	y	int	场区id
@@ -432,6 +332,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     private void submitOrder(String userCard) {
         // TODO Auto-generated method stub
 
+        pay_type="1";
         RequestParams params = new RequestParams();
         params.put("wh_id", wh_id);
         params.put("quantity", goodsNumber);
@@ -439,34 +340,30 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         params.put("order_message", "");
         params.put("sfzno", userCard);
         params.put("pay_type", "1");
+        params.put("address_id", mMaddress.getAddress_id()+"");
 
-        HttpUtil.post(GoodsPayActivity.this, "Home/Orders/submitOrder", params, new JsonHttpResponseHandler() {
-
-            // 获取数据成功会调用这里
+        NetHelper.submitOrder(wh_id + "", goodsNumber + "", goods_id + "", et_app_massage.getText().toString().trim(), userCard, pay_type, mMaddress.getAddress_id() + "", new NetConnectionInterface.iConnectListener3() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                // TODO Auto-generated method stub
-                super.onSuccess(statusCode, headers, response);
-                orderResolveJson(response);
+            public void onStart() {
+
             }
 
-            // 失败
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-                // TODO Auto-generated method stub
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-                setProgressVisibility(View.GONE);
-            }
-
-            // 结束
             @Override
             public void onFinish() {
-                // TODO Auto-generated method stub
-                super.onFinish();
-                System.out.println("onFinish");
+                setProgressVisibility(View.GONE);
 
             }
 
+            @Override
+            public void onSuccess(JSONObject result) {
+                orderResolveJson(result);
+
+            }
+
+            @Override
+            public void onFail(JSONObject result) {
+                makeShortToast(result.optString(Constant.DATA));
+            }
         });
 
 
@@ -476,8 +373,17 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         // TODO Auto-generated method stub
 
         System.out.println("aaaaaaaaa:" + response);
+        JSONObject object=response.optJSONObject("data");
 
-        JSONObject payData = PaaCreator.randomPaa();
+        try {
+//            object.put("userCard",user_card.getText().toString().trim());
+            object.put("productName",goodsName.trim());
+            object.put("orderAmount",((int) price*100)+"");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JSONObject payData = PaaCreator.randomPaa(object);
+
         System.out.println("aaaaaaaaa:" + payData.toString());
         APPayAssistEx.startPay(this, payData.toString(), APPayAssistEx.MODE_DEBUG);
 
@@ -502,13 +408,23 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 }
                 if (null != payRes &&
                         payRes.equals(APPayAssistEx.RES_SUCCESS)) {
+                    makeShortToast("支付成功！");
                     System.out.println("支付成功！");
+                    finish();
                 } else {
                     System.out.println("支付失败！");
+                    makeShortToast("支付失败！");
                 }
             }
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        super.onBackPressed();
+        overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
+        finish();
     }
     //---------------
     public final static String ADDRESSSELECT = "addressSelect";
@@ -518,6 +434,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
             switch (notifyUpdateEntity.getNotifyTag()) {
                 case ADDRESSSELECT:
                     Address address= (Address) notifyUpdateEntity.getObj();
+                    mMaddress=address;
                     pay_phone.setText(address.getMob_phone());
                     pay_name.setText(address.getTrue_name());
                     pay_address.setText(address.getArea_info());

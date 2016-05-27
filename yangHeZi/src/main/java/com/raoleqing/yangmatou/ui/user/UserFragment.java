@@ -1,8 +1,6 @@
 package com.raoleqing.yangmatou.ui.user;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,13 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.hyphenate.chat.EMChatManager;
 import com.hyphenate.easeui.EaseConstant;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.common.CircleImageView;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.mi.ChatActivity;
 import com.raoleqing.yangmatou.ui.order.OrderActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
@@ -49,7 +46,6 @@ public class UserFragment extends Fragment implements OnClickListener {
 
 	private TextView user_fragemnt_tiem01;
 	private TextView user_fragemnt_tiem02;
-	private TextView user_fragemnt_tiem03;
 	private TextView user_fragemnt_tiem04;
 	private TextView user_fragemnt_tiem05;
 	private TextView user_fragemnt_tiem06;
@@ -98,14 +94,12 @@ public class UserFragment extends Fragment implements OnClickListener {
 
 		user_fragemnt_tiem01 = (TextView) view.findViewById(R.id.user_fragemnt_tiem01);
 		user_fragemnt_tiem02 = (TextView) view.findViewById(R.id.user_fragemnt_tiem02);
-		user_fragemnt_tiem03 = (TextView) view.findViewById(R.id.user_fragemnt_tiem03);
 		user_fragemnt_tiem04 = (TextView) view.findViewById(R.id.user_fragemnt_tiem04);
 		user_fragemnt_tiem05 = (TextView) view.findViewById(R.id.user_fragemnt_tiem05);
 		user_fragemnt_tiem06 = (TextView) view.findViewById(R.id.user_fragemnt_tiem06);
 
 		user_fragemnt_tiem01.setOnClickListener(this);
 		user_fragemnt_tiem02.setOnClickListener(this);
-		user_fragemnt_tiem03.setOnClickListener(this);
 		user_fragemnt_tiem04.setOnClickListener(this);
 		user_fragemnt_tiem05.setOnClickListener(this);
 		user_fragemnt_tiem06.setOnClickListener(this);
@@ -120,7 +114,7 @@ public class UserFragment extends Fragment implements OnClickListener {
 		String member_avatar=SharedPreferencesUtil.getString(getActivity().getBaseContext(),"member_avatar");
 //		String member_avatar="http://rescdn.qqmail.com/dyimg/20140409/72B8663B7F23.jpg";
 		ImageLoader.getInstance().displayImage(member_avatar, main_user_icon,
-				YangMaTouApplication.imageOption(R.drawable.user_icon));
+				YangHeZiApplication.imageOption(R.drawable.user_icon));
 		String name=SharedPreferencesUtil.getString(BaseActivity.getAppContext(),"member_name");
 		user_name.setText(name);
 	}
@@ -157,7 +151,6 @@ public class UserFragment extends Fragment implements OnClickListener {
 			String user_msg_helper=SharedPreferencesUtil.getString(getActivity().getBaseContext(),"user_msg_helper");
 			Intent i=new Intent(getActivity(),ChatActivity.class);
 			i.putExtra(EaseConstant.EXTRA_USER_ID, user_msg_helper);
-			i.putExtra("key","single");
 			startActivity(i);
 			break;
 		case R.id.user_fragemnt_tiem05:

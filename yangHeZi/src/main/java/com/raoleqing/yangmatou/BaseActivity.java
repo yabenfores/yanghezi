@@ -1,11 +1,9 @@
 package com.raoleqing.yangmatou;
 
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
-import com.raoleqing.yangmatou.ui.goods.GoodsListActivity;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,8 +13,6 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnKeyListener;
-import android.view.inputmethod.EditorInfo;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
@@ -200,7 +196,7 @@ public class BaseActivity extends FragmentActivity {
 	}
 
 	public static Context getAppContext(){
-		return YangMaTouApplication.getAppContext();
+		return YangHeZiApplication.getAppContext();
 	}
 
 

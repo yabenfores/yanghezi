@@ -155,12 +155,19 @@ public class ReceiptFragment extends Fragment implements OnClickListener {
                 JSONObject obj = data.optJSONObject(i);
                 Order mOrder = new Order();
                 mOrder.setOrder_id(obj.optString("order_id"));
+                mOrder.setOrder_sn(obj.optString("order_sn"));
                 mOrder.setGoods_amount(obj.optDouble("goods_amount"));
                 mOrder.setOrder_amount(obj.optDouble("order_amount"));
                 mOrder.setStore_name(obj.optString("store_name"));
+                mOrder.setStore_label(obj.optString("store_label"));
+                mOrder.setGoods_num(obj.optInt("goods_num"));
+                mOrder.setShipping_fee(obj.optDouble("shipping_fee"));
+                JSONArray array=obj.getJSONArray("extend_order_goods");
+                JSONObject jsonObject=array.optJSONObject(0);
+                mOrder.setExtend_order_goods(jsonObject);
                 mOrder.setOrder_state(obj.optInt("order_state"));
                 mOrder.setPay_sn(obj.optString("pay_sn"));
-                mOrder.setCreatetime(obj.optString("createtime"));
+                mOrder.setAdd_time(obj.optLong("add_time"));
                 orderList.add(mOrder);
 
             }

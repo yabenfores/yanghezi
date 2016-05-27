@@ -162,7 +162,7 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 
 			@Override
 			public void onFail(JSONObject result) {
-				makeLongToast(result.optString(Constant.INFO));
+
 			}
 		});
 
@@ -176,7 +176,6 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 			String message = response.optString("message");
 
 			if (response == null) {
-				Toast.makeText(AddressActivity.this, message, 1).show();
 				setProgressVisibility(View.GONE);
 				return;
 			}
@@ -291,7 +290,6 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 			String message = response.optString("message");
 
 			if (response == null) {
-				Toast.makeText(AddressActivity.this, message, 1).show();
 				setProgressVisibility(View.GONE);
 				return;
 			}

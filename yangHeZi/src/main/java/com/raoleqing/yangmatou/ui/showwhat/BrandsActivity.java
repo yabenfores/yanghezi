@@ -24,7 +24,7 @@ public class BrandsActivity extends BaseActivity implements OnClickListener{
 	protected void viewInfo() {
 		
 		brands_return = (ImageView) findViewById(R.id.brands_return);
-		
+		brands_return.setOnClickListener(this);
 		
 			
 		

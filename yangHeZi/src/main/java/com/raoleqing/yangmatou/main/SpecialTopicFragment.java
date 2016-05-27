@@ -10,20 +10,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.raoleqing.yangmatou.MainActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.StoreAdapter;
 import com.raoleqing.yangmatou.ben.AdvManage;
-import com.raoleqing.yangmatou.ben.Goods;
 import com.raoleqing.yangmatou.ben.Pavilion;
 import com.raoleqing.yangmatou.ben.Store;
 import com.raoleqing.yangmatou.common.CheckNet;
 import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.MyPagerAdapter;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.common.ChildViewPager.OnSingleTouchListener;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.uitls.WindowManagerUtils;
@@ -244,7 +242,6 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 
 			}
 
-			Toast.makeText(getActivity(), message, 1).show();
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -270,7 +267,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 			img.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
 			ImageLoader.getInstance().displayImage(nAdvManage.getAdv_image(), img,
-					YangMaTouApplication.imageOption(R.drawable.adv_manage_image));
+					YangHeZiApplication.imageOption(R.drawable.adv_manage_image));
 			viewList.add(img);
 		}
 
@@ -401,7 +398,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 			Pavilion mPavilion = pavilionList.get(i);
 			ImageView radio = new ImageView(getActivity());
 			ImageLoader.getInstance().displayImage(mPavilion.getFlag_imgSrc(), radio,
-					YangMaTouApplication.imageOption(R.drawable.pavilion_icon));
+					YangHeZiApplication.imageOption(R.drawable.pavilion_icon));
 			
 			LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(UnitConverterUtils.dip2px(getActivity(), 100),
 					UnitConverterUtils.dip2px(getActivity(), 80));

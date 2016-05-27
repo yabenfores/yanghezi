@@ -81,7 +81,19 @@
         <item name="android:textColor">#ffffff</item>
         <item name="android:textSize">18sp</item>
     </style>
+    <style name="text18sp_typeblack">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="text16sp_typeblack">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
+    <style name="text14sp_typeblack">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">14sp</item>
+    </style>
     <style name="text02_type01">
         <item name="android:textColor">#e81258</item>
         <item name="android:textSize">12sp</item>
@@ -135,6 +147,42 @@
     <style name="text04_type03">
         <item name="android:textColor">#999999</item>
         <item name="android:textSize">12sp</item>
+    </style>
+    <style name="eval_image">
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_width">62dp</item>
+        <item name="android:layout_height">62dp</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+    <style name="show_image">
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="main_bar_image">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+    <style name="shop_image">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <style name="order_button">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:background">@drawable/button_selector_background05</item>
+        <item name="android:gravity">center</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:textSize">14sp</item>
+
     </style>
 
 </resources>

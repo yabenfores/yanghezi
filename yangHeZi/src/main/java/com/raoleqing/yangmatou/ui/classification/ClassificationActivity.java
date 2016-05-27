@@ -31,13 +31,17 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -55,6 +59,7 @@ public class ClassificationActivity extends BaseActivity implements OnClickListe
     private FragmentManager manager;
     private FragmentTransaction transaction;
 
+    private EditText editText;
     private int gc_id = 0;
     private String cat_content;
 
@@ -98,17 +103,39 @@ public class ClassificationActivity extends BaseActivity implements OnClickListe
 
     protected void viewInfo() {
         // TODO Auto-generated method stub
-        activity_return = (ImageView) findViewById(R.id.activity_return);
-        qrode = (ImageView) findViewById(R.id.activity_qrode);
-        qrode.setVisibility(View.VISIBLE);
+        activity_return = (ImageView) findViewById(R.id.classification_return);
+        qrode = (ImageView) findViewById(R.id.classification_code);
         classification_listview = (ListView) findViewById(R.id.classification_listview);
         classification_gridview = (ListView) findViewById(R.id.classification_gridview);
-
-
+        setTitleVisibility(View.GONE);
+        editText= (EditText) findViewById(R.id.goods_list_search);
         catAdapter = new OneCatAdapter(ClassificationActivity.this, oneCatList);
         catAdapter.setIndex(gc_id);
         classification_listview.setDivider(null);
         classification_listview.setAdapter(catAdapter);
+        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                // TODO Auto-generated method stub
+                switch (actionId) {
+                    case EditorInfo.IME_ACTION_SEARCH:
+                        String search_str = editText.getText().toString();
+                        if (search_str != null && !search_str.trim().equals("")) {
+                            Intent intent = new Intent(ClassificationActivity.this, GoodsListActivity.class);
+                            intent.putExtra("search_str", search_str);
+                            startActivity(intent);
+                            overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                        }
+
+                        break;
+
+                    default:
+                        break;
+                }
+                return false;
+            }
+        });
 
 
         classification_listview.setOnItemClickListener(new OnItemClickListener() {
@@ -140,10 +167,10 @@ public class ClassificationActivity extends BaseActivity implements OnClickListe
         // TODO Auto-generated method stub
 
         switch (v.getId()) {
-            case R.id.activity_return:
+            case R.id.classification_return:
                 ClassificationActivity.this.onBackPressed();
                 break;
-            case R.id.activity_qrode:
+            case R.id.classification_code:
                 Intent intent = new Intent();
                 intent.setClass(ClassificationActivity.this, MipcaActivityCapture.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -199,6 +226,7 @@ public class ClassificationActivity extends BaseActivity implements OnClickListe
 
             @Override
             public void onFinish() {
+                setProgressVisibility(View.GONE);
 
             }
 
@@ -210,7 +238,7 @@ public class ClassificationActivity extends BaseActivity implements OnClickListe
 
             @Override
             public void onFail(JSONObject result) {
-                setProgressVisibility(View.GONE);
+
                 ToastUtil.MakeShortToast(getAppContext(), result.optString(Constant.INFO));
 
             }
@@ -223,15 +251,12 @@ public class ClassificationActivity extends BaseActivity implements OnClickListe
         // TODO Auto-generated method stub
 
         try {
-            String message = response.optString("message");
 
-            if (response == null) {
-                Toast.makeText(ClassificationActivity.this, message, 1).show();
+            JSONArray data = response.optJSONArray("data");
+            if (data == null) {
                 setProgressVisibility(View.GONE);
                 return;
             }
-
-            JSONArray data = response.optJSONArray("data");
             System.out.println("aaaaaaaaaaaa" + data.toString());
             if (goodsList.size() > 0) {
                 goodsList.retainAll(goodsList);

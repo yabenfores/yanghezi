@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#FFFFFF"
     android:orientation="vertical" >
 
@@ -14,7 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp" >
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,6 +28,7 @@
                 android:id="@+id/user_iocn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:scaleType="centerCrop"
                 android:background="@drawable/user_icon" />
 
             <LinearLayout
@@ -34,6 +37,7 @@
                 android:orientation="vertical" >
 
                 <TextView
+                    android:id="@+id/tv_show_username"
                     style="@style/text02_type03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -41,6 +45,7 @@
                     android:text="名字" />
 
                 <TextView
+                    android:id="@+id/tv_show_time"
                     style="@style/text03_type01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -63,17 +68,42 @@
                     android:isIndicator="true"
                     android:numStars="5"
                     android:progressDrawable="@drawable/food_rating_bar_full"
-                    android:rating="4" />
+                    />
             </LinearLayout>
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/iv_show_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/show_imag01" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/show_imag01" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_height="60dp">
+            <ImageView
+                style="@style/show_image"
+                android:src="@drawable/show_imag01"/>
+            <ImageView
+                style="@style/show_image"
+                android:src="@drawable/show_imag01"/>
+            <ImageView
+                style="@style/show_image"
+                android:src="@drawable/show_imag01"/>
+            <ImageView
+                style="@style/show_image"
+                android:src="@drawable/show_imag01"/>
+            <ImageView
+                style="@style/show_image"
+                android:layout_marginRight="0dp"
+                android:src="@drawable/show_imag01"/>
+        </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_show_comm"
             style="@style/text03_type02"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,6 +111,7 @@
             android:text="说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明" />
 
         <TextView
+            android:id="@+id/tv_show_storename"
             style="@style/text04_type01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,6 +120,7 @@
             android:text=" 外来店" />
 
         <TextView
+            android:id="@+id/tv_show_goodsname"
             style="@style/text04_type01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -133,14 +165,20 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="horizontal" >
 
                 <TextView
+
                     style="@style/text04_type02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/reply_iocn"
                     android:text=" 回复" />
+                <TextView
+                    android:id="@+id/tv_show_comment_num"
+                    style="@style/text04_type03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <View
@@ -153,14 +191,20 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="horizontal" >
 
                 <TextView
+
                     style="@style/text04_type02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/like_icon"
                     android:text=" 点赞" />
+                <TextView
+                    android:id="@+id/tv_show_like_num"
+                    style="@style/text04_type03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

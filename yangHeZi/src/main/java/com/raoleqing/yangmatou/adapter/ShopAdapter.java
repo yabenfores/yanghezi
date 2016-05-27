@@ -67,10 +67,6 @@ public class ShopAdapter  extends BaseAdapter{
 
 		Shop mShop = sowShatList.get(position);
 			
-	/*	ImageLoader.getInstance().displayImage(mThreeData.getGc_thumb(), holder.cat_goodes_image,
-				YangMaTouApplication.imageOption(R.drawable.image_icon01));
-		holder.cat_goodes_text.setText(mThreeData.getGc_name());
-		*/
 		ItemHeight = convertView.getHeight();
 		System.out.println("拿到的高度: " + ItemHeight);
 		return convertView;

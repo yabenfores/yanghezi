@@ -24,7 +24,7 @@ import com.raoleqing.yangmatou.ben.Store;
 import com.raoleqing.yangmatou.common.CheckNet;
 import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.MyPagerAdapter;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.common.ChildViewPager.OnSingleTouchListener;
 import com.raoleqing.yangmatou.ui.goods.GoodsListActivity;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
@@ -37,13 +37,11 @@ import com.raoleqing.yangmatou.webserver.NetHelper;
 import com.raoleqing.yangmatou.xlist.XListView;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,13 +124,13 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View view = inflater.inflate(R.layout.gou_wu_guang_chang, null);
+		View view = inflater.inflate(R.layout.host_fgm, null);
 
 		viewInfo(view);
-		getAdvertising();
+//		getAdvertising();
 		getWeb();
 //		getStoreList();
-		getPavilion();
+//		getPavilion();
 		return view;
 	}
 
@@ -172,59 +170,60 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 	private void viewInfo(View view) {
 		// TODO Auto-generated method stub
-		listView = (XListView) view.findViewById(R.id.gou_wu_listview);
-		storeAdapter = new StoreAdapter(getActivity(), storeList, myHandler);
-		listView.setAdapter(storeAdapter);
-		listView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), false, false));
-		// InfoOnItemClick infoItem = new InfoOnItemClick();
-		// listview.setOnItemClickListener(infoItem);
-		listView.setXListViewListener(this);
-		listView.setPullLoadEnable(false);// 上拉刷新
-		listView.setPullRefreshEnable(false);// 下拉刷新
-
-		if (listView.getHeaderViewsCount() < 2) {
-
-			if (advManageView == null) {
-				advManageView = getActivity().getLayoutInflater().from(getActivity()).inflate(R.layout.adv_manage,
-						null);
-			}
-
-			main_viewPager = (ChildViewPager) advManageView.findViewById(R.id.main_viewPager);// 广告栏
-			main_viewPager_point = (LinearLayout) advManageView.findViewById(R.id.main_viewPager_point);// 页数提示点
-			main_pavilion_layout = (LinearLayout) advManageView.findViewById(R.id.main_pavilion_layout);// 页数提示点
-
-
-			float viewPagerHeight = (float) height * 0.25f;
-
-			webView=new WebView(getContext());
-            webView.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT,AbsListView.LayoutParams.WRAP_CONTENT));
-			LayoutParams params = main_viewPager.getLayoutParams();
-			params.height = (int) viewPagerHeight;
-			main_viewPager.setLayoutParams(params);
-			listView.addHeaderView(advManageView);
-            listView.addHeaderView(webView);
-			main_viewPager.setOnPageChangeListener(new OnPageChangeListener() {
-
-				@Override
-				public void onPageSelected(int arg0) {
-					// TODO Auto-generated method stub
-					changePositionImage(arg0);
-					pagerIndex = arg0;
-				}
-
-				@Override
-				public void onPageScrolled(int arg0, float arg1, int arg2) {
-					// TODO Auto-generated method stub
-				}
-
-				@Override
-				public void onPageScrollStateChanged(int arg0) {
-					// TODO Auto-generated method stub
-				}
-			});
-
-		}
-//		webView= (WebView) view.findViewById(R.id.ww_app_flash);
+//		listView = (XListView) view.findViewById(R.id.gou_wu_listview);
+//		storeAdapter = new StoreAdapter(getActivity(), storeList, myHandler);
+//		listView.setAdapter(storeAdapter);
+//
+//		listView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), false, false));
+//		// InfoOnItemClick infoItem = new InfoOnItemClick();
+//		// listview.setOnItemClickListener(infoItem);
+//		listView.setXListViewListener(this);
+//		listView.setPullLoadEnable(false);// 上拉刷新
+//		listView.setPullRefreshEnable(false);// 下拉刷新
+//
+//		if (listView.getHeaderViewsCount() < 2) {
+//
+//			if (advManageView == null) {
+//				advManageView = getActivity().getLayoutInflater().from(getActivity()).inflate(R.layout.adv_manage,
+//						null);
+//			}
+//
+//			main_viewPager = (ChildViewPager) advManageView.findViewById(R.id.main_viewPager);// 广告栏
+//			main_viewPager_point = (LinearLayout) advManageView.findViewById(R.id.main_viewPager_point);// 页数提示点
+//			main_pavilion_layout = (LinearLayout) advManageView.findViewById(R.id.main_pavilion_layout);// 页数提示点
+//
+//
+//			float viewPagerHeight = (float) height * 0.25f;
+//
+//			webView=new WebView(getContext());
+//            webView.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT,AbsListView.LayoutParams.WRAP_CONTENT));
+//			LayoutParams params = main_viewPager.getLayoutParams();
+//			params.height = (int) viewPagerHeight;
+//			main_viewPager.setLayoutParams(params);
+////			listView.addHeaderView(advManageView);
+//            listView.addHeaderView(webView);
+//			main_viewPager.setOnPageChangeListener(new OnPageChangeListener() {
+//
+//				@Override
+//				public void onPageSelected(int arg0) {
+//					// TODO Auto-generated method stub
+//					changePositionImage(arg0);
+//					pagerIndex = arg0;
+//				}
+//
+//				@Override
+//				public void onPageScrolled(int arg0, float arg1, int arg2) {
+//					// TODO Auto-generated method stub
+//				}
+//
+//				@Override
+//				public void onPageScrollStateChanged(int arg0) {
+//					// TODO Auto-generated method stub
+//				}
+//			});
+//
+//		}
+		webView= (WebView) view.findViewById(R.id.ww_app_flash);
 
 	}
 
@@ -318,7 +317,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 			img.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
 			ImageLoader.getInstance().displayImage(nAdvManage.getAdv_image(), img,
-					YangMaTouApplication.imageOption(R.drawable.adv_manage_image));
+					YangHeZiApplication.imageOption(R.drawable.adv_manage_image));
 			viewList.add(img);
 		}
 
@@ -713,7 +712,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 			final Pavilion mPavilion = pavilionList.get(i);
 			ImageView radio = new ImageView(getActivity());
 			ImageLoader.getInstance().displayImage(mPavilion.getFlag_imgSrc(), radio,
-					YangMaTouApplication.imageOption(R.drawable.pavilion_icon));
+					YangHeZiApplication.imageOption(R.drawable.pavilion_icon));
 
 			LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(UnitConverterUtils.dip2px(getActivity(), 100),
 					UnitConverterUtils.dip2px(getActivity(), 80));

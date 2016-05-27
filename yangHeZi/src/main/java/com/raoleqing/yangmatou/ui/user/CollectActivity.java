@@ -95,7 +95,7 @@ public class CollectActivity extends BaseActivity implements OnClickListener {
             case 0:
                 findViewById(R.id.user_fragment_view00).setVisibility(View.VISIBLE);
                 findViewById(R.id.user_fragment_view01).setVisibility(View.INVISIBLE);
-                mTv00.setTextColor(getColor(R.color.line02));
+                mTv00.setTextColor(0xFFE81258);
                 mTv01.setTextColor(Color.BLACK);
                 Fragment fragment01 = CollectShopFragment.newInstance();
                 transaction.replace(R.id.collect_content, fragment01, "CollectShopFragment");
@@ -105,7 +105,7 @@ public class CollectActivity extends BaseActivity implements OnClickListener {
             case 1:
                 findViewById(R.id.user_fragment_view00).setVisibility(View.INVISIBLE);
                 findViewById(R.id.user_fragment_view01).setVisibility(View.VISIBLE);
-                mTv01.setTextColor(getColor(R.color.line02));
+                mTv01.setTextColor(0xFFE81258);
                 mTv00.setTextColor(Color.BLACK);
                 Fragment fragment02 = CollectGoodsFragment.newInstance();
                 transaction.replace(R.id.collect_content, fragment02, "CollectGoodsFragment");

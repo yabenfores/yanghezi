@@ -1,13 +1,74 @@
 package com.raoleqing.yangmatou.ben;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.Arrays;
+
 public class Order {
 	
 	private String order_id;
 	private double goods_amount;//商品价格
 	private double order_amount;//订单总价
 	private String store_name;//
+
+	public long getAdd_time() {
+		return add_time;
+	}
+
+	public void setAdd_time(long add_time) {
+		this.add_time = add_time;
+	}
+
+	public String getStore_label() {
+		return store_label;
+	}
+
+	public void setStore_label(String store_label) {
+		this.store_label = store_label;
+	}
+
+	public int getGoods_num() {
+		return goods_num;
+	}
+
+	public void setGoods_num(int goods_num) {
+		this.goods_num = goods_num;
+	}
+
+	public String getLineposttax() {
+		return lineposttax;
+	}
+
+	public void setLineposttax(String lineposttax) {
+		this.lineposttax = lineposttax;
+	}
+
+	public JSONObject getExtend_order_goods() {
+		return extend_order_goods;
+	}
+
+	public void setExtend_order_goods(JSONObject extend_order_goods) {
+		this.extend_order_goods = extend_order_goods;
+	}
+
+	private long add_time;//创建时间
+	private String store_label;//头像
 	private int order_state;//
+	private int goods_num;//数量
 	private String pay_sn;//630514571270380090;
+	private String lineposttax;//行邮税;
+
+	private JSONObject extend_order_goods;
+	public String getOrder_sn() {
+		return order_sn;
+	}
+
+	public void setOrder_sn(String order_sn) {
+		this.order_sn = order_sn;
+	}
+
+	private String order_sn;//630514571270380090;
 	private String createtime;
 	private double shipping_fee;//邮费
 	

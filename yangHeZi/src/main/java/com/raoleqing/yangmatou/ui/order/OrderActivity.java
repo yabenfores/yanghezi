@@ -1,12 +1,17 @@
 package com.raoleqing.yangmatou.ui.order;
 
+import com.allinpay.appayassistex.APPayAssistEx;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.ben.Address;
 import com.raoleqing.yangmatou.ui.user.PaymentFragment;
 import com.raoleqing.yangmatou.ui.user.ReceiptFragment;
 import com.raoleqing.yangmatou.ui.user.ReturnFragment;
 import com.raoleqing.yangmatou.ui.user.ReviewFragment;
 import com.raoleqing.yangmatou.ui.user.ShipFragment;
+
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,6 +23,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import entity.NotifyUpdateEntity;
 
 /**
  * 我的订单
@@ -38,6 +49,8 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 	private View user_fragment_view05;
 	private View user_fragment_view06;
 
+	private TextView tv_order0,tv_order1,tv_order2,tv_order3,tv_order4,tv_order5;
+	private ImageView personal_nav_icon00,personal_nav_icon01,personal_nav_icon02,personal_nav_icon03,personal_nav_icon04,personal_nav_icon05;
 	private int contentIndex = 0;
 	private FragmentManager manager;
 	private FragmentTransaction transaction;
@@ -88,6 +101,21 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 		user_fragment_view05 = (View) findViewById(R.id.user_fragment_view05);
 		user_fragment_view06 = (View) findViewById(R.id.user_fragment_view06);
 
+		personal_nav_icon00= (ImageView) findViewById(R.id.personal_nav_icon00);
+		personal_nav_icon01= (ImageView) findViewById(R.id.personal_nav_icon01);
+		personal_nav_icon02= (ImageView) findViewById(R.id.personal_nav_icon02);
+		personal_nav_icon03= (ImageView) findViewById(R.id.personal_nav_icon03);
+		personal_nav_icon04= (ImageView) findViewById(R.id.personal_nav_icon04);
+		personal_nav_icon05= (ImageView) findViewById(R.id.personal_nav_icon05);
+
+		tv_order0= (TextView) findViewById(R.id.tv_order0);
+		tv_order1= (TextView) findViewById(R.id.tv_order1);
+		tv_order2= (TextView) findViewById(R.id.tv_order2);
+		tv_order3= (TextView) findViewById(R.id.tv_order3);
+		tv_order4= (TextView) findViewById(R.id.tv_order4);
+		tv_order5= (TextView) findViewById(R.id.tv_order5);
+
+
 		activity_return.setOnClickListener(this);
 		user_fragment_item01.setOnClickListener(this);
 		user_fragment_item02.setOnClickListener(this);
@@ -104,6 +132,10 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		try {
+
+
+
 		// TODO Auto-generated method stub
 
 		switch (v.getId()) {
@@ -131,6 +163,9 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 		default:
 			break;
 		}
+		} catch (Exception e) {
+			throwEx(e);
+		}
 
 	}
 
@@ -149,6 +184,21 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 			user_fragment_view04.setVisibility(View.GONE);
 			user_fragment_view05.setVisibility(View.GONE);
 			user_fragment_view06.setVisibility(View.GONE);
+			personal_nav_icon00.setImageResource(R.drawable.tpersonal_nav_icon00);
+			tv_order0.setTextColor(0xFFE81258);
+			personal_nav_icon01.setImageResource(R.drawable.personal_nav_icon01);
+			personal_nav_icon02.setImageResource(R.drawable.personal_nav_icon02);
+			personal_nav_icon03.setImageResource(R.drawable.personal_nav_icon03);
+			personal_nav_icon04.setImageResource(R.drawable.personal_nav_icon04);
+			personal_nav_icon05.setImageResource(R.drawable.personal_nav_icon05);
+
+
+			tv_order1.setTextColor(Color.BLACK);
+			tv_order2.setTextColor(Color.BLACK);
+			tv_order3.setTextColor(Color.BLACK);
+			tv_order4.setTextColor(Color.BLACK);
+			tv_order5.setTextColor(Color.BLACK);
+
 
 			Fragment fragment01 = AllOrderFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment01, "MainFragment");
@@ -164,6 +214,19 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 			user_fragment_view04.setVisibility(View.GONE);
 			user_fragment_view05.setVisibility(View.GONE);
 			user_fragment_view06.setVisibility(View.GONE);
+			personal_nav_icon01.setImageResource(R.drawable.tpersonal_nav_icon01);
+			personal_nav_icon02.setImageResource(R.drawable.personal_nav_icon02);
+			personal_nav_icon03.setImageResource(R.drawable.personal_nav_icon03);
+			personal_nav_icon04.setImageResource(R.drawable.personal_nav_icon04);
+			personal_nav_icon05.setImageResource(R.drawable.personal_nav_icon05);
+
+			personal_nav_icon00.setImageResource(R.drawable.personal_nav_icon00);
+			tv_order0.setTextColor(Color.BLACK);
+			tv_order1.setTextColor(0xFFE81258);
+			tv_order2.setTextColor(Color.BLACK);
+			tv_order3.setTextColor(Color.BLACK);
+			tv_order4.setTextColor(Color.BLACK);
+			tv_order5.setTextColor(Color.BLACK);
 
 			Fragment fragment02 = PaymentFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment02, "MainFragment");
@@ -179,6 +242,20 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 			user_fragment_view05.setVisibility(View.GONE);
 			user_fragment_view06.setVisibility(View.GONE);
 
+			personal_nav_icon01.setImageResource(R.drawable.personal_nav_icon01);
+			personal_nav_icon02.setImageResource(R.drawable.tpersonal_nav_icon02);
+			personal_nav_icon03.setImageResource(R.drawable.personal_nav_icon03);
+			personal_nav_icon04.setImageResource(R.drawable.personal_nav_icon04);
+			personal_nav_icon05.setImageResource(R.drawable.personal_nav_icon05);
+
+			personal_nav_icon00.setImageResource(R.drawable.personal_nav_icon00);
+			tv_order0.setTextColor(Color.BLACK);
+			tv_order1.setTextColor(Color.BLACK);
+			tv_order2.setTextColor(0xFFE81258);
+			tv_order3.setTextColor(Color.BLACK);
+			tv_order4.setTextColor(Color.BLACK);
+			tv_order5.setTextColor(Color.BLACK);
+
 			Fragment fragment03 = ShipFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment03, "MainFragment");
 			transaction.commit();
@@ -192,6 +269,20 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 			user_fragment_view04.setVisibility(View.VISIBLE);
 			user_fragment_view05.setVisibility(View.GONE);
 			user_fragment_view06.setVisibility(View.GONE);
+
+			personal_nav_icon01.setImageResource(R.drawable.personal_nav_icon01);
+			personal_nav_icon02.setImageResource(R.drawable.personal_nav_icon02);
+			personal_nav_icon03.setImageResource(R.drawable.tpersonal_nav_icon03);
+			personal_nav_icon04.setImageResource(R.drawable.personal_nav_icon04);
+			personal_nav_icon05.setImageResource(R.drawable.personal_nav_icon05);
+
+			personal_nav_icon00.setImageResource(R.drawable.personal_nav_icon00);
+			tv_order0.setTextColor(Color.BLACK);
+			tv_order1.setTextColor(Color.BLACK);
+			tv_order2.setTextColor(Color.BLACK);
+			tv_order3.setTextColor(0xFFE81258);
+			tv_order4.setTextColor(Color.BLACK);
+			tv_order5.setTextColor(Color.BLACK);
 
 			Fragment fragment04 = ReceiptFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment04, "MainFragment");
@@ -208,6 +299,19 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 			user_fragment_view05.setVisibility(View.VISIBLE);
 			user_fragment_view06.setVisibility(View.GONE);
 
+			personal_nav_icon01.setImageResource(R.drawable.personal_nav_icon01);
+			personal_nav_icon02.setImageResource(R.drawable.personal_nav_icon02);
+			personal_nav_icon03.setImageResource(R.drawable.personal_nav_icon03);
+			personal_nav_icon04.setImageResource(R.drawable.tpersonal_nav_icon04);
+			personal_nav_icon05.setImageResource(R.drawable.personal_nav_icon05);
+
+			personal_nav_icon00.setImageResource(R.drawable.personal_nav_icon00);
+			tv_order0.setTextColor(Color.BLACK);
+			tv_order1.setTextColor(Color.BLACK);
+			tv_order2.setTextColor(Color.BLACK);
+			tv_order3.setTextColor(Color.BLACK);
+			tv_order4.setTextColor(0xFFE81258);
+			tv_order5.setTextColor(Color.BLACK);
 			Fragment fragment05 = ReviewFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment05, "MainFragment");
 			transaction.commit();
@@ -223,6 +327,19 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 			user_fragment_view04.setVisibility(View.GONE);
 			user_fragment_view05.setVisibility(View.GONE);
 			user_fragment_view06.setVisibility(View.VISIBLE);
+			personal_nav_icon01.setImageResource(R.drawable.personal_nav_icon01);
+			personal_nav_icon02.setImageResource(R.drawable.personal_nav_icon02);
+			personal_nav_icon03.setImageResource(R.drawable.personal_nav_icon03);
+			personal_nav_icon04.setImageResource(R.drawable.personal_nav_icon04);
+			personal_nav_icon05.setImageResource(R.drawable.tpersonal_nav_icon05);
+
+			personal_nav_icon00.setImageResource(R.drawable.personal_nav_icon00);
+			tv_order0.setTextColor(Color.BLACK);
+			tv_order1.setTextColor(Color.BLACK);
+			tv_order2.setTextColor(Color.BLACK);
+			tv_order3.setTextColor(Color.BLACK);
+			tv_order4.setTextColor(Color.BLACK);
+			tv_order5.setTextColor(0xFFE81258);
 
 			Fragment fragment06 = ReturnFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment06, "MainFragment");
@@ -234,6 +351,36 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 			break;
 		}
 
+	}
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (APPayAssistEx.REQUESTCODE == requestCode) {
+			if (null != data) {
+				String payRes = null;
+				String payAmount = null;
+				String payTime = null;
+				String payOrderId = null;
+				try {
+					JSONObject resultJson = new
+							JSONObject(data.getExtras().getString("result"));
+					payRes = resultJson.getString(APPayAssistEx.KEY_PAY_RES);
+					payAmount = resultJson.getString("payAmount");
+					payTime = resultJson.getString("payTime");
+					payOrderId = resultJson.getString("payOrderId");
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				if (null != payRes &&
+						payRes.equals(APPayAssistEx.RES_SUCCESS)) {
+					makeShortToast("支付成功！");
+					System.out.println("支付成功！");
+					setView(1);
+				} else {
+					System.out.println("支付失败！");
+					makeShortToast("支付失败！");
+				}
+			}
+			super.onActivityResult(requestCode, resultCode, data);
+		}
 	}
 
 	private void getData() {
@@ -256,6 +403,20 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 		super.onBackPressed();
 		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 		finish();
+	}
+	//----------------
+	public final static String ORDERCHAGE = "ORDERCHAGE";
+	protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
+		super.notifyUpdate(notifyUpdateEntity);
+		try {
+			switch (notifyUpdateEntity.getNotifyTag()) {
+				case ORDERCHAGE:
+					setView(1);
+					break;
+			}
+		} catch (Exception ex) {
+			throwEx(ex);
+		}
 	}
 
 }

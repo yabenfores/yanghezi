@@ -125,15 +125,12 @@ public class CollectShopFragment extends Fragment implements OnClickListener {
         System.out.println("Home/Users/member_fslist: " + response);
 
         try {
-            int code = response.optInt("code");
-            String message = response.optString("message");
 
             if (response == null) {
-                Toast.makeText(getActivity(), message, 1).show();
                 ((OrderActivity) getActivity()).setMainProgress(View.GONE);
                 return;
             }
-            if (response.optJSONArray("data").equals(null)) {
+            if (response.optJSONArray("data")==null) {
                 return;
             }
             JSONArray data = response.optJSONArray("data");

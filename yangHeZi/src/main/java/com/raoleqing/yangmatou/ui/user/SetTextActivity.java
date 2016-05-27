@@ -3,6 +3,8 @@ package com.raoleqing.yangmatou.ui.user;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,18 +15,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 public class SetTextActivity extends BaseActivity implements OnClickListener {
 
 	private ImageView activity_return;
 	private TextView activity_save;
 	private EditText set_text_edit;
-	private String title;
+	private String title,mName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.set_text_activity);
 
+		setProgressVisibility(View.GONE);
+		setTitleVisibility(View.GONE);
 		activity_return = (ImageView) findViewById(R.id.activity_return);
 		activity_save = (TextView) findViewById(R.id.activity_save);
 		set_text_edit = (EditText) findViewById(R.id.set_text_edit);
@@ -42,12 +48,36 @@ public class SetTextActivity extends BaseActivity implements OnClickListener {
 			break;
 		case R.id.activity_save:
 
-			String name = set_text_edit.getText().toString();
-			if (name != null && !name.trim().equals("")) {
+			mName = set_text_edit.getText().toString();
+			if (mName != null && !mName.trim().equals("")) {
 
-				if (name.length() > 2) {
-					SharedPreferencesUtil.putString(SetTextActivity.this, "member_name", name);
-					SetTextActivity.this.onBackPressed();
+				if (mName.length() > 2) {
+					NetHelper.editUserName(mName, new NetConnectionInterface.iConnectListener3() {
+						@Override
+						public void onStart() {
+							setProgressVisibility(View.VISIBLE);
+
+						}
+
+						@Override
+						public void onFinish() {
+							setProgressVisibility(View.GONE);
+
+						}
+
+						@Override
+						public void onSuccess(JSONObject result) {
+							SharedPreferencesUtil.putString(SetTextActivity.this, "member_name", mName);
+							SetTextActivity.this.onBackPressed();
+
+						}
+
+						@Override
+						public void onFail(JSONObject result) {
+
+						}
+					});
+
 
 				} else {
 					Toast.makeText(SetTextActivity.this, "昵称长度不对", 1).show();

@@ -62,9 +62,7 @@ public class HttpUtil extends NetWorkBase {
     public final static String GET_DEFAULT_ADDRESS = "Home/Orders/getDefaultAddress";//拿到发货地址
     public final static String DEL_ADDRESS = "Home/Orders/delAddress";//册除地址
     public final static String ADD_ADDRESS = "Home/Orders/add_Address";//添加地址
-    public final static String EDIT_ADDRESS = "Home/Orders/edit_Address";//编辑地址
-    public final static String GET_TAX = "Home/Orders/getTax";//编辑地址
-    public final static String MEMBER_ORDER = "Home/Users/member_order";//编辑地址
+    public final static String EDIT_ADDRESS = "Home/Address/edit_Address";//编辑地址
 
 
     // 用一个完整url获取一个string对象

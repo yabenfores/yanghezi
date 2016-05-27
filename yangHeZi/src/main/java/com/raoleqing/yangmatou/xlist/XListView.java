@@ -377,4 +377,5 @@ public class XListView extends ListView implements OnScrollListener {
 
 		public void onLoadMore();
 	}
+
 }

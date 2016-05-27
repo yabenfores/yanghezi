@@ -1,27 +1,18 @@
 package com.raoleqing.yangmatou.ui.order;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import com.loopj.android.http.JsonHttpResponseHandler;
+
 import com.loopj.android.http.RequestParams;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.OrderAdapter;
 import com.raoleqing.yangmatou.ben.Order;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
-import com.raoleqing.yangmatou.ui.address.AddressActivity;
-import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
-import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
-import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
 
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -162,12 +153,19 @@ protected void resolveJson(JSONObject response) {
 				JSONObject obj = data.optJSONObject(i);
 				Order mOrder = new Order();
 				mOrder.setOrder_id(obj.optString("order_id"));
+				mOrder.setOrder_sn(obj.optString("order_sn"));
 				mOrder.setGoods_amount(obj.optDouble("goods_amount"));
 				mOrder.setOrder_amount(obj.optDouble("order_amount"));
 				mOrder.setStore_name(obj.optString("store_name"));
+				mOrder.setStore_label(obj.optString("store_label"));
+				mOrder.setGoods_num(obj.optInt("goods_num"));
+				mOrder.setShipping_fee(obj.optDouble("shipping_fee"));
+				JSONArray array=obj.getJSONArray("extend_order_goods");
+				JSONObject jsonObject=array.optJSONObject(0);
+				mOrder.setExtend_order_goods(jsonObject);
 				mOrder.setOrder_state(obj.optInt("order_state"));
 				mOrder.setPay_sn(obj.optString("pay_sn"));
-				mOrder.setCreatetime(obj.optString("createtime"));
+				mOrder.setAdd_time(obj.optLong("add_time"));
 				orderList.add(mOrder);
 				
 			}

@@ -1,28 +1,14 @@
 package com.raoleqing.yangmatou.ui.shop;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.ShopAdapter;
-import com.raoleqing.yangmatou.adapter.ShowShatAdapter;
 import com.raoleqing.yangmatou.ben.Shop;
-import com.raoleqing.yangmatou.ben.ShowShat;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
-import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
-import com.raoleqing.yangmatou.webserver.HttpUtil;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,7 +17,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 /**
  * 商店
@@ -76,6 +61,7 @@ public class ShopActivity extends BaseActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.shop_activity);
 
+		setProgressVisibility(View.GONE);
 		Intent intent = this.getIntent();
 		store_id = intent.getIntExtra("store_id", 0);
 		setTitleText("店铺");

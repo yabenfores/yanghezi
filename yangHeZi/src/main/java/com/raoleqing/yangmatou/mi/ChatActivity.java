@@ -16,7 +16,7 @@ import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 
 public class ChatActivity extends BaseActivity implements View.OnClickListener {
     private ImageView activity_return;
-    EaseUI easeUI=EaseUI.getInstance();
+    EaseUI easeUI = EaseUI.getInstance();
     public static ChatActivity activityInstance;
     private EaseChatFragment chatFragment;
     private EaseConversationListFragment easeConversationListfragment;
@@ -27,16 +27,8 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         activityInstance = this;
-        String type = getIntent().getExtras().getString("key");
         setContentView(R.layout.activity_chat);
-        if (type != null) {
-            if (type.equals("single")) {
                 setView(0);
-            } else {
-                setView(1);
-            }
-        }
-
         setProgressVisibility(View.GONE);
         activity_return = (ImageView) findViewById(R.id.activity_return);
         activity_return.setOnClickListener(this);
@@ -68,12 +60,12 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
                     setTitleText("客服");
                     //new出EaseChatFragment或其子类的实例
                     String user = getIntent().getExtras().getString(EaseConstant.EXTRA_USER_ID);
-                    EaseChatFragment chatFragment = new EaseChatFragment();
+                    chatFragment = new EaseChatFragment();
                     //传入参数
                     easeUI.setUserProfileProvider(new EaseUI.EaseUserProfileProvider() {
                         @Override
                         public EaseUser getUser(String username) {
-                            EaseUser easeUser=new EaseUser(username);
+                            EaseUser easeUser = new EaseUser(username);
                             String member_avatar = SharedPreferencesUtil.getString(ChatActivity.this, "member_avatar");
                             String member_name = SharedPreferencesUtil.getString(ChatActivity.this, "member_name");
                             easeUser.setAvatar(member_avatar);
@@ -86,13 +78,6 @@ public class ChatActivity extends BaseActivity implements View.OnClickListener {
                     args.putString(EaseConstant.EXTRA_USER_ID, user);
                     chatFragment.setArguments(args);
                     getSupportFragmentManager().beginTransaction().add(R.id.container, chatFragment).commit();
-//                    activityInstance = this;
-//                    //聊天人或群id
-//                    toChatUsername = getIntent().getExtras().getString(EaseConstant.EXTRA_USER_ID);
-//                    chatFragment = new EaseChatFragment();
-//                    //传入参数
-//                    chatFragment.setArguments(getIntent().getExtras());
-//                    getSupportFragmentManager().beginTransaction().add(R.id.container, chatFragment).commit();
                     break;
                 case 1:
                     setTitleText("消息");

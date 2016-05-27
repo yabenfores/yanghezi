@@ -120,10 +120,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         manager = getSupportFragmentManager();
-        EMOptions options = new EMOptions();
-        // 默认添加好友时，是不需要验证的，改成需要验证
-        options.setAcceptInvitationAlways(false);
-        EaseUI.getInstance().init(getAppContext(), options);
+
         setTitleVisibility(View.GONE);
         myHandler.sendEmptyMessageDelayed(0, 50);
 
@@ -244,13 +241,20 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         // TODO Auto-generated method stub
 
         try {
-            if (progress.getVisibility()==View.VISIBLE){
+            if (progress.getVisibility() == View.VISIBLE) {
                 v.setClickable(false);
             }
             switch (v.getId()) {
 
                 case R.id.gou_wu_advisory:
-                    startActivity(new Intent(MainActivity.this, ChatActivity.class));
+                    if (UserUitls.isLongin(MainActivity.this)) {
+                        String user_msg_helper = SharedPreferencesUtil.getString(getBaseContext(), "user_msg_helper");
+                        Intent i = new Intent(this, ChatActivity.class);
+                        i.putExtra(EaseConstant.EXTRA_USER_ID, user_msg_helper);
+                        startActivity(i);
+                    }else {
+                        UserUitls.longInDialog(this);
+                    }
                     break;
                 case R.id.main_host01:
                     if (contentIndex != 0)
@@ -313,11 +317,11 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         switch (i) {
             case 0:
                 contentIndex = 0;
-                main_host_image01.setBackgroundResource(R.drawable.main_host01_host);
-                main_host_image02.setBackgroundResource(R.drawable.main_host02);
-                main_host_image03.setBackgroundResource(R.drawable.main_host03);
-                main_host_image04.setBackgroundResource(R.drawable.main_host04);
-                main_host_image05.setBackgroundResource(R.drawable.main_host05);
+                main_host_image01.setImageResource(R.drawable.main_host01_host);
+                main_host_image02.setImageResource(R.drawable.main_host02);
+                main_host_image03.setImageResource(R.drawable.main_host03);
+                main_host_image04.setImageResource(R.drawable.main_host04);
+                main_host_image05.setImageResource(R.drawable.main_host05);
                 gor_wu_title_layout.setVisibility(View.VISIBLE);
                 main_title_layout.setVisibility(View.VISIBLE);
                 to_top.setVisibility(View.VISIBLE);
@@ -339,12 +343,12 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 break;
             case 1:
                 contentIndex = 1;
-                main_host_image01.setBackgroundResource(R.drawable.main_host01);
-                main_host_image02.setBackgroundResource(R.drawable.main_host02_host);
-                main_host_image03.setBackgroundResource(R.drawable.main_host03);
-                main_host_image04.setBackgroundResource(R.drawable.main_host04);
-                main_host_image05.setBackgroundResource(R.drawable.main_host05);
-                gor_wu_title_layout.setVisibility(View.VISIBLE);
+                main_host_image01.setImageResource(R.drawable.main_host01);
+                main_host_image02.setImageResource(R.drawable.main_host02_host);
+                main_host_image03.setImageResource(R.drawable.main_host03);
+                main_host_image04.setImageResource(R.drawable.main_host04);
+                main_host_image05.setImageResource(R.drawable.main_host05);
+                gor_wu_title_layout.setVisibility(View.GONE);
                 main_title_layout.setVisibility(View.VISIBLE);
                 to_top.setVisibility(View.GONE);
 
@@ -367,11 +371,11 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 break;
             case 2:
                 contentIndex = 2;
-                main_host_image01.setBackgroundResource(R.drawable.main_host01);
-                main_host_image02.setBackgroundResource(R.drawable.main_host02);
-                main_host_image03.setBackgroundResource(R.drawable.main_host03_host);
-                main_host_image04.setBackgroundResource(R.drawable.main_host04);
-                main_host_image05.setBackgroundResource(R.drawable.main_host05);
+                main_host_image01.setImageResource(R.drawable.main_host01);
+                main_host_image02.setImageResource(R.drawable.main_host02);
+                main_host_image03.setImageResource(R.drawable.main_host03_host);
+                main_host_image04.setImageResource(R.drawable.main_host04);
+                main_host_image05.setImageResource(R.drawable.main_host05);
                 gor_wu_title_layout.setVisibility(View.VISIBLE);
                 main_title_layout.setVisibility(View.VISIBLE);
                 to_top.setVisibility(View.GONE);
@@ -396,11 +400,11 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 break;
             case 3:
                 contentIndex = 3;
-                main_host_image01.setBackgroundResource(R.drawable.main_host01);
-                main_host_image02.setBackgroundResource(R.drawable.main_host02);
-                main_host_image03.setBackgroundResource(R.drawable.main_host03);
-                main_host_image04.setBackgroundResource(R.drawable.main_host04_host);
-                main_host_image05.setBackgroundResource(R.drawable.main_host05);
+                main_host_image01.setImageResource(R.drawable.main_host01);
+                main_host_image02.setImageResource(R.drawable.main_host02);
+                main_host_image03.setImageResource(R.drawable.main_host03);
+                main_host_image04.setImageResource(R.drawable.main_host04_host);
+                main_host_image05.setImageResource(R.drawable.main_host05);
                 main_title_layout.setVisibility(View.GONE);
                 gor_wu_title_layout.setVisibility(View.GONE);
                 to_top.setVisibility(View.GONE);
@@ -418,11 +422,11 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 break;
             case 4:
                 contentIndex = 4;
-                main_host_image01.setBackgroundResource(R.drawable.main_host01);
-                main_host_image02.setBackgroundResource(R.drawable.main_host02);
-                main_host_image03.setBackgroundResource(R.drawable.main_host03);
-                main_host_image04.setBackgroundResource(R.drawable.main_host04);
-                main_host_image05.setBackgroundResource(R.drawable.main_host05_host);
+                main_host_image01.setImageResource(R.drawable.main_host01);
+                main_host_image02.setImageResource(R.drawable.main_host02);
+                main_host_image03.setImageResource(R.drawable.main_host03);
+                main_host_image04.setImageResource(R.drawable.main_host04);
+                main_host_image05.setImageResource(R.drawable.main_host05_host);
                 gor_wu_title_layout.setVisibility(View.GONE);
                 main_title_layout.setVisibility(View.GONE);
                 to_top.setVisibility(View.GONE);
@@ -478,7 +482,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
             String message = response.optString("message");
 
             if (response == null) {
-                Toast.makeText(this, message, Toast.LENGTH_LONG).show();
                 setMainProgress(View.GONE);
                 return;
             }
@@ -517,7 +520,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
             }
 
 
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 
         } catch (Exception e) {
             // TODO: handle exception

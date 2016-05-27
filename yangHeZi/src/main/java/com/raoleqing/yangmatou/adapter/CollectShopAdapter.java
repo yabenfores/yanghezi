@@ -4,29 +4,22 @@ import java.util.List;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.adapter.ShopAdapter.ViewHolder;
 import com.raoleqing.yangmatou.ben.CollectShop;
 import com.raoleqing.yangmatou.ben.Goods;
-import com.raoleqing.yangmatou.ben.Shop;
-import com.raoleqing.yangmatou.ben.Store;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
 import com.raoleqing.yangmatou.ui.shop.ShopActivity;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
-import com.raoleqing.yangmatou.uitls.UserUitls;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Handler;
-import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -87,7 +80,7 @@ public class CollectShopAdapter extends BaseAdapter{
 
 			final CollectShop mStore = sowShatList.get(position);
 			ImageLoader.getInstance().displayImage(mStore.getImg(), holder.store_icon,
-					YangMaTouApplication.imageOption(R.drawable.store_icon));
+					YangHeZiApplication.imageOption(R.drawable.store_icon));
 			holder.store_name.setText(mStore.getStore_name());
 			holder.store_fans.setText("|  粉丝：" + mStore.getFans());
 			holder.store_content.setText(mStore.getContent());
@@ -109,7 +102,7 @@ public class CollectShopAdapter extends BaseAdapter{
 				image.setScaleType(ImageView.ScaleType.CENTER_CROP);
 				image.setLayoutParams(new LinearLayout.LayoutParams(height, height));
 				ImageLoader.getInstance().displayImage(mGoods.getGoods_image(), image,
-						YangMaTouApplication.imageOption(R.drawable.image_icon01));
+						YangHeZiApplication.imageOption(R.drawable.image_icon01));
 				lyo.addView(image);
 				TextView price=new TextView(context);
 				RelativeLayout.LayoutParams tv_params = new RelativeLayout.LayoutParams(
@@ -184,11 +177,7 @@ public class CollectShopAdapter extends BaseAdapter{
 
 		CollectShop mCollectShop = sowShatList.get(position);
 			
-	/*	ImageLoader.getInstance().displayImage(mThreeData.getGc_thumb(), holder.cat_goodes_image,
-				YangMaTouApplication.imageOption(R.drawable.image_icon01));
-		holder.cat_goodes_text.setText(mThreeData.getGc_name());
-		*/
-	
+
 		return convertView;
 	}
 

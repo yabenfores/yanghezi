@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#fff"
+        android:background="@color/encode_view"
         android:gravity="center_vertical">
 
         <ImageView
@@ -21,6 +21,7 @@
             android:src="@drawable/ic_app_back" />
 
         <LinearLayout
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:gravity="center"
@@ -30,8 +31,9 @@
             android:orientation="horizontal">
 
             <EditText
+                android:background="#00ffffff"
                 android:id="@+id/goods_list_search"
-                style="@style/text03_type02"
+                style="@style/text16sp_typeblack"
                 android:layout_width="220dp"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"
@@ -46,7 +48,7 @@
                 android:id="@+id/iv_app_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/main_search_icon" />
+                android:background="@drawable/ic_search_gr" />
         </LinearLayout>
 
 

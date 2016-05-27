@@ -4,23 +4,22 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.http.Header;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
-import com.loopj.android.http.JsonHttpResponseHandler;
+import com.hyphenate.easeui.EaseConstant;
 import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
-import com.raoleqing.yangmatou.MainActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.EvaluationAdapter;
 import com.raoleqing.yangmatou.ben.Evaluation;
 import com.raoleqing.yangmatou.ben.WhRrea;
 import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.MyPagerAdapter;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
+import com.raoleqing.yangmatou.mi.ChatActivity;
 import com.raoleqing.yangmatou.uitls.LogUtil;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
@@ -29,9 +28,7 @@ import com.raoleqing.yangmatou.uitls.UserUitls;
 import com.raoleqing.yangmatou.view.DefaultValueEntity;
 import com.raoleqing.yangmatou.view.ValueEntity;
 import com.raoleqing.yangmatou.view.ValuePickerView;
-import com.raoleqing.yangmatou.webserver.BaseNetConnection;
 import com.raoleqing.yangmatou.webserver.Constant;
-import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
 
@@ -45,7 +42,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.WebView;
-import android.webkit.WebSettings.RenderPriority;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -71,6 +67,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
     private TextView goods_price01;
     private TextView goods_discount;
     private TextView goods_shipment;
+    private TextView goods_evaluation_empty;
     private TextView goods_sold;
     private Button goods_add;
     private TextView goods_number;
@@ -87,6 +84,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
     private View divider_goods_detail;
     private View divider_goods_comment;
     private WebView goods_detaile_webview;
+    private LinearLayout goodsSvc;
     private ListView goods_evaluation_list;//
 
     private List<String> goodsImageList = new ArrayList<String>();
@@ -174,14 +172,17 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         findViewById(R.id.lyo_goods_favorite).setOnClickListener(this);
         goods_detaile_webview = (WebView) findViewById(R.id.goods_detaile_webview);
         goods_evaluation_list = (ListView) findViewById(R.id.goods_evaluation_list);
-
+        goods_evaluation_empty = (TextView) findViewById(R.id.goods_evaluation_empty);
         adapter = new EvaluationAdapter(GoodsDetail.this, evaluationList);
         goods_evaluation_list.setAdapter(adapter);
 
+        goodsSvc= (LinearLayout) findViewById(R.id.lyo_goods_svc);
+        goodsSvc.setOnClickListener(this);
         activity_return.setOnClickListener(this);
         goodsd_detail_buy.setOnClickListener(this);
         goods_add.setOnClickListener(this);
         goods_del.setOnClickListener(this);
+
 
         goods_viewPager.setOnPageChangeListener(new OnPageChangeListener() {
 
@@ -208,7 +209,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             public void onConfirm(int[] selectPosition, ValueEntity[] selectValue) {
                 try {
                     whRrea = (WhRrea) selectValue[0].getObject();
-                    goods_shop_address.setText(whRrea.getWh_name());
+                    goods_shop_address.setText(whRrea.getWh_name() + "  ");
                 } catch (Exception ex) {
 //					throwEx(ex);
                 }
@@ -258,6 +259,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                         intent.putExtra("wh_id", whRrea.getWh_id());
                         intent.putExtra("goods_id", goods_id);
                         intent.putExtra("goodsName", goodsName);
+                        intent.putExtra("goods_image",goodsImageList.get(0));
                         startActivity(intent);
                         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                     } else {
@@ -284,6 +286,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     tv_goods_comment.setTextColor(getAppContext().getResources().getColor(R.color.text04));
                     divider_goods_comment.setVisibility(View.INVISIBLE);
                     goods_evaluation_list.setVisibility(View.GONE);
+                    goods_evaluation_empty.setVisibility(View.GONE);
                     tv_goods_detail.setTextColor(getAppContext().getResources().getColor(R.color.text01));
                     divider_goods_detail.setVisibility(View.VISIBLE);
                     goods_detaile_webview.setVisibility(View.VISIBLE);
@@ -291,7 +294,11 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                 case R.id.tv_goods_comment:
                     tv_goods_comment.setTextColor(getAppContext().getResources().getColor(R.color.text01));
                     divider_goods_comment.setVisibility(View.VISIBLE);
-                    goods_evaluation_list.setVisibility(View.VISIBLE);
+                    if (goods_evaluation_list == null) {
+                        goods_evaluation_empty.setVisibility(View.VISIBLE);
+                    } else {
+                        goods_evaluation_list.setVisibility(View.VISIBLE);
+                    }
                     tv_goods_detail.setTextColor(getAppContext().getResources().getColor(R.color.text04));
                     divider_goods_detail.setVisibility(View.INVISIBLE);
                     goods_detaile_webview.setVisibility(View.GONE);
@@ -309,6 +316,12 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     } else {
                         favoritesPorductStore(goods_id);
                     }
+                    break;
+                case R.id.lyo_goods_svc:
+                    String user_msg_helper= SharedPreferencesUtil.getString(getBaseContext(),"user_msg_helper");
+                    Intent i=new Intent(getBaseContext(),ChatActivity.class);
+                    i.putExtra(EaseConstant.EXTRA_USER_ID, user_msg_helper);
+                    startActivity(i);
                     break;
                 default:
                     break;
@@ -358,11 +371,8 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         //System.out.println(response);
 
         try {
-            int code = response.optInt("code");
-            String message = response.optString("message");
 
             if (response == null) {
-                Toast.makeText(GoodsDetail.this, message, Toast.LENGTH_LONG).show();
                 setProgressVisibility(View.GONE);
                 return;
             }
@@ -414,7 +424,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             goods_shop_name.setText(data.optString("store_name"));
 
             ImageLoader.getInstance().displayImage("", goods_shop_iocn,
-                    YangMaTouApplication.imageOption(R.drawable.store_icon));
+                    YangHeZiApplication.imageOption(R.drawable.store_icon));
             // html代码
             String goods_body = data.optString("goods_body");
 
@@ -430,11 +440,15 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                 mWhRrea.setWh_id(obj.optInt("wh_id"));
                 mWhRrea.setWh_name(obj.optString("wh_name"));
                 mWhRrea.setWh_area_info(obj.optString("wh_area_info"));
+
                 defaultValueEntity = new DefaultValueEntity(mWhRrea.getWh_id() + "", mWhRrea.getWh_name());
                 defaultValueEntity.setObject(mWhRrea);
                 whRreaList.add(defaultValueEntity);
+
             }
             setGoodsDesc(goods_body);
+            goods_shop_address.setText(whRreaList.get(0).getValue() + "   ");
+            whRrea = (WhRrea) whRreaList.get(0).getObject();
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -455,7 +469,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
             goods_detaile_webview.loadUrl(goods_desc);
             // 能够的调用JavaScript代码
-            // product_picture_html = new WebView(ProductDetails.this);
+//             product_picture_html = new WebView(ProductDetails.this);
 //            goods_detaile_webview.getSettings().setDefaultTextEncodingName("utf-8");
 //            // 加载HTML字符串进行显示
 //
@@ -500,34 +514,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             }
         });
 
-//        HttpUtil.post(GoodsDetail.this, HttpUtil.GOODS_REVIEW, params, new JsonHttpResponseHandler() {
-//
-//            // 获取数据成功会调用这里
-//            @Override
-//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                // TODO Auto-generated method stub
-//                super.onSuccess(statusCode, headers, response);
-//                goodsReviewResolveJson(response);
-//            }
-//
-//            // 失败
-//            @Override
-//            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-//                // TODO Auto-generated method stub
-//                super.onFailure(statusCode, headers, throwable, errorResponse);
-//                setProgressVisibility(View.GONE);
-//            }
-//
-//            // 结束
-//            @Override
-//            public void onFinish() {
-//                // TODO Auto-generated method stub
-//                super.onFinish();
-//                System.out.println("onFinish");
-//
-//            }
-//
-//        });
 
     }
 
@@ -599,7 +585,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             img.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
             ImageLoader.getInstance().displayImage(goodsImageList.get(i), img,
-                    YangMaTouApplication.imageOption(R.drawable.adv_manage_image));
+                    YangHeZiApplication.imageOption(R.drawable.adv_manage_image));
             viewList.add(img);
         }
 
@@ -760,7 +746,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         setProgressVisibility(View.VISIBLE);
 
 
-        NetHelper.favoritespro(goods_id+"", new NetConnectionInterface.iConnectListener3() {
+        NetHelper.favoritespro(goods_id + "", new NetConnectionInterface.iConnectListener3() {
             @Override
             public void onStart() {
 
@@ -775,14 +761,14 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             @Override
             public void onSuccess(JSONObject result) {
                 try {
-                    LogUtil.loge(getClass(),result.toString());
+                    LogUtil.loge(getClass(), result.toString());
 
                     if (result == null) {
                         setProgressVisibility(View.GONE);
                         return;
                     }
-                        tv_product_favorite.setSelected(true);
-                        tv_product_favorite.setText("取消收藏");
+                    tv_product_favorite.setSelected(true);
+                    tv_product_favorite.setText("取消收藏");
                 } catch (Exception e) {
                     // TODO: handle exception
                     e.printStackTrace();
@@ -836,8 +822,8 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     return;
                 }
 
-                    tv_product_favorite.setSelected(false);
-                    tv_product_favorite.setText("收藏");
+                tv_product_favorite.setSelected(false);
+                tv_product_favorite.setText("收藏");
 
             }
 

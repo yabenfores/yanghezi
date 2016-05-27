@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg04"
-    android:layout_marginTop="1dp"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -38,6 +37,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/lyo_goods_svc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -260,9 +260,12 @@
                         <TextView
                             android:id="@+id/goods_shop_address"
                             style="@style/text03_type02"
+                            android:text="         "
                             android:layout_width="wrap_content"
+                            android:drawableRight="@drawable/ic_app_down"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -336,7 +339,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="详情"
+                            android:text="图文详情"
                             android:textColor="@color/text01" />
 
                         <View
@@ -360,7 +363,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="评论"
+                            android:text="用户评论"
                             android:textColor="@color/text04" />
 
                         <View
@@ -397,6 +400,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#FFFFFF" />
+                    <TextView
+                        android:id="@+id/goods_evaluation_empty"
+                        style="@style/text04_type02"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="暂无用户评论"/>
                 </FrameLayout>
 
 

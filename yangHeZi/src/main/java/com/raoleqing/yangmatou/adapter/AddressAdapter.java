@@ -7,6 +7,8 @@ import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.Address;
 import com.raoleqing.yangmatou.ui.address.AddressActivity;
 import com.raoleqing.yangmatou.ui.goods.GoodsPayActivity;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
 
 import android.content.Context;
 import android.os.Handler;
@@ -22,6 +24,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.json.JSONObject;
 
 public class AddressAdapter extends BaseAdapter {
 
@@ -72,13 +76,13 @@ public class AddressAdapter extends BaseAdapter {
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		Address mAddress = addressList.get(position);
+		final Address mAddress = addressList.get(position);
 		holder.address_item_name.setText(mAddress.getTrue_name() + "        " + mAddress.getMob_phone());
 		holder.address_item_address.setText(mAddress.getAddress() + "    " + mAddress.getArea_info());
 
 		int isdefault = mAddress.getIs_default();
 		if (isdefault == 1) {
-			holder.address_item_default.isChecked();
+			holder.address_item_default.setChecked(true);
 
 		}
 
@@ -109,12 +113,58 @@ public class AddressAdapter extends BaseAdapter {
 		});
 		
 		
-		holder.address_item_default.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			
+		holder.address_item_default.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				// TODO Auto-generated method stub
+			public void onClick(View v) {
+				if (mAddress.getIs_default()==1){
+					NetHelper.edit_Address(mAddress.getAddress_id() + "", mAddress.getTrue_name(), mAddress.getArea_id() + "", mAddress.getCity_id() + "", mAddress.getArea_info(), mAddress.getAddress(), "", "0", mAddress.getMob_phone(), new NetConnectionInterface.iConnectListener3() {
+						@Override
+						public void onStart() {
+							context.setProgressVisibility(View.VISIBLE);
 
+						}
+
+						@Override
+						public void onFinish() {
+							context.setProgressVisibility(View.GONE);
+
+						}
+
+						@Override
+						public void onSuccess(JSONObject result) {
+							mAddress.setIs_default(0);
+						}
+
+						@Override
+						public void onFail(JSONObject result) {
+
+						}
+					});
+				}else {
+					NetHelper.edit_Address(mAddress.getAddress_id() + "", mAddress.getTrue_name(), mAddress.getArea_id() + "", mAddress.getCity_id() + "", mAddress.getArea_info(), mAddress.getAddress(), "", "1", mAddress.getMob_phone(), new NetConnectionInterface.iConnectListener3() {
+						@Override
+						public void onStart() {
+							context.setProgressVisibility(View.VISIBLE);
+
+						}
+
+						@Override
+						public void onFinish() {
+							context.setProgressVisibility(View.GONE);
+
+						}
+
+						@Override
+						public void onSuccess(JSONObject result) {
+							mAddress.setIs_default(1);
+						}
+
+						@Override
+						public void onFail(JSONObject result) {
+
+						}
+					});
+				}
 			}
 		});
 

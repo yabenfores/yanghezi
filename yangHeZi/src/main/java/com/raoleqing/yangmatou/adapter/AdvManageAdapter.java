@@ -4,8 +4,7 @@ import java.util.List;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.AdvManage;
-import com.raoleqing.yangmatou.ben.OneCat;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 
 /**
@@ -66,7 +64,7 @@ public class AdvManageAdapter extends BaseAdapter {
 
 		AdvManage mAdvManage = advManageList.get(position);
 		ImageLoader.getInstance().displayImage(mAdvManage.getAdv_image(), 
-				holder.adv_manage_iamge, YangMaTouApplication.imageOption(R.drawable.adv_manage_image));
+				holder.adv_manage_iamge, YangHeZiApplication.imageOption(R.drawable.adv_manage_image));
 
 		return convertView;
 	}

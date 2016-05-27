@@ -5,7 +5,7 @@ import java.util.List;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.Goods;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import android.content.Context;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
@@ -65,7 +65,7 @@ public class GoodsListAdapter extends BaseAdapter {
 			Goods mGoods = goodsList.get(position);
 			
 			ImageLoader.getInstance().displayImage(mGoods.getGoods_image(), holder.goods_image,
-					YangMaTouApplication.imageOption(R.drawable.image_icon01));
+					YangHeZiApplication.imageOption(R.drawable.image_icon01));
 			// 0无促销，1团购，2限时折扣
 			// goods_promotion_price 原价是：goods_marketprice
 			// 折扣：goods_promotion_price/goods_marketprice*10
@@ -88,7 +88,7 @@ public class GoodsListAdapter extends BaseAdapter {
 			}
 
 			holder.goods_name.setText(mGoods.getGoods_name());
-		
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.text.InputType;
 import android.util.Base64;
 import android.util.Log;
@@ -23,8 +22,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.MainActivity;
 import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
-import com.raoleqing.yangmatou.ui.user.UserFragment;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.uitls.UserUitls;
@@ -101,7 +99,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
             String member_avatar = SharedPreferencesUtil.getString(loginActivity.this, "member_avatar");
 
             ImageLoader.getInstance().displayImage(member_avatar, user_icon,
-                    YangMaTouApplication.imageOption(R.drawable.user_icon));
+                    YangHeZiApplication.imageOption(R.drawable.user_icon));
         }
         boolean rememberPassword = SharedPreferencesUtil.getBoolean(loginActivity.this, "remember_password", false);
         if (rememberPassword) {

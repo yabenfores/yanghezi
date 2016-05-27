@@ -13,55 +13,53 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class PaaCreator {
-	public static JSONObject randomPaa() {
+	public static JSONObject randomPaa(JSONObject object) {
 		String amount = "5010";
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-		String timeStr = dateFormat.format(new Date());
-		String orderStr = timeStr + "0000";
 
 		JSONObject paaParams = new JSONObject();
 		try {
 			paaParams.put("inputCharset", "1");
-			paaParams.put("receiveUrl", "http://114.67.59.57/app/index.php/Home/Pay/notifyurl");
+			paaParams.put("receiveUrl", object.optString("tl_receiveUrl"));
 			paaParams.put("version", "v1.0");
 			paaParams.put("signType", "1");
-			paaParams.put("merchantId", "100020091218001");
-			paaParams.put("orderNo", orderStr);
-			paaParams.put("orderAmount", amount);
-			paaParams.put("orderCurrency", "0");
-			paaParams.put("orderDatetime", timeStr);
-			paaParams.put("productName", "贝拉米磨牙棒");
+			paaParams.put("merchantId", object.optString("tl_merchantid"));
+			paaParams.put("orderNo", object.optString("tl_orderno"));
+			paaParams.put("orderAmount", object.optString("orderAmount"));
+			paaParams.put("orderCurrency", object.optString("tl_ordercurrency"));
+			paaParams.put("orderDatetime", object.optString("tl_order_add_time"));
+			paaParams.put("productName", object.optString("productName"));
 //			paaParams.put("ext1", ext1FromInput());
 //			paaParams.put("ext1", "<USER>201406231006545</USER>");
 			paaParams.put("payType", "27");
 //			paaParams.put("issuerId", "visa");
 //			paaParams.put("tradeNature", "GOODS");
 //			paaParams.put("language", "3");
-			paaParams.put("cardNo", "");
+//			paaParams.put("cardNo", object.optString("userCard"));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 
 		String[] paaParamsArray = {
 				"1","inputCharset",
-				"http://114.67.59.57/app/index.php/Home/Pay/notifyurl","receiveUrl",
+				object.optString("tl_receiveUrl"),"receiveUrl",
 				"v1.0","version",
 //				"3","language",
 				"1","signType",
-				"100020091218001","merchantId",
-				orderStr,"orderNo",
-				amount,"orderAmount",
-				"0","orderCurrency",
-				timeStr,"orderDatetime",
-				"贝拉米磨牙棒", "productName",
+				object.optString("tl_merchantid"),"merchantId",
+				object.optString("tl_orderno"),"orderNo",
+				object.optString("orderAmount"),"orderAmount",
+				object.optString("tl_ordercurrency"),"orderCurrency",
+				object.optString("tl_order_add_time"),"orderDatetime",
+				object.optString("productName"), "productName",
 //				ext1FromInput(),"ext1",
 //			    "<USER>201406231006545</USER>","ext1",
 				"27","payType",
 //				"visa","issuerId",
 //				"GOODS","tradeNature",
-				"1234567890","key",
+				object.optString("tl_key"),"key",
 		};
 
 		String paaStr = "";

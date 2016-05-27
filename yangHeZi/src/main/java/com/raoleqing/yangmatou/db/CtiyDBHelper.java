@@ -16,7 +16,7 @@ import android.os.Environment;
 public class CtiyDBHelper {
 	
 	public static final String DATABASE_FILENAME = "china_province_city_zone.db"; // 这个是DB文件名字  
-    public static final String PACKAGE_NAME = "com.raoleqing.yangmatou"; // 这个是自己项目包路径  
+    public static final String PACKAGE_NAME = "com.raoleqing.yanghezi"; // 这个是自己项目包路径
     public static final String DATABASE_PATH = "/data"+  
              Environment.getDataDirectory().getAbsolutePath() + "/"  
             + PACKAGE_NAME+"/"; // 获取存储位置地址  
@@ -34,7 +34,7 @@ public class CtiyDBHelper {
 				dir.mkdirs();
 			}
 
-			File file = new File("/data/data/com.raoleqing.yangmatou/xiongshen.db");
+			File file = new File("/data/data/com.raoleqing.yanghezi/xiongshen.db");
 
 			if (!file.exists()) {
 				InputStream is = context.getResources().openRawResource(R.raw.china_province_city_zone);

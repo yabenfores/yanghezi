@@ -33,7 +33,7 @@
                     style="@style/text02_type03"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
                     android:maxWidth="160dp"
                     android:singleLine="true"
                     android:text="店名：" />
@@ -179,55 +179,32 @@
             android:gravity="right"
             android:orientation="horizontal" >
 
-            <TextView
+            <Button
                 android:id="@+id/btn_order_cancel"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/button_selector_background05"
-                android:gravity="center"
+                style="@style/order_button"
                 android:text="取消定单"
-                android:visibility="gone" />
+                />
 
-            <TextView
+            <Button
                 android:id="@+id/btn_order_pay"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
+                style="@style/order_button"
                 android:background="@drawable/button_selector_background02"
-                android:gravity="center"
                 android:text="去支付" />
-            <TextView
+            <Button
                 android:id="@+id/btn_order_tip"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/button_selector_background02"
-                android:gravity="center"
-                android:text="提现发货" />
-            <TextView
+                style="@style/order_button"
+                android:text="提醒发货" />
+            <Button
                 android:id="@+id/btn_order_confirm"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/button_selector_background02"
-                android:gravity="center"
+                style="@style/order_button"
                 android:text="确认收货" />
-            <TextView
+            <Button
                 android:id="@+id/btn_order_eval"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/button_selector_background02"
-                android:gravity="center"
+                style="@style/order_button"
                 android:text="去评价" />
-            <TextView
+            <Button
                 android:id="@+id/btn_order_back"
-                android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/button_selector_background02"
-                android:gravity="center"
+                style="@style/order_button"
                 android:text="申请售后" />
         </LinearLayout>
     </LinearLayout>

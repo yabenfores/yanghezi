@@ -3,13 +3,10 @@ package com.raoleqing.yangmatou.adapter;
 import java.util.List;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.ben.AdvManage;
 import com.raoleqing.yangmatou.ben.Goods;
-import com.raoleqing.yangmatou.ben.OneCat;
 import com.raoleqing.yangmatou.ben.Store;
-import com.raoleqing.yangmatou.common.YangMaTouApplication;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
-import com.raoleqing.yangmatou.ui.goods.GoodsListActivity;
 import com.raoleqing.yangmatou.ui.shop.ShopActivity;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.uitls.UserUitls;
@@ -92,7 +89,7 @@ public class StoreAdapter extends BaseAdapter {
 
 			final Store mStore = storeList.get(position);
 			ImageLoader.getInstance().displayImage(mStore.getImg(), holder.store_icon,
-					YangMaTouApplication.imageOption(R.drawable.store_icon));
+					YangHeZiApplication.imageOption(R.drawable.store_icon));
 			holder.store_name.setText(mStore.getStore_name());
 			holder.store_fans.setText("|  粉丝：" + mStore.getFans());
 			holder.store_content.setText(mStore.getContent());
@@ -114,7 +111,7 @@ public class StoreAdapter extends BaseAdapter {
 				image.setScaleType(ScaleType.CENTER_CROP);
 				image.setLayoutParams(new LinearLayout.LayoutParams(height, height));
 				ImageLoader.getInstance().displayImage(mGoods.getGoods_image(), image,
-						YangMaTouApplication.imageOption(R.drawable.image_icon01));
+						YangHeZiApplication.imageOption(R.drawable.image_icon01));
 				lyo.addView(image);
 				TextView price=new TextView(context);
 				RelativeLayout.LayoutParams tv_params = new RelativeLayout.LayoutParams(

@@ -23,6 +23,7 @@
 
         <EditText
             android:id="@+id/et_app_mobile"
+            android:background="#00ffffff"
             style="@style/text03_type01"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -80,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_margin="10dp"
-        android:background="@drawable/button_selector_background03"
+        android:background="@drawable/button_selector_background04"
         android:text="绑定" />
 
    

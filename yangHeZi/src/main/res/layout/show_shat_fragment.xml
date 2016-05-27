@@ -28,7 +28,7 @@
                 android:background="@drawable/show_icon01" />
 
             <TextView
-                style="@style/text03_type01"
+                style="@style/text02_type02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
@@ -36,7 +36,7 @@
         </LinearLayout>
 
         <TextView
-            style="@style/text03_type03"
+            style="@style/text02_type04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -60,7 +60,7 @@
                 android:background="@drawable/show_icon02" />
 
             <TextView
-                style="@style/text03_type01"
+                style="@style/text02_type02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
@@ -69,13 +69,13 @@
     </RelativeLayout>
 
    
-    <ListView
+    <com.raoleqing.yangmatou.xlist.XListView
         android:layout_below="@id/base_title_layout"
         android:id="@+id/show_lsit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-    </ListView>
+    </com.raoleqing.yangmatou.xlist.XListView>
 
 
 </RelativeLayout>

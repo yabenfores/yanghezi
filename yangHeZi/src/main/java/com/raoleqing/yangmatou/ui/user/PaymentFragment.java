@@ -58,7 +58,6 @@ public class PaymentFragment extends Fragment implements OnClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		View view = inflater.inflate(R.layout.payment_fragment, null);
-
 		viewInfo(view);
 		getData();
 		return view;
@@ -128,11 +127,8 @@ protected void resolveJson(JSONObject response) {
 	System.out.println(response);
 
 	try {
-		int code = response.optInt("code");
-		String message = response.optString("message");
 
 		if (response == null) {
-			Toast.makeText(getActivity(), message, 1).show();
 			((OrderActivity) getActivity()).setMainProgress(View.GONE);
 			return;
 		}
@@ -148,12 +144,19 @@ protected void resolveJson(JSONObject response) {
 				JSONObject obj = data.optJSONObject(i);
 				Order mOrder = new Order();
 				mOrder.setOrder_id(obj.optString("order_id"));
+				mOrder.setOrder_sn(obj.optString("order_sn"));
 				mOrder.setGoods_amount(obj.optDouble("goods_amount"));
 				mOrder.setOrder_amount(obj.optDouble("order_amount"));
 				mOrder.setStore_name(obj.optString("store_name"));
+				mOrder.setStore_label(obj.optString("store_label"));
+				mOrder.setGoods_num(obj.optInt("goods_num"));
+				mOrder.setShipping_fee(obj.optDouble("shipping_fee"));
+				JSONArray array=obj.getJSONArray("extend_order_goods");
+				JSONObject jsonObject=array.optJSONObject(0);
+				mOrder.setExtend_order_goods(jsonObject);
 				mOrder.setOrder_state(obj.optInt("order_state"));
 				mOrder.setPay_sn(obj.optString("pay_sn"));
-				mOrder.setCreatetime(obj.optString("createtime"));
+				mOrder.setAdd_time(obj.optLong("add_time"));
 				orderList.add(mOrder);
 				
 			}

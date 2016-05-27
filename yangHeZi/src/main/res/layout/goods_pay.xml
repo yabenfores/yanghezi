@@ -132,6 +132,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -161,6 +162,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
+                        android:layout_marginTop="1dp"
                         android:layout_width="wrap_content"
                         android:background="@drawable/ic_app_buy_tip"
                         android:layout_height="wrap_content" />
@@ -190,18 +192,20 @@
 
                     <ImageView
                         android:id="@+id/goods_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:background="@drawable/image_icon01"
-                        android:scaleType="center" />
+                        android:scaleType="fitCenter" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:orientation="vertical">
 
                         <TextView
+                            android:gravity="center_vertical"
+                            android:layout_weight="1"
                             android:id="@+id/goods_name"
                             style="@style/text03_type01"
                             android:layout_width="match_parent"
@@ -280,6 +284,7 @@
                             android:text="-" />
 
                         <TextView
+                            android:background="@drawable/background_selector10"
                             android:id="@+id/goods_number"
                             android:layout_width="60dp"
                             android:layout_height="wrap_content"
@@ -368,6 +373,7 @@
                         android:text="买家留言：" />
 
                     <EditText
+                        android:id="@+id/et_app_massage"
                         style="@style/text03_type01"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -467,12 +473,45 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:checked="true"
+                    android:drawableLeft="@drawable/ic_pay_un"
                     android:gravity="center_vertical"
-                    android:text="联通支付" />
+                    android:text=" 通联支付" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1px"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/line01" />
+                <RadioButton
+                    android:id="@+id/radio2"
+                    android:layout_width="match_parent"
+                    android:drawableLeft="@drawable/ic_pay_wechat"
+                    android:layout_height="40dp"
+                    android:checked="false"
+                    android:visibility="gone"
+                    android:gravity="center_vertical"
+                    android:text=" 微信支付" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:background="@color/line01" />
+                <RadioButton
+                    android:id="@+id/radio3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:drawableLeft="@drawable/ic_pay_ali"
+                    android:checked="false"
+                    android:visibility="gone"
+                    android:gravity="center_vertical"
+                    android:text=" 支付宝支付" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:visibility="gone"
                     android:layout_marginTop="5dp"
                     android:background="@color/line01" />
 

@@ -143,9 +143,8 @@
 
             <ImageView
                 android:id="@+id/main_host_image01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/main_host01_host" />
+                style="@style/main_bar_image"
+                android:src="@drawable/main_host01_host" />
 
             <TextView
                 android:id="@+id/main_host_text01"
@@ -166,9 +165,8 @@
 
             <ImageView
                 android:id="@+id/main_host_image02"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/main_host02" />
+                style="@style/main_bar_image"
+                android:src="@drawable/main_host02" />
 
             <TextView
                 android:id="@+id/main_host_text02"
@@ -189,9 +187,8 @@
 
             <ImageView
                 android:id="@+id/main_host_image03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/main_host03" />
+                style="@style/main_bar_image"
+                android:src="@drawable/main_host03" />
 
             <TextView
                 android:id="@+id/main_host_text03"
@@ -212,9 +209,8 @@
 
             <ImageView
                 android:id="@+id/main_host_image04"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/main_host04" />
+                style="@style/main_bar_image"
+                android:src="@drawable/main_host04" />
 
             <TextView
                 android:id="@+id/main_host_text04"
@@ -235,9 +231,8 @@
 
             <ImageView
                 android:id="@+id/main_host_image05"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/main_host05" />
+                style="@style/main_bar_image"
+                android:src="@drawable/main_host05" />
 
             <TextView
                 android:id="@+id/main_host_text05"

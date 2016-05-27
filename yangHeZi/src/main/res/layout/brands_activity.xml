@@ -17,7 +17,7 @@
             android:layout_height="50dp"
             android:background="@drawable/button_selector_background01"
             android:scaleType="center"
-            android:src="@drawable/return_icon" />
+            android:src="@drawable/ic_app_back" />
 
         <TextView
             style="@style/text03_type03"

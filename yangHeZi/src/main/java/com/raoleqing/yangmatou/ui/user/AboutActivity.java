@@ -10,6 +10,7 @@ import com.raoleqing.yangmatou.webserver.NetHelper;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
 
@@ -47,6 +48,41 @@ public class AboutActivity extends BaseActivity implements OnClickListener {
     private void setView(int i) {
         switch (i){
             case 0:
+                NetHelper.tariff(new NetConnectionInterface.iConnectListener3() {
+                    @Override
+                    public void onStart() {
+                        setProgressVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        setProgressVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onSuccess(JSONObject result) {
+
+                        String json=result.optString(Constant.DATA);
+                        if (json != null && !json.equals("")) {
+
+//                             能够的调用JavaScript代码
+                            webView.getSettings().setDefaultTextEncodingName("utf-8");
+            // 加载HTML字符串进行显示
+                            webView.getSettings().setJavaScriptEnabled(true);
+                            webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+                            webView.getSettings().setUseWideViewPort(true);
+                            webView.getSettings().setLoadWithOverviewMode(true);
+                            webView.setSaveEnabled(true);
+                            webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+                            webView.getSettings().setSupportZoom(true);// 支持缩放
+                            webView.loadDataWithBaseURL("",json, "text/html", "UTF-8","");// 这种写法可以正确解码
+                        }
+                    }
+
+                    @Override
+                    public void onFail(JSONObject result) {
+                    }
+                });
                 break;
             case 1:
                 NetHelper.aboutYhz(new NetConnectionInterface.iConnectListener3() {
@@ -74,6 +110,8 @@ public class AboutActivity extends BaseActivity implements OnClickListener {
 
                     }
                 });
+            default:
+                break;
         }
     }
 

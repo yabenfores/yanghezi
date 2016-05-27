@@ -37,5 +37,13 @@ public class Constant {
     public final static String MEMBER_AVATAR="/Home/Users/member_avatar";//修改头像
     public final static String ABOUTYHZ="/Home/Index/aboutYhz";//关于
     public final static String FLASHSALE="/Home/Index/flashSale";//热卖
+    public final static String ORDERCANCEL="/Home/Orders/ordercancel";//取消订单
+    public final static String SUBMITORDER="/Home/Orders/submitOrder";//提交订单
+    public final static String EDITUSERNAME="/Home/Users/editUserName";//修改昵称
+    public final static String EVALUATE="/Home/Evaluate/Index";//秀一秀
+    public final static String ADIMGINFO="/Home/Evaluate/AdimgInfo";//秀一秀广告
+    public final static String ORDER_CONPAY="/Home/Orders/order_conpay";//继续支付
+    public final static String FLAGS="/Home/Evaluate/Flags";//国家
+    public final static String TARIFF="/Home/Orders/tariff";//进口税
 
 }
