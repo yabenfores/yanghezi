@@ -171,8 +171,9 @@
     <style name="shop_image">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">100dp</item>
-        <item name="android:scaleType">centerCrop</item>
+        <item name="android:scaleType">fitCenter</item>
         <item name="android:layout_weight">1</item>
+        <item name="android:visibility">gone</item>
     </style>
     <style name="order_button">
         <item name="android:layout_width">80dp</item>
@@ -182,7 +183,13 @@
         <item name="android:gravity">center</item>
         <item name="android:visibility">gone</item>
         <item name="android:textSize">14sp</item>
+    </style>
 
+    <style name="brand_tv">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:background">@drawable/bg_tv_red</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>

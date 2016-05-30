@@ -333,7 +333,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 main_host_text05.setTextColor(text02);
                 gouWuGuangChangFragment = GouWuGuangChangFragment.newInstance();
                 transaction.replace(R.id.main_content, gouWuGuangChangFragment, "MainFragment");
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
 
                 if (oneCatList.size() > 0) {
                     setTitleContent(oneCatList);

@@ -2,6 +2,8 @@ package com.raoleqing.yangmatou.ui.showwhat;
 
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.adapter.CountryAdapter;
+import com.raoleqing.yangmatou.ben.Pavilion;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
@@ -15,11 +17,16 @@ import android.widget.ImageView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CountryActivity extends BaseActivity implements OnClickListener {
 
 	private ImageView country_return;
 	private GridView country_gridview;
+	private List<Pavilion> pavilionList = new ArrayList<Pavilion>();
 
+	private CountryAdapter adapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,6 +39,8 @@ public class CountryActivity extends BaseActivity implements OnClickListener {
 		country_return = (ImageView) findViewById(R.id.country_return);
 		country_gridview= (GridView) findViewById(R.id.country_gridview);
 		country_return.setOnClickListener(this);
+		adapter=new CountryAdapter(this,pavilionList);
+		country_gridview.setAdapter(adapter);
 		getInfo();
 	}
 
@@ -70,8 +79,14 @@ public class CountryActivity extends BaseActivity implements OnClickListener {
 				return;
 			}
 			for (int i=0;i<jsonArray.length();i++){
-
+				Pavilion pavilion=new Pavilion();
+				JSONObject object=jsonArray.optJSONObject(i);
+				pavilion.setFlag_id(object.optInt("city_id"));
+				pavilion.setFlag_name(object.optString("city_name"));
+				pavilion.setFlag_imgSrc(object.optString("flag_imgSrc"));
+				pavilionList.add(pavilion);
 			}
+			adapter.notifyDataSetChanged();
 
 		} catch (Exception e) {
 			throwEx(e);

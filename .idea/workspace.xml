@@ -17,138 +17,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ef894bb-560d-43c5-ab9d-e56c2f2e4dcd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-nodpi/ic_eval_upload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/Android.mk" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jni/Application.mk" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CountryAdapter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/EvalActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_eval.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/host_fgm.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/BaseUploadFile.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/goods_filter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_advisory_icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_host01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_host01_host.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_host02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_host02_host.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_host03.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_host03_host.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_host04.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_host04_host.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_host05.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/main_host05_host.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/personal_nav_icon00.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/personal_nav_icon01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/personal_nav_icon02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/personal_nav_icon03.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/personal_nav_icon04.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/personal_nav_icon05.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/qrcode_icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/rating.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/rating_show.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/goods_filter.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_advisory_icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_host01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_host01_host.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_host02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_host02_host.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_host03.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_host03_host.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_host04.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_host04_host.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_host05.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/main_host05_host.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/personal_nav_icon00.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/personal_nav_icon01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/personal_nav_icon02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/personal_nav_icon03.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/personal_nav_icon04.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/personal_nav_icon05.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/qrcode_icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/rating.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/rating_show.png" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/YangMaTouApplication.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/YangHeZiApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/BrandAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopSaiAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/shop/ShopSai.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/Brand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable/bg_tv_red.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/brand_adapter.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/country_adapter.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/YangMaTou.iml" afterPath="$PROJECT_DIR$/YangMaTou.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/easeUI/build.gradle" afterPath="$PROJECT_DIR$/easeUI/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/BaseActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/BaseActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/AddressAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/AddressAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/AdvManageAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/AdvManageAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CatGoodesGridViewAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CatGoodesGridViewAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CollectShopAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CollectShopAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/EvaluationAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/EvaluationAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/GoodsGridAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/GoodsGridAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/GoodsListAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/GoodsListAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/OrderAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/OrderAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CountryAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CountryAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/LocNearAddressAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/LocNearAddressAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShowShatAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShowShatAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/StoreAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/StoreAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Order.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Order.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/ShowShat.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/ShowShat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/db/CtiyDBHelper.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/db/CtiyDBHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/DealsFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/DealsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/AdvManage.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/AdvManage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Pavilion.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Pavilion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/PoiInfo.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/PoiInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Shop.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Shop.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/SpecialTopicFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/SpecialTopicFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/mi/ChatActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/mi/ChatActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/AddressActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/AddressActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/EditAddressActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/EditAddressActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/classification/ClassificationActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/classification/ClassificationActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/MapActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/MapActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsListActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsListActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/login/loginActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/login/loginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/AllOrderFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/AllOrderFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/OrderActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/OrderActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/shop/ShopActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/shop/ShopActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/BrandsActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/BrandsActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/CountryActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/CountryActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/AboutActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/AboutActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/CollectActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/CollectActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/CollectShopFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/CollectShopFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/PaymentFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/PaymentFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ReceiptFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ReceiptFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ReturnFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ReturnFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ReviewFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ReviewFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SetActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SetActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SetTextActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SetTextActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ShipFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ShipFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/UserFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/UserFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/uitls/PaaCreator.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/uitls/PaaCreator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/BaseNetConnection.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/BaseNetConnection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/HttpUtil.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/HttpUtil.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/xlist/XListView.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/xlist/XListView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/about_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/about_activity.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_eval.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_eval.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/base_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/base_activity.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/bound_phone.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/bound_phone.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/brands_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/brands_activity.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/classification_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/classification_activity.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/collect_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/collect_activity.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/country_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/country_activity.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/edit_address.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/edit_address.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_detail.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_detail.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_gridview.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_gridview.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_list_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_list_activity.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_list_adapter.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_list_adapter.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_pay.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_pay.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/gou_wu_guang_chang.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/gou_wu_guang_chang.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/order_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/order_activity.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/order_adapter.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/order_adapter.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/progress.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/progress.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/set_text_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/set_text_activity.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_activity.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_adapter.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_adapter.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_adapter.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_adapter.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_fragment.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_fragment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_list_title.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_list_title.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/store_adapter.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/store_adapter.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/user_content_fragment.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/user_content_fragment.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/user_fragment.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/user_fragment.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/values/styles.xml" />
     </list>
@@ -180,61 +89,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="OrderAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/OrderAdapter.java">
+      <file leaf-file-name="CountryActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/CountryActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="186" column="45" selection-start-line="186" selection-start-column="45" selection-end-line="186" selection-end-column="45" />
+            <state vertical-scroll-proportion="-2.7118645">
+              <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GoodsDetail.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java">
+      <file leaf-file-name="country_activity.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/country_activity.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.8135593">
-              <caret line="472" column="71" selection-start-line="472" selection-start-column="71" selection-end-line="472" selection-end-column="71" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constant.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NetHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="148" column="77" selection-start-line="148" selection-start-column="77" selection-end-line="148" selection-end-column="77" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GoodsPayActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="420" column="5" selection-start-line="391" selection-start-column="3" selection-end-line="420" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="goods_pay.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_pay.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.1525426">
-              <caret line="155" column="57" selection-start-line="151" selection-start-column="16" selection-end-line="155" selection-end-column="57" />
+            <state vertical-scroll-proportion="-10.661017">
+              <caret line="39" column="31" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -243,53 +112,69 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AboutActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/AboutActivity.java">
+      <file leaf-file-name="ShopAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.7288136">
-              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShopActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/shop/ShopActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.474576">
+              <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
               <folding>
-                <element signature="e#1652#1653#0" expanded="true" />
-                <element signature="e#1735#1736#0" expanded="true" />
-                <element signature="e#1811#1812#0" expanded="true" />
-                <element signature="e#1891#1892#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="about_activity.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/about_activity.xml">
+      <file leaf-file-name="ShopSaiAdapter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopSaiAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.6949153">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6597938">
+              <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="base_activity.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/base_activity.xml">
+      <file leaf-file-name="brand_adapter.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/brand_adapter.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.677966">
-              <caret line="56" column="50" selection-start-line="56" selection-start-column="50" selection-end-line="56" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="collect_activity.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/collect_activity.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.04024145">
+            <state vertical-scroll-proportion="-3.3898306">
               <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
               <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="color.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/values/color.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.827586">
+              <caret line="7" column="21" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shop_activity.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_activity.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.305085">
+              <caret line="265" column="51" selection-start-line="265" selection-start-column="51" selection-end-line="265" selection-end-column="51" />
+              <folding>
+                <element signature="e#4876#9803#0" expanded="false" />
+              </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer">
@@ -303,8 +188,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="resourceFile" />
-        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -3525,57 +3410,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_activity.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/country_activity.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/progress.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/AddressActivity.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/edit_address.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/EditAddressActivity.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ReturnFragment.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/bound_phone.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/order_adapter.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/set_text_activity.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/GoodsListAdapter.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_list_adapter.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_gridview.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/classification_activity.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_list_activity.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/classification/ClassificationActivity.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsListActivity.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SetActivity.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/EvalActivity.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/UserFragment.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_detail.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SetTextActivity.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/gou_wu_guang_chang.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/host_fgm.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/DealsFragment.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/ShowShat.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/xlist/XListView.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShowShatAdapter.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_fragment.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/brands_activity.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/BrandsActivity.java" />
         <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_adapter.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_pay.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/store_adapter.xml" />
         <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatFragment.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java" />
         <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/OrderActivity.java" />
         <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/OrderAdapter.java" />
         <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/uitls/PaaCreator.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CountryAdapter.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/CountryActivity.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java" />
         <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/AboutActivity.java" />
         <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/about_activity.xml" />
-        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/base_activity.xml" />
         <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/collect_activity.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/EditAddressActivity.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/HttpUtil.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/AddressActivity.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Pavilion.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/AdvManage.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/base_activity.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_pay.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/order_activity.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_list_activity.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/user_fragment.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_fragment.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_eval.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/CountryActivity.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/country_activity.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/drawable/bg_tv_red.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/brands_activity.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/Brand.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/store_adapter.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/StoreAdapter.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/BrandAdapter.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/shop/ShopSai.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/BrandsActivity.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Shop.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_adapter.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_detail.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopAdapter.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/country_adapter.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CountryAdapter.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/PoiInfo.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/LocNearAddressAdapter.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/MapActivity.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_activity.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/shop/ShopActivity.java" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/res/layout/brand_adapter.xml" />
+        <option value="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopSaiAdapter.java" />
       </list>
     </option>
   </component>
@@ -3610,16 +3495,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="AndroidView">
@@ -3873,195 +3748,15 @@
               <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yangmatou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yangHeZi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yangmatou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yangHeZi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yangmatou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="goods" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yangHeZi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yangmatou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yangHeZi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yangmatou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="adapter" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="YangMaTou" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="yangHeZi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="com" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -4072,7 +3767,7 @@
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="device.picker.selection" value="c2a6312a" />
-    <property name="SearchEverywhereHistoryKey" value="CollectActivit&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/collect_activity.xml&#10;base&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/base_activity.xml&#10;Go&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java&#10;abou&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/AboutActivity.java&#10;p&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java&#10;CountryActivity&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/CountryActivity.java&#10;pa&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java&#10;Ne&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java&#10;Co&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java&#10;Order&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/OrderAdapter.java&#10;B&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/BaseNetConnection.java&#10;Net&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.webserver.NetConnection&#10;pay&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java&#10;G&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java&#10;Sh&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatFragment.java&#10;Con&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java&#10;or&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/AllOrderFragment.java&#10;Pay&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java&#10;order&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.order.OrderActivity&#10;CountryActivit&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.showwhat.CountryActivity&#10;BrandsActivit&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.showwhat.BrandsActivity&#10;u&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/UserFragment.java&#10;us&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/UserFragment.java&#10;Ma&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java&#10;Gou&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.main.GouWuGuangChangFragment&#10;set&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SetTextActivity.java&#10;show&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.showwhat.ShowShatFragment&#10;GoodsDetail&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java&#10;EvalActivit&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/EvalActivity.java&#10;GoodsPayActivity&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java&#10;Goo&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsListActivity.java&#10;ClassificationActivity&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/classification/ClassificationActivity.java&#10;Good&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsListActivity.java&#10;st&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/values/styles.xml&#10;ordera&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/order_adapter.xml&#10;SetTextActivity&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SetTextActivity.java&#10;SafetyActivit&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/safety_activity.xml&#10;BoundPhon&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.user.BoundPhone&#10;Ba&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/base_activity.xml&#10;GoodsListActivity&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsListActivity.java&#10;AddressActivit&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.address.AddressActivity&#10;App&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/YangHeZiApplication.java&#10;bas&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/BaseActivity.java&#10;user&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/user_fragment.xml&#10;Chat&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/mi/ChatActivity.java&#10;ShopActivity&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/shop_activity.xml&#10;Cla&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/classification_activity.xml&#10;color&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/values/color.xml&#10;sty&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/values/styles.xml&#10;YangMaTouApplication&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/YangMaTouApplication.java" />
+    <property name="SearchEverywhereHistoryKey" value="Cou&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.showwhat.CountryActivity&#10;shop&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/shop/ShopActivity.java&#10;MapActivity&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/MapActivity.java&#10;CountryActivity&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/CountryActivity.java&#10;GoodsDetail&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/goods_detail.xml&#10;Coun&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.adapter.CountryAdapter&#10;gou&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java&#10;B&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/Brand.java&#10;Sho&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Shop.java&#10;Net&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java&#10;Co&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java&#10;pay&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.goods.GoodsPayActivity&#10;Add&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.address.AddressActivity&#10;stor&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/StoreAdapter.java&#10;S&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/StoreAdapter.java&#10;Go&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java&#10;store&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/StoreAdapter.java&#10;C&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java&#10;sto&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/StoreAdapter.java&#10;gouw&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java&#10;show&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.adapter.ShowShatAdapter&#10;ShopActivity&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.shop.ShopActivity&#10;P&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ben.Pavilion&#10;Con&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java&#10;Ma&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java&#10;sty&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/values/styles.xml&#10;BrandsActivity&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/BrandsActivity.java&#10;goo&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java&#10;ba&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/base_activity.xml&#10;us&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/user_fragment.xml&#10;b&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/base_activity.xml&#10;base&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/base_activity.xml&#10;main&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java&#10;ma&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java&#10;adv&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ben.AdvManage&#10;Stor&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/StoreAdapter.java&#10;GoodsDetai&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java&#10;Ne&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java&#10;A&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.address.AddressActivity&#10;EditAddressActivit&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.address.EditAddressActivity&#10;CollectActivit&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/res/layout/collect_activity.xml&#10;abou&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/AboutActivity.java&#10;p&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java&#10;pa&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java&#10;Order&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/OrderAdapter.java&#10;G&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java&#10;Sh&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatFragment.java&#10;or&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/AllOrderFragment.java&#10;Pay&#9;FILE&#9;file://C:/YangMaTou/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java&#10;order&#9;PSI&#9;JAVA://com.raoleqing.yangmatou.ui.order.OrderActivity" />
     <property name="android.project.structure.last.selected" value="yangHeZi" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="last_opened_file_path" value="D:/work/android_IM_sdk_V3.1.2r2/examples" />
@@ -4081,7 +3776,10 @@
     <property name="ExportApk.BuildType" value="release" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\YangMaTou\yangHeZi\src\main\res\layout" />
+      <recent name="C:\YangMaTou" />
+      <recent name="C:\YangMaTou\yangHeZi\src\main\res\drawable-nodpi" />
       <recent name="C:\YangMaTou\yangHeZi\src\main\java\com\raoleqing\yangmatou\webserver" />
       <recent name="C:\YangMaTou\yangHeZi\src\main\java\com\raoleqing\yangmatou" />
     </key>
@@ -4093,12 +3791,11 @@
       <recent name="com.raoleqing.yangmatou.xlist" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.raoleqing.yangmatou.ui.shop" />
+      <recent name="com.raoleqing.yangmatou.adapter" />
       <recent name="com.raoleqing.yangmatou.mi" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\YangMaTou\yangHeZi\src\main\res\layout" />
-      <recent name="C:\YangMaTou" />
-      <recent name="C:\YangMaTou\yangHeZi\src\main\res\drawable-nodpi" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\YangMaTou\yangHeZi\src\main\java\com\raoleqing\yangmatou\webserver" />
       <recent name="C:\YangMaTou\yangHeZi\src\main\java\com\raoleqing\yangmatou" />
     </key>
@@ -4433,8 +4130,8 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910814" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3478261" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22014925" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42697883" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22014925" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27759197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -4443,7 +4140,6 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16044776" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33890748" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -4456,6 +4152,7 @@
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33890748" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -4463,7 +4160,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910814" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3478261" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42697883" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -4559,7 +4256,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/EditAddressActivity.java</url>
-          <line>334</line>
+          <line>335</line>
           <properties />
           <option name="timeStamp" value="145" />
         </line-breakpoint>
@@ -4623,11 +4320,23 @@
           <properties />
           <option name="timeStamp" value="184" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopAdapter.java</url>
+          <line>100</line>
+          <properties />
+          <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/MapActivity.java</url>
+          <line>251</line>
+          <properties />
+          <option name="timeStamp" value="195" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="185" />
+      <option name="time" value="196" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="yangMaTou">
@@ -4642,38 +4351,40 @@
         <watch expression=" heightsize * (UnitConverterUtils.dip2px(context, 10) + height)" />
       </configuration>
       <configuration name="yangHeZi">
-        <watch expression="viewList.size()" language="JAVA" custom="" />
-        <watch expression="obj.optString(&quot;adv_image&quot;)" />
-        <watch expression="advManageList" />
-        <watch expression="nAdvManage" />
-        <watch expression="main_viewPager" />
-        <watch expression="view.findViewById(R.id.main_viewPager)" />
-        <watch expression="object" />
-        <watch expression="mOrder.getOrder_amount()*100" />
+        <watch expression="goods_marketprice" />
+        <watch expression="data.optString(&quot;goods_freight&quot;)" />
+        <watch expression="object.optString(&quot;goods_images&quot;)" />
+        <watch expression="mShop.getFlag_name()" />
+        <watch expression="mShop" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SetActivity.java">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/drawable/button_selector_background05.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="93" column="71" selection-start-line="92" selection-start-column="8" selection-end-line="93" selection-end-column="71" />
-          <folding />
+        <state vertical-scroll-proportion="0.5263158">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/classification/ClassificationActivity.java">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/drawable/background_selector4.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="52" selection-start-line="66" selection-start-column="52" selection-end-line="66" selection-end-column="52" />
-          <folding />
+        <state vertical-scroll-proportion="0.21929824">
+          <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_detail.xml">
+    <entry file="file://E:/l/Android/sdk/sources/android-23/android/widget/RadioGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="50" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.9072165">
+          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75586855">
+          <caret line="110" column="44" selection-start-line="110" selection-start-column="44" selection-end-line="110" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -4681,27 +4392,74 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SetTextActivity.java">
+    <entry file="file://E:/l/Android/sdk/sources/android-23/android/widget/TextView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.857143">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.33195877">
+          <caret line="2681" column="16" selection-start-line="2681" selection-start-column="16" selection-end-line="2681" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/EvalActivity.java">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/drawable/bg_tv_red.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7586207">
+          <caret line="4" column="65" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/l/Android/sdk/sources/android-23/android/graphics/Color.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="262" column="5" selection-start-line="262" selection-start-column="5" selection-end-line="262" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="39" column="38" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Pavilion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16494845">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="5" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3802817">
+          <caret line="351" column="62" selection-start-line="351" selection-start-column="62" selection-end-line="351" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/brands_activity.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_adapter.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShowShatAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/adv_manage.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5573441">
+        <state vertical-scroll-proportion="-3.9830508">
           <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
           <folding />
         </state>
@@ -4710,279 +4468,58 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsListActivity.java">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/shop/ShopSai.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.4278262">
-          <caret line="344" column="30" selection-start-line="344" selection-start-column="30" selection-end-line="344" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_list_title.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.101695">
-          <caret line="18" column="48" selection-start-line="18" selection-start-column="48" selection-end-line="18" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/payment_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28169015">
-          <caret line="7" column="41" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/host_fgm.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7118645">
-          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/gou_wu_guang_chang.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20120725">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/DealsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54844606">
-          <caret line="123" column="13" selection-start-line="123" selection-start-column="13" selection-end-line="123" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/cat_goodes.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42635658">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/UserFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="117" column="96" selection-start-line="115" selection-start-column="8" selection-end-line="117" selection-end-column="96" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/ShowShat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9830508">
-          <caret line="133" column="5" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.78350514">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
           <folding>
-            <element signature="e#305#306#0" expanded="false" />
-            <element signature="e#336#337#0" expanded="false" />
-            <element signature="e#381#382#0" expanded="false" />
-            <element signature="e#421#422#0" expanded="false" />
-            <element signature="e#463#464#0" expanded="false" />
-            <element signature="e#501#502#0" expanded="false" />
-            <element signature="e#653#654#0" expanded="false" />
-            <element signature="e#688#689#0" expanded="false" />
-            <element signature="e#741#742#0" expanded="false" />
-            <element signature="e#789#790#0" expanded="false" />
-            <element signature="e#829#830#0" expanded="false" />
-            <element signature="e#865#866#0" expanded="false" />
-            <element signature="e#923#924#0" expanded="false" />
-            <element signature="e#973#974#0" expanded="false" />
-            <element signature="e#1014#1015#0" expanded="false" />
-            <element signature="e#1054#1055#0" expanded="false" />
-            <element signature="e#1213#1214#0" expanded="false" />
-            <element signature="e#1249#1250#0" expanded="false" />
-            <element signature="e#1305#1306#0" expanded="false" />
-            <element signature="e#1355#1356#0" expanded="false" />
-            <element signature="e#1397#1398#0" expanded="false" />
-            <element signature="e#1435#1436#0" expanded="false" />
-            <element signature="e#1589#1590#0" expanded="false" />
-            <element signature="e#1623#1624#0" expanded="false" />
-            <element signature="e#1677#1678#0" expanded="false" />
-            <element signature="e#1723#1724#0" expanded="false" />
-            <element signature="e#1764#1765#0" expanded="false" />
-            <element signature="e#1804#1805#0" expanded="false" />
-            <element signature="e#1963#1964#0" expanded="false" />
-            <element signature="e#2000#2001#0" expanded="false" />
-            <element signature="e#2057#2058#0" expanded="false" />
-            <element signature="e#2109#2110#0" expanded="false" />
-            <element signature="e#2147#2148#0" expanded="false" />
-            <element signature="e#2181#2182#0" expanded="false" />
-            <element signature="e#2235#2236#0" expanded="false" />
-            <element signature="e#2281#2282#0" expanded="false" />
-            <element signature="e#2321#2322#0" expanded="false" />
-            <element signature="e#2357#2358#0" expanded="false" />
-            <element signature="e#2415#2416#0" expanded="false" />
-            <element signature="e#2465#2466#0" expanded="false" />
-            <element signature="e#2503#2504#0" expanded="false" />
-            <element signature="e#2537#2538#0" expanded="false" />
-            <element signature="e#2591#2592#0" expanded="false" />
-            <element signature="e#2637#2638#0" expanded="false" />
-            <element signature="e#2670#2671#0" expanded="false" />
-            <element signature="e#2702#2703#0" expanded="false" />
-            <element signature="e#2749#2750#0" expanded="false" />
-            <element signature="e#2791#2792#0" expanded="false" />
-            <element signature="e#2994#2995#0" expanded="false" />
-            <element signature="e#3024#3025#0" expanded="false" />
-            <element signature="e#3067#3068#0" expanded="false" />
-            <element signature="e#3105#3106#0" expanded="false" />
+            <element signature="e#132#133#0" expanded="true" />
+            <element signature="e#160#161#0" expanded="true" />
+            <element signature="e#199#200#0" expanded="true" />
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+            <element signature="e#297#298#0" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#381#382#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/xlist/XListView.java">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/BrandAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="380" column="1" selection-start-line="380" selection-start-column="1" selection-end-line="380" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.4210525">
-          <caret line="146" column="30" selection-start-line="146" selection-start-column="17" selection-end-line="146" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.414487">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/brands_activity.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7288136">
-          <caret line="14" column="42" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/BrandsActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7553957">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/country_activity.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.355932">
-          <caret line="35" column="41" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://E:/l/Android/sdk/sources/android-23/java/text/NumberFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3327338">
-          <caret line="211" column="24" selection-start-line="211" selection-start-column="24" selection-end-line="211" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/AllOrderFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Order.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0647482">
-          <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/AddressAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="169" column="0" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8305087">
-          <caret line="95" column="33" selection-start-line="95" selection-start-column="33" selection-end-line="95" selection-end-column="33" />
-          <folding>
-            <element signature="e#3747#4114#0" expanded="true" />
-            <element signature="e#4113#4114#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_adapter.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.1355932">
-          <caret line="75" column="41" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.285714">
-          <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Store.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/StoreAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding />
+        <state vertical-scroll-proportion="0.7525773">
+          <caret line="174" column="68" selection-start-line="174" selection-start-column="68" selection-end-line="174" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/AddressActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.814433">
+          <caret line="290" column="18" selection-start-line="290" selection-start-column="18" selection-end-line="291" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/store_adapter.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3559322">
-          <caret line="70" column="43" selection-start-line="70" selection-start-column="43" selection-end-line="70" selection-end-column="43" />
+        <state vertical-scroll-proportion="-3.3898306">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="46" />
           <folding />
         </state>
       </provider>
@@ -4990,168 +4527,107 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/BaseNetConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7194245">
-          <caret line="40" column="113" selection-start-line="40" selection-start-column="113" selection-end-line="40" selection-end-column="113" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.142857">
-          <caret line="470" column="59" selection-start-line="470" selection-start-column="59" selection-end-line="470" selection-end-column="59" />
-          <folding>
-            <element signature="e#2485#2495#0" expanded="true" />
-            <element signature="e#2616#2627#0" expanded="true" />
-            <element signature="e#11222#11228#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShowShatAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1438849">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/yangHeZi/libs/APPayAssistEx.jar!/com/allinpay/appayassistex/APPayAssistEx.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46401516">
-          <caret line="33" column="48" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/uitls/PaaCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="54" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="20" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CountryAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#297#298#0" expanded="true" />
-            <element signature="e#321#322#0" expanded="true" />
-            <element signature="e#378#379#0" expanded="true" />
-            <element signature="e#405#406#0" expanded="true" />
-            <element signature="e#462#463#0" expanded="true" />
-            <element signature="e#486#487#0" expanded="true" />
-            <element signature="e#577#578#0" expanded="true" />
-            <element signature="e#604#605#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/OrderActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.609196">
-          <caret line="354" column="28" selection-start-line="354" selection-start-column="28" selection-end-line="354" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/PaymentFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="26" selection-start-line="123" selection-start-column="15" selection-end-line="123" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/CountryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.142857">
-          <caret line="61" column="11" selection-start-line="61" selection-start-column="11" selection-end-line="61" selection-end-column="11" />
-          <folding>
-            <element signature="e#1216#1217#0" expanded="true" />
-            <element signature="e#1262#1263#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="420" column="5" selection-start-line="391" selection-start-column="3" selection-end-line="420" selection-end-column="5" />
-          <folding />
+          <caret line="450" column="5" selection-start-line="435" selection-start-column="4" selection-end-line="450" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+          <caret line="49" column="41" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/Brand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24742268">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/BrandsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.5154638">
+          <caret line="144" column="62" selection-start-line="144" selection-start-column="62" selection-end-line="144" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/cat_goodes.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5164319">
+          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="77" selection-start-line="148" selection-start-column="77" selection-end-line="148" selection-end-column="77" />
-          <folding />
+          <caret line="162" column="8" selection-start-line="162" selection-start-column="8" selection-end-line="162" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/OrderAdapter.java">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Shop.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="186" column="45" selection-start-line="186" selection-start-column="45" selection-end-line="186" selection-end-column="45" />
+        <state vertical-scroll-proportion="-3.1525424">
+          <caret line="126" column="33" selection-start-line="126" selection-start-column="33" selection-end-line="126" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/l/Android/sdk/sources/android-23/android/graphics/Paint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3731959">
+          <caret line="124" column="7" selection-start-line="124" selection-start-column="7" selection-end-line="124" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_detail.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7118645">
+          <caret line="170" column="58" selection-start-line="170" selection-start-column="45" selection-end-line="170" selection-end-column="58" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8135593">
-          <caret line="472" column="71" selection-start-line="472" selection-start-column="71" selection-end-line="472" selection-end-column="71" />
+        <state vertical-scroll-proportion="-1.3898305">
+          <caret line="403" column="75" selection-start-line="403" selection-start-column="26" selection-end-line="403" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.245614">
+          <caret line="175" column="44" selection-start-line="175" selection-start-column="44" selection-end-line="175" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://E:/l/Android/sdk/sources/android-23/android/webkit/WebView.java">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36870503">
-          <caret line="975" column="63" selection-start-line="975" selection-start-column="53" selection-end-line="975" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/AboutActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7288136">
-          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        <state vertical-scroll-proportion="15.898618">
+          <caret line="742" column="5" selection-start-line="742" selection-start-column="5" selection-end-line="742" selection-end-column="5" />
           <folding>
-            <element signature="e#1652#1653#0" expanded="true" />
-            <element signature="e#1735#1736#0" expanded="true" />
-            <element signature="e#1811#1812#0" expanded="true" />
-            <element signature="e#1891#1892#0" expanded="true" />
+            <element signature="e#8912#8913#0" expanded="false" />
+            <element signature="e#8934#8935#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_pay.xml">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/country_adapter.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.1525426">
-          <caret line="155" column="57" selection-start-line="151" selection-start-column="16" selection-end-line="155" selection-end-column="57" />
+        <state vertical-scroll-proportion="0.54388136">
+          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
           <folding />
         </state>
       </provider>
@@ -5159,10 +4635,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/about_activity.xml">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/map_activity.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6949153">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.42027193">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="41" />
           <folding />
         </state>
       </provider>
@@ -5170,10 +4646,41 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/base_activity.xml">
+    <entry file="jar://$PROJECT_DIR$/easeui/libs/BaiduLBS_Android.jar!/com/baidu/mapapi/search/poi/OnGetPoiSearchResultListener.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.677966">
-          <caret line="56" column="50" selection-start-line="56" selection-start-column="50" selection-end-line="56" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.30634573">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/LocNearAddressAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82474226">
+          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/PoiInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.04608295">
+          <caret line="2" column="57" selection-start-line="2" selection-start-column="57" selection-end-line="2" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/l/Android/sdk/sources/android-23/java/util/List.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="109" column="48" selection-start-line="109" selection-start-column="48" selection-end-line="109" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/loc_near_address.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49443758">
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -5181,15 +4688,123 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/collect_activity.xml">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/LocNearAddressAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04024145">
+        <state vertical-scroll-proportion="1.451613">
+          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/easeui/libs/BaiduLBS_Android.jar!/com/baidu/mapapi/search/poi/PoiSearch.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3522976">
+          <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/MapActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4873272">
+          <caret line="132" column="27" selection-start-line="132" selection-start-column="27" selection-end-line="132" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CountryAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.032258064">
+          <caret line="81" column="151" selection-start-line="81" selection-start-column="151" selection-end-line="81" selection-end-column="151" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/country_activity.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.661017">
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_activity.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.305085">
+          <caret line="265" column="51" selection-start-line="265" selection-start-column="51" selection-end-line="265" selection-end-column="51" />
+          <folding>
+            <element signature="e#4876#9803#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/CountryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7118645">
+          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_adapter.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02472188">
+          <caret line="46" column="42" selection-start-line="46" selection-start-column="42" selection-end-line="46" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/shop/ShopActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.474576">
+          <caret line="61" column="21" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/values/color.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.827586">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/brand_adapter.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3898306">
           <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopSaiAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6597938">
+          <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

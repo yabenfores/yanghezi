@@ -1,91 +1,145 @@
 package com.raoleqing.yangmatou.adapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.ShowShatAdapter.ViewHolder;
 import com.raoleqing.yangmatou.ben.Shop;
 import com.raoleqing.yangmatou.ben.ShowShat;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ShopAdapter  extends BaseAdapter{
-	
+public class ShopAdapter extends BaseAdapter {
 
-	private List<Shop> sowShatList;
-	private LayoutInflater mInflater;
-	private Context context;
-	
-	private int ItemHeight = 0;
 
-	ShopAdapter() {
+    private List<Shop> sowShatList;
+    private LayoutInflater mInflater;
+    private Context context;
 
-	}
+    private int ItemHeight = 0;
 
-	public ShopAdapter(Context context, List<Shop> sowShatList ) {
-		this.sowShatList = sowShatList;
-		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	}
+    ShopAdapter() {
 
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return sowShatList.size();
-		
-	}
+    }
 
-	@Override
-	public Object getItem(int arg0) {
-		// TODO Auto-generated method stub
-		return sowShatList.get(arg0);
-	}
+    public ShopAdapter(Context context, List<Shop> sowShatList) {
+        this.sowShatList = sowShatList;
+        this.context = context;
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
 
-	@Override
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return sowShatList.size();
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
+    }
 
-		ViewHolder holder = null;
-		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.shop_adapter, parent, false);
-			holder = new ViewHolder(convertView);
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
+    @Override
+    public Object getItem(int arg0) {
+        // TODO Auto-generated method stub
+        return sowShatList.get(arg0);
+    }
 
-		Shop mShop = sowShatList.get(position);
-			
-		ItemHeight = convertView.getHeight();
-		System.out.println("拿到的高度: " + ItemHeight);
-		return convertView;
-	}
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
 
-	class ViewHolder {
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO Auto-generated method stub
 
-		ImageView cat_goodes_image;
-		TextView cat_goodes_text;
+        ViewHolder holder = null;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.shop_adapter, parent, false);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        final Shop mShop = sowShatList.get(position);
+        String str = mShop.getGoods_images();
+        List<ImageView> imageViewList = new ArrayList<>();
+        imageViewList.add(holder.tv_shop_adapter_image1);
+        imageViewList.add(holder.tv_shop_adapter_image2);
+        imageViewList.add(holder.tv_shop_adapter_image3);
+        imageViewList.add(holder.tv_shop_adapter_image4);
+        imageViewList.add(holder.tv_shop_adapter_image5);
+        imageViewList.add(holder.tv_shop_adapter_image6);
+        for (int i=0;i<imageViewList.size();i++){
+            imageViewList.get(i).setImageDrawable(null);
+            imageViewList.get(i).setVisibility(View.GONE);
+        }
+        String[] image = str.split(";");
+        try {
+            for (int i = 0; i < image.length; i++) {
+                imageViewList.get(i).setVisibility(View.VISIBLE);
+                ImageLoader.getInstance().displayImage(image[i], imageViewList.get(i));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ImageLoader.getInstance().displayImage(mShop.getFlag_imgSrc(), holder.iv_flg);
 
-		public ViewHolder(View convertView) {
+        if (mShop.getIs_favorite()==1){
 
-			this.cat_goodes_image = (ImageView) convertView.findViewById(R.id.cat_goodes_image);
-			this.cat_goodes_text = (TextView) convertView.findViewById(R.id.cat_goodes_text);
+        }
 
-		}
+        holder.tv_shop_adapter_time.setText("发布于"+mShop.getGoods_publictime());
+        holder.tv_shop_adapter_com.setText(mShop.getGoods_name());
+        holder.tv_flg.setText(mShop.getFlag_name());
+        holder.tv_shop_adapter_sale.setText("销量：" + mShop.getGoods_salenum());
+        holder.tv_shop_adapter_sto.setText("库存：" + mShop.getGoods_storage());
+        holder.tv_shop_adapter_sprice.setText("￥" + mShop.getGoods_price());
+        holder.tv_shop_adapter_mprice.setText("￥" + mShop.getGoods_marketprice());
+        holder.tv_shop_adapter_mprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        holder.tv_shop_adapter_eval.setText(mShop.getComment_total());
 
-	}
 
+        return convertView;
+    }
+
+    class ViewHolder {
+
+        LinearLayout lyo_shop_adapter;
+        ImageView tv_shop_adapter_image1, tv_shop_adapter_image2, tv_shop_adapter_image3, tv_shop_adapter_image4, tv_shop_adapter_image5, tv_shop_adapter_image6, iv_flg;
+        TextView tv_shop_adapter_time, tv_shop_adapter_com, tv_flg, tv_shop_adapter_sale, tv_shop_adapter_sto, tv_shop_adapter_sprice, tv_shop_adapter_mprice, tv_shop_adapter_eval, tv_shop_adapter_share, tv_shop_adapter_fov;
+
+        public ViewHolder(View convertView) {
+            this.tv_shop_adapter_image1 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image1);
+            this.tv_shop_adapter_image2 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image2);
+            this.tv_shop_adapter_image3 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image3);
+            this.tv_shop_adapter_image4 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image4);
+            this.tv_shop_adapter_image5 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image5);
+            this.tv_shop_adapter_image6 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image6);
+            this.iv_flg = (ImageView) convertView.findViewById(R.id.iv_flg);
+            this.tv_shop_adapter_time = (TextView) convertView.findViewById(R.id.tv_shop_adapter_time);
+            this.tv_shop_adapter_com = (TextView) convertView.findViewById(R.id.tv_shop_adapter_com);
+            this.tv_flg = (TextView) convertView.findViewById(R.id.tv_flg);
+            this.tv_shop_adapter_sale = (TextView) convertView.findViewById(R.id.tv_shop_adapter_sale);
+            this.tv_shop_adapter_sto = (TextView) convertView.findViewById(R.id.tv_shop_adapter_sto);
+            this.tv_shop_adapter_sprice = (TextView) convertView.findViewById(R.id.tv_shop_adapter_sprice);
+            this.tv_shop_adapter_mprice = (TextView) convertView.findViewById(R.id.tv_shop_adapter_mprice);
+            this.tv_shop_adapter_eval = (TextView) convertView.findViewById(R.id.tv_shop_adapter_eval);
+            this.tv_shop_adapter_share = (TextView) convertView.findViewById(R.id.tv_shop_adapter_share);
+            this.tv_shop_adapter_fov = (TextView) convertView.findViewById(R.id.tv_shop_adapter_fov);
+
+            this.lyo_shop_adapter = (LinearLayout) convertView.findViewById(R.id.lyo_shop_adapter);
+        }
+
+    }
 
 
 }

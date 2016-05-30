@@ -131,6 +131,10 @@ public class NetHelper {
     public static void editUserName(String member_name,NetConnectionInterface.iConnectListener3 connectListener){
         new BaseNetConnection(Constant.EDITUSERNAME, NetParams.HttpMethod.Post,false,connectListener,"member_name",member_name);
     }
+    //删除地址
+    public static void del_address(String address_id,NetConnectionInterface.iConnectListener3 connectListener){
+        new BaseNetConnection(HttpUtil.DEL_ADDRESS, NetParams.HttpMethod.Post,true,connectListener,"address_id",address_id);
+    }
     //秀一秀
     public static void Evaluate(String dotype,String page,NetConnectionInterface.iConnectListener3 connectListener){
         new BaseNetConnection(Constant.EVALUATE, NetParams.HttpMethod.Post,false,connectListener,"dotype",dotype,"page",page);
@@ -151,6 +155,18 @@ public class NetHelper {
     //继续支付
     public static void order_conpay(String order_id, NetConnectionInterface.iConnectListener3 connectListener){
         new BaseNetConnection(Constant.ORDER_CONPAY, NetParams.HttpMethod.Post,true,connectListener,"order_id",order_id);
+    }
+    //品牌
+    public static void Brands(String brand_initial, NetConnectionInterface.iConnectListener3 connectListener){
+        new BaseNetConnection(Constant.BRANDS, NetParams.HttpMethod.Post,false,connectListener,"brand_initial",brand_initial);
+    }
+    //商店
+    public static void Store(String store_id, NetConnectionInterface.iConnectListener3 connectListener){
+        new BaseNetConnection(Constant.STORE, NetParams.HttpMethod.Post,true,connectListener,"store_id",store_id);
+    }
+    //商店
+    public static void Storegoods(String store_id, String gc_id,String page,NetConnectionInterface.iConnectListener3 connectListener){
+        new BaseNetConnection(Constant.STOREGOODS, NetParams.HttpMethod.Post,true,connectListener,"store_id",store_id,"gc_id",gc_id,"page",page);
     }
 
 

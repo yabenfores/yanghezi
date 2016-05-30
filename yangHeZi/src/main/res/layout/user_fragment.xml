@@ -6,6 +6,47 @@
     android:background="@color/bg04"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:id="@+id/base_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/encode_view"
+        android:gravity="center_vertical">
+
+        <TextView
+            style="@style/text18sp_typeblack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="个人中心" />
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/show_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_selector_background01"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/show_icon02" />
+
+            <TextView
+                style="@style/text03_type01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="在线" />
+        </LinearLayout>
+    </RelativeLayout>
     <ScrollView
         android:scrollbars="none"
         android:layout_width="match_parent"
@@ -16,47 +57,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:id="@+id/base_title_layout"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/encode_view"
-                android:gravity="center_vertical">
 
-                <TextView
-                    style="@style/text18sp_typeblack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="个人中心" />
-
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/show_message"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/button_selector_background01"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:background="@drawable/show_icon02" />
-
-                    <TextView
-                        style="@style/text03_type01"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:text="在线" />
-                </LinearLayout>
-            </RelativeLayout>
 
             <!-- 用户资料 -->
 

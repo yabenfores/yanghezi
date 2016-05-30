@@ -60,8 +60,8 @@ public class HttpUtil extends NetWorkBase {
     public final static String CANCEL_PORDUCT_STORE = "Home/Users/cancelPro";//取消关注
 
     public final static String GET_DEFAULT_ADDRESS = "Home/Orders/getDefaultAddress";//拿到发货地址
-    public final static String DEL_ADDRESS = "Home/Orders/delAddress";//册除地址
-    public final static String ADD_ADDRESS = "Home/Orders/add_Address";//添加地址
+    public final static String DEL_ADDRESS = "/Home/Address/del_Address";//册除地址
+    public final static String ADD_ADDRESS = "Home/Address/add_Address";//添加地址
     public final static String EDIT_ADDRESS = "Home/Address/edit_Address";//编辑地址
 
 

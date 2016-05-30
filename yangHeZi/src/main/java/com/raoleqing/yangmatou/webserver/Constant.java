@@ -45,5 +45,8 @@ public class Constant {
     public final static String ORDER_CONPAY="/Home/Orders/order_conpay";//继续支付
     public final static String FLAGS="/Home/Evaluate/Flags";//国家
     public final static String TARIFF="/Home/Orders/tariff";//进口税
+    public final static String BRANDS="Home/Evaluate/Brands";//品牌
+    public final static String STORE="/Home/Store/Index";//商店
+    public final static String STOREGOODS="Home/Store/Storegoods";//商店商品列表
 
 }

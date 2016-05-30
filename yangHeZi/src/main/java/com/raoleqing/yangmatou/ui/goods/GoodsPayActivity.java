@@ -166,6 +166,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         goodsd_detail_buy.setOnClickListener(this);
         goods_pay_explanation.setOnClickListener(this);
 
+        getAddress();
         setProgressVisibility(View.GONE);
     }
 
@@ -183,7 +184,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         // TODO Auto-generated method stub
         super.onResume();
 
-        getAddress();
+//        getAddress();
     }
 
     @Override
@@ -221,6 +222,10 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 break;
             case R.id.goodsd_detail_buy:
 
+                if (mMaddress==null){
+                    makeShortToast("请输入地址");
+                    return;
+                }
                 String userCard = user_card.getText().toString();
                 if (userCard != null && !userCard.trim().equals("")) {
                     submitOrder(userCard);

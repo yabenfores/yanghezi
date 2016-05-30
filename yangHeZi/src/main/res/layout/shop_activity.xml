@@ -5,11 +5,12 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_marginTop="1dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/encode_view"
         android:orientation="vertical"
-        android:padding="10dp" >
+        android:paddingBottom="10dp"
+        android:padding="15dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,7 +32,7 @@
 
                 <TextView
                     android:id="@+id/goods_shop_name"
-                    style="@style/text02_type02"
+                    style="@style/text02_type04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="店名" />
@@ -63,6 +64,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_shop_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -88,10 +90,12 @@
                 style="@style/text03_type03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="商品介绍 " />
+                android:text="商家介绍 " />
 
             <ImageView
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
+                android:src="@drawable/ic_app_down"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
@@ -111,6 +115,8 @@
 
             <ImageView
                 android:layout_width="wrap_content"
+                android:src="@drawable/ic_app_down"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
@@ -119,11 +125,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <ListView
+        <com.raoleqing.yangmatou.xlist.XListView
             android:id="@+id/shop_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-        </ListView>
+        </com.raoleqing.yangmatou.xlist.XListView>
 
         <LinearLayout
             android:id="@+id/shop_layout01"
@@ -141,6 +147,7 @@
                 android:padding="10dp" >
 
                 <TextView
+                    android:id="@+id/tv_shop_com"
                     style="@style/text03_type03"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -255,7 +262,8 @@
                 android:padding="10dp" >
 
                 <GridView
-                    android:id="@+id/shop_gridview"
+                    android:numColumns="4"
+                    android:id="@+id/shop_listview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
                 </GridView>

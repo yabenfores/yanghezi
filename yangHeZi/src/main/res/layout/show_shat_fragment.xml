@@ -5,6 +5,8 @@
     android:background="@color/bg04">
 
     <RelativeLayout
+        android:paddingBottom="0dp"
+        android:layout_marginBottom="0dp"
         android:id="@+id/base_title_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -59,13 +61,12 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/show_icon02" />
 
-            <TextView
-                style="@style/text02_type02"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="在线" />
         </LinearLayout>
+        <View
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line01" />
     </RelativeLayout>
 
    

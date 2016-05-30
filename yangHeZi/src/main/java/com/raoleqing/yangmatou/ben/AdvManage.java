@@ -8,6 +8,16 @@ public class AdvManage {
 	private String adv_name;
 	private String adv_image;
 	private String adv_url;
+
+	public String getAdv_title() {
+		return adv_title;
+	}
+
+	public void setAdv_title(String adv_title) {
+		this.adv_title = adv_title;
+	}
+
+	private String adv_title;
 	private int adv_sort;
 	
 	

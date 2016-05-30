@@ -12,6 +12,13 @@ import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.search.core.SearchResult;
+import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
+import com.baidu.mapapi.search.poi.PoiDetailResult;
+import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
+import com.baidu.mapapi.search.poi.PoiResult;
+import com.baidu.mapapi.search.poi.PoiSearch;
+import com.baidu.mapapi.search.poi.PoiSortType;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.LocNearAddressAdapter;
@@ -30,6 +37,7 @@ import android.widget.ListView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class MapActivity extends BaseActivity implements OnClickListener {
@@ -39,10 +47,10 @@ public class MapActivity extends BaseActivity implements OnClickListener {
 	// 定位相关
 	LocationClient mLocClient;
 	BitmapDescriptor mCurrentMarker;
-//	private PoiSearch poiSearch;// 搜索
+	private PoiSearch poiSearch;// 搜索
 
 	public MyLocationListenner myListener = new MyLocationListenner();
-//	private List<PoiInfo> nearList = new ArrayList<PoiInfo>();
+	private List<com.baidu.mapapi.search.core.PoiInfo> nearList = new ArrayList<>();
 	private LocNearAddressAdapter adapter;
 
 	MapView mMapView;
@@ -78,7 +86,6 @@ public class MapActivity extends BaseActivity implements OnClickListener {
 		SDKInitializer.initialize(getApplicationContext());
 		setContentView(R.layout.map_activity);
 		setTitleText("添加地址");
-
 		viewInfo();
 
 	}
@@ -92,13 +99,17 @@ public class MapActivity extends BaseActivity implements OnClickListener {
 		mMapView = (MapView) findViewById(R.id.bmapView);
 		mBaiduMap = mMapView.getMap();
 		// 初始化搜索模块
-//		poiSearch = PoiSearch.newInstance();
+		poiSearch = PoiSearch.newInstance();
 		// 注册搜索事件监听
-//		poiSearch.setOnGetPoiSearchResultListener(new PoiSearchResultListener());
+		poiSearch.setOnGetPoiSearchResultListener(new PoiSearchResultListener() {
+			@Override
+			public void onGetPoiResult(PoiResult poiResult) {
+
+			}
+		});
 		// 普通地图
 		mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-//		nearList = new ArrayList<PoiInfo>();
-//		adapter = new LocNearAddressAdapter(MapActivity.this, nearList);
+		adapter = new LocNearAddressAdapter(MapActivity.this, nearList);
 		lvLocNear.setAdapter(adapter);
 		activity_return.setOnClickListener(this);
 		// 开启定位图层
@@ -127,9 +138,9 @@ public class MapActivity extends BaseActivity implements OnClickListener {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				// TODO Auto-generated method stub
 				Intent inent = MapActivity.this.getIntent();
-//				PoiInfo mPoiInfo = nearList.get(arg2);
-//				inent.putExtra("city", mPoiInfo.city);
-//				inent.putExtra("address", mPoiInfo.address);
+				com.baidu.mapapi.search.core.PoiInfo mPoiInfo = nearList.get(arg2);
+				inent.putExtra("city", mPoiInfo.city);
+				inent.putExtra("address", mPoiInfo.address);
 				MapActivity.this.setResult(1, inent);
 				MapActivity.this.onBackPressed();
 			}
@@ -179,7 +190,6 @@ public class MapActivity extends BaseActivity implements OnClickListener {
 				MapStatus.Builder builder = new MapStatus.Builder();
 				builder.target(ll).zoom(18.0f);
 				mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-
 				mCurrentLantitude = location.getLatitude();
 				mCurrentLongitude = location.getLongitude();
 
@@ -204,57 +214,57 @@ public class MapActivity extends BaseActivity implements OnClickListener {
 	private void searchNeayBy() {
 		System.out.println(mCurrentLantitude + "," + mCurrentLongitude);
 
-//		PoiNearbySearchOption option = new PoiNearbySearchOption();
-//		option.keyword("生活服务");
-//		option.sortType(PoiSortType.distance_from_near_to_far);
-//		option.location(new LatLng(mCurrentLantitude, mCurrentLongitude));
-//		option.pageCapacity(20);
-//		option.pageNum(10);
-//		option.radius(1000);
-//		poiSearch.searchNearby(option);
+		PoiNearbySearchOption option = new PoiNearbySearchOption();
+		option.keyword("");
+		option.sortType(PoiSortType.distance_from_near_to_far);
+		option.location(new LatLng(mCurrentLantitude, mCurrentLongitude));
+		option.pageCapacity(20);
+		option.pageNum(10);
+		option.radius(1000);
+		poiSearch.searchNearby(option);
 
 	}
 
-//	private class PoiSearchResultListener implements OnGetPoiSearchResultListener {
-//
-//		@Override
-//		public void onGetPoiDetailResult(PoiDetailResult result) {
-//
-//			System.out.println("PoiDetailResult()");
-//
-//			if (result.error != SearchResult.ERRORNO.NO_ERROR) {
-//
-//			} else {
-//				System.out.println(result.getName() + ": " + result.getAddress());
-//
-//			}
-//		}
-//
-//		@Override
-//		public void onGetPoiResult(PoiResult result) {
-//
-//			System.out.println("onGetPoiResult()");
-//
-//			nearList.removeAll(nearList);
-//
-//			if (result != null) {
-//				if (result.getAllPoi() != null && result.getAllPoi().size() > 0) {
-//					nearList.addAll(result.getAllPoi());
-//					adapter.notifyDataSetChanged();
-//					if (nearList != null && nearList.size() > 0) {
-//						for (int i = 0; i < nearList.size(); i++) {
-//							System.out.println(nearList.get(i).address);
-//							System.out.println(nearList.get(i).name);
-//						}
-//
-//					}
-//
-//				}
-//			}
-//
-//		}
-//
-//	}
+	private abstract class PoiSearchResultListener implements OnGetPoiSearchResultListener {
+
+		@Override
+		public void onGetPoiDetailResult(PoiDetailResult result) {
+
+			System.out.println("PoiDetailResult()");
+
+			if (result.error != SearchResult.ERRORNO.NO_ERROR) {
+
+			} else {
+				System.out.println(result.getName() + ": " + result.getAddress());
+
+			}
+		}
+
+		@Override
+		public void onGetPoiResult(PoiResult result) {
+
+			System.out.println("onGetPoiResult()");
+
+			nearList.removeAll(nearList);
+
+			if (result != null) {
+				if (result.getAllPoi() != null && result.getAllPoi().size() > 0) {
+					nearList=result.getAllPoi();
+					adapter.notifyDataSetChanged();
+					if (nearList != null && nearList.size() > 0) {
+						for (int i = 0; i < nearList.size(); i++) {
+							System.out.println(nearList.get(i).address);
+							System.out.println(nearList.get(i).name);
+						}
+
+					}
+
+				}
+			}
+
+		}
+
+	}
 
 	@Override
 	protected void onPause() {

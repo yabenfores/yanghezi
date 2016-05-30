@@ -35,6 +35,7 @@ import com.raoleqing.yangmatou.webserver.NetHelper;
 import com.raoleqing.yangmatou.xlist.XListView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -234,12 +235,12 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 				for (int i = 0; i < data.length(); i++) {
 					JSONObject obj = data.optJSONObject(i);
 					AdvManage mAdvManage = new AdvManage();
-					mAdvManage.setC_id(obj.optInt("c_id"));
-					mAdvManage.setAdv_id(obj.optInt("adv_id"));
+					mAdvManage.setAdv_id(obj.optInt("advimg_id"));
 					mAdvManage.setAdv_type(obj.optString("adv_type"));
 					mAdvManage.setAdv_name(obj.optString("adv_name"));
-					mAdvManage.setAdv_image(obj.optString("adv_image"));
+					mAdvManage.setAdv_image(obj.optString("advimg_path"));
 					mAdvManage.setAdv_url(obj.optString("adv_url"));
+					mAdvManage.setAdv_title(obj.optString("adv_title"));
 					advManageList.add(mAdvManage);
 				}
 
@@ -345,8 +346,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 	protected void StoreListResolveJson(JSONObject response) {
 
 		try {
-			int code = response.optInt("code");
-			String message = response.optString("message");
 
 			if (response == null) {
 				((MainActivity) getActivity()).setMainProgress(View.GONE);
@@ -365,7 +364,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 
 				for (int i = 0; i < data.length(); i++) {
 					JSONObject obj = data.optJSONObject(i);
-					System.out.println("aaaaaaaaaa:"+response.toString());
 					Store mStore = new Store();
 					mStore.setId(obj.optInt("id"));
 					mStore.setStore_id(obj.optInt("store_id"));
@@ -374,24 +372,24 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 					mStore.setContent(obj.optString("content"));
 					mStore.setCreate_time(obj.optLong("create_time"));
 					mStore.setState(obj.optInt("state"));
-					mStore.setAddress(obj.optString("address"));
-					mStore.setFans(obj.optString("fans"));
-					mStore.setImg(obj.optString("img"));
-					mStore.setAttention(obj.optInt("attention"));
-					JSONArray goods_list = obj.optJSONArray("goods_list");
+					mStore.setAddress(obj.optString("store_address"));
+					mStore.setFans(obj.optString("fav_total"));
+					mStore.setImg(obj.optString("store_label"));
+					mStore.setAttention(obj.optInt("is_favorite"));
+					JSONArray goods_list = obj.optJSONArray("goods_array");
 					List<Goods> goodsList = new ArrayList<Goods>();
 
+					if (goods_list!=null){
 					for (int j = 0; j < goods_list.length(); j++) {
-
 						JSONObject goodsContent = goods_list.optJSONObject(j);
 						Goods mGoods = new Goods();
 						mGoods.setGoods_id(goodsContent.optInt("goods_id"));
 						mGoods.setStore_name(goodsContent.optString("store_name"));
 						mGoods.setGoods_image(goodsContent.optString("goods_image"));
-						mGoods.setGoods_promotion_price(goodsContent.optDouble("goods_promotion_price"));
+						mGoods.setGoods_promotion_price(goodsContent.optDouble("goods_price"));
 						goodsList.add(mGoods);
 
-					}
+					}}
 
 					mStore.setGoods_list(goodsList);
 
@@ -459,7 +457,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 
 		try {
 			int code = response.optInt("code");
-			String message = response.optString("message");
 
 			if (response == null) {
 				((MainActivity) getActivity()).setMainProgress(View.GONE);
@@ -474,12 +471,12 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 				for (int i = 0; i < data.length(); i++) {
 					JSONObject obj = data.optJSONObject(i);
 					Pavilion mPavilion = new Pavilion();
-					mPavilion.setFlag_id(obj.optInt("flag_id"));
-					mPavilion.setFlag_name(obj.optString("flag_name"));
-					mPavilion.setFlag_imgSrc(obj.optString("flag_imgSrc"));
+					mPavilion.setFlag_id(obj.optInt("advimg_id"));
+					mPavilion.setFlag_imgSrc(obj.optString("advimg_path"));
+					mPavilion.setAdv_url(obj.optString("adv_url"));
+					mPavilion.setAdv_title(obj.optString("adv_title"));
 					pavilionList.add(mPavilion);
 				}
-
 				setPavilion();
 			}
 
@@ -634,7 +631,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 				return;
 			}
 
-
 				storeList.get(position).setAttention(0);
 				storeAdapter.notifyDataSetChanged();
 
@@ -669,6 +665,9 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(UnitConverterUtils.dip2px(getActivity(), 100),
 					UnitConverterUtils.dip2px(getActivity(), 80));
 			radio.setLayoutParams(l);
+			int x=UnitConverterUtils.dip2px(getActivity(), 10);
+			radio.setBackgroundColor(Color.WHITE);
+			radio.setPadding(x,x,x,x);
 			radio.setScaleType(ScaleType.CENTER_CROP);
 
 			radio.setOnClickListener(new OnClickListener() {

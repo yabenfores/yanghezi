@@ -3,188 +3,261 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/bg04"
-    android:orientation="vertical" >
+    android:orientation="vertical">
+
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
         android:background="@color/encode_view"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
-         >
-
-        <TextView
-            style="@style/text03_type02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="发布时间" />
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <ImageView
-                    style="@style/shop_image"
-                    android:src="@drawable/shop_image01"
-                     />
-                <ImageView
-                    android:layout_marginLeft="5dp"
-                    style="@style/shop_image"
-                    android:src="@drawable/shop_image01"
-                     />
-                <ImageView
-                    android:layout_marginLeft="5dp"
-                    style="@style/shop_image"
-                    android:src="@drawable/shop_image01"
-                     />
-
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp" >
-
-                <ImageView
-                    style="@style/shop_image"
-                    android:src="@drawable/shop_image01"
-                    />
-                <ImageView
-                    android:layout_marginLeft="5dp"
-                    style="@style/shop_image"
-                    android:src="@drawable/shop_image01"
-                    />
-                <ImageView
-                    style="@style/shop_image"
-                    android:layout_marginLeft="5dp"
-                    android:src="@drawable/shop_image01"
-                    />
-            </TableRow>
-        </TableLayout>
-
-        <TextView
-            style="@style/text03_type02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明" />
-
-        <TextView
-            style="@style/text04_type01"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="发货仓库：" />
-
-        <TextView
-            style="@style/text04_type01"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="库存：" />
-
-        <TextView
-            style="@style/text02_type04"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="￥0.00" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginTop="5dp"
-        android:background="@color/line01" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp" >
-
-        <Button
-            android:id="@+id/shop_pay_but"
-            style="@style/text01_type03"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/button_selector_background03"
-            android:text="立即购买" />
+        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/lyo_shop_adapter"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_toLeftOf="@id/shop_pay_but"
-            android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                android:id="@+id/tv_shop_adapter_time"
+                style="@style/text04_type01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="发布时间" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/tv_shop_adapter_image1"
+                        style="@style/shop_image"
+                        android:src="@drawable/shop_image01" />
+
+                    <ImageView
+                        android:id="@+id/tv_shop_adapter_image2"
+                        style="@style/shop_image"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/shop_image01" />
+
+                    <ImageView
+                        android:id="@+id/tv_shop_adapter_image3"
+                        style="@style/shop_image"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/shop_image01" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <ImageView
+                        android:id="@+id/tv_shop_adapter_image4"
+                        style="@style/shop_image"
+                        android:src="@drawable/shop_image01" />
+
+                    <ImageView
+                        android:id="@+id/tv_shop_adapter_image5"
+                        style="@style/shop_image"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/shop_image01" />
+
+                    <ImageView
+                        android:id="@+id/tv_shop_adapter_image6"
+                        style="@style/shop_image"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/shop_image01" />
+                </TableRow>
+            </TableLayout>
+
+
+            <TextView
+                android:id="@+id/tv_shop_adapter_com"
+                style="@style/text03_type02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明说明" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical" >
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <TextView
-                    style="@style/text04_type02"
+                <ImageView
+                    android:id="@+id/iv_flg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/share_icon01"
-                    android:text=" 评价" />
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_app_buy_tip" />
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/tv_flg"
+                    style="@style/text04_type01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
             </LinearLayout>
 
-            <View
-                android:layout_width="1px"
-                android:layout_height="30dp"
-                android:background="@color/line01" />
+            <TextView
+                android:id="@+id/tv_shop_adapter_sale"
+                style="@style/text04_type01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="销量：" />
+
+            <TextView
+                android:id="@+id/tv_shop_adapter_sto"
+                style="@style/text04_type01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="库存：" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical" >
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:orientation="horizontal">
 
                 <TextView
-                    style="@style/text04_type02"
+                    android:id="@+id/tv_shop_adapter_sprice"
+                    style="@style/text02_type04"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/share_icon02"
-                    android:text=" 分享" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="1px"
-                android:layout_height="30dp"
-                android:background="@color/line01" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical" >
+                    android:layout_marginTop="5dp"
+                    android:text="￥0.00"
+                    android:textSize="22sp" />
 
                 <TextView
-                    style="@style/text04_type02"
+                    android:id="@+id/tv_shop_adapter_mprice"
+                    style="@style/text04_type01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/like_icon"
-                    android:text=" 喜欢" />
+                    android:layout_marginLeft="10dp"
+                    android:text="￥0.00" />
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="5dp"
+            android:background="@color/line01" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+
+            <Button
+                android:id="@+id/shop_pay_but"
+                style="@style/text01_type03"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/button_selector_background03"
+                android:text="立即购买" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_toLeftOf="@id/shop_pay_but"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/text04_type02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/reply_iocn"
+                        android:text=" 评价" />
+
+                    <TextView
+                        android:id="@+id/tv_shop_adapter_eval"
+                        style="@style/text02_type01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="30dp"
+                    android:background="@color/line01" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/text04_type02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/share_icon02"
+                        android:text=" 分享" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_shop_adapter_share"
+                        style="@style/text02_type01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="30dp"
+                    android:background="@color/line01" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/text04_type02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/like_icon"
+                        android:text=" 喜欢" />
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/tv_shop_adapter_fov"
+                        style="@style/text02_type01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

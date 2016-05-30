@@ -20,6 +20,7 @@ import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.MyPagerAdapter;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.mi.ChatActivity;
+import com.raoleqing.yangmatou.ui.shop.ShopActivity;
 import com.raoleqing.yangmatou.uitls.LogUtil;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
@@ -61,7 +62,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
     private Button goodsd_detail_buy;
     private PullToRefreshScrollView myscrollview;
     private ChildViewPager goods_viewPager;
-    private LinearLayout goods_viewPager_point;
+    private LinearLayout goods_viewPager_point,lyo_goods_shop;
     private TextView goods_name;
     private TextView goods_price;
     private TextView goods_price01;
@@ -176,6 +177,8 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         adapter = new EvaluationAdapter(GoodsDetail.this, evaluationList);
         goods_evaluation_list.setAdapter(adapter);
 
+        lyo_goods_shop= (LinearLayout) findViewById(R.id.lyo_goods_shop);
+        lyo_goods_shop.setOnClickListener(this);
         goodsSvc= (LinearLayout) findViewById(R.id.lyo_goods_svc);
         goodsSvc.setOnClickListener(this);
         activity_return.setOnClickListener(this);
@@ -323,6 +326,10 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     i.putExtra(EaseConstant.EXTRA_USER_ID, user_msg_helper);
                     startActivity(i);
                     break;
+                case R.id.lyo_goods_shop:
+                    Intent intent =new Intent(getBaseContext(), ShopActivity.class);
+                    intent.putExtra("store_id",store_id);
+                    startActivity(intent);
                 default:
                     break;
             }
@@ -395,7 +402,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             goodsName = data.optString("goods_name");
             goods_name.setText(goodsName);
             goods_price01.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            goods_price01.setText("￥" + data.optDouble("goods_marketprice"));
             // 0无促销，1团购，2限时折扣
             int goods_promotion_type = data.optInt("goods_promotion_type");
             goods_promotion_price = data.optDouble("goods_promotion_price");
@@ -417,9 +423,13 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                 goods_discount.setVisibility(View.VISIBLE);
             }
 
-            goods_shipment.setText("运费：");
-            goods_sold.setText("已售：" + data.optString("goods_salenum"));
-            goods_stock.setText("(库存： " + data.optString("goods_storage") + ")");
+            if (data.optDouble("goods_freight")==0.00){
+                goods_shipment.setText("免运费");
+            }else {
+                goods_shipment.setText("运费：" + data.optString("goods_freight"));
+            }
+            goods_sold.setText("已售：" + data.optInt("goods_salenum"));
+            goods_stock.setText("(库存： " + data.optInt("goods_storage") + ")");
             goods_shop_address.setText("");
             goods_shop_name.setText(data.optString("store_name"));
 
@@ -487,7 +497,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
     private void getGoodsReview() {
         // TODO Auto-generated method stub
         ////
-        RequestParams params = new RequestParams();
 
         NetHelper.goodsReview(goods_id + "", new NetConnectionInterface.iConnectListener3() {
             @Override

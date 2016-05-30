@@ -264,6 +264,7 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
             @Override
             public void onStart() {
 
+                setProgressVisibility(View.VISIBLE);
             }
 
             @Override

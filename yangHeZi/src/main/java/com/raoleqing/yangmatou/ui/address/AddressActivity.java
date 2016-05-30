@@ -163,6 +163,8 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 			@Override
 			public void onFail(JSONObject result) {
 
+				addressList.removeAll(addressList);
+
 			}
 		});
 
@@ -172,8 +174,6 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 
 		try {
-			int code = response.optInt("code");
-			String message = response.optString("message");
 
 			if (response == null) {
 				setProgressVisibility(View.GONE);
@@ -250,67 +250,32 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 		RequestParams params = new RequestParams();
 		params.put("address_id", addressId);
 
-		HttpUtil.post1(AddressActivity.this, HttpUtil.DEL_ADDRESS, params, new JsonHttpResponseHandler() {
-
-			// 获取数据成功会调用这里
+		NetHelper.del_address(addressId + "", new NetConnectionInterface.iConnectListener3() {
 			@Override
-			public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-				// TODO Auto-generated method stub
-				super.onSuccess(statusCode, headers, response);
-				delResolveJson(response, position);
+			public void onStart() {
+
 			}
 
-			// 失败
-			@Override
-			public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-				// TODO Auto-generated method stub
-				super.onFailure(statusCode, headers, throwable, errorResponse);
-				setProgressVisibility(View.GONE);
-			}
-
-			// 结束
 			@Override
 			public void onFinish() {
-				// TODO Auto-generated method stub
-				super.onFinish();
+				setProgressVisibility(View.GONE);
+
 			}
 
+			@Override
+			public void onSuccess(JSONObject result) {
+				viewInfo();
+
+			}
+
+			@Override
+			public void onFail(JSONObject result) {
+
+			}
 		});
 
 	}
 
-	protected void delResolveJson(JSONObject response, int position) {
-		// TODO Auto-generated method stub
-		
-		System.out.println("删除地址： " + response);
-		
-
-		try {
-			int code = response.optInt("code");
-			String message = response.optString("message");
-
-			if (response == null) {
-				setProgressVisibility(View.GONE);
-				return;
-			}
-
-			if (addressList.size() > 0) {
-				addressList.removeAll(addressList);
-			}
-
-			if (code == 1 || code == 200) {
-
-				addressList.remove(position);
-				adapter.notifyDataSetChanged();
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-
-		setProgressVisibility(View.GONE);
-	}
 
 	@Override
 	public void onBackPressed() {
@@ -318,6 +283,12 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 		super.onBackPressed();
 		overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
 		finish();
+	}
+
+	@Override
+	protected void onResume(){
+		super.onResume();
+		getData();
 	}
 
 }

@@ -6,6 +6,7 @@ import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.AddressAdapter.ViewHolder;
 import com.raoleqing.yangmatou.ben.Address;
 import com.raoleqing.yangmatou.ben.PoiInfo;
+import com.raoleqing.yangmatou.ui.address.MapActivity;
 
 import android.content.Context;
 import android.os.Handler;
@@ -20,7 +21,7 @@ import android.widget.TextView;
 
 public class LocNearAddressAdapter extends BaseAdapter{
 	
-	private List<PoiInfo> nearList;
+	private List<com.baidu.mapapi.search.core.PoiInfo> nearList;
 	private LayoutInflater mInflater;
 	private Context context;
 
@@ -28,11 +29,13 @@ public class LocNearAddressAdapter extends BaseAdapter{
 
 	}
 
-	public LocNearAddressAdapter(Context context, List<PoiInfo> nearList) {
+	public LocNearAddressAdapter(Context context, List<com.baidu.mapapi.search.core.PoiInfo> nearList) {
 		this.nearList = nearList;
 		this.context = context;
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
+
+
 
 	@Override
 	public int getCount() {
@@ -65,10 +68,9 @@ public class LocNearAddressAdapter extends BaseAdapter{
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		PoiInfo mPoiInfo = nearList.get(position);
-//		holder.loc_near_name.setText("    " + mPoiInfo.name);
-//		holder.loc_near_address.setText(mPoiInfo.address);
-	
+		com.baidu.mapapi.search.core.PoiInfo mPoiInfo = nearList.get(position);
+		holder.loc_near_name.setText("    " + mPoiInfo.name);
+		holder.loc_near_address.setText(mPoiInfo.address);
 		return convertView;
 	}
 
