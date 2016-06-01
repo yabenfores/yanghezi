@@ -3,6 +3,7 @@ package com.raoleqing.yangmatou.ui.user;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
 
@@ -75,6 +76,7 @@ public class SetTextActivity extends BaseActivity implements OnClickListener {
 						@Override
 						public void onFail(JSONObject result) {
 
+							makeShortToast(result.optString(Constant.INFO));
 						}
 					});
 

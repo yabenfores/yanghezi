@@ -11,7 +11,12 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
@@ -24,6 +29,8 @@ import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.webserver.AsyncFileUpload;
 import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,9 +43,9 @@ import java.util.List;
 
 public class EvalActivity extends BaseActivity implements View.OnClickListener, CustomDialog.MyDialogInterface {
 
-    private ImageView activity_return, uploadImage, imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8, imageView9;
-    private List<ImageView> list=new ArrayList<>();
-    private int anInt=0;
+    private ImageView activity_return, uploadImage, imageView1, imageView2, imageView3, imageView4, imageView5, imageView6, imageView7, imageView8, imageView9, goods_image;
+    private List<ImageView> list = new ArrayList<>();
+    private int anInt = 0;
     private Button button;
     private Dialog mDialog; // 拍照Dialog
     private ProgressDialog mProgressDialog; // 图片上传进度对话框
@@ -47,17 +54,38 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
     private static final int ACTION_TAKE_ALBUM = 2;
     private static final int FROM_CAMERA_ACTIVITY = 3;
 
+    private EditText et_eval;
+    private RatingBar rat_eval_jiage,rat_eval_ziliang,rat_eval_miaoshu;
+    private RadioGroup rb_eval;
+    private TextView goods_name;
+    private String order_sn, name, image;
+    private StringBuilder builder=new StringBuilder();
+
+    private int anony=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setProgressVisibility(View.GONE);
         setContentView(R.layout.activity_eval);
-        setTitleText(" 我的订单");
+        setTitleText("评价");
+        order_sn = getIntent().getStringExtra("order_sn");
+        name = getIntent().getStringExtra("goods_name");
+        image = getIntent().getStringExtra("goods_image");
         viewInfo();
     }
 
     protected void viewInfo() {
+        et_eval= (EditText) findViewById(R.id.et_eval);
+        rat_eval_jiage= (RatingBar) findViewById(R.id.rat_eval_jiage);
+        rat_eval_ziliang= (RatingBar) findViewById(R.id.rat_eval_ziliang);
+        rat_eval_miaoshu= (RatingBar) findViewById(R.id.rat_eval_miaoshu);
+        rb_eval= (RadioGroup) findViewById(R.id.rb_eval);
+        goods_name = (TextView) findViewById(R.id.goods_name);
+        goods_image = (ImageView) findViewById(R.id.goods_image);
+        goods_name.setText(name);
+        ImageLoader.getInstance().displayImage(image, goods_image);
         activity_return = (ImageView) findViewById(R.id.activity_return);
+        activity_return.setOnClickListener(this);
         uploadImage = (ImageView) findViewById(R.id.iv_app_up_image);
         imageView1 = (ImageView) findViewById(R.id.iv_eval_image1);
         imageView2 = (ImageView) findViewById(R.id.iv_eval_image2);
@@ -78,6 +106,7 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
         list.add(imageView8);
         list.add(imageView9);
         button = (Button) findViewById(R.id.btn_eval);
+        button.setOnClickListener(this);
         uploadImage.setOnClickListener(this);
         mDialog = new CustomDialog(EvalActivity.this, "照相", true, "相册", true, EvalActivity.this);
         initProgressDlg02();
@@ -109,12 +138,46 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
                     mDialog.show();
                     break;
                 case R.id.btn_eval:
+                    eval();
                     break;
             }
 
         } catch (Exception e) {
             throwEx(e);
         }
+    }
+
+    private void eval() {
+
+        if (rb_eval.getCheckedRadioButtonId()==R.id.rb_eval_sc){
+            anony=1;
+        }else {
+            anony=0;
+        }
+        NetHelper.member_evaluate(order_sn, rat_eval_miaoshu.getRating() + "", rat_eval_ziliang.getRating() + "", rat_eval_jiage.getRating() + "", et_eval.getText().toString(), anony + "", builder.toString(), new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
+                setProgressVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onFinish() {
+
+                setProgressVisibility(View.GONE);
+            }
+
+            @Override
+            public void onSuccess(JSONObject result) {
+                makeShortToast(result.optString(Constant.INFO));
+                sendNotifyUpdate(OrderActivity.class,ORDEREVAL);
+                finish();
+            }
+
+            @Override
+            public void onFail(JSONObject result) {
+                makeShortToast(result.optString(Constant.INFO));
+            }
+        });
     }
 
     /**
@@ -245,12 +308,12 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
 
             if (response == null) {
                 setProgressVisibility(View.GONE);
-                Toast.makeText(EvalActivity.this, "修改失败", 1).show();
                 return;
             }
             JSONObject json = response.optJSONObject(Constant.DATA);
             String filename = json.optString("filename");//图象地址
-            ImageView imageView= list.get(anInt);
+            builder.append(filename+";");
+            ImageView imageView = list.get(anInt);
             imageView.setVisibility(View.VISIBLE);
             anInt++;
 
@@ -326,4 +389,9 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
         }
 
     }
+
+
+    //------------------------
+
+    public final static String ORDEREVAL = "ordereval";
 }

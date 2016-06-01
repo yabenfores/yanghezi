@@ -14,10 +14,20 @@ public class Evaluation {
 	private String geval_frommembername;
 	private String geval_ordergoodsid;
 	private String geval_storename;
-	private long geval_addtime;
+	private String geval_addtime;
 	private String geval_goodsprice;
 	private String geval_goodsname;
 	private String geval_content;
+
+	public int getComment_id() {
+		return comment_id;
+	}
+
+	public void setComment_id(int comment_id) {
+		this.comment_id = comment_id;
+	}
+
+	private int comment_id;
 	public int getGeval_storeid() {
 		return geval_storeid;
 	}
@@ -48,10 +58,10 @@ public class Evaluation {
 	public void setGeval_storename(String geval_storename) {
 		this.geval_storename = geval_storename;
 	}
-	public long getGeval_addtime() {
+	public String getGeval_addtime() {
 		return geval_addtime;
 	}
-	public void setGeval_addtime(long geval_addtime) {
+	public void setGeval_addtime(String geval_addtime) {
 		this.geval_addtime = geval_addtime;
 	}
 	public String getGeval_goodsprice() {

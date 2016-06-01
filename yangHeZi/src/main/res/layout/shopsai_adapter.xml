@@ -6,6 +6,8 @@
     android:orientation="vertical">
 
     <TextView
+        android:gravity="center"
+        android:background="@color/bg01"
         style="@style/text16sp_typeblack"
         android:id="@+id/tv_brand"
         android:layout_width="match_parent"

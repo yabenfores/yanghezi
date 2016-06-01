@@ -143,6 +143,7 @@ public class ShopActivity extends BaseActivity implements OnClickListener, XList
 
             @Override
             public void onFail(JSONObject result) {
+                makeShortToast(result.optString(Constant.INFO));
 
             }
         });
@@ -229,7 +230,7 @@ public class ShopActivity extends BaseActivity implements OnClickListener, XList
 
             @Override
             public void onFail(JSONObject result) {
-
+                makeShortToast(result.optString(Constant.INFO));
             }
         });
 

@@ -32,6 +32,7 @@ import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
+import com.raoleqing.yangmatou.webserver.WebActivity;
 import com.raoleqing.yangmatou.xlist.XListView;
 
 import android.content.Intent;
@@ -190,7 +191,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 	private void getAdvertising() {
 		// TODO Auto-generated method stub
 
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 		NetHelper.advManage(new NetConnectionInterface.iConnectListener3() {
 			@Override
@@ -200,7 +201,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 
 			@Override
 			public void onFinish() {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 			}
 
@@ -214,6 +215,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			@Override
 			public void onFail(JSONObject result) {
 
+				((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
 			}
 		});
 	}
@@ -254,7 +256,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			e.printStackTrace();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 	}
 
@@ -295,9 +297,9 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 					return;
 				}
 				AdvManage nAdvManage = advManageList.get(pagerIndex);
-
-				Intent intent = new Intent(getActivity(), GoodsListActivity.class);
-				intent.putExtra("cid", nAdvManage.getC_id());
+				Intent intent = new Intent(getActivity(), WebActivity.class);
+				intent.putExtra("url", nAdvManage.getAdv_url());
+				intent.putExtra("title", nAdvManage.getAdv_title());
 				startActivity(intent);
 				getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
@@ -314,7 +316,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 	private void getStoreList() {
 		// TODO Auto-generated method stub
 
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 
 		NetHelper.getStoreList(page + "", new NetConnectionInterface.iConnectListener3() {
@@ -336,7 +338,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 
 			@Override
 			public void onFail(JSONObject result) {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 				ToastUtil.MakeShortToast(BaseActivity.getAppContext(),result.optString(Constant.INFO));
 			}
 		});
@@ -348,7 +350,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 		try {
 
 			if (response == null) {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 				onLoad();
 				return;
 			}
@@ -406,7 +408,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			e.printStackTrace();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 	}
 
@@ -415,7 +417,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 	 **/
 	private void getPavilion() {
 		// TODO Auto-generated method stub
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 		HttpUtil.post(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
 
@@ -432,7 +434,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
 				// TODO Auto-generated method stub
 				super.onFailure(statusCode, headers, throwable, errorResponse);
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 			}
 
 			// 结束
@@ -459,7 +461,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			int code = response.optInt("code");
 
 			if (response == null) {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 				return;
 			}
 
@@ -485,7 +487,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			e.printStackTrace();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 	}
 
@@ -517,7 +519,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 		// TODO Auto-generated method stub
 		// Home/Index/favoritesstore
 
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 //		int uid = SharedPreferencesUtil.getInt(getActivity(), "member_id");
 
@@ -533,7 +535,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 
 			@Override
 			public void onFinish() {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 			}
 
@@ -560,7 +562,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			String message = response.optString("message");
 
 			if (response == null) {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 				return;
 			}
 
@@ -573,7 +575,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			e.printStackTrace();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 	}
 
@@ -584,7 +586,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 		// TODO Auto-generated method stub
 		// Home/Index/cancelStore
 
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 //		int uid = SharedPreferencesUtil.getInt(getActivity(), "member_id");
 
@@ -600,7 +602,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 
 			@Override
 			public void onFinish() {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 			}
 
@@ -641,7 +643,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 			Toast.makeText(getActivity(), "取消失败", 1).show();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 		// TODO Auto-generated method stub
 
 	}

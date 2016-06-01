@@ -16,6 +16,7 @@ import com.raoleqing.yangmatou.common.CircleImageView;
 import com.raoleqing.yangmatou.ui.login.loginActivity;
 import com.raoleqing.yangmatou.ui.order.OrderActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
@@ -112,6 +113,7 @@ public class ReceiptFragment extends Fragment implements OnClickListener {
             @Override
             public void onFinish() {
 
+                ((OrderActivity) getActivity()).setProgressVisibility(View.GONE);
             }
 
             @Override
@@ -122,7 +124,7 @@ public class ReceiptFragment extends Fragment implements OnClickListener {
 
             @Override
             public void onFail(JSONObject result) {
-                ((OrderActivity) getActivity()).setMainProgress(View.GONE);
+                ((OrderActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
 
             }
         });

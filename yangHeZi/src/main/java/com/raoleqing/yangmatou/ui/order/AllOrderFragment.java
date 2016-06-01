@@ -10,6 +10,7 @@ import com.loopj.android.http.RequestParams;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.OrderAdapter;
 import com.raoleqing.yangmatou.ben.Order;
+import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
 
@@ -109,7 +110,7 @@ public class AllOrderFragment extends Fragment implements OnClickListener {
 
 			@Override
 			public void onFinish() {
-
+((OrderActivity) getActivity()).setProgressVisibility(View.GONE);
 			}
 
 			@Override
@@ -120,7 +121,7 @@ public class AllOrderFragment extends Fragment implements OnClickListener {
 
 			@Override
 			public void onFail(JSONObject result) {
-				((OrderActivity) getActivity()).setMainProgress(View.GONE);
+				((OrderActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
 
 			}
 		});

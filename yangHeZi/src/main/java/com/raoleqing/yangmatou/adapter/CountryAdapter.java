@@ -19,6 +19,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.raoleqing.yangmatou.BaseActivity;
+import com.raoleqing.yangmatou.BaseFragment;
+import com.raoleqing.yangmatou.MainActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.Goods;
 import com.raoleqing.yangmatou.ben.Pavilion;
@@ -26,6 +29,8 @@ import com.raoleqing.yangmatou.ben.Store;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
 import com.raoleqing.yangmatou.ui.shop.ShopActivity;
+import com.raoleqing.yangmatou.ui.showwhat.CountryActivity;
+import com.raoleqing.yangmatou.ui.showwhat.ShowShatFragment;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.uitls.UserUitls;
 
@@ -37,13 +42,13 @@ import java.util.List;
 public class CountryAdapter extends BaseAdapter {
     private List<Pavilion> pavilionList;
     private LayoutInflater mInflater;
-    private Context context;
+    private CountryActivity context;
 
     CountryAdapter() {
 
     }
 
-    public CountryAdapter(Context context, List<Pavilion> pavilionList) {
+    public CountryAdapter(CountryActivity context, List<Pavilion> pavilionList) {
         this.context = context;
         this.pavilionList = pavilionList;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -87,7 +92,9 @@ public class CountryAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
-
+                    String city_id=pavilion.getFlag_id()+"";
+                    BaseActivity.sendNotifyUpdate(MainActivity.class,COUNTRY,city_id);
+                    context.onBackPressed();
 
                 }
             });
@@ -114,4 +121,7 @@ public class CountryAdapter extends BaseAdapter {
 
         }
     }
+
+    //---------------
+    public final static String COUNTRY = "country";
 }

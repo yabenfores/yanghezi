@@ -160,6 +160,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
+
         <item name="android:scaleType">centerCrop</item>
     </style>
 
@@ -190,6 +191,12 @@
         <item name="android:layout_height">30dp</item>
         <item name="android:background">@drawable/bg_tv_red</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="show_ic">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:scaleType">fitCenter</item>
     </style>
 
 </resources>

@@ -14,6 +14,8 @@ import com.raoleqing.yangmatou.adapter.OrderAdapter;
 import com.raoleqing.yangmatou.ben.Order;
 import com.raoleqing.yangmatou.ui.order.OrderActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
@@ -104,6 +106,7 @@ public class PaymentFragment extends Fragment implements OnClickListener {
 			@Override
 			public void onFinish() {
 
+				((OrderActivity) getActivity()).setProgressVisibility(View.GONE);
 			}
 
 			@Override
@@ -114,7 +117,7 @@ public class PaymentFragment extends Fragment implements OnClickListener {
 
 			@Override
 			public void onFail(JSONObject result) {
-				((OrderActivity) getActivity()).setMainProgress(View.GONE);
+				((OrderActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
 
 			}
 		});

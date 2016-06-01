@@ -163,6 +163,7 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 			@Override
 			public void onFail(JSONObject result) {
 
+				makeShortToast(result.optString(Constant.INFO));
 				addressList.removeAll(addressList);
 
 			}
@@ -271,6 +272,7 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 			@Override
 			public void onFail(JSONObject result) {
 
+				makeShortToast(result.optString(Constant.INFO));
 			}
 		});
 

@@ -91,7 +91,7 @@ public class OrderAdapter extends BaseAdapter {
         holder.order_shipping.setText("（含运费" + mOrder.getShipping_fee() + "元）");
         ImageLoader.getInstance().displayImage(mOrder.getStore_label(), holder.store_icon,
                 YangHeZiApplication.imageOption(R.drawable.image_icon01));
-        JSONObject object = mOrder.getExtend_order_goods();
+        final JSONObject object = mOrder.getExtend_order_goods();
         if (object != null) {
             ImageLoader.getInstance().displayImage(object.optString("goods_image"), holder.goods_image,
                     YangHeZiApplication.imageOption(R.drawable.image_icon01));
@@ -202,6 +202,9 @@ public class OrderAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent intent = new Intent(context, EvalActivity.class);
+                intent.putExtra("goods_name",object.optString("goods_name"));
+                intent.putExtra("goods_image",object.optString("goods_image"));
+                intent.putExtra("order_sn",mOrder.getOrder_id());
                 context.startActivity(intent);
 
             }
@@ -281,7 +284,7 @@ public class OrderAdapter extends BaseAdapter {
     }
 
     //----------------
-    public final static String ORDERCHAGE = "ORDERCHAGE";
+    public final static String ORDERCHAGE = "orderchage";
 
 
 }

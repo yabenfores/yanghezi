@@ -405,13 +405,17 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 		finish();
 	}
 	//----------------
-	public final static String ORDERCHAGE = "ORDERCHAGE";
+	public final static String ORDERCHAGE = "orderchage";
+	public final static String ORDEREVAL = "ordereval";
 	protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
 		super.notifyUpdate(notifyUpdateEntity);
 		try {
 			switch (notifyUpdateEntity.getNotifyTag()) {
 				case ORDERCHAGE:
 					setView(1);
+					break;
+				case ORDEREVAL:
+					setView(4);
 					break;
 			}
 		} catch (Exception ex) {

@@ -130,6 +130,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
+        if (activity_search!=null){
+        activity_search.setFocusableInTouchMode(true);}
         if (UserUitls.exitBut == 2) {
             UserUitls.exitBut = 1;
             setView(0);
@@ -360,7 +362,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
                 Fragment fragment02 = DealsFragment.newInstance();
                 transaction.replace(R.id.main_content, fragment02, "MainFragment");
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
 
                 if (towCatList.size() > 0) {
                     setTitleContent(towCatList);
@@ -388,7 +390,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
                 Fragment fragment03 = SpecialTopicFragment.newInstance();
                 transaction.replace(R.id.main_content, fragment03, "MainFragment");
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
 
                 if (towCatList.size() > 0) {
                     setTitleContent(towCatList);
@@ -415,9 +417,9 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 main_host_text04.setTextColor(text01);
                 main_host_text05.setTextColor(text02);
 
-                Fragment fragment04 = ShowShatFragment.newInstance();
+               Fragment fragment04 = ShowShatFragment.newInstance();
                 transaction.replace(R.id.main_content, fragment04, "MainFragment");
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
 
                 break;
             case 4:
@@ -437,7 +439,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 main_host_text05.setTextColor(text01);
                 Fragment fragment05 = UserFragment.newInstance();
                 transaction.replace(R.id.main_content, fragment05, "MainFragment");
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
                 break;
 
             default:
@@ -610,9 +612,28 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         super.onBackPressed();
     }
 
+
+
+    public String getCity_id() {
+        return city_id;
+    }
+
+    public String getBrand_id() {
+        return brand_id;
+    }
+
+    public int getShowType() {
+        return showType;
+    }
+
+    private String city_id,brand_id;
+    private int showType=0;
     //-------------------------
     public final static String USER_LOGIN = "user_login";
 
+
+    public final static String COUNTRY = "country";
+    public final static String BRAND = "brand";
     protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
         super.notifyUpdate(notifyUpdateEntity);
         try {
@@ -620,11 +641,23 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 case USER_LOGIN:
                     setView(4);
                     break;
+                case COUNTRY:
+                    city_id= (String) notifyUpdateEntity.getObj();
+                    showType=2;
+                    setView(3);
+                    break;
+                case BRAND:
+                    brand_id=(String) notifyUpdateEntity.getObj();
+                    showType=3;
+                    setView(3);
+                    break;
             }
         } catch (Exception ex) {
             throwEx(ex);
         }
     }
+
+
 
 
 }

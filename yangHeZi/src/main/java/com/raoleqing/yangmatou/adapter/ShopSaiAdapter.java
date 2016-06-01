@@ -52,7 +52,7 @@ public class ShopSaiAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.brand_adapter, parent, false);
+            convertView = mInflater.inflate(R.layout.shopsai_adapter, parent, false);
             holder = new ViewHolder(convertView);
             convertView.setTag(holder);
         } else {

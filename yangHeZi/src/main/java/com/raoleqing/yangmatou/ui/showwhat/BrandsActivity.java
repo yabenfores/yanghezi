@@ -39,7 +39,7 @@ public class BrandsActivity extends BaseActivity implements OnClickListener {
 
     private ImageView brands_return;
     private ListView listView;
-    private BaseAdapter mAdapter;
+    private BrandAdapter mAdapter;
     private LinearLayout lyo_code;
     private List<Brand> brandList=new ArrayList<>();
     private List<TextView> list=new ArrayList<>();
@@ -158,6 +158,7 @@ public class BrandsActivity extends BaseActivity implements OnClickListener {
             @Override
             public void onFail(JSONObject result) {
 
+                makeShortToast(result.optString(Constant.INFO));
             }
         });
     }

@@ -1,6 +1,8 @@
 package com.raoleqing.yangmatou.ben;
 
-public class ShowShat {
+import java.io.Serializable;
+
+public class ShowShat implements Serializable {
 
     private int geval_id;//评价id
     private String geval_goodsname;//评价商品

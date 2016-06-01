@@ -41,6 +41,8 @@
             </LinearLayout>
 
             <RelativeLayout
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/gou_wu_message">

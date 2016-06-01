@@ -17,6 +17,7 @@ import com.raoleqing.yangmatou.ben.Province;
 import com.raoleqing.yangmatou.ben.Zone;
 import com.raoleqing.yangmatou.db.CtiyDBManage;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
@@ -181,7 +182,6 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
 
                 break;
             case R.id.address_text01:
-
                 setProgressVisibility(View.VISIBLE);
                 myHandler.sendEmptyMessage(2);
 
@@ -282,6 +282,7 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
             @Override
             public void onFail(JSONObject result) {
 
+                makeShortToast(result.optString(Constant.INFO));
             }
         });
 
@@ -354,6 +355,7 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
             @Override
             public void onFail(JSONObject result) {
 
+                makeShortToast(result.optString(Constant.INFO));
             }
         });
 
@@ -443,7 +445,6 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
                 switch (scrollState) {
                     case OnScrollListener.SCROLL_STATE_IDLE:
                         cityIndex = cityNP.getValue();
-
                         zoneIndex = 0;
                         City mCity = cityList.get(cityIndex);
                         getZone(mCity.getCitySort());

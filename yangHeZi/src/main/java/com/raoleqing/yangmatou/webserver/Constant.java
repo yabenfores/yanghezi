@@ -48,5 +48,9 @@ public class Constant {
     public final static String BRANDS="Home/Evaluate/Brands";//品牌
     public final static String STORE="/Home/Store/Index";//商店
     public final static String STOREGOODS="Home/Store/Storegoods";//商店商品列表
+    public final static String COMMENTS="Home/Evaluate/Comments";//评论列表
+    public final static String COMMENTDO="Home/Users/Commentdo";//评论
+    public final static String MEMBER_EVALUATE="Home/Users/member_evaluate";//评论
+    public final static String LIKEDO="Home/Users/likedo";//点赞
 
 }

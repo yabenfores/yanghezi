@@ -174,7 +174,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 	private void getAdvertising() {
 		// TODO Auto-generated method stub
 
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 		HttpUtil.get(getActivity(), HttpUtil.ADV_MANAGE, new JsonHttpResponseHandler() {
 
@@ -191,7 +191,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 			public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
 				// TODO Auto-generated method stub
 				super.onFailure(statusCode, headers, throwable, errorResponse);
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 			}
 
 			// 结束
@@ -218,7 +218,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 
 			if (response == null) {
 				Toast.makeText(getActivity(), message, 1).show();
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 				return;
 			}
 
@@ -248,7 +248,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 			e.printStackTrace();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 	}
 
@@ -308,7 +308,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 	 * **/
 	private void getPavilion() {
 		// TODO Auto-generated method stub
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 		HttpUtil.post(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
 
@@ -325,7 +325,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 			public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
 				// TODO Auto-generated method stub
 				super.onFailure(statusCode, headers, throwable, errorResponse);
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 			}
 
 			// 结束
@@ -354,7 +354,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 
 			if (response == null) {
 				Toast.makeText(getActivity(), message, 1).show();
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 				return;
 			}
 
@@ -381,7 +381,7 @@ public class SpecialTopicFragment extends Fragment implements XListView.IXListVi
 			e.printStackTrace();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);	
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);	
 		
 	}
 

@@ -174,6 +174,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         goods_detaile_webview = (WebView) findViewById(R.id.goods_detaile_webview);
         goods_evaluation_list = (ListView) findViewById(R.id.goods_evaluation_list);
         goods_evaluation_empty = (TextView) findViewById(R.id.goods_evaluation_empty);
+        goods_evaluation_empty.setVisibility(View.GONE);
         adapter = new EvaluationAdapter(GoodsDetail.this, evaluationList);
         goods_evaluation_list.setAdapter(adapter);
 
@@ -546,7 +547,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     JSONObject obj = data.getJSONObject(i);
                     Evaluation mEvaluation = new Evaluation();
                     mEvaluation.setMember_img(obj.optString("member_img"));
-                    mEvaluation.setGeval_addtime(obj.optLong("geval_addtime"));
+                    mEvaluation.setGeval_addtime(obj.optString("geval_addtime"));
                     mEvaluation.setGeval_goodsname(obj.optString("geval_goodsname"));
                     mEvaluation.setGeval_frommembername(obj.optString("geval_frommembername"));
                     mEvaluation.setGeval_content(obj.optString("geval_content"));
@@ -791,7 +792,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             @Override
             public void onFail(JSONObject result) {
                 setProgressVisibility(View.GONE);
-                makeShortToast(result.optString("data"));
+                makeShortToast(result.optString(Constant.INFO));
 
             }
         });
@@ -839,6 +840,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             @Override
             public void onFail(JSONObject result) {
 
+                makeShortToast(result.optString(Constant.INFO));
             }
         });
 

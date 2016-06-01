@@ -66,12 +66,12 @@ public class EvaluationAdapter extends BaseAdapter {
 
 		ImageLoader.getInstance().displayImage(mEvaluation.getMember_img(), holder.evaluation_user_icon,
 				YangHeZiApplication.imageOption(R.drawable.user_icon));
-		holder.evaluation_user_name.setText(mEvaluation.getGeval_storename());
+		holder.evaluation_user_name.setText(mEvaluation.getGeval_frommembername());
 		holder.evaluation_content.setText(mEvaluation.getGeval_content());
 		
-		long time = mEvaluation.getGeval_addtime();
-		String date = TimeUitls.getDate(time);
-		holder.evaluation_time.setText(date);
+//		long time = mEvaluation.getGeval_addtime();
+//		String date = TimeUitls.getDate(time);
+		holder.evaluation_time.setText(mEvaluation.getGeval_addtime());
 		
 		} catch (Exception e) {
 			// TODO: handle exception

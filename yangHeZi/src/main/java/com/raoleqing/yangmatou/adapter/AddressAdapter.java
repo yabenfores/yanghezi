@@ -3,10 +3,14 @@ package com.raoleqing.yangmatou.adapter;
 import java.util.List;
 
 import com.raoleqing.yangmatou.BaseActivity;
+import com.raoleqing.yangmatou.BaseFragment;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.Address;
 import com.raoleqing.yangmatou.ui.address.AddressActivity;
 import com.raoleqing.yangmatou.ui.goods.GoodsPayActivity;
+import com.raoleqing.yangmatou.ui.showwhat.ShowShatFragment;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
 
@@ -137,6 +141,7 @@ public class AddressAdapter extends BaseAdapter {
 
 						@Override
 						public void onFail(JSONObject result) {
+							ToastUtil.MakeShortToast(context,result.optString(Constant.INFO));
 
 						}
 					});
@@ -162,6 +167,7 @@ public class AddressAdapter extends BaseAdapter {
 						@Override
 						public void onFail(JSONObject result) {
 
+							ToastUtil.MakeShortToast(context,result.optString(Constant.INFO));
 						}
 					});
 				}

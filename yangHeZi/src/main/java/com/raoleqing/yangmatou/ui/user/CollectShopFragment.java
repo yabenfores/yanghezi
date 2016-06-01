@@ -16,6 +16,8 @@ import com.raoleqing.yangmatou.ben.Goods;
 import com.raoleqing.yangmatou.ben.Order;
 import com.raoleqing.yangmatou.ui.order.OrderActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
@@ -114,6 +116,7 @@ public class CollectShopFragment extends Fragment implements OnClickListener {
             @Override
             public void onFail(JSONObject result) {
 
+                ToastUtil.MakeShortToast(getContext(),result.optString(Constant.INFO));
             }
         });
 

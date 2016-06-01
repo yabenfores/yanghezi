@@ -145,7 +145,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 				@Override
 				public void onFinish() {
-					((MainActivity) getActivity()).setMainProgress(View.GONE);
+					((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 				}
 
@@ -160,6 +160,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 				@Override
 				public void onFail(JSONObject result) {
 
+					((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
 				}
 			});
 
@@ -233,7 +234,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 	private void getAdvertising() {
 		// TODO Auto-generated method stub
 
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 		NetHelper.advManage(new NetConnectionInterface.iConnectListener3() {
 			@Override
@@ -243,7 +244,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 			@Override
 			public void onFinish() {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 			}
 
@@ -256,7 +257,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 			@Override
 			public void onFail(JSONObject result) {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
 
 			}
 		});
@@ -298,7 +299,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 			e.printStackTrace();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 	}
 
@@ -358,7 +359,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 	private void getStoreList() {
 		// TODO Auto-generated method stub
 
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 
 		NetHelper.getStoreList(page + "", new NetConnectionInterface.iConnectListener3() {
@@ -370,6 +371,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 			@Override
 			public void onFinish() {
 
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 			}
 
 			@Override
@@ -379,7 +381,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 			@Override
 			public void onFail(JSONObject result) {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
 			}
 		});
 
@@ -393,7 +395,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 			if (response == null) {
 				Toast.makeText(getActivity(), message, 1).show();
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 				onLoad();
 				return;
 			}
@@ -453,7 +455,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 			Toast.makeText(getActivity(), "数据加载失败", 1).show();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 	}
 
@@ -462,7 +464,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 	 **/
 	private void getPavilion() {
 		// TODO Auto-generated method stub
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 		HttpUtil.post(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
 
@@ -479,7 +481,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 			public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
 				// TODO Auto-generated method stub
 				super.onFailure(statusCode, headers, throwable, errorResponse);
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 			}
 
 			// 结束
@@ -508,7 +510,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 			if (response == null) {
 				Toast.makeText(getActivity(), message, 1).show();
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 				return;
 			}
 
@@ -534,7 +536,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 			e.printStackTrace();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 	}
 
@@ -566,7 +568,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 		// TODO Auto-generated method stub
 		// Home/Index/favoritesstore
 
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 //		int uid = SharedPreferencesUtil.getInt(getActivity(), "member_id");
 
@@ -582,7 +584,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 			@Override
 			public void onFinish() {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 			}
 
@@ -610,7 +612,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 			if (response == null) {
 				Toast.makeText(getActivity(), message, 1).show();
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 				return;
 			}
 
@@ -624,7 +626,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 			Toast.makeText(getActivity(), "关注失败", 1).show();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 	}
 
@@ -635,7 +637,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 		// TODO Auto-generated method stub
 		// Home/Index/cancelStore
 
-		((MainActivity) getActivity()).setMainProgress(View.VISIBLE);
+		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 //		int uid = SharedPreferencesUtil.getInt(getActivity(), "member_id");
 
@@ -651,7 +653,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 			@Override
 			public void onFinish() {
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
 			}
 
@@ -678,7 +680,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
 			if (response == null) {
 				Toast.makeText(getActivity(), message, 1).show();
-				((MainActivity) getActivity()).setMainProgress(View.GONE);
+				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 				return;
 			}
 
@@ -693,7 +695,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 			Toast.makeText(getActivity(), "取消失败", 1).show();
 		}
 
-		((MainActivity) getActivity()).setMainProgress(View.GONE);
+		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 		// TODO Auto-generated method stub
 
 	}

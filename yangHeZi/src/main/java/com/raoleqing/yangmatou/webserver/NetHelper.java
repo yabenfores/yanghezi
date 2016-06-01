@@ -18,157 +18,209 @@ import java.io.File;
 public class NetHelper {
 
     //用户信息
-    public static void Users(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.USERS, NetParams.HttpMethod.Post,true,connectListener);
-        }
+    public static void Users(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.USERS, NetParams.HttpMethod.Post, true, connectListener);
+    }
+
     //以及分类
-    public static void getOneCat(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.ONECAT, NetParams.HttpMethod.Post,false,connectListener);
-        }
+    public static void getOneCat(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.ONECAT, NetParams.HttpMethod.Post, false, connectListener);
+    }
+
     //二级分类三级分类数据
-    public static void getCatList(String cid,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.CATLIST, NetParams.HttpMethod.Post,false,connectListener,"cid",cid);
-        }
+    public static void getCatList(String cid, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.CATLIST, NetParams.HttpMethod.Post, false, connectListener, "cid", cid);
+    }
+
     //商店列表
-    public static void getStoreList(String pag,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.STORELIST, NetParams.HttpMethod.Post,true,connectListener,"p",pag);
-        }
+    public static void getStoreList(String pag, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.STORELIST, NetParams.HttpMethod.Post, true, connectListener, "p", pag);
+    }
+
     //广告
-    public static void advManage(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.ADVMANAGE, NetParams.HttpMethod.Get,false,connectListener);
-        }
+    public static void advManage(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.ADVMANAGE, NetParams.HttpMethod.Get, false, connectListener);
+    }
+
     //用户订单
-    public static void member_order(String state_type ,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.MEMBER_ORDER, NetParams.HttpMethod.Post,true,connectListener,"state_type",state_type);
-        }
+    public static void member_order(String state_type, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.MEMBER_ORDER, NetParams.HttpMethod.Post, true, connectListener, "state_type", state_type);
+    }
+
     //修改密码
-    public static void editUserPass(String loginpas ,String member_password,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.EDITUSERPASS, NetParams.HttpMethod.Post,true,connectListener,"loginpas",loginpas,"member_password",member_password);
-        }
-    public static void goodsDetails(String goods_id ,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.GOODS_DETAILS, NetParams.HttpMethod.Post,false,connectListener,"goods_id",goods_id);
-        }
-    public static void goodsReview(String goods_id ,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.GOODS_REVIEW, NetParams.HttpMethod.Post,false,connectListener,"goods_id",goods_id);
-        }
+    public static void editUserPass(String loginpas, String member_password, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.EDITUSERPASS, NetParams.HttpMethod.Post, true, connectListener, "loginpas", loginpas, "member_password", member_password);
+    }
+
+    public static void goodsDetails(String goods_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.GOODS_DETAILS, NetParams.HttpMethod.Post, false, connectListener, "goods_id", goods_id);
+    }
+
+    public static void goodsReview(String goods_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.GOODS_REVIEW, NetParams.HttpMethod.Post, false, connectListener, "goods_id", goods_id);
+    }
+
     //获取默认地址
-    public static void getDefaultAddress(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.GETDEFAULTADDRESS, NetParams.HttpMethod.Post,true,connectListener);
-        }
+    public static void getDefaultAddress(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.GETDEFAULTADDRESS, NetParams.HttpMethod.Post, true, connectListener);
+    }
+
     //税
-    public static void getTax(String pid ,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.GETTAX, NetParams.HttpMethod.Post,true,connectListener,"pid",pid);
-        }
+    public static void getTax(String pid, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.GETTAX, NetParams.HttpMethod.Post, true, connectListener, "pid", pid);
+    }
+
     //关注
-    public static void favoritesstore(String fid ,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.FAVORITESSTORE, NetParams.HttpMethod.Post,true,connectListener,"fid",fid);
-        }
+    public static void favoritesstore(String fid, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.FAVORITESSTORE, NetParams.HttpMethod.Post, true, connectListener, "fid", fid);
+    }
+
     //取消关注
-    public static void cancelStore(String fid ,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.CANCELSTORE, NetParams.HttpMethod.Post,true,connectListener,"fid",fid);
-        }
+    public static void cancelStore(String fid, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.CANCELSTORE, NetParams.HttpMethod.Post, true, connectListener, "fid", fid);
+    }
+
     //关注列表
-    public static void member_fslist(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.MEMBER_FSLIST, NetParams.HttpMethod.Post,true,connectListener);
-        }
+    public static void member_fslist(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.MEMBER_FSLIST, NetParams.HttpMethod.Post, true, connectListener);
+    }
+
     //退出登录
-    public static void Logout(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.LOGOUT, NetParams.HttpMethod.Post,true,connectListener);
+    public static void Logout(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.LOGOUT, NetParams.HttpMethod.Post, true, connectListener);
     }
+
     //获取退货
-    public static void getRefundList(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.GETREFUNDLIST, NetParams.HttpMethod.Post,true,connectListener);
+    public static void getRefundList(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.GETREFUNDLIST, NetParams.HttpMethod.Post, true, connectListener);
     }
+
     //商品列表
-    public static void goodsList(String cid,String p,String key,String order,String keyword,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.GOODSLIST, NetParams.HttpMethod.Post,true,connectListener,"cid",cid,"p",p,"key",key,"order",order,"keyword",keyword);
+    public static void goodsList(String cid, String p, String key, String order, String keyword, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.GOODSLIST, NetParams.HttpMethod.Post, true, connectListener, "cid", cid, "p", p, "key", key, "order", order, "keyword", keyword);
     }
+
     //获取验证码
-    public static void MsgInfo(String phone,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.MSGINFO, NetParams.HttpMethod.Post,true,connectListener,"member_mobile",phone);
+    public static void MsgInfo(String phone, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.MSGINFO, NetParams.HttpMethod.Post, true, connectListener, "member_mobile", phone);
     }
+
     //获取验证码
-    public static void bindUserMobile(String phone,String verification_code,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.BINDUSERMOBILE, NetParams.HttpMethod.Post,true,connectListener,"member_mobile",phone,"verification_code",verification_code);
+    public static void bindUserMobile(String phone, String verification_code, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.BINDUSERMOBILE, NetParams.HttpMethod.Post, true, connectListener, "member_mobile", phone, "verification_code", verification_code);
     }
+
     //获取环信帐号
-    public static void customerIndex(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.CUSTOMERINDEX, NetParams.HttpMethod.Post,true,connectListener);
+    public static void customerIndex(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.CUSTOMERINDEX, NetParams.HttpMethod.Post, true, connectListener);
     }
+
     //收藏商品
-    public static void favoritespro(String fid,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(HttpUtil.FAVORITES_PORDUCT_STORE, NetParams.HttpMethod.Post,true,connectListener,"fid",fid);
+    public static void favoritespro(String fid, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(HttpUtil.FAVORITES_PORDUCT_STORE, NetParams.HttpMethod.Post, true, connectListener, "fid", fid);
     }
+
     //取消收藏商品
-    public static void cancelPro(String fid,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(HttpUtil.CANCEL_PORDUCT_STORE, NetParams.HttpMethod.Post,true,connectListener,"fid",fid);
+    public static void cancelPro(String fid, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(HttpUtil.CANCEL_PORDUCT_STORE, NetParams.HttpMethod.Post, true, connectListener, "fid", fid);
     }
+
     //关于
-    public static void aboutYhz(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.ABOUTYHZ, NetParams.HttpMethod.Post,false,connectListener);
+    public static void aboutYhz(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.ABOUTYHZ, NetParams.HttpMethod.Post, false, connectListener);
     }
+
     //热卖
-    public static void flashSale(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.FLASHSALE, NetParams.HttpMethod.Post,false,connectListener);
+    public static void flashSale(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.FLASHSALE, NetParams.HttpMethod.Post, false, connectListener);
     }
+
     //取消订单
-    public static void ordercancel(String order_id,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.ORDERCANCEL, NetParams.HttpMethod.Post,true,connectListener,"order_id",order_id);
+    public static void ordercancel(String order_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.ORDERCANCEL, NetParams.HttpMethod.Post, true, connectListener, "order_id", order_id);
     }
+
     //提交订单
-    public static void submitOrder(String wh_id,String quantity,String pid,String order_message,String sfzno,String pay_type,String address_id,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.SUBMITORDER, NetParams.HttpMethod.Post,true,connectListener,"wh_id",wh_id,"quantity",quantity,"pid",pid,"order_message",order_message,"sfzno",sfzno,"pay_type",pay_type,"address_id",address_id);
+    public static void submitOrder(String wh_id, String quantity, String pid, String order_message, String sfzno, String pay_type, String address_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.SUBMITORDER, NetParams.HttpMethod.Post, true, connectListener, "wh_id", wh_id, "quantity", quantity, "pid", pid, "order_message", order_message, "sfzno", sfzno, "pay_type", pay_type, "address_id", address_id);
     }
+
     //编辑地址
-    public static void edit_Address(String address_id,String true_name,String area_id,String city_id,String area_info,String address,String tel_phone,String is_default,String mob_phone,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(HttpUtil.EDIT_ADDRESS, NetParams.HttpMethod.Post,true,connectListener,"address_id",address_id,"true_name",true_name,"area_id",area_id,"city_id",city_id,"area_info",area_info,"address",address,"tel_phone",tel_phone,"is_default",is_default,"mob_phone",mob_phone);
+    public static void edit_Address(String address_id, String true_name, String area_id, String city_id, String area_info, String address, String tel_phone, String is_default, String mob_phone, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(HttpUtil.EDIT_ADDRESS, NetParams.HttpMethod.Post, true, connectListener, "address_id", address_id, "true_name", true_name, "area_id", area_id, "city_id", city_id, "area_info", area_info, "address", address, "tel_phone", tel_phone, "is_default", is_default, "mob_phone", mob_phone);
     }
+
     //添加地址
-    public static void add_Address(String true_name,String area_id,String city_id,String area_info,String address,String tel_phone,String is_default,String mob_phone,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(HttpUtil.ADD_ADDRESS, NetParams.HttpMethod.Post,true,connectListener,"true_name",true_name,"area_id",area_id,"city_id",city_id,"area_info",area_info,"address",address,"tel_phone",tel_phone,"is_default",is_default,"mob_phone",mob_phone);
+    public static void add_Address(String true_name, String area_id, String city_id, String area_info, String address, String tel_phone, String is_default, String mob_phone, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(HttpUtil.ADD_ADDRESS, NetParams.HttpMethod.Post, true, connectListener, "true_name", true_name, "area_id", area_id, "city_id", city_id, "area_info", area_info, "address", address, "tel_phone", tel_phone, "is_default", is_default, "mob_phone", mob_phone);
     }
+
     //修改昵称
-    public static void editUserName(String member_name,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.EDITUSERNAME, NetParams.HttpMethod.Post,false,connectListener,"member_name",member_name);
+    public static void editUserName(String member_name, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.EDITUSERNAME, NetParams.HttpMethod.Post, false, connectListener, "member_name", member_name);
     }
+
     //删除地址
-    public static void del_address(String address_id,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(HttpUtil.DEL_ADDRESS, NetParams.HttpMethod.Post,true,connectListener,"address_id",address_id);
+    public static void del_address(String address_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(HttpUtil.DEL_ADDRESS, NetParams.HttpMethod.Post, true, connectListener, "address_id", address_id);
     }
+
     //秀一秀
-    public static void Evaluate(String dotype,String page,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.EVALUATE, NetParams.HttpMethod.Post,false,connectListener,"dotype",dotype,"page",page);
+    public static void Evaluate(String dotype, String page, String city_id, String brand_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.EVALUATE, NetParams.HttpMethod.Post, false, connectListener, "dotype", dotype, "page", page, "city_id", city_id, "brand_id", brand_id);
     }
 
     //秀一秀广告
-    public static void adImginfo(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.ADIMGINFO, NetParams.HttpMethod.Post,false,connectListener);
-    }
-    //秀一秀国家
-    public static void Flags(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.FLAGS, NetParams.HttpMethod.Post,false,connectListener);
-    }
-    //进口税
-    public static void tariff(NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.TARIFF, NetParams.HttpMethod.Post,true,connectListener);
-    }
-    //继续支付
-    public static void order_conpay(String order_id, NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.ORDER_CONPAY, NetParams.HttpMethod.Post,true,connectListener,"order_id",order_id);
-    }
-    //品牌
-    public static void Brands(String brand_initial, NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.BRANDS, NetParams.HttpMethod.Post,false,connectListener,"brand_initial",brand_initial);
-    }
-    //商店
-    public static void Store(String store_id, NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.STORE, NetParams.HttpMethod.Post,true,connectListener,"store_id",store_id);
-    }
-    //商店
-    public static void Storegoods(String store_id, String gc_id,String page,NetConnectionInterface.iConnectListener3 connectListener){
-        new BaseNetConnection(Constant.STOREGOODS, NetParams.HttpMethod.Post,true,connectListener,"store_id",store_id,"gc_id",gc_id,"page",page);
+    public static void adImginfo(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.ADIMGINFO, NetParams.HttpMethod.Post, false, connectListener);
     }
 
+    //秀一秀国家
+    public static void Flags(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.FLAGS, NetParams.HttpMethod.Post, false, connectListener);
+    }
+
+    //进口税
+    public static void tariff(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.TARIFF, NetParams.HttpMethod.Post, true, connectListener);
+    }
+
+    //继续支付
+    public static void order_conpay(String order_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.ORDER_CONPAY, NetParams.HttpMethod.Post, true, connectListener, "order_id", order_id);
+    }
+
+    //品牌
+    public static void Brands(String brand_initial, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.BRANDS, NetParams.HttpMethod.Post, false, connectListener, "brand_initial", brand_initial);
+    }
+
+    //商店
+    public static void Store(String store_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.STORE, NetParams.HttpMethod.Post, true, connectListener, "store_id", store_id);
+    }
+
+    //商店
+    public static void Storegoods(String store_id, String gc_id, String page, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.STOREGOODS, NetParams.HttpMethod.Post, true, connectListener, "store_id", store_id, "gc_id", gc_id, "page", page);
+    }
+
+    //评论列表
+    public static void Comments(String geval_id,String page, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.COMMENTS, NetParams.HttpMethod.Post, true, connectListener, "geval_id", geval_id,"page",page);
+    }
+    //回复
+    public static void Commentdo(String geval_id,String comment_context, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.COMMENTDO, NetParams.HttpMethod.Post, true, connectListener, "geval_id", geval_id,"comment_context",comment_context);
+    }
+    //评论
+    public static void member_evaluate(String order_id,String store_desccredit,String store_servicecredit ,String store_deliverycredit ,String evaluate_comment,String anony,String geval_images, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.MEMBER_EVALUATE, NetParams.HttpMethod.Post, true, connectListener, "order_id", order_id,"store_desccredit",store_desccredit,"store_servicecredit",store_servicecredit,"store_deliverycredit",store_deliverycredit,"evaluate_comment",evaluate_comment,"anony",anony,"geval_images",geval_images);
+    }
+    //点赞
+    public static void likedo(String geval_id,String dotype, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.LIKEDO, NetParams.HttpMethod.Post, true, connectListener, "geval_id", geval_id,"dotype",dotype);
+    }
 
 
 }

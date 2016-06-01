@@ -81,6 +81,7 @@ public class AboutActivity extends BaseActivity implements OnClickListener {
 
                     @Override
                     public void onFail(JSONObject result) {
+                        makeShortToast(result.optString(Constant.INFO));
                     }
                 });
                 break;
@@ -108,6 +109,7 @@ public class AboutActivity extends BaseActivity implements OnClickListener {
                     @Override
                     public void onFail(JSONObject result) {
 
+                        makeShortToast(result.optString(Constant.INFO));
                     }
                 });
             default:

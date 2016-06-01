@@ -191,7 +191,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     public void onClick(View v) {
         // TODO Auto-generated method stub
         switch (v.getId()) {
-            case R.id.activity_return:
+            case R.id.goods_pay_return:
                 GoodsPayActivity.this.onBackPressed();
                 break;
             case R.id.goods_pay_explanation:
