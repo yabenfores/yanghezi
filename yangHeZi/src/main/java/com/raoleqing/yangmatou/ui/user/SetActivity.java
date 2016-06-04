@@ -86,7 +86,6 @@ public class SetActivity extends BaseActivity implements OnClickListener, MyDial
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-
         String member_name = SharedPreferencesUtil.getString(SetActivity.this, "member_name");
         String member_avatar = SharedPreferencesUtil.getString(SetActivity.this, "member_avatar");
         user_name.setText(member_name + " ");
@@ -324,14 +323,12 @@ public class SetActivity extends BaseActivity implements OnClickListener, MyDial
                         showTipDialog("是否上传头像？");
                     }
                     break;
-
                 case ACTION_TAKE_ALBUM:
                     if (resultCode == RESULT_OK) {
                         Uri file = data.getData();
                         mCurrentPhotoPath = ImageUtils.getPath(SetActivity.this, file);
                         if (mCurrentPhotoPath != null) {
                             ImageUtils.showPic(main_user_icon, mCurrentPhotoPath);
-
                             showTipDialog("是否上传头像？");
                         }
                     }

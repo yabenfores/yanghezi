@@ -2,9 +2,14 @@ package com.raoleqing.yangmatou.ui.showwhat;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,16 +41,18 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
     private ImageView user_iocn, iv_show_main, iv_show1, iv_show2, iv_show3, iv_show4, iv_show5, iv_return,iv_like;
     private TextView tv_show_username, tv_show_time, tv_show_comm, tv_show_storename, tv_show_goodsname, tv_show_comment_num, tv_show_like_num, tv_eval_con;
     private RatingBar xing_sheng_ratingbar;
-    private LinearLayout lyo_show_like, lyo_show_eval, lyo_show_share;
+    private LinearLayout lyo_show_like, lyo_show_eval, lyo_show_share,lyo_show_re;
 
+    private Button btn_show_re;
     private View showHrad;
     private EvaluationAdapter adapter;
 
+    private EditText et_show_re;
     private XListView xListView;
     private List<Evaluation> evaluationList = new ArrayList<>();
     private ShowShat showShat;
 
-    private int page = 1, maxPage = 1;
+    private int page = 1, maxPage = 1,evalNum=0,likeNum=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +64,10 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
     }
 
     protected void viewInfo() {
+        et_show_re= (EditText) findViewById(R.id.et_show_re);
+        btn_show_re= (Button) findViewById(R.id.btn_show_re);
+        btn_show_re.setOnClickListener(this);
+        lyo_show_re= (LinearLayout) findViewById(R.id.lyo_show_re);
         iv_like= (ImageView) findViewById(R.id.iv_like);
         lyo_show_like= (LinearLayout) findViewById(R.id.lyo_show_like);
         lyo_show_eval= (LinearLayout) findViewById(R.id.lyo_show_eval);
@@ -106,15 +117,15 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                         YangHeZiApplication.imageOption(R.drawable.user_icon));
             }
 
-            tv_show_time.setText(TimeUitls.getDate(showShat.getGeval_addtime()));
+            tv_show_time.setText(TimeUitls.getDate(showShat.getGeval_addtime()*1000));
             tv_show_comm.setText(showShat.getGeval_content());
             tv_show_storename.setText(" " + showShat.getGeval_storename());
             tv_show_goodsname.setText(" " + showShat.getGeval_goodsname());
             xing_sheng_ratingbar.setRating(showShat.getGeval_scores());
             tv_eval_con.setText("共" + showShat.getGeval_comment_num() + "条评论");
-
             tv_show_comment_num.setText("(" + showShat.getGeval_comment_num() + ")");
-            tv_show_like_num.setText("(" + showShat.getGeval_like_num() + ")");
+            likeNum=showShat.getGeval_like_num();
+            tv_show_like_num.setText("(" + likeNum + ")");
 
             String[] strings = showShat.getGeval_image().split(";");
             for (int a = 0; a < strings.length; a++) {
@@ -128,8 +139,17 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
         xListView.setPullRefreshEnable(true);
         xListView.setPullLoadEnable(true);
         xListView.setXListViewListener(this);
-
         iv_return.setOnClickListener(this);
+        et_show_re.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK){
+                    lyo_show_re.setVisibility(View.GONE);
+                    return true;
+                }
+                return false;
+            }
+        });
         getInfo();
     }
 
@@ -163,9 +183,14 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
 
     private void ResolveJson(JSONObject result) {
         JSONObject json = result.optJSONObject(Constant.DATA);
+        if (json==null){
+            return;
+        }
         try {
-
             maxPage = json.optInt("pagetotal");
+            evalNum = json.optInt("rowcount");
+            tv_eval_con.setText("共" + evalNum+ "条评论");
+            tv_show_comment_num.setText("(" + evalNum + ")");
             JSONArray jsonArray = json.optJSONArray("comments");
             if (jsonArray == null) return;
             for (int i = 0; i < jsonArray.length(); i++) {
@@ -195,11 +220,12 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                     break;
 
                 case R.id.lyo_show_eval:
-                    inputTitleDialog();
+                    lyo_show_re.setVisibility(View.VISIBLE);
+//                    inputTitleDialog();
                     break;
                 case R.id.lyo_show_like:
                     if (showShat.getIs_like()==1){
-                        NetHelper.likedo(showShat.getGeval_id() + "", "1", new NetConnectionInterface.iConnectListener3() {
+                        NetHelper.likedo(showShat.getGeval_id() + "", "0", new NetConnectionInterface.iConnectListener3() {
                             @Override
                             public void onStart() {
                                 setProgressVisibility(View.VISIBLE);
@@ -214,6 +240,8 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                             @Override
                             public void onSuccess(JSONObject result) {
                                 showShat.setIs_like(0);
+                                likeNum--;
+                                tv_show_like_num.setText("(" + likeNum + ")");
                                 iv_like.setImageResource(R.drawable.like_icon);
                             }
 
@@ -224,8 +252,7 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                             }
                         });
                     }else {
-
-                        NetHelper.likedo(showShat.getGeval_id() + "", "0", new NetConnectionInterface.iConnectListener3() {
+                        NetHelper.likedo(showShat.getGeval_id() + "", "1", new NetConnectionInterface.iConnectListener3() {
                             @Override
                             public void onStart() {
                                 setProgressVisibility(View.VISIBLE);
@@ -239,6 +266,8 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                             @Override
                             public void onSuccess(JSONObject result) {
                                 showShat.setIs_like(1);
+                                likeNum++;
+                                tv_show_like_num.setText("(" + likeNum + ")");
                                 iv_like.setImageResource(R.drawable.ic_like);
                             }
 
@@ -251,6 +280,38 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                     }
                     break;
 
+                case R.id.btn_show_re:
+                    if (et_show_re.getText().toString().trim().isEmpty()) {
+                        makeShortToast("请输入回复内容");
+                        return;
+                    }
+                    NetHelper.Commentdo(showShat.getGeval_id() + "", et_show_re.getText().toString(), new NetConnectionInterface.iConnectListener3() {
+                        @Override
+                        public void onStart() {
+                            setProgressVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            setProgressVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onSuccess(JSONObject result) {
+                            makeShortToast(result.optString(Constant.INFO));
+                            evaluationList.removeAll(evaluationList);
+                            lyo_show_re.setVisibility(View.GONE);
+                            ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(et_show_re.getWindowToken(),0);
+                            getInfo();
+                        }
+
+                        @Override
+                        public void onFail(JSONObject result) {
+                            makeShortToast(result.optString(Constant.INFO));
+                        }
+                    });
+
+                    break;
                 default:
                     break;
             }
@@ -300,6 +361,8 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                     @Override
                     public void onSuccess(JSONObject result) {
                         makeShortToast(result.optString(Constant.INFO));
+                        evaluationList.removeAll(evaluationList);
+                        getInfo();
                     }
 
                     @Override

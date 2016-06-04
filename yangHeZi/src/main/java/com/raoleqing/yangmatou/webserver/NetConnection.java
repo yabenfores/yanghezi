@@ -29,7 +29,6 @@ public class NetConnection {
         if (conectListener instanceof NetConnectionInterface.iConnectListener2)
             ((NetConnectionInterface.iConnectListener2) conectListener).onStart();
         new AsyncTask<Void, Void, String>() {
-
             @Override
             protected String doInBackground(Void... params) {
                 HttpURLConnection uc = null;

@@ -57,6 +57,10 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
     private String addressName;
     private String addressPhone;
     private String addressText01;
+    private String province;
+    private String city;
+    private String district;
+    private String address;
     private String addressText02;
     private String is_default = "";
 
@@ -80,7 +84,6 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
                 case 1:
                     setDayText();
                     break;
-
                 case 2:
                     showDatePickerDialog();
                     break;
@@ -234,9 +237,8 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
         if (address_id != 0) {
             editaddress(address_id, name, area_id, city_id, text02, text01, phone, phone);
         } else {
-            addAddress(name, 0, 0, text02, text01, phone, phone);
+            addAddress(name, area_id, city_id, text02, text01, phone, phone);
         }
-
     }
 
     /*
@@ -315,6 +317,7 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
     /*
      * 编辑地址
      ***/
+
     private void editaddress(int address_id, String true_name, int area_id, int city_id, String area_info,
                              String address, String tel_phone, String mob_phone) {
         // TODO Auto-generated method stub
@@ -504,15 +507,19 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
     private void setDayText() {
         // TODO Auto-generated method stub
 
-        String proName = provinceList.get(provinceNP.getValue()).getProName();
-        String cityName = cityList.get(cityNP.getValue()).getCityName();
-        String zoneName = zoneList.get(zoneNP.getValue()).getZoneName();
-        addressText01 = proName + "" + cityName + " " + zoneName;
+        try {
 
-        city_id = cityList.get(cityNP.getValue()).getArea_id();
-        area_id = zoneList.get(zoneNP.getValue()).getCityID();
+            String proName = provinceList.get(provinceNP.getValue()).getProName();
+            String cityName = cityList.get(cityNP.getValue()).getCityName();
+            String zoneName = zoneList.get(zoneNP.getValue()).getZoneName();
+            addressText01 = proName + "" + cityName + " " + zoneName;
 
-        address_text01.setText(addressText01);
+            city_id = cityList.get(cityNP.getValue()).getArea_id();
+            area_id = zoneList.get(zoneNP.getValue()).getCityID();
+            address_text01.setText(addressText01);
+        } catch (Exception e) {
+            throwEx(e);
+        }
 
     }
 
@@ -559,9 +566,14 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
                 //inent.putExtra("city", mPoiInfo.city);
                 //inent.putExtra("address", mPoiInfo.address);
                 addressText01 = arg2.getStringExtra("city");
+                city = arg2.getStringExtra("city");
+                province = arg2.getStringExtra("province");
+                district = arg2.getStringExtra("district");
+                address = arg2.getStringExtra("address");
                 addressText02 = arg2.getStringExtra("address");
-                address_text01.setText(addressText01);
+                address_text01.setText(province + city + district);
                 address_text02.setText(addressText02);
+                setPostId(province, city, district);
 
                 // CtiyDBManage db = new CtiyDBManage(EditAddressActivity.this);
 
@@ -571,6 +583,35 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
                 break;
         }
     }
+
+    private void setPostId(String province, String city, String district) {
+        try {
+            int pro;
+            getProvince();
+            for (int i = 0; i < provinceList.size(); i++) {
+                if (provinceList.get(i).getProName() == province) {
+                    pro = provinceList.get(i).getProSort();
+                    getCity(pro);
+                }
+                for (int a = 0; a < cityList.size(); a++) {
+                    if (city == cityList.get(a).getCityName()) {
+                        city_id = cityList.get(a).getCitySort();
+                        getZone(city_id);
+                    }
+                    for (int b = 0; b < zoneList.size(); b++) {
+                        if (district == zoneList.get(b).getZoneName()) {
+                            area_id = zoneList.get(b).getArea_id();
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throwEx(e);
+        }
+
+
+    }
+
 
     @Override
     public void onBackPressed() {

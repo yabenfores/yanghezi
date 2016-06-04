@@ -88,6 +88,8 @@ public class AddressAdapter extends BaseAdapter {
 		if (isdefault == 1) {
 			holder.address_item_default.setChecked(true);
 
+		}else {
+			holder.address_item_default.setChecked(false);
 		}
 
 		holder.address_item_edit.setOnClickListener(new OnClickListener() {
@@ -137,6 +139,7 @@ public class AddressAdapter extends BaseAdapter {
 						@Override
 						public void onSuccess(JSONObject result) {
 							mAddress.setIs_default(0);
+							BaseActivity.sendNotifyUpdate(AddressActivity.class,ADDRESSCHANGE);
 						}
 
 						@Override
@@ -162,6 +165,7 @@ public class AddressAdapter extends BaseAdapter {
 						@Override
 						public void onSuccess(JSONObject result) {
 							mAddress.setIs_default(1);
+							BaseActivity.sendNotifyUpdate(AddressActivity.class,ADDRESSCHANGE);
 						}
 
 						@Override
@@ -208,5 +212,6 @@ public class AddressAdapter extends BaseAdapter {
 	}
 	//----------------
 	public final static String ADDRESSSELECT = "addressSelect";
+	public final static String ADDRESSCHANGE = "addresschange";
 
 }

@@ -182,7 +182,7 @@
             <Button
                 android:id="@+id/btn_order_cancel"
                 style="@style/order_button"
-                android:text="取消定单"
+                android:text="取消订单"
                 />
 
             <Button

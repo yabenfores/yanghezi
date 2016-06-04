@@ -167,7 +167,7 @@ public class CollectShopFragment extends Fragment implements OnClickListener {
                 mCollectShop.setGoods_list(goodsList);
                 collectShopList.add(mCollectShop);
             }
-            adapter = new CollectShopAdapter(getActivity(), collectShopList);
+            adapter = new CollectShopAdapter((CollectActivity) getActivity(), collectShopList);
             payment_listview.setAdapter(adapter);
             null_data_layout.setVisibility(View.GONE);
             adapter.notifyDataSetChanged();

@@ -10,6 +10,7 @@ import com.raoleqing.yangmatou.ben.Order;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.ui.order.EvalActivity;
 import com.raoleqing.yangmatou.ui.order.OrderActivity;
+import com.raoleqing.yangmatou.ui.order.RefuActivity;
 import com.raoleqing.yangmatou.uitls.PaaCreator;
 import com.raoleqing.yangmatou.uitls.TimeUitls;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
@@ -81,11 +82,10 @@ public class OrderAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
         final Order mOrder = orderList.get(position);
         holder.store_name.setText(mOrder.getStore_name());
         holder.store_orderId.setText("订单号: " + mOrder.getOrder_sn());
-        holder.order_time.setText("下单时间 : " + TimeUitls.getDate(mOrder.getAdd_time()));
+        holder.order_time.setText("下单时间 : " + TimeUitls.getDate(mOrder.getAdd_time()*1000));
 
         holder.order_number.setText("数量：" + mOrder.getGoods_num() + "件        共计： ￥" + mOrder.getOrder_amount());
         holder.order_shipping.setText("（含运费" + mOrder.getShipping_fee() + "元）");
@@ -108,6 +108,13 @@ public class OrderAdapter extends BaseAdapter {
         switch (mOrder.getOrder_state()) {
             case 0:
                 holder.order_state.setText("已取消");
+                holder.btn_order_back.setVisibility(View.GONE);
+                holder.btn_order_cancel.setVisibility(View.GONE);
+                holder.btn_order_pay.setVisibility(View.GONE);
+                holder.btn_order_tip.setVisibility(View.GONE);
+                holder.btn_order_confirm.setVisibility(View.GONE);
+                holder.btn_order_eval.setVisibility(View.GONE);
+                break;
             case 10:
                 //待支付
                 holder.order_state.setText("待支付");
@@ -149,6 +156,28 @@ public class OrderAdapter extends BaseAdapter {
                 holder.btn_order_eval.setVisibility(View.VISIBLE);
                 //AftermarketActivity
                 break;
+            case 50:
+                //已完成
+                holder.order_state.setText("已完成");
+                holder.btn_order_back.setVisibility(View.VISIBLE);
+                holder.btn_order_cancel.setVisibility(View.GONE);
+                holder.btn_order_pay.setVisibility(View.GONE);
+                holder.btn_order_tip.setVisibility(View.GONE);
+                holder.btn_order_confirm.setVisibility(View.GONE);
+                holder.btn_order_eval.setVisibility(View.GONE);
+                //AftermarketActivity
+                break;
+            case 60:
+                //退换货
+                holder.order_state.setText("退换货");
+                holder.btn_order_back.setVisibility(View.VISIBLE);
+                holder.btn_order_cancel.setVisibility(View.GONE);
+                holder.btn_order_pay.setVisibility(View.GONE);
+                holder.btn_order_tip.setVisibility(View.GONE);
+                holder.btn_order_confirm.setVisibility(View.GONE);
+                holder.btn_order_eval.setVisibility(View.GONE);
+                //AftermarketActivity
+                break;
 
             default:
                 break;
@@ -162,22 +191,20 @@ public class OrderAdapter extends BaseAdapter {
                     @Override
                     public void onStart() {
                         ((OrderActivity) context).setProgressVisibility(View.VISIBLE);
-
                     }
 
                     @Override
                     public void onFinish() {
-
                         ((OrderActivity) context).setProgressVisibility(View.GONE);
                     }
 
                     @Override
                     public void onSuccess(JSONObject result) {
 
-                        JSONObject object=result.optJSONObject("data");
+                        JSONObject object = result.optJSONObject("data");
                         try {
-                            object.put("productName",mOrder.getExtend_order_goods().optString("goods_name").trim());
-                            object.put("orderAmount",((int) mOrder.getOrder_amount()*100)+"");
+                            object.put("productName", mOrder.getExtend_order_goods().optString("goods_name").trim());
+                            object.put("orderAmount", ((int) mOrder.getOrder_amount() * 100) + "");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -190,7 +217,7 @@ public class OrderAdapter extends BaseAdapter {
 
                     @Override
                     public void onFail(JSONObject result) {
-                        ToastUtil.MakeShortToast(context,result.optString(Constant.INFO));
+                        ToastUtil.MakeShortToast(context, result.optString(Constant.INFO));
                     }
                 });
 
@@ -202,9 +229,9 @@ public class OrderAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Intent intent = new Intent(context, EvalActivity.class);
-                intent.putExtra("goods_name",object.optString("goods_name"));
-                intent.putExtra("goods_image",object.optString("goods_image"));
-                intent.putExtra("order_sn",mOrder.getOrder_id());
+                intent.putExtra("goods_name", object.optString("goods_name"));
+                intent.putExtra("goods_image", object.optString("goods_image"));
+                intent.putExtra("order_sn", mOrder.getOrder_id());
                 context.startActivity(intent);
 
             }
@@ -217,10 +244,12 @@ public class OrderAdapter extends BaseAdapter {
                 NetHelper.ordercancel(mOrder.getOrder_id() + "", new NetConnectionInterface.iConnectListener3() {
                     @Override
                     public void onStart() {
+                        ((OrderActivity) context).setProgressVisibility(View.VISIBLE);
                     }
 
                     @Override
                     public void onFinish() {
+                        ((OrderActivity) context).setProgressVisibility(View.GONE);
 
                     }
 
@@ -235,6 +264,45 @@ public class OrderAdapter extends BaseAdapter {
                     }
                 });
 
+            }
+        });
+
+        holder.btn_order_confirm.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                NetHelper.orderreceive(mOrder.getOrder_id(), new NetConnectionInterface.iConnectListener3() {
+                    @Override
+                    public void onStart() {
+                        ((OrderActivity) context).setProgressVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        ((OrderActivity) context).setProgressVisibility(View.GONE);
+
+                    }
+
+                    @Override
+                    public void onSuccess(JSONObject result) {
+
+                        BaseActivity.sendNotifyUpdate(OrderActivity.class, ORDERCOM);
+                    }
+
+                    @Override
+                    public void onFail(JSONObject result) {
+                        ToastUtil.MakeShortToast(context, result.optString(Constant.INFO));
+
+                    }
+                });
+            }
+        });
+
+        holder.btn_order_back.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(context, RefuActivity.class);
+                context.startActivity(i);
             }
         });
 
@@ -285,6 +353,7 @@ public class OrderAdapter extends BaseAdapter {
 
     //----------------
     public final static String ORDERCHAGE = "orderchage";
+    public final static String ORDERCOM = "ordercom";
 
 
 }

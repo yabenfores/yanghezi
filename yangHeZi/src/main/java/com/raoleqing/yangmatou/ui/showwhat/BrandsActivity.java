@@ -79,7 +79,6 @@ public class BrandsActivity extends BaseActivity implements OnClickListener {
     }
 
 
-    @TargetApi(Build.VERSION_CODES.M)
     private void setTitleCode() {
         // TODO Auto-generated method stub
 
@@ -93,11 +92,11 @@ public class BrandsActivity extends BaseActivity implements OnClickListener {
             final TextView radio = new TextView(this);
             View view=new View(this);
             view.setLayoutParams(new ViewGroup.LayoutParams(1, ViewGroup.LayoutParams.MATCH_PARENT));
-            view.setBackgroundColor(getColor(R.color.line01));
+            view.setBackgroundColor(0xFFCCCCCC);
             LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(UnitConverterUtils.dip2px(this, 30),
                     UnitConverterUtils.dip2px(this, 30), Gravity.CENTER);
             radio.setLayoutParams(l);
-            radio.setBackground(getDrawable(R.drawable.bg_tv_red));
+            radio.setBackgroundColor(0xFFFFFFFF);
             radio.setGravity(Gravity.CENTER);
             radio.setText(mOneCat);
             radio.setTextSize(16);

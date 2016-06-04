@@ -202,7 +202,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 
 			Fragment fragment01 = AllOrderFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment01, "MainFragment");
-			transaction.commit();
+			transaction.commitAllowingStateLoss();
 
 			break;
 		case 1:
@@ -230,7 +230,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 
 			Fragment fragment02 = PaymentFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment02, "MainFragment");
-			transaction.commit();
+			transaction.commitAllowingStateLoss();
 
 			break;
 		case 2:
@@ -258,7 +258,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 
 			Fragment fragment03 = ShipFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment03, "MainFragment");
-			transaction.commit();
+			transaction.commitAllowingStateLoss();
 
 			break;
 		case 3:
@@ -286,7 +286,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 
 			Fragment fragment04 = ReceiptFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment04, "MainFragment");
-			transaction.commit();
+			transaction.commitAllowingStateLoss();
 
 			break;
 		case 4:
@@ -314,7 +314,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 			tv_order5.setTextColor(Color.BLACK);
 			Fragment fragment05 = ReviewFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment05, "MainFragment");
-			transaction.commit();
+			transaction.commitAllowingStateLoss();
 
 			break;
 
@@ -343,8 +343,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 
 			Fragment fragment06 = ReturnFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment06, "MainFragment");
-			transaction.commit();
-
+			transaction.commitAllowingStateLoss();
 			break;
 
 		default:
@@ -407,6 +406,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 	//----------------
 	public final static String ORDERCHAGE = "orderchage";
 	public final static String ORDEREVAL = "ordereval";
+	public final static String ORDERCOM = "ordercom";
 	protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
 		super.notifyUpdate(notifyUpdateEntity);
 		try {
@@ -417,6 +417,10 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 				case ORDEREVAL:
 					setView(4);
 					break;
+				case ORDERCOM:
+					setView(3);
+					break;
+
 			}
 		} catch (Exception ex) {
 			throwEx(ex);

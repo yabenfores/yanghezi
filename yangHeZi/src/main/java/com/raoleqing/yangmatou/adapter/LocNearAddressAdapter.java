@@ -67,7 +67,6 @@ public class LocNearAddressAdapter extends BaseAdapter{
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-
 		com.baidu.mapapi.search.core.PoiInfo mPoiInfo = nearList.get(position);
 		holder.loc_near_name.setText("    " + mPoiInfo.name);
 		holder.loc_near_address.setText(mPoiInfo.address);

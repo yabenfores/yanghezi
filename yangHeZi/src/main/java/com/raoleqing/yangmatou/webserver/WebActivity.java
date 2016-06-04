@@ -30,6 +30,7 @@ public class WebActivity extends BaseActivity implements View.OnClickListener {
         webView = (WebView) findViewById(R.id.ww_web);
         webView.loadUrl(url);
         setTitleText(title);
+        setProgressVisibility(View.GONE);
     }
 
     @Override

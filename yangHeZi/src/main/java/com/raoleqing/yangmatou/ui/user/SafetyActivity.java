@@ -78,7 +78,7 @@ public class SafetyActivity extends BaseActivity implements OnClickListener {
         String member_name = SharedPreferencesUtil.getString(SafetyActivity.this, "member_name");
         String member_card = SharedPreferencesUtil.getString(SafetyActivity.this, "member_card");
         user_name.setText(member_name);
-        user_card.setText(member_card);
+        user_card.setText(member_card+" ");
 
         activity_return.setOnClickListener(this);
         safety_bound_phone.setOnClickListener(this);
@@ -86,6 +86,7 @@ public class SafetyActivity extends BaseActivity implements OnClickListener {
         safety_address.setOnClickListener(this);
         exit_account.setOnClickListener(this);
 
+        user_card.setOnClickListener(this);
         getData();
 
     }
@@ -124,6 +125,9 @@ public class SafetyActivity extends BaseActivity implements OnClickListener {
                 break;
             case R.id.exit_account:
                 showExitAccountDialog();
+                break;
+            case R.id.user_card:
+
                 break;
             default:
                 break;

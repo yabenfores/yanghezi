@@ -23,6 +23,7 @@ import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.MainActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
+import com.raoleqing.yangmatou.ui.user.ForgetPasswordActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.uitls.UserUitls;
@@ -42,7 +43,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
     private ImageView activity_return;
     private ImageView user_icon;
 
-    private TextView login_registered;
+    private TextView login_registered,tv_login_forget;
     private Button login_but;
     private EditText user_name;
     private EditText user_password;
@@ -73,13 +74,14 @@ public class loginActivity extends BaseActivity implements OnClickListener {
         System.out.println(SharedPreferencesUtil.getString(BaseActivity.getAppContext(), "user_name"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-
         setTitleText("登录");
         myHandler.sendEmptyMessageDelayed(0, 50);
     }
 
     protected void viewInfo() {
 
+        tv_login_forget= (TextView) findViewById(R.id.tv_login_forget);
+        tv_login_forget.setOnClickListener(this);
         activity_return = (ImageView) findViewById(R.id.activity_return);
         user_icon = (ImageView) findViewById(R.id.user_icon);
         login_registered = (TextView) findViewById(R.id.login_registered);
@@ -97,9 +99,6 @@ public class loginActivity extends BaseActivity implements OnClickListener {
         if (UserName != null) {
             user_name.setText(UserName);
             String member_avatar = SharedPreferencesUtil.getString(loginActivity.this, "member_avatar");
-
-            ImageLoader.getInstance().displayImage(member_avatar, user_icon,
-                    YangHeZiApplication.imageOption(R.drawable.user_icon));
         }
         boolean rememberPassword = SharedPreferencesUtil.getBoolean(loginActivity.this, "remember_password", false);
         if (rememberPassword) {
@@ -116,6 +115,10 @@ public class loginActivity extends BaseActivity implements OnClickListener {
     public void onClick(View v) {
         // TODO Auto-generated method stub
         switch (v.getId()) {
+            case R.id.tv_login_forget:
+                Intent i =new Intent(this, ForgetPasswordActivity.class);
+                startActivity(i);
+                break;
             case R.id.activity_return:
                 loginActivity.this.onBackPressed();
                 break;

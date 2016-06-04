@@ -70,9 +70,9 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
     private TextView goods_shipment;
     private TextView goods_evaluation_empty;
     private TextView goods_sold;
-    private Button goods_add;
+    private TextView goods_add;
     private TextView goods_number;
-    private Button goods_del;
+    private TextView goods_del;
     private TextView goods_stock;
     private TextView goods_shop_address;//
     private ImageView goods_shop_iocn;
@@ -153,9 +153,9 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         tv_product_favorite = (TextView) findViewById(R.id.tv_product_favorite);
         tv_product_favorite.setSelected(false);
         goods_sold = (TextView) findViewById(R.id.goods_sold);
-        goods_add = (Button) findViewById(R.id.goods_add);
+        goods_add = (TextView) findViewById(R.id.goods_add);
         goods_number = (TextView) findViewById(R.id.goods_number);
-        goods_del = (Button) findViewById(R.id.goods_del);
+        goods_del = (TextView) findViewById(R.id.goods_del);
         goods_stock = (TextView) findViewById(R.id.goods_stock);
         goods_shop_address = (TextView) findViewById(R.id.goods_shop_address);
         findViewById(R.id.lyo_goods_shop_address).setOnClickListener(this);
@@ -242,7 +242,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
     public void onClick(View v) {
         try {
 
-
             // TODO Auto-generated method stub
             switch (v.getId()) {
                 case R.id.activity_return:
@@ -287,23 +286,23 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     showValuePicker(whRreaList, 1);
                     break;
                 case R.id.tv_goods_detail:
-                    tv_goods_comment.setTextColor(getAppContext().getResources().getColor(R.color.text04));
+                    tv_goods_comment.setTextColor(0xFF666666);
                     divider_goods_comment.setVisibility(View.INVISIBLE);
                     goods_evaluation_list.setVisibility(View.GONE);
                     goods_evaluation_empty.setVisibility(View.GONE);
-                    tv_goods_detail.setTextColor(getAppContext().getResources().getColor(R.color.text01));
+                    tv_goods_detail.setTextColor(0xFFE81258);
                     divider_goods_detail.setVisibility(View.VISIBLE);
                     goods_detaile_webview.setVisibility(View.VISIBLE);
                     break;
                 case R.id.tv_goods_comment:
-                    tv_goods_comment.setTextColor(getAppContext().getResources().getColor(R.color.text01));
+                    tv_goods_comment.setTextColor(0xFFE81258);
                     divider_goods_comment.setVisibility(View.VISIBLE);
-                    if (goods_evaluation_list == null) {
+                    if (evaluationList.size()==0) {
                         goods_evaluation_empty.setVisibility(View.VISIBLE);
                     } else {
                         goods_evaluation_list.setVisibility(View.VISIBLE);
                     }
-                    tv_goods_detail.setTextColor(getAppContext().getResources().getColor(R.color.text04));
+                    tv_goods_detail.setTextColor(0xFF666666);
                     divider_goods_detail.setVisibility(View.INVISIBLE);
                     goods_detaile_webview.setVisibility(View.GONE);
                     break;
@@ -533,16 +532,10 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         System.out.println("商品评价： " + response);
 
         try {
-
-
             // 04-11 15:57:15.069: I/System.out(12426): 评价：
-            if (evaluationList.size() > 0) {
-                evaluationList.removeAll(evaluationList);
-            }
             String dataStr = response.optString("data");
-            if (!dataStr.equals("该商品没有评价")) {
+            if (!dataStr.isEmpty()) {
                 JSONArray data = response.optJSONArray("data");
-
                 for (int i = 0; i < data.length(); i++) {
                     JSONObject obj = data.getJSONObject(i);
                     Evaluation mEvaluation = new Evaluation();
@@ -551,10 +544,8 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     mEvaluation.setGeval_goodsname(obj.optString("geval_goodsname"));
                     mEvaluation.setGeval_frommembername(obj.optString("geval_frommembername"));
                     mEvaluation.setGeval_content(obj.optString("geval_content"));
-
                     evaluationList.add(mEvaluation);
                 }
-
                 setListViewHeight(evaluationList.size());
                 adapter.notifyDataSetChanged();
 
@@ -574,11 +565,10 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
      */
     private void setListViewHeight(int size) {
         // TODO Auto-generated method stub
-        if (size == 0)
-            return;
-
+        if (size == 0) {
+            size=1;
+        }
         int height = UnitConverterUtils.dip2px(GoodsDetail.this, 130) * size;
-
         LayoutParams params = goods_evaluation_list.getLayoutParams();
         params.height = (int) height;
         goods_evaluation_list.setLayoutParams(params);
@@ -593,9 +583,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             ImageView img = new ImageView(this);
             img.setScaleType(ScaleType.CENTER_CROP);
             img.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-
-            ImageLoader.getInstance().displayImage(goodsImageList.get(i), img,
-                    YangHeZiApplication.imageOption(R.drawable.adv_manage_image));
+            ImageLoader.getInstance().displayImage(goodsImageList.get(i), img);
             viewList.add(img);
         }
 

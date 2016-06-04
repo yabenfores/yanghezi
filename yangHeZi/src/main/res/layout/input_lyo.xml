@@ -18,6 +18,7 @@
         android:background="@color/line01"/>
 
     <EditText
+        android:padding="5dp"
         android:gravity="top"
         style="@style/text03_type02"
         android:layout_marginLeft="20dp"

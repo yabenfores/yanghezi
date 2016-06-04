@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -26,7 +27,9 @@ import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.MyPagerAdapter;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.common.ChildViewPager.OnSingleTouchListener;
+import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
 import com.raoleqing.yangmatou.ui.goods.GoodsListActivity;
+import com.raoleqing.yangmatou.uitls.LogUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.uitls.WindowManagerUtils;
@@ -36,18 +39,26 @@ import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
 import com.raoleqing.yangmatou.xlist.XListView;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -56,121 +67,115 @@ import android.widget.Toast;
 import android.widget.ImageView.ScaleType;
 
 /**
- *特卖
- * **/
-public class DealsFragment extends Fragment implements XListView.IXListViewListener{
+ * 特卖
+ **/
+public class DealsFragment extends Fragment implements XListView.IXListViewListener {
 
 
-	private XListView listView;
-	private View advManageView;
-	private ChildViewPager main_viewPager;
-	private LinearLayout main_viewPager_point;
-	private LinearLayout main_pavilion_layout;// 国家布局
-	private List<AdvManage> advManageList = new ArrayList<AdvManage>();
-	private List<Store> storeList = new ArrayList<Store>();
-	private StoreAdapter storeAdapter;
-	private List<Pavilion> pavilionList = new ArrayList<Pavilion>();
-	private int page = 1;
-	private WebView webView;
-	private boolean isData = true;
-	private int pagerIndex = 0;// 广告页面
-	private int pointsCount = 0;
+    private XListView listView;
+    private View advManageView;
+    private ChildViewPager main_viewPager;
+    private LinearLayout main_viewPager_point;
+    private LinearLayout main_pavilion_layout;// 国家布局
+    private List<AdvManage> advManageList = new ArrayList<AdvManage>();
+    private List<Store> storeList = new ArrayList<Store>();
+    private StoreAdapter storeAdapter;
+    private List<Pavilion> pavilionList = new ArrayList<Pavilion>();
+    private int page = 1;
+    private WebView webView;
+    private boolean isData = true;
+    private int pagerIndex = 0;// 广告页面
+    private int pointsCount = 0;
 
-	private int width;
-	private int height;
+    private int width;
+    private int height;
 
-	Handler myHandler = new Handler() {
+    Handler myHandler = new Handler() {
 
-		@Override
-		public void handleMessage(Message msg) {
-			// TODO Auto-generated method stub
-			super.handleMessage(msg);
-			switch (msg.what) {
-				case 0:
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO Auto-generated method stub
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 0:
+                    String name = (String) msg.obj;
+                    // 收藏
+                    showFavoritesStoreDialog(msg.arg1, msg.arg2, name);
+                    break;
+                case 1:
+                    String name01 = (String) msg.obj;
+                    // 取消
+                    showCancelStore(msg.arg1, msg.arg2, name01);
+                    break;
+                default:
+                    break;
+            }
+        }
 
-					String name = (String) msg.obj;
-					// 收藏
-					showFavoritesStoreDialog(msg.arg1, msg.arg2, name);
+    };
 
-					break;
-				case 1:
-					String name01 = (String) msg.obj;
-					// 取消
-					showCancelStore(msg.arg1, msg.arg2, name01);
+    public static DealsFragment newInstance() {
+        return new DealsFragment();
+    }
 
-					break;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        super.onCreate(savedInstanceState);
+        WindowManagerUtils manage = new WindowManagerUtils(getActivity());
+        width = manage.getWidth();
+        height = manage.getHeight();
+    }
 
-				default:
-					break;
-			}
-		}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO Auto-generated method stub
+        View view = inflater.inflate(R.layout.host_fgm, null);
 
-	};
-
-	public static DealsFragment newInstance() {
-		return new DealsFragment();
-	}
-
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-
-		WindowManagerUtils manage = new WindowManagerUtils(getActivity());
-		width = manage.getWidth();
-		height = manage.getHeight();
-	}
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		View view = inflater.inflate(R.layout.host_fgm, null);
-
-		viewInfo(view);
+        viewInfo(view);
 //		getAdvertising();
-		getWeb();
+        getWeb();
 //		getStoreList();
 //		getPavilion();
-		return view;
-	}
+        return view;
+    }
 
-	private void getWeb() {
-		try {
+    private void getWeb() {
+        try {
 
-			NetHelper.flashSale(new NetConnectionInterface.iConnectListener3() {
-				@Override
-				public void onStart() {
+            NetHelper.flashSale(new NetConnectionInterface.iConnectListener3() {
+                @Override
+                public void onStart() {
 
-				}
+                }
 
-				@Override
-				public void onFinish() {
-					((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+                @Override
+                public void onFinish() {
+                    ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
-				}
+                }
 
-				@Override
-				public void onSuccess(JSONObject result) {
-					JSONObject jsonObject=result.optJSONObject(Constant.DATA);
-					String url=jsonObject.optString("url");
-					webView.loadUrl(url);
+                @Override
+                public void onSuccess(JSONObject result) {
+                    JSONObject jsonObject = result.optJSONObject(Constant.DATA);
+                    String url = jsonObject.optString("url");
+                    webView.loadUrl(url);
 
-				}
+                }
 
-				@Override
-				public void onFail(JSONObject result) {
+                @Override
+                public void onFail(JSONObject result) {
+                    ((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
+                }
+            });
 
-					((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
-				}
-			});
+        } catch (Exception e) {
+            throw e;
+        }
+    }
 
-		} catch (Exception e) {
-			throw e;
-		}
-	}
-
-	private void viewInfo(View view) {
-		// TODO Auto-generated method stub
+    private void viewInfo(View view) {
+        // TODO Auto-generated method stub
 //		listView = (XListView) view.findViewById(R.id.gou_wu_listview);
 //		storeAdapter = new StoreAdapter(getActivity(), storeList, myHandler);
 //		listView.setAdapter(storeAdapter);
@@ -224,578 +229,619 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 //			});
 //
 //		}
-		webView= (WebView) view.findViewById(R.id.ww_app_flash);
+        webView = (WebView) view.findViewById(R.id.ww_app_flash);
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // TODO Auto-generated method stub
+                String[] strings = url.split("[?]");
+                String pr = strings[1];
+                String parm=pr.replace("&",",");
+                parm=parm.replace("=",",");
+                String[] str=parm.split(",");
+                JSONObject jsonObject=new JSONObject();
+                for (int i=0;i<str.length;i=i+2){
+                    try {
+                        jsonObject.put(str[i],str[i+1]);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                String app=jsonObject.optString("app");
+                if (!app.equals("true")) {
+                    view.loadUrl(url);
+                }else {
+                    int i=jsonObject.optInt("goods_id");
+                    Intent intent = new Intent(getActivity(), GoodsDetail.class);
+                    intent.putExtra("goods_id", i);
+                    startActivity(intent);
+                }
+                return true;
+            }
+        });
+        webView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {  //表示按返回键时的操作
+                        webView.goBack();   //后退
+                        return true;    //已处理
+                    }
+                }
+                return false;
+            }
+        });
+
+    }
+
+
+
+    /**
+     * 广告数据加载
+     **/
+    private void getAdvertising() {
+        // TODO Auto-generated method stub
+
+        ((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
+
+        NetHelper.advManage(new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+
+            }
+
+            @Override
+            public void onSuccess(JSONObject result) {
+
+                advertisingResolveJson(result);
+
+            }
+
+            @Override
+            public void onFail(JSONObject result) {
+                ((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
+
+            }
+        });
+    }
+
+    /**
+     * 广告数据解析
+     **/
+    protected void advertisingResolveJson(JSONObject response) {
+        // TODO Auto-generated method stub
+
+        System.out.println("广告:" + response);
+
+        try {
+
+            JSONArray data = response.optJSONArray("data");
+            if (advManageList.size() > 0) {
+                advManageList.retainAll(advManageList);
+            }
+            for (int i = 0; i < data.length(); i++) {
+                JSONObject obj = data.optJSONObject(i);
+                AdvManage mAdvManage = new AdvManage();
+                mAdvManage.setC_id(obj.optInt("c_id"));
+                mAdvManage.setAdv_id(obj.optInt("adv_id"));
+                mAdvManage.setAdv_type(obj.optString("adv_type"));
+                mAdvManage.setAdv_name(obj.optString("adv_name"));
+                mAdvManage.setAdv_image(obj.optString("adv_image"));
+                mAdvManage.setAdv_url(obj.optString("adv_url"));
+                advManageList.add(mAdvManage);
+            }
 
-	}
+            setAdvManage();
 
-	/**
-	 * 广告数据加载
-	 **/
-	private void getAdvertising() {
-		// TODO Auto-generated method stub
 
-		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
 
-		NetHelper.advManage(new NetConnectionInterface.iConnectListener3() {
-			@Override
-			public void onStart() {
+        ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
-			}
+    }
 
-			@Override
-			public void onFinish() {
-				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+    /**
+     * 广告内容
+     **/
+    private void setAdvManage() {
+        // TODO Auto-generated method stub
 
-			}
+        ArrayList<View> viewList = new ArrayList<View>();
+        for (int i = 0; i < advManageList.size(); i++) {
 
-			@Override
-			public void onSuccess(JSONObject result) {
+            final AdvManage nAdvManage = advManageList.get(i);
+            ImageView img = new ImageView(getActivity());
+            img.setScaleType(ScaleType.CENTER_CROP);
+            img.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 
-				advertisingResolveJson(result);
+            ImageLoader.getInstance().displayImage(nAdvManage.getAdv_image(), img,
+                    YangHeZiApplication.imageOption(R.drawable.adv_manage_image));
+            viewList.add(img);
+        }
+
+        MyPagerAdapter pagerAdapter = new MyPagerAdapter(viewList);
+
+        main_viewPager.setAdapter(pagerAdapter);
+        pointsCount = advManageList.size();
+
+        loadPositionImage();
+
+        main_viewPager.setOnSingleTouchListener(new OnSingleTouchListener() {
+
+            @Override
+            public void onSingleTouch() {
+                // TODO Auto-generated method stub
+                // System.out.println("ChildViewPager --> onclick()");
+                if (!CheckNet.isNetworkConnected(getActivity())) {
+                    Toast.makeText(getActivity(), "没有可用的网络连接，请检查网络设置", 1).show();
+                    return;
+                }
+                AdvManage nAdvManage = advManageList.get(pagerIndex);
+
+                Intent intent = new Intent(getActivity(), GoodsListActivity.class);
+                intent.putExtra("cid", nAdvManage.getC_id());
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
-			}
+            }
+        });
 
-			@Override
-			public void onFail(JSONObject result) {
-				((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
+    }
 
-			}
-		});
-	}
+    public XListView getListView() {
+        return listView;
+    }
 
-	/**
-	 * 广告数据解析
-	 **/
-	protected void advertisingResolveJson(JSONObject response) {
-		// TODO Auto-generated method stub
+    // 店铺列表
+    private void getStoreList() {
+        // TODO Auto-generated method stub
 
-		System.out.println("广告:" + response);
+        ((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
-		try {
 
-			JSONArray data = response.optJSONArray("data");
-			if (advManageList.size() > 0) {
-				advManageList.retainAll(advManageList);
-			}
-			for (int i = 0; i < data.length(); i++) {
-				JSONObject obj = data.optJSONObject(i);
-				AdvManage mAdvManage = new AdvManage();
-				mAdvManage.setC_id(obj.optInt("c_id"));
-				mAdvManage.setAdv_id(obj.optInt("adv_id"));
-				mAdvManage.setAdv_type(obj.optString("adv_type"));
-				mAdvManage.setAdv_name(obj.optString("adv_name"));
-				mAdvManage.setAdv_image(obj.optString("adv_image"));
-				mAdvManage.setAdv_url(obj.optString("adv_url"));
-				advManageList.add(mAdvManage);
-			}
+        NetHelper.getStoreList(page + "", new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
 
-			setAdvManage();
+            }
 
+            @Override
+            public void onFinish() {
 
+                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+            }
 
+            @Override
+            public void onSuccess(JSONObject result) {
+                StoreListResolveJson(result);
+            }
 
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+            @Override
+            public void onFail(JSONObject result) {
+                ((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
+            }
+        });
+
+    }
+
+    protected void StoreListResolveJson(JSONObject response) {
+
+        try {
+            int code = response.optInt("code");
+            String message = response.optString("message");
+
+            if (response == null) {
+                Toast.makeText(getActivity(), message, 1).show();
+                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+                onLoad();
+                return;
+            }
 
-		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-
-	}
-
-	/**
-	 * 广告内容
-	 **/
-	private void setAdvManage() {
-		// TODO Auto-generated method stub
-
-		ArrayList<View> viewList = new ArrayList<View>();
-		for (int i = 0; i < advManageList.size(); i++) {
-
-			final AdvManage nAdvManage = advManageList.get(i);
-			ImageView img = new ImageView(getActivity());
-			img.setScaleType(ScaleType.CENTER_CROP);
-			img.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-
-			ImageLoader.getInstance().displayImage(nAdvManage.getAdv_image(), img,
-					YangHeZiApplication.imageOption(R.drawable.adv_manage_image));
-			viewList.add(img);
-		}
-
-		MyPagerAdapter pagerAdapter = new MyPagerAdapter(viewList);
-
-		main_viewPager.setAdapter(pagerAdapter);
-		pointsCount = advManageList.size();
-
-		loadPositionImage();
-
-		main_viewPager.setOnSingleTouchListener(new OnSingleTouchListener() {
-
-			@Override
-			public void onSingleTouch() {
-				// TODO Auto-generated method stub
-				// System.out.println("ChildViewPager --> onclick()");
-				if (!CheckNet.isNetworkConnected(getActivity())) {
-					Toast.makeText(getActivity(), "没有可用的网络连接，请检查网络设置", 1).show();
-					return;
-				}
-				AdvManage nAdvManage = advManageList.get(pagerIndex);
-
-				Intent intent = new Intent(getActivity(), GoodsListActivity.class);
-				intent.putExtra("cid", nAdvManage.getC_id());
-				startActivity(intent);
-				getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-
-			}
-		});
-
-	}
-
-	public XListView getListView() {
-		return listView;
-	}
-
-	// 店铺列表
-	private void getStoreList() {
-		// TODO Auto-generated method stub
-
-		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
-
-
-		NetHelper.getStoreList(page + "", new NetConnectionInterface.iConnectListener3() {
-			@Override
-			public void onStart() {
-
-			}
-
-			@Override
-			public void onFinish() {
-
-				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-			}
-
-			@Override
-			public void onSuccess(JSONObject result) {
-				StoreListResolveJson(result);
-			}
-
-			@Override
-			public void onFail(JSONObject result) {
-				((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
-			}
-		});
-
-	}
-
-	protected void StoreListResolveJson(JSONObject response) {
-
-		try {
-			int code = response.optInt("code");
-			String message = response.optString("message");
-
-			if (response == null) {
-				Toast.makeText(getActivity(), message, 1).show();
-				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-				onLoad();
-				return;
-			}
-
-			JSONArray data = response.optJSONArray("data");
-			if (storeList.size() > 0 && page == 1) {
-				storeList.retainAll(storeList);
-			}
-
-			if (data.length() < 10) {
-				isData = false;
-			}
-
-			for (int i = 0; i < data.length(); i++) {
-				JSONObject obj = data.optJSONObject(i);
-				System.out.println("aaaaaaaaaa:"+response.toString());
-				Store mStore = new Store();
-				mStore.setId(obj.optInt("id"));
-				mStore.setStore_id(obj.optInt("store_id"));
-				mStore.setStore_name(obj.optString("store_name"));
-				mStore.setTitle(obj.optString("title"));
-				mStore.setContent(obj.optString("content"));
-				mStore.setCreate_time(obj.optLong("create_time"));
-				mStore.setState(obj.optInt("state"));
-				mStore.setAddress(obj.optString("address"));
-				mStore.setFans(obj.optString("fans"));
-				mStore.setImg(obj.optString("img"));
-				mStore.setAttention(obj.optInt("attention"));
-				JSONArray goods_list = obj.optJSONArray("goods_list");
-				List<Goods> goodsList = new ArrayList<Goods>();
-
-				for (int j = 0; j < goods_list.length(); j++) {
-
-					JSONObject goodsContent = goods_list.optJSONObject(j);
-					Goods mGoods = new Goods();
-					mGoods.setGoods_id(goodsContent.optInt("goods_id"));
-					mGoods.setStore_name(goodsContent.optString("store_name"));
-					mGoods.setGoods_image(goodsContent.optString("goods_image"));
-					mGoods.setGoods_promotion_price(goodsContent.optDouble("goods_promotion_price"));
-					goodsList.add(mGoods);
-
-				}
-
-				mStore.setGoods_list(goodsList);
-
-				storeList.add(mStore);
-			}
-
-
-			storeAdapter.notifyDataSetChanged();
-			onLoad();
-
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			Toast.makeText(getActivity(), "数据加载失败", 1).show();
-		}
-
-		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-
-	}
-
-	/**
-	 * 国家馆:
-	 **/
-	private void getPavilion() {
-		// TODO Auto-generated method stub
-		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
-
-		HttpUtil.post(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
-
-			// 获取数据成功会调用这里
-			@Override
-			public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-				// TODO Auto-generated method stub
-				super.onSuccess(statusCode, headers, response);
-				pavilionResolveJson(response);
-			}
-
-			// 失败
-			@Override
-			public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
-				// TODO Auto-generated method stub
-				super.onFailure(statusCode, headers, throwable, errorResponse);
-				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-			}
-
-			// 结束
-			@Override
-			public void onFinish() {
-				// TODO Auto-generated method stub
-				super.onFinish();
-				System.out.println("onFinish");
-
-			}
-
-		});
-
-	}
-
-	/**
-	 * 国家馆:
-	 **/
-	protected void pavilionResolveJson(JSONObject response) {
-		System.out.println("aaaaaaaaa"+response);
-		// TODO Auto-generated method stub
-
-		try {
-			int code = response.optInt("code");
-			String message = response.optString("message");
-
-			if (response == null) {
-				Toast.makeText(getActivity(), message, 1).show();
-				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-				return;
-			}
-
-			if (code == 1||code==200) {
-				JSONArray data = response.optJSONArray("data");
-				if (pavilionList.size() > 0) {
-					pavilionList.retainAll(pavilionList);
-				}
-				for (int i = 0; i < data.length(); i++) {
-					JSONObject obj = data.optJSONObject(i);
-					Pavilion mPavilion = new Pavilion();
-					mPavilion.setFlag_id(obj.optInt("flag_id"));
-					mPavilion.setFlag_name(obj.optString("flag_name"));
-					mPavilion.setFlag_imgSrc(obj.optString("flag_imgSrc"));
-					pavilionList.add(mPavilion);
-				}
-
-				setPavilion();
-			}
-
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-
-		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-
-	}
-
-	/**
-	 * 关注店铺
-	 **/
-	protected void showFavoritesStoreDialog(final int position, final int store_id, String store_name) {
-		// TODO Auto-generated method stub
-
-		favoritesStore(position, store_id);
-
-
-	}
-
-	/**
-	 * 取消店铺
-	 **/
-	protected void showCancelStore(final int position, final int store_id, String store_name) {
-		// TODO Auto-generated method stub
-
-		cancelStore(position, store_id);
-
-	}
-
-	/**
-	 * 关注店铺
-	 **/
-	protected void favoritesStore(final int position, int store_id) {
-		// TODO Auto-generated method stub
-		// Home/Index/favoritesstore
-
-		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
+            JSONArray data = response.optJSONArray("data");
+            if (storeList.size() > 0 && page == 1) {
+                storeList.retainAll(storeList);
+            }
+
+            if (data.length() < 10) {
+                isData = false;
+            }
+
+            for (int i = 0; i < data.length(); i++) {
+                JSONObject obj = data.optJSONObject(i);
+                System.out.println("aaaaaaaaaa:" + response.toString());
+                Store mStore = new Store();
+                mStore.setId(obj.optInt("id"));
+                mStore.setStore_id(obj.optInt("store_id"));
+                mStore.setStore_name(obj.optString("store_name"));
+                mStore.setTitle(obj.optString("title"));
+                mStore.setContent(obj.optString("content"));
+                mStore.setCreate_time(obj.optLong("create_time"));
+                mStore.setState(obj.optInt("state"));
+                mStore.setAddress(obj.optString("address"));
+                mStore.setFans(obj.optString("fans"));
+                mStore.setImg(obj.optString("img"));
+                mStore.setAttention(obj.optInt("attention"));
+                JSONArray goods_list = obj.optJSONArray("goods_list");
+                List<Goods> goodsList = new ArrayList<Goods>();
+
+                for (int j = 0; j < goods_list.length(); j++) {
+
+                    JSONObject goodsContent = goods_list.optJSONObject(j);
+                    Goods mGoods = new Goods();
+                    mGoods.setGoods_id(goodsContent.optInt("goods_id"));
+                    mGoods.setStore_name(goodsContent.optString("store_name"));
+                    mGoods.setGoods_image(goodsContent.optString("goods_image"));
+                    mGoods.setGoods_promotion_price(goodsContent.optDouble("goods_promotion_price"));
+                    goodsList.add(mGoods);
+
+                }
+
+                mStore.setGoods_list(goodsList);
+
+                storeList.add(mStore);
+            }
+
+
+            storeAdapter.notifyDataSetChanged();
+            onLoad();
+
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "数据加载失败", 1).show();
+        }
+
+        ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+
+    }
+
+    /**
+     * 国家馆:
+     **/
+    private void getPavilion() {
+        // TODO Auto-generated method stub
+        ((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
+
+        HttpUtil.post(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
+
+            // 获取数据成功会调用这里
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // TODO Auto-generated method stub
+                super.onSuccess(statusCode, headers, response);
+                pavilionResolveJson(response);
+            }
+
+            // 失败
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
+                // TODO Auto-generated method stub
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+            }
+
+            // 结束
+            @Override
+            public void onFinish() {
+                // TODO Auto-generated method stub
+                super.onFinish();
+                System.out.println("onFinish");
+
+            }
+
+        });
+
+    }
+
+    /**
+     * 国家馆:
+     **/
+    protected void pavilionResolveJson(JSONObject response) {
+        System.out.println("aaaaaaaaa" + response);
+        // TODO Auto-generated method stub
+
+        try {
+            int code = response.optInt("code");
+            String message = response.optString("message");
+
+            if (response == null) {
+                Toast.makeText(getActivity(), message, 1).show();
+                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+                return;
+            }
+
+            if (code == 1 || code == 200) {
+                JSONArray data = response.optJSONArray("data");
+                if (pavilionList.size() > 0) {
+                    pavilionList.retainAll(pavilionList);
+                }
+                for (int i = 0; i < data.length(); i++) {
+                    JSONObject obj = data.optJSONObject(i);
+                    Pavilion mPavilion = new Pavilion();
+                    mPavilion.setFlag_id(obj.optInt("flag_id"));
+                    mPavilion.setFlag_name(obj.optString("flag_name"));
+                    mPavilion.setFlag_imgSrc(obj.optString("flag_imgSrc"));
+                    pavilionList.add(mPavilion);
+                }
+
+                setPavilion();
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+
+    }
+
+    /**
+     * 关注店铺
+     **/
+    protected void showFavoritesStoreDialog(final int position, final int store_id, String store_name) {
+        // TODO Auto-generated method stub
+
+        favoritesStore(position, store_id);
+
+
+    }
+
+    /**
+     * 取消店铺
+     **/
+    protected void showCancelStore(final int position, final int store_id, String store_name) {
+        // TODO Auto-generated method stub
+
+        cancelStore(position, store_id);
+
+    }
+
+    /**
+     * 关注店铺
+     **/
+    protected void favoritesStore(final int position, int store_id) {
+        // TODO Auto-generated method stub
+        // Home/Index/favoritesstore
+
+        ((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 //		int uid = SharedPreferencesUtil.getInt(getActivity(), "member_id");
 
-		RequestParams params = new RequestParams();
-		params.put("fid", store_id);
+        RequestParams params = new RequestParams();
+        params.put("fid", store_id);
 //		params.put("uid", 1090);
 
-		NetHelper.favoritesstore(store_id+"", new NetConnectionInterface.iConnectListener3() {
-			@Override
-			public void onStart() {
+        NetHelper.favoritesstore(store_id + "", new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
 
-			}
+            }
 
-			@Override
-			public void onFinish() {
-				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+            @Override
+            public void onFinish() {
+                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
-			}
+            }
 
-			@Override
-			public void onSuccess(JSONObject result) {
-				favoritesResolveJson(result,position);
+            @Override
+            public void onSuccess(JSONObject result) {
+                favoritesResolveJson(result, position);
 
-			}
+            }
 
-			@Override
-			public void onFail(JSONObject result) {
-				ToastUtil.MakeShortToast(BaseActivity.getAppContext(),result.optString(Constant.INFO));
+            @Override
+            public void onFail(JSONObject result) {
+                ToastUtil.MakeShortToast(BaseActivity.getAppContext(), result.optString(Constant.INFO));
 
-			}
-		});
+            }
+        });
 
-	}
+    }
 
-	protected void favoritesResolveJson(JSONObject response, int position) {
-		// TODO Auto-generated method stub
+    protected void favoritesResolveJson(JSONObject response, int position) {
+        // TODO Auto-generated method stub
 
-		try {
-			int code = response.optInt("code");
-			String message = response.optString("message");
+        try {
+            int code = response.optInt("code");
+            String message = response.optString("message");
 
-			if (response == null) {
-				Toast.makeText(getActivity(), message, 1).show();
-				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-				return;
-			}
+            if (response == null) {
+                Toast.makeText(getActivity(), message, 1).show();
+                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+                return;
+            }
 
-			storeList.get(position).setAttention(1);
-			storeAdapter.notifyDataSetChanged();
+            storeList.get(position).setAttention(1);
+            storeAdapter.notifyDataSetChanged();
 
-			Toast.makeText(getActivity(), message, 1).show();
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			Toast.makeText(getActivity(), "关注失败", 1).show();
-		}
+            Toast.makeText(getActivity(), message, 1).show();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "关注失败", 1).show();
+        }
 
-		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+        ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
-	}
+    }
 
-	/**
-	 * 关注店铺
-	 **/
-	protected void cancelStore(final int position, int store_id) {
-		// TODO Auto-generated method stub
-		// Home/Index/cancelStore
+    /**
+     * 关注店铺
+     **/
+    protected void cancelStore(final int position, int store_id) {
+        // TODO Auto-generated method stub
+        // Home/Index/cancelStore
 
-		((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
+        ((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
 //		int uid = SharedPreferencesUtil.getInt(getActivity(), "member_id");
 
-		RequestParams params = new RequestParams();
-		params.put("fid", store_id);
+        RequestParams params = new RequestParams();
+        params.put("fid", store_id);
 //		params.put("uid", 1090);
 
-		NetHelper.cancelStore(store_id + "", new NetConnectionInterface.iConnectListener3() {
-			@Override
-			public void onStart() {
+        NetHelper.cancelStore(store_id + "", new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
 
-			}
+            }
 
-			@Override
-			public void onFinish() {
-				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+            @Override
+            public void onFinish() {
+                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
-			}
+            }
 
-			@Override
-			public void onSuccess(JSONObject result) {
-				cancelResolveJson(result,position);
+            @Override
+            public void onSuccess(JSONObject result) {
+                cancelResolveJson(result, position);
 
-			}
+            }
 
-			@Override
-			public void onFail(JSONObject result) {
-				ToastUtil.MakeShortToast(BaseActivity.getAppContext(),result.optString(Constant.INFO));
+            @Override
+            public void onFail(JSONObject result) {
+                ToastUtil.MakeShortToast(BaseActivity.getAppContext(), result.optString(Constant.INFO));
 
-			}
-		});
+            }
+        });
 
-	}
+    }
 
-	protected void cancelResolveJson(JSONObject response, int position) {
+    protected void cancelResolveJson(JSONObject response, int position) {
 
-		try {
-			int code = response.optInt("code");
-			String message = response.optString("message");
+        try {
+            int code = response.optInt("code");
+            String message = response.optString("message");
 
-			if (response == null) {
-				Toast.makeText(getActivity(), message, 1).show();
-				((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-				return;
-			}
+            if (response == null) {
+                Toast.makeText(getActivity(), message, 1).show();
+                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+                return;
+            }
 
 
-			storeList.get(position).setAttention(0);
-			storeAdapter.notifyDataSetChanged();
+            storeList.get(position).setAttention(0);
+            storeAdapter.notifyDataSetChanged();
 
-			Toast.makeText(getActivity(), message, 1).show();
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			Toast.makeText(getActivity(), "取消失败", 1).show();
-		}
+            Toast.makeText(getActivity(), message, 1).show();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "取消失败", 1).show();
+        }
 
-		((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-		// TODO Auto-generated method stub
+        ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	private void setPavilion() {
-		// TODO Auto-generated method stub
+    private void setPavilion() {
+        // TODO Auto-generated method stub
 
-		main_pavilion_layout.removeAllViews();
+        main_pavilion_layout.removeAllViews();
 
-		RadioGroup myRadioGroup = new RadioGroup(getActivity());
-		myRadioGroup.setPadding(0,1,0,0);
-		myRadioGroup.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-		myRadioGroup.setOrientation(LinearLayout.HORIZONTAL);
-		main_pavilion_layout.addView(myRadioGroup);
-		for (int i = 0; i < pavilionList.size(); i++) {
-			final Pavilion mPavilion = pavilionList.get(i);
-			ImageView radio = new ImageView(getActivity());
-			ImageLoader.getInstance().displayImage(mPavilion.getFlag_imgSrc(), radio,
-					YangHeZiApplication.imageOption(R.drawable.pavilion_icon));
+        RadioGroup myRadioGroup = new RadioGroup(getActivity());
+        myRadioGroup.setPadding(0, 1, 0, 0);
+        myRadioGroup.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
+        myRadioGroup.setOrientation(LinearLayout.HORIZONTAL);
+        main_pavilion_layout.addView(myRadioGroup);
+        for (int i = 0; i < pavilionList.size(); i++) {
+            final Pavilion mPavilion = pavilionList.get(i);
+            ImageView radio = new ImageView(getActivity());
+            ImageLoader.getInstance().displayImage(mPavilion.getFlag_imgSrc(), radio,
+                    YangHeZiApplication.imageOption(R.drawable.pavilion_icon));
 
-			LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(UnitConverterUtils.dip2px(getActivity(), 100),
-					UnitConverterUtils.dip2px(getActivity(), 80));
-			radio.setLayoutParams(l);
-			radio.setScaleType(ScaleType.CENTER_CROP);
+            LinearLayout.LayoutParams l = new LinearLayout.LayoutParams(UnitConverterUtils.dip2px(getActivity(), 100),
+                    UnitConverterUtils.dip2px(getActivity(), 80));
+            radio.setLayoutParams(l);
+            radio.setScaleType(ScaleType.CENTER_CROP);
 
-			radio.setOnClickListener(new OnClickListener() {
+            radio.setOnClickListener(new OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Intent intent = new Intent(getActivity(), GoodsListActivity.class);
-					intent.putExtra("cid", mPavilion.getFlag_id());
-					startActivity(intent);
-					getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                    Intent intent = new Intent(getActivity(), GoodsListActivity.class);
+                    intent.putExtra("cid", mPavilion.getFlag_id());
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 
-				}
-			});
-			myRadioGroup.addView(radio);
-		}
+                }
+            });
+            myRadioGroup.addView(radio);
+        }
 
-	}
+    }
 
-	// 获取网络数据之后 加载 圆点图标*/
-	protected void loadPositionImage() {
-		ImageView aImageView = null;
-		main_viewPager_point.removeAllViews();
-		for (int i = 0; i < pointsCount; i++) {
-			aImageView = new ImageView(getActivity());
-			aImageView.setPadding(10, 0, 10, 0);
-			if (i == 0) {
-				aImageView.setImageResource(R.drawable.point2);
-			} else {
-				aImageView.setImageResource(R.drawable.point1);
-			}
-			main_viewPager_point.addView(aImageView);
-		}
-	}
+    // 获取网络数据之后 加载 圆点图标*/
+    protected void loadPositionImage() {
+        ImageView aImageView = null;
+        main_viewPager_point.removeAllViews();
+        for (int i = 0; i < pointsCount; i++) {
+            aImageView = new ImageView(getActivity());
+            aImageView.setPadding(10, 0, 10, 0);
+            if (i == 0) {
+                aImageView.setImageResource(R.drawable.point2);
+            } else {
+                aImageView.setImageResource(R.drawable.point1);
+            }
+            main_viewPager_point.addView(aImageView);
+        }
+    }
 
-	/**
-	 * 更改提示h
-	 */
-	public void changePositionImage(int aPos) {
+    /**
+     * 更改提示h
+     */
+    public void changePositionImage(int aPos) {
 
-		ImageView aImageView = (ImageView) main_viewPager_point.getChildAt(aPos);
-		if (aImageView != null) {
-			aImageView.setImageResource(R.drawable.point2);
-		}
-		for (int i = 0; i < pointsCount; i++) {
-			if (i != aPos) {
-				aImageView = (ImageView) main_viewPager_point.getChildAt(i);
-				aImageView.setImageResource(R.drawable.point1);
-			}
-		}
-	}
+        ImageView aImageView = (ImageView) main_viewPager_point.getChildAt(aPos);
+        if (aImageView != null) {
+            aImageView.setImageResource(R.drawable.point2);
+        }
+        for (int i = 0; i < pointsCount; i++) {
+            if (i != aPos) {
+                aImageView = (ImageView) main_viewPager_point.getChildAt(i);
+                aImageView.setImageResource(R.drawable.point1);
+            }
+        }
+    }
 
-	@Override
-	public void onRefresh() {
-		// TODO Auto-generated method stub
+    @Override
+    public void onRefresh() {
+        // TODO Auto-generated method stub
 
-		if (isData) {
-			getStoreList();
-		} else {
-			onLoad();
-		}
-	}
+        if (isData) {
+            getStoreList();
+        } else {
+            onLoad();
+        }
+    }
 
-	@Override
-	public void onLoadMore() {
-		// TODO Auto-generated method stub
-		return;
+    @Override
+    public void onLoadMore() {
+        // TODO Auto-generated method stub
+        return;
 //		page++;
 //		getStoreList();
 
-	}
+    }
 
-	private void onLoad() {
-		listView.stopRefresh();
-		listView.stopLoadMore();
-		SimpleDateFormat refleshSimpleDateFormat = new SimpleDateFormat("HH:mm:ss");
-		listView.setRefreshTime(refleshSimpleDateFormat.format(new Date()));
-	}
+    private void onLoad() {
+        listView.stopRefresh();
+        listView.stopLoadMore();
+        SimpleDateFormat refleshSimpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        listView.setRefreshTime(refleshSimpleDateFormat.format(new Date()));
+    }
 
 }

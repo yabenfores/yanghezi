@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:singleLine="true"
-            android:numeric="integer"
+            android:inputType="phone"
             android:layout_marginLeft="10dp"
             />
     </LinearLayout>
@@ -55,27 +55,35 @@
             android:layout_height="1px"
             android:background="@color/line01" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp" >
 
+            <EditText
+                android:background="@color/encode_view"
+                android:id="@+id/et_app_code"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:hint="请输入验证码" />
             <Button
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@color/bg04"
                 android:id="@+id/btn_send_massage"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_alignParentRight="true"
                 android:text="发送验证码" />
 
-            <EditText
-                android:id="@+id/et_app_code"
-                android:layout_width="160dp"
-                android:layout_height="45dp"
-                android:hint="请输入验证码" />
-        </RelativeLayout>
+
+        </LinearLayout>
     </LinearLayout>
 
     <Button
+        android:layout_marginTop="30dp"
         style="@style/text01_type03"
         android:id="@+id/btn_app_bind"
         android:layout_width="match_parent"

@@ -62,10 +62,10 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     private TextView goods_price;
     private TextView goods_discount;
     private TextView goods_price01;
-    private Button goods_add;
+    private TextView goods_add;
     private TextView goods_number;
     private TextView goods_pay_price;
-    private Button goods_del;
+    private TextView goods_del;
     private Button goodsd_detail_buy;
     private TextView tv_goods_tax;
     private int goods_id;
@@ -134,10 +134,10 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         goods_price = (TextView) findViewById(R.id.goods_price);
         goods_discount = (TextView) findViewById(R.id.goods_discount);
         goods_price01 = (TextView) findViewById(R.id.goods_price01);
-        goods_add = (Button) findViewById(R.id.goods_add);
+        goods_add = (TextView) findViewById(R.id.goods_add);
         goods_number = (TextView) findViewById(R.id.goods_number);
         goods_pay_price = (TextView) findViewById(R.id.goods_pay_price);
-        goods_del = (Button) findViewById(R.id.goods_del);
+        goods_del = (TextView) findViewById(R.id.goods_del);
         goodsd_detail_buy = (Button) findViewById(R.id.goodsd_detail_buy);
 
         goods_image= (ImageView) findViewById(R.id.goods_image);

@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.OrderAdapter;
 import com.raoleqing.yangmatou.ben.Order;
@@ -16,10 +18,12 @@ import com.raoleqing.yangmatou.common.CircleImageView;
 import com.raoleqing.yangmatou.ui.login.loginActivity;
 import com.raoleqing.yangmatou.ui.order.OrderActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
+import com.raoleqing.yangmatou.xlist.XListView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -37,11 +41,13 @@ import android.widget.Toast;
 /**
  * 待收货
  **/
-public class ReceiptFragment extends Fragment implements OnClickListener {
+public class ReceiptFragment extends Fragment implements OnClickListener, XListView.IXListViewListener {
 
+    private int page = 1;
+    private boolean noMore = false;
 
     private LinearLayout null_data_layout;
-    private ListView payment_listview;
+    private XListView payment_listview;
 
     private List<Order> orderList = new ArrayList<Order>();
     private OrderAdapter adapter;
@@ -75,10 +81,14 @@ public class ReceiptFragment extends Fragment implements OnClickListener {
     private void viewInfo(View view) {
         // TODO Auto-generated method stub
         null_data_layout = (LinearLayout) view.findViewById(R.id.null_data_layout);
-        payment_listview = (ListView) view.findViewById(R.id.payment_listview);
-
+        payment_listview = (XListView) view.findViewById(R.id.payment_listview);
+        orderList.removeAll(orderList);
         adapter = new OrderAdapter(getActivity(), orderList);
         payment_listview.setAdapter(adapter);
+        payment_listview.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
+        payment_listview.setXListViewListener(this);
+        payment_listview.setPullLoadEnable(true);
+        payment_listview.setPullRefreshEnable(true);
 
     }
 
@@ -98,13 +108,9 @@ public class ReceiptFragment extends Fragment implements OnClickListener {
     private void getData() {
 
         ((OrderActivity) getActivity()).setMainProgress(View.VISIBLE);
+        String state_type = "3";
 
-//        int uid = SharedPreferencesUtil.getInt(getActivity(), "member_id");
-        RequestParams params = new RequestParams();
-        params.put("state_type", 30);
-        String state_type = "30";
-
-        NetHelper.member_order(state_type, new NetConnectionInterface.iConnectListener3() {
+        NetHelper.member_order(state_type, page + "", new NetConnectionInterface.iConnectListener3() {
             @Override
             public void onStart() {
 
@@ -113,6 +119,8 @@ public class ReceiptFragment extends Fragment implements OnClickListener {
             @Override
             public void onFinish() {
 
+                payment_listview.stopLoadMore();
+                payment_listview.stopRefresh();
                 ((OrderActivity) getActivity()).setProgressVisibility(View.GONE);
             }
 
@@ -137,22 +145,16 @@ public class ReceiptFragment extends Fragment implements OnClickListener {
         System.out.println(response);
 
         try {
-            int code = response.optInt("code");
-            String message = response.optString("message");
-
-            if (response == null) {
-                Toast.makeText(getActivity(), message, 1).show();
-                ((OrderActivity) getActivity()).setMainProgress(View.GONE);
+            JSONArray data = response.optJSONArray("data");
+            if (data.length() < 10) {
+                noMore = true;
+            }
+            if (data.length() == 0) {
+                if (page == 1) {
+                    null_data_layout.setVisibility(View.VISIBLE);
+                }
                 return;
             }
-
-            JSONArray data = response.optJSONArray("data");
-
-
-            if (orderList.size() > 0) {
-                orderList.removeAll(orderList);
-            }
-
             for (int i = 0; i < data.length(); i++) {
                 JSONObject obj = data.optJSONObject(i);
                 Order mOrder = new Order();
@@ -164,17 +166,18 @@ public class ReceiptFragment extends Fragment implements OnClickListener {
                 mOrder.setStore_label(obj.optString("store_label"));
                 mOrder.setGoods_num(obj.optInt("goods_num"));
                 mOrder.setShipping_fee(obj.optDouble("shipping_fee"));
-                JSONArray array=obj.getJSONArray("extend_order_goods");
-                JSONObject jsonObject=array.optJSONObject(0);
+                JSONArray array = obj.getJSONArray("extend_order_goods");
+                JSONObject jsonObject = array.optJSONObject(0);
                 mOrder.setExtend_order_goods(jsonObject);
                 mOrder.setOrder_state(obj.optInt("order_state"));
                 mOrder.setPay_sn(obj.optString("pay_sn"));
                 mOrder.setAdd_time(obj.optLong("add_time"));
                 orderList.add(mOrder);
-
             }
 
-
+            if (orderList.size() == 0) {
+                null_data_layout.setVisibility(View.VISIBLE);
+            }
             adapter.notifyDataSetChanged();
 
         } catch (Exception e) {
@@ -184,5 +187,23 @@ public class ReceiptFragment extends Fragment implements OnClickListener {
 
         ((OrderActivity) getActivity()).setMainProgress(View.GONE);
 
+    }
+
+    @Override
+    public void onRefresh() {
+        orderList.removeAll(orderList);
+        noMore = false;
+        getData();
+    }
+
+    @Override
+    public void onLoadMore() {
+        if (noMore) {
+            payment_listview.stopLoadMore();
+            ToastUtil.MakeShortToast(getContext(), "没有更多了");
+        } else {
+            page++;
+            getData();
+        }
     }
 }

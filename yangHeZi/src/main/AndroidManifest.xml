@@ -158,6 +158,9 @@
             android:name=".ui.showwhat.BrandsActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.user.ForgetPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.aftermarket.AftermarketActivity"
             android:screenOrientation="portrait" />
 
@@ -211,7 +214,9 @@
 
         <activity android:name=".ui.order.EvalActivity" />
         <activity android:name=".ui.showwhat.ShowShatActivity" />
-        <activity android:name=".webserver.WebActivity"></activity>
+        <activity android:name=".webserver.WebActivity" />
+        <activity android:name=".ui.order.RefuActivity" />
+        <activity android:name=".ui.user.IdCareActivity"></activity>
     </application>
 
 </manifest>

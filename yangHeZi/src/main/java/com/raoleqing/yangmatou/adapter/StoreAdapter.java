@@ -154,7 +154,7 @@ public class StoreAdapter extends BaseAdapter {
 					if (UserUitls.isLongin(context)) {
 						Message message = myHandler.obtainMessage();
 						message.arg1 = position;
-						message.arg2 = mStore.getId();
+						message.arg2 = mStore.getStore_id();
 						message.obj=mStore.getStore_name();
 						message.what = attention;
 						myHandler.sendMessage(message);

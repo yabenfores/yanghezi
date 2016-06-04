@@ -18,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import entity.NotifyUpdateEntity;
+
 public class CollectActivity extends BaseActivity implements OnClickListener {
 
 
@@ -35,7 +37,7 @@ public class CollectActivity extends BaseActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.collect_activity);
 
-        setTitleText("收藏");
+        setTitleText("我的收藏");
         manager = getSupportFragmentManager();
         viewInfo();
     }
@@ -99,7 +101,7 @@ public class CollectActivity extends BaseActivity implements OnClickListener {
                 mTv01.setTextColor(Color.BLACK);
                 Fragment fragment01 = CollectShopFragment.newInstance();
                 transaction.replace(R.id.collect_content, fragment01, "CollectShopFragment");
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
 
                 break;
             case 1:
@@ -109,7 +111,7 @@ public class CollectActivity extends BaseActivity implements OnClickListener {
                 mTv00.setTextColor(Color.BLACK);
                 Fragment fragment02 = CollectGoodsFragment.newInstance();
                 transaction.replace(R.id.collect_content, fragment02, "CollectGoodsFragment");
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
 
 
                 break;
@@ -129,5 +131,20 @@ public class CollectActivity extends BaseActivity implements OnClickListener {
         finish();
     }
 
+    //----------------
+    public final static String LISTCHAGE = "listchage";
+    protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
+        super.notifyUpdate(notifyUpdateEntity);
+        try {
+            switch (notifyUpdateEntity.getNotifyTag()) {
+                case LISTCHAGE:
+                    setView(0);
+                    break;
+
+            }
+        } catch (Exception ex) {
+            throwEx(ex);
+        }
+    }
 
 }

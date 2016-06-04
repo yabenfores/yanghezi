@@ -3,13 +3,18 @@ package com.raoleqing.yangmatou.adapter;
 import java.util.List;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.CollectShop;
 import com.raoleqing.yangmatou.ben.Goods;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
 import com.raoleqing.yangmatou.ui.shop.ShopActivity;
+import com.raoleqing.yangmatou.ui.user.CollectActivity;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
+import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,16 +25,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 public class CollectShopAdapter extends BaseAdapter{
 	
 	private List<CollectShop> sowShatList;
 	private LayoutInflater mInflater;
-	private Context context;
+	private CollectActivity context;
 	private int height;
 
 	private int ItemHeight = 0;
@@ -38,7 +46,7 @@ public class CollectShopAdapter extends BaseAdapter{
 
 	}
 
-	public CollectShopAdapter(Context context, List<CollectShop> sowShatList ) {
+	public CollectShopAdapter(CollectActivity context, List<CollectShop> sowShatList ) {
 		this.context = context;
 		this.sowShatList = sowShatList;
 		height = UnitConverterUtils.dip2px(context, 80);
@@ -136,25 +144,35 @@ public class CollectShopAdapter extends BaseAdapter{
 				});
 			}
 
-			// 关注
-//			holder.but_attention.setOnClickListener(new View.OnClickListener() {
-//
-//				@Override
-//				public void onClick(View v) {
-//					// TODO Auto-generated method stubser
-//					if (UserUitls.isLongin(context)) {
-//						Message message = myHandler.obtainMessage();
-//						message.arg1 = position;
-//						message.arg2 = mStore.getId();
-//						message.obj=mStore.getStore_name();
-//						message.what = attention;
-//						myHandler.sendMessage(message);
-//					} else {
-//						UserUitls.longInDialog(context);
-//					}
-//
-//				}
-//			});
+			holder.btn_cancel.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+
+					NetHelper.cancelStore(mStore.getStore_id()+"", new NetConnectionInterface.iConnectListener3() {
+						@Override
+						public void onStart() {
+							context.setProgressVisibility(View.VISIBLE);
+						}
+
+						@Override
+						public void onFinish() {
+
+							context.setProgressVisibility(View.GONE);
+						}
+
+						@Override
+						public void onSuccess(JSONObject result) {
+							BaseActivity.sendNotifyUpdate(CollectActivity.class,LISTCHAGE);
+						}
+
+						@Override
+						public void onFail(JSONObject result) {
+							context.makeShortToast(result.optString(Constant.INFO));
+						}
+					});
+
+				}
+			});
 
 			// 进入店铺
 			holder.store_layout.setOnClickListener(new View.OnClickListener() {
@@ -183,6 +201,7 @@ public class CollectShopAdapter extends BaseAdapter{
 
 	class ViewHolder {
 
+		Button btn_cancel;
 		ImageView cat_goodes_image;
 		TextView cat_goodes_text;
 		ImageView store_icon;
@@ -195,7 +214,6 @@ public class CollectShopAdapter extends BaseAdapter{
 		private LinearLayout store_layout;
 
 		public ViewHolder(View convertView) {
-
 			this.cat_goodes_image = (ImageView) convertView.findViewById(R.id.cat_goodes_image);
 			this.cat_goodes_text = (TextView) convertView.findViewById(R.id.cat_goodes_text);
 			this.store_icon = (ImageView) convertView.findViewById(R.id.store_icon);
@@ -206,9 +224,11 @@ public class CollectShopAdapter extends BaseAdapter{
 			this.store_image_layout = (LinearLayout) convertView.findViewById(R.id.store_image_layout);
 			this.store_layout = (LinearLayout) convertView.findViewById(R.id.store_layout);
 //			this.store_address = (TextView) convertView.findViewById(R.id.store_address);
-
+			this.btn_cancel= (Button) convertView.findViewById(R.id.btn_cancel);
 		}
 
 	}
+	//----------------
+	public final static String LISTCHAGE = "listchage";
 
 }

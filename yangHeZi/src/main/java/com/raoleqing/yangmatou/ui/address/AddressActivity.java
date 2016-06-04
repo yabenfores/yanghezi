@@ -35,6 +35,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import entity.NotifyUpdateEntity;
+
 public class AddressActivity extends BaseActivity implements OnClickListener {
 
 	private ImageView activity_return;
@@ -199,7 +201,6 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 					mAddress.setAddress(obj.optString("address"));
 					mAddress.setMob_phone(obj.optString("mob_phone"));
 					mAddress.setIs_default(obj.optInt("is_default"));
-
 					addressList.add(mAddress);
 				}
 
@@ -290,7 +291,26 @@ public class AddressActivity extends BaseActivity implements OnClickListener {
 	@Override
 	protected void onResume(){
 		super.onResume();
+		addressList.removeAll(addressList);
 		getData();
 	}
 
+
+	//---------------------------
+
+	public final static String ADDRESSCHANGE = "addresschange";
+
+	protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
+		super.notifyUpdate(notifyUpdateEntity);
+		try {
+			switch (notifyUpdateEntity.getNotifyTag()) {
+				case ADDRESSCHANGE:
+					addressList.removeAll(addressList);
+					getData();
+					break;
+			}
+		} catch (Exception ex) {
+			throwEx(ex);
+		}
+	}
 }

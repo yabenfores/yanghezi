@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\YangMaTou\yangHeZi\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="6eedc09925056e6198bdf825cb3fd03a41e8a8c2">
+        <dex dex="C:\YangMaTou\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_ce67f377ce3644a2a8d02ef6f3f5b18465f7bdee\classes.dex" />
+    </item>
+
+</items>

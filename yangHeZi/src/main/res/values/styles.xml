@@ -194,9 +194,16 @@
     </style>
 
     <style name="show_ic">
-        <item name="android:layout_width">20dp</item>
-        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
         <item name="android:scaleType">fitCenter</item>
+    </style>
+    <style name="tv_button">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/bg04</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

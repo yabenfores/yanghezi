@@ -10,6 +10,8 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -33,6 +35,7 @@ import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.controller.EaseUI;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.raoleqing.yangmatou.ben.OneCat;
 import com.raoleqing.yangmatou.main.DealsFragment;
 import com.raoleqing.yangmatou.main.GouWuGuangChangFragment;
@@ -48,10 +51,12 @@ import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.uitls.UserUitls;
+import com.raoleqing.yangmatou.webserver.BaseNetConnection;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
+import com.raoleqing.yangmatou.webserver.NetParams;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -140,6 +145,18 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
     protected void viewInfo() {
         // TODO Auto-generated method stub
+        String loginName, loginPwd;
+        loginName = SharedPreferencesUtil.getString(getAppContext(), "user_name");
+        loginPwd = SharedPreferencesUtil.getString(getAppContext(), "user_pwd");
+        try {
+
+            if (!TextUtils.isEmpty(loginName) && TextUtils.isEmpty(loginPwd)) {
+                userLongin(loginName, loginPwd);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         main_title_layout = (RelativeLayout) findViewById(R.id.main_title_layout);
         gou_wu_message = (LinearLayout) findViewById(R.id.gou_wu_message);
         activity_search = (EditText) findViewById(R.id.main_search);
@@ -311,8 +328,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
     public void setView(int i) {
         // TODO Auto-generated method stub
-        int text01 = getResources().getColor(R.color.text01);
-        int text02 = getResources().getColor(R.color.text02);
+        int text01 = 0xFFE81258;
+        int text02 = 0xFF333333;
 
         transaction = manager.beginTransaction();
 
@@ -363,7 +380,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 Fragment fragment02 = DealsFragment.newInstance();
                 transaction.replace(R.id.main_content, fragment02, "MainFragment");
                 transaction.commitAllowingStateLoss();
-
                 if (towCatList.size() > 0) {
                     setTitleContent(towCatList);
                 } else {
@@ -658,6 +674,77 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     }
 
 
+    /**
+     * 登陆
+     **/
+    private void userLongin(String loginName, String loginPwd) {
+        //Home/Users/checkLogin
+        String authorization, md5, auth;
+        md5 = getMD5(loginPwd);
+        Log.e("pwd", md5);
+        auth = loginName + "|" + md5;
+        authorization = Base64.encodeToString(auth.getBytes(), Base64.DEFAULT);
+        RequestParams params = new RequestParams();
+        params.put("Authorization", authorization);
+        SharedPreferencesUtil.putString(getAppContext(), "Authorization", authorization);
+        new BaseNetConnection(Constant.LOGIN, NetParams.HttpMethod.Post, true, new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(JSONObject result) {
+                try {
+                    JSONObject json = result.optJSONObject(Constant.DATA);
+                    ToastUtil.MakeShortToast(BaseActivity.getAppContext(), "登录成功");
+                    String member_auth = json.optString("Authorization");//认证
+                    SharedPreferencesUtil.putString(getAppContext(), "Authorization", member_auth);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFail(JSONObject result) {
+                ToastUtil.MakeShortToast(getAppContext(), result.optString(Constant.INFO));
+            }
+        });
+
+    }
+
+    public static String getMD5(String old) {
+        byte[] source = old.getBytes();
+        String s = null;
+        char hexDigits[] = {       // 用来将字节转换成 16 进制表示的字符
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("MD5");
+            md.update(source);
+            byte tmp[] = md.digest();          // MD5 的计算结果是一个 128 位的长整数，
+            // 用字节表示就是 16 个字节
+            char str[] = new char[16 * 2];   // 每个字节用 16 进制表示的话，使用两个字符，
+            // 所以表示成 16 进制需要 32 个字符
+            int k = 0;                                // 表示转换结果中对应的字符位置
+            for (int i = 0; i < 16; i++) {          // 从第一个字节开始，对 MD5 的每一个字节
+                // 转换成 16 进制字符的转换
+                byte byte0 = tmp[i];                 // 取第 i 个字节
+                str[k++] = hexDigits[byte0 >>> 4 & 0xf];  // 取字节中高 4 位的数字转换,
+                // >>> 为逻辑右移，将符号位一起右移
+                str[k++] = hexDigits[byte0 & 0xf];            // 取字节中低 4 位的数字转换
+            }
+            s = new String(str);                                 // 换后的结果转换为字符串
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return s;
+    }
 
 
 }

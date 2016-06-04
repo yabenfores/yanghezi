@@ -43,8 +43,8 @@ public class NetHelper {
     }
 
     //用户订单
-    public static void member_order(String state_type, NetConnectionInterface.iConnectListener3 connectListener) {
-        new BaseNetConnection(Constant.MEMBER_ORDER, NetParams.HttpMethod.Post, true, connectListener, "state_type", state_type);
+    public static void member_order(String state_type,String page, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.MEMBER_ORDER, NetParams.HttpMethod.Post, true, connectListener, "state_type", state_type,"page",page);
     }
 
     //修改密码
@@ -105,7 +105,7 @@ public class NetHelper {
         new BaseNetConnection(Constant.MSGINFO, NetParams.HttpMethod.Post, true, connectListener, "member_mobile", phone);
     }
 
-    //获取验证码
+    //
     public static void bindUserMobile(String phone, String verification_code, NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.BINDUSERMOBILE, NetParams.HttpMethod.Post, true, connectListener, "member_mobile", phone, "verification_code", verification_code);
     }
@@ -220,6 +220,26 @@ public class NetHelper {
     //点赞
     public static void likedo(String geval_id,String dotype, NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.LIKEDO, NetParams.HttpMethod.Post, true, connectListener, "geval_id", geval_id,"dotype",dotype);
+    }
+    //验证手机
+    public static void CheckMember(String member_mobile, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.CHECKMEMBER, NetParams.HttpMethod.Post, false, connectListener, "dotype", "1","member_mobile",member_mobile);
+    }
+    //验证身份证
+    public static void CheckMemberId(String member_card, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.CHECKMEMBER, NetParams.HttpMethod.Post, false, connectListener, "dotype", "2","member_card",member_card);
+    }
+    //注册
+    public static void Register(String member_mobile,String member_card,String member_truename,String member_passwd,String code, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.REGISTER, NetParams.HttpMethod.Post, true, connectListener, "member_mobile", member_mobile,"member_card",member_card,"member_truename",member_truename,"member_passwd",member_passwd,"code",code);
+    }
+    //确认收货
+    public static void orderreceive(String order_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.ORDERRECEIVE, NetParams.HttpMethod.Post, true, connectListener, "order_id", order_id);
+    }
+    //重置密码
+    public static void ResetPwd(String member_mobile,String verification_code,String member_passwd, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.RESETPWD, NetParams.HttpMethod.Post, false, connectListener, "member_mobile", member_mobile,"verification_code",verification_code,"member_passwd",member_passwd);
     }
 
 

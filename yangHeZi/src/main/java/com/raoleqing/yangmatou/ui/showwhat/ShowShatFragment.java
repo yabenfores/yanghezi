@@ -243,7 +243,7 @@ public class ShowShatFragment extends Fragment implements OnClickListener, XList
                 showShat.setGeval_content(object.optString("geval_content"));
                 showShat.setGeval_isanonymous(object.optInt("geval_isanonymous"));
                 showShat.setGeval_storename(object.optString("geval_storename"));
-                showShat.setGeval_image(object.optString("geval_image"));
+                showShat.setGeval_image(object.optString("geval_images"));
                 showShat.setGeval_comment_num(object.optInt("geval_comment_num"));
                 showShat.setGeval_like_num(object.optInt("geval_like_num"));
                 showShat.setIs_like(object.optInt("is_like"));
@@ -467,7 +467,6 @@ public class ShowShatFragment extends Fragment implements OnClickListener, XList
 					return;
 				}
 				AdvManage nAdvManage = advManageList.get(pagerIndex);
-
 				Intent intent = new Intent(getActivity(), WebActivity.class);
 				intent.putExtra("url", nAdvManage.getAdv_url());
 				intent.putExtra("title", nAdvManage.getAdv_title());

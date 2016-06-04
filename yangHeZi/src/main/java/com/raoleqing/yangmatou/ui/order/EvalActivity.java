@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -54,6 +56,7 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
     private static final int ACTION_TAKE_ALBUM = 2;
     private static final int FROM_CAMERA_ACTIVITY = 3;
 
+    int num=0;
     private EditText et_eval;
     private RatingBar rat_eval_jiage,rat_eval_ziliang,rat_eval_miaoshu;
     private RadioGroup rb_eval;
@@ -135,6 +138,10 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
                     this.onBackPressed();
                     break;
                 case R.id.iv_app_up_image:
+                    if (anInt==9){
+                        makeShortToast("只能上传9张图片");
+                        return;
+                    }
                     mDialog.show();
                     break;
                 case R.id.btn_eval:
@@ -169,7 +176,7 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
             @Override
             public void onSuccess(JSONObject result) {
                 makeShortToast(result.optString(Constant.INFO));
-                sendNotifyUpdate(OrderActivity.class,ORDEREVAL);
+                sendNotifyUpdate(OrderActivity.class,ORDEREVAL,5);
                 finish();
             }
 
@@ -226,27 +233,27 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
         }
     }
 
+
+
     /**
      * 图片上传2
      */
     private void upLoadOicture2(String path) {
-
         setProgressVisibility(View.VISIBLE);
 
         try {
-
             mProgressDialog.setCancelable(false);
             mProgressDialog.show();
             File file = new File(path);
 
             if (file.exists() && file.length() > 0) {
-                RequestParams req = new RequestParams();
-                //req.put("upfile", file);
-                req.put("image", file);
-                System.out.println("headImage: " + file.getPath());
-                //Home/Users/member_avatar  Home/Users/reviewImg
+//                RequestParams req = new RequestParams();
+//                //req.put("upfile", file);
+//                req.put("image", file);
+//                System.out.println("headImage: " + file.getPath());
+//                //Home/Users/member_avatar  Home/Users/reviewImg
 //				NetHelper.reviewImg(file);
-                new AsyncFileUpload(Constant.API_BASE + Constant.MEMBER_AVATAR, path, "image", new AsyncFileUpload.ResultCallback() {
+                new AsyncFileUpload(Constant.API_BASE + Constant.REVIEWIMG, path, "image", new AsyncFileUpload.ResultCallback() {
                     @Override
                     public void onNetError() {
                         mProgressDialog.dismiss();
@@ -316,7 +323,6 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
             ImageView imageView = list.get(anInt);
             imageView.setVisibility(View.VISIBLE);
             anInt++;
-
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
@@ -337,7 +343,7 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
                     public void onClick(DialogInterface dialog, int which) {
                         String path = new File(mCurrentPhotoPath).getPath();
                         if (TextUtils.isEmpty(path)) {
-                            //showShortToast("获取图片失败！");
+                            makeShortToast("获取图片失败！");
                         } else {
                             upLoadOicture2(path);
                         }
@@ -359,11 +365,10 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
         switch (requestCode) {
             case ACTION_TAKE_PHOTO:
                 if (resultCode == RESULT_OK) {
-                    Uri file = data.getData();
-                    mCurrentPhotoPath = ImageUtils.getPath(EvalActivity.this, file);
+//                    Uri file = data.getData();
+//                    mCurrentPhotoPath = ImageUtils.getPath(EvalActivity.this, file);
                     if (mCurrentPhotoPath != null) {
-                        ImageUtils.showPic(uploadImage, mCurrentPhotoPath);
-
+                        ImageUtils.showPic(list.get(anInt), mCurrentPhotoPath);
                         showTipDialog("是否上传图片？");
                     }
                 }

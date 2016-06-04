@@ -86,7 +86,6 @@ public class ShowShatAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
         List<ImageView> imageViewList = new ArrayList<>();
         imageViewList.add(holder.iv_show_main);
         imageViewList.add(holder.iv_show1);
@@ -95,7 +94,9 @@ public class ShowShatAdapter extends BaseAdapter {
         imageViewList.add(holder.iv_show4);
         imageViewList.add(holder.iv_show5);
         for (int i = 0; i < imageViewList.size(); i++) {
-            imageViewList.get(i).setVisibility(View.INVISIBLE);
+            imageViewList.get(i).setVisibility(View.GONE);
+            imageViewList.get(i).setImageResource(R.drawable.show_imag01);
+
         }
         final ShowShat mShowShat = sowShatList.get(position);
         if (mShowShat.getGeval_isanonymous()==0){
@@ -107,17 +108,18 @@ public class ShowShatAdapter extends BaseAdapter {
         if (mShowShat.getIs_like()==1){
             like.setImageResource(R.drawable.ic_like);
         }
-        holder.tv_show_time.setText(TimeUitls.getDate(mShowShat.getGeval_addtime()));
+        holder.tv_show_time.setText(TimeUitls.getDate(mShowShat.getGeval_addtime()*1000));
         holder.tv_show_comm.setText(mShowShat.getGeval_content());
         holder.tv_show_storename.setText(" " + mShowShat.getGeval_storename());
         holder.tv_show_goodsname.setText(" " + mShowShat.getGeval_goodsname());
         holder.xing_sheng_ratingbar.setRating(mShowShat.getGeval_scores());
         holder.tv_show_comment_num.setText("(" + mShowShat.getGeval_comment_num() + ")");
         holder.tv_show_like_num.setText("(" + mShowShat.getGeval_like_num() + ")");
+        final TextView like_num=holder.tv_show_like_num;
         String[] strings = mShowShat.getGeval_image().split(";");
         for (int a = 0; a < strings.length; a++) {
-            imageViewList.get(a).setVisibility(View.VISIBLE);
             ImageLoader.getInstance().displayImage(strings[a], imageViewList.get(a));
+            imageViewList.get(a).setVisibility(View.VISIBLE);
         }
         holder.lyo_show.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,32 +148,6 @@ public class ShowShatAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 if (mShowShat.getIs_like()==1){
-                    NetHelper.likedo(mShowShat.getGeval_id() + "", "1", new NetConnectionInterface.iConnectListener3() {
-                        @Override
-                        public void onStart() {
-                            context.setProgressVisibility(View.VISIBLE);
-                        }
-
-                        @Override
-                        public void onFinish() {
-
-                            context.setProgressVisibility(View.GONE);
-                        }
-
-                        @Override
-                        public void onSuccess(JSONObject result) {
-                            mShowShat.setIs_like(0);
-                            like.setImageResource(R.drawable.like_icon);
-                        }
-
-                        @Override
-                        public void onFail(JSONObject result) {
-
-                            ToastUtil.MakeShortToast(context,result.optString(Constant.INFO));
-                        }
-                    });
-                }else {
-
                     NetHelper.likedo(mShowShat.getGeval_id() + "", "0", new NetConnectionInterface.iConnectListener3() {
                         @Override
                         public void onStart() {
@@ -185,7 +161,37 @@ public class ShowShatAdapter extends BaseAdapter {
 
                         @Override
                         public void onSuccess(JSONObject result) {
+                            mShowShat.setIs_like(0);
+                            like.setImageResource(R.drawable.like_icon);
+                            mShowShat.setGeval_like_num(mShowShat.getGeval_like_num()-1);
+                            like_num.setText("(" + mShowShat.getGeval_like_num() + ")");
+
+                        }
+
+                        @Override
+                        public void onFail(JSONObject result) {
+
+                            ToastUtil.MakeShortToast(context,result.optString(Constant.INFO));
+                        }
+                    });
+                }else {
+
+                    NetHelper.likedo(mShowShat.getGeval_id() + "", "1", new NetConnectionInterface.iConnectListener3() {
+                        @Override
+                        public void onStart() {
+                            context.setProgressVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            context.setProgressVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onSuccess(JSONObject result) {
                             mShowShat.setIs_like(1);
+                            mShowShat.setGeval_like_num(mShowShat.getGeval_like_num()+1);
+                            like_num.setText("(" + mShowShat.getGeval_like_num() + ")");
                             like.setImageResource(R.drawable.ic_like);
                         }
 

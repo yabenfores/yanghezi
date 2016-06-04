@@ -29,6 +29,7 @@ public class BoundPhone extends BaseActivity implements OnClickListener {
     private Button send_massage,bind;
     private EditText mEtPhone,mEtCode;
 
+    private String code;
 
     private ImageView activity_return;
 
@@ -118,7 +119,7 @@ public class BoundPhone extends BaseActivity implements OnClickListener {
                     @Override
                     public void onSuccess(JSONObject result) {
                         time.start();
-                        makeShortToast(result.optString(Constant.INFO));
+                        code=result.optString(Constant.DATA);
                     }
 
                     @Override
@@ -130,6 +131,10 @@ public class BoundPhone extends BaseActivity implements OnClickListener {
             case R.id.btn_app_bind:
                 if (mEtCode.getText().toString().trim().isEmpty()){
                     makeShortToast("请输入验证码");
+                    break;
+                }
+                if (!code.equals(mEtCode.getText().toString().trim())){
+                    makeShortToast("验证码不正确，请重新输入");
                     break;
                 }
                 NetHelper.bindUserMobile(mEtPhone.getText().toString().trim(), mEtCode.getText().toString().trim(), new NetConnectionInterface.iConnectListener3() {
@@ -158,6 +163,7 @@ public class BoundPhone extends BaseActivity implements OnClickListener {
 
                     }
                 });
+                break;
 
             default:
                 break;
