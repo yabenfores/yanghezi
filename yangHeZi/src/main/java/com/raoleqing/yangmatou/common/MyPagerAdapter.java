@@ -44,7 +44,7 @@ public class MyPagerAdapter extends PagerAdapter {
 	public Object instantiateItem(View pager, int position) {
 		// TODO Auto-generated method stub
 		View child = views.get(position);
-		child.setBackgroundResource(R.drawable.adv_manage_image);
+//		child.setBackgroundResource(R.drawable.adv_manage_image);
 		((ViewPager) pager).addView(child);
 		return child;
 	}

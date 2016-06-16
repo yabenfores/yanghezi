@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_marginBottom="10dp"
         android:id="@+id/lyo_show"
-        android:background="@color/encode_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/encode_view"
         android:orientation="vertical"
         android:padding="10dp">
 
@@ -16,19 +17,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/user_iocn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:scaleType="centerCrop"
-                android:background="@drawable/user_icon" />
+                android:background="@drawable/user_icon"
+                android:scaleType="centerCrop" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_show_username"
@@ -51,8 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:orientation="vertical" >
-
+                android:orientation="vertical">
                 <RatingBar
                     android:id="@+id/xing_sheng_ratingbar"
                     style="?android:attr/ratingBarStyleSmall"
@@ -61,44 +61,55 @@
                     android:layout_marginLeft="5dp"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:progressDrawable="@drawable/food_rating_bar_full"
-                    />
+                    android:progressDrawable="@drawable/food_rating_bar_full" />
             </LinearLayout>
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/iv_show_main"
+        <LinearLayout
+            android:id="@+id/lyo_show_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/show_imag01" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:layout_height="60dp">
+            android:orientation="vertical">
             <ImageView
-                android:id="@+id/iv_show1"
-                style="@style/show_image"
-                android:src="@drawable/show_imag01"/>
-            <ImageView
-                android:id="@+id/iv_show2"
-                style="@style/show_image"
-                android:src="@drawable/show_imag01"/>
-            <ImageView
-                android:id="@+id/iv_show3"
-                style="@style/show_image"
-                android:src="@drawable/show_imag01"/>
-            <ImageView
-                android:id="@+id/iv_show4"
-                style="@style/show_image"
-                android:src="@drawable/show_imag01"/>
-            <ImageView
-                android:id="@+id/iv_show5"
-                style="@style/show_image"
-                android:layout_marginRight="0dp"
-                android:src="@drawable/show_imag01"/>
+                android:id="@+id/iv_show_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/show_imag01" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_show1"
+                    style="@style/show_image"
+                    android:src="@drawable/show_imag01" />
+
+                <ImageView
+                    android:id="@+id/iv_show2"
+                    style="@style/show_image"
+                    android:src="@drawable/show_imag01" />
+
+                <ImageView
+                    android:id="@+id/iv_show3"
+                    style="@style/show_image"
+                    android:src="@drawable/show_imag01" />
+
+                <ImageView
+                    android:id="@+id/iv_show4"
+                    style="@style/show_image"
+                    android:src="@drawable/show_imag01" />
+
+                <ImageView
+                    android:id="@+id/iv_show5"
+                    style="@style/show_image"
+                    android:layout_marginRight="0dp"
+                    android:src="@drawable/show_imag01" />
+            </LinearLayout>
         </LinearLayout>
 
         <TextView
@@ -128,12 +139,13 @@
             android:text=" 婴儿洋奶粉" />
 
     </LinearLayout>
+
     <TextView
-        android:padding="10dp"
-        android:background="@color/encode_view"
         android:id="@+id/tv_eval_con"
         style="@style/text02_type02"
         android:layout_width="match_parent"
-        android:text="dafd"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/encode_view"
+        android:padding="10dp"
+        android:text="dafd" />
 </LinearLayout>

@@ -35,6 +35,8 @@ import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
 
 import org.apache.http.Header;
 import org.json.JSONArray;
@@ -149,44 +151,73 @@ public class MipcaActivityCapture extends BaseActivity implements Callback {
 //		MipcaActivityCapture.this.finish();
     }
 
-    private void getInfo(String resultCode) {
+    private void getInfo(final String resultCode) {
         RequestParams params = new RequestParams();
-        params.put("goods_serial", resultCode);
-        HttpUtil.post(MipcaActivityCapture.this, HttpUtil.GOODS_SCANNING, params, new JsonHttpResponseHandler() {
-
-            // 获取数据成功会调用这里
+        NetHelper.goodsDetails(resultCode, "1", new NetConnectionInterface.iConnectListener3() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                // TODO Auto-generated method stub
-                super.onSuccess(statusCode, headers, response);
+            public void onStart() {
+                setProgressVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onFinish() {
+                setProgressVisibility(View.GONE);
+            }
+
+            @Override
+            public void onSuccess(JSONObject result) {
                 try {
                     Intent intent = new Intent(MipcaActivityCapture.this, GoodsDetail.class);
-                    intent.putExtra("goods_id", response.getJSONObject("data").getInt("goods_id"));
+                    intent.putExtra("goods_id", result.getJSONObject("data").getInt("goods_id"));
                     startActivity(intent);
                     overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
                     finish();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    makeShortToast(response.optString(Constant.INFO));
                 }
             }
 
-            // 失败
             @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject response) {
-                // TODO Auto-generated method stub
-                super.onFailure(statusCode, headers, throwable, response);
-                makeShortToast(response.optString(Constant.INFO));
+            public void onFail(JSONObject result) {
+                makeShortToast(result.optString(Constant.INFO));
             }
-
-            // 结束
-            @Override
-            public void onFinish() {
-                super.onFinish();
-                setProgressVisibility(View.GONE);
-            }
-
         });
+
+//        HttpUtil.post(MipcaActivityCapture.this, HttpUtil.GOODS_SCANNING, params, new JsonHttpResponseHandler() {
+//
+//            // 获取数据成功会调用这里
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                // TODO Auto-generated method stub
+//                super.onSuccess(statusCode, headers, response);
+//                try {
+//                    Intent intent = new Intent(MipcaActivityCapture.this, GoodsDetail.class);
+//                    intent.putExtra("goods_id", response.getJSONObject("data").getInt("goods_id"));
+//                    startActivity(intent);
+//                    overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+//                    finish();
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                    makeShortToast(response.optString(Constant.INFO));
+//                }
+//            }
+//
+//            // 失败
+//            @Override
+//            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject response) {
+//                // TODO Auto-generated method stub
+//                super.onFailure(statusCode, headers, throwable, response);
+//                makeShortToast(response.optString(Constant.INFO));
+//            }
+//
+//            // 结束
+//            @Override
+//            public void onFinish() {
+//                super.onFinish();
+//                setProgressVisibility(View.GONE);
+//            }
+//
+//        });
     }
 
     private void initCamera(SurfaceHolder surfaceHolder) {

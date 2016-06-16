@@ -69,9 +69,11 @@ import android.widget.ImageView.ScaleType;
 /**
  * 特卖
  **/
-public class DealsFragment extends Fragment implements XListView.IXListViewListener {
+public class DealsFragment extends Fragment implements XListView.IXListViewListener ,OnClickListener{
 
 
+    private LinearLayout gou_wu_message;
+    private ImageView webBack;
     private XListView listView;
     private View advManageView;
     private ChildViewPager main_viewPager;
@@ -151,7 +153,6 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
                 @Override
                 public void onFinish() {
-                    ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
                 }
 
@@ -160,7 +161,6 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
                     JSONObject jsonObject = result.optJSONObject(Constant.DATA);
                     String url = jsonObject.optString("url");
                     webView.loadUrl(url);
-
                 }
 
                 @Override
@@ -175,7 +175,10 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
     }
 
     private void viewInfo(View view) {
-        // TODO Auto-generated method stub
+//        gou_wu_message= (LinearLayout) view.findViewById(R.id.gou_wu_message);
+////        webBack= (ImageView) view.findViewById(R.id.iv_web_back);
+////        if (webBack!=null){
+//        gou_wu_message.setOnClickListener(this);
 //		listView = (XListView) view.findViewById(R.id.gou_wu_listview);
 //		storeAdapter = new StoreAdapter(getActivity(), storeList, myHandler);
 //		listView.setAdapter(storeAdapter);
@@ -230,6 +233,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 //
 //		}
         webView = (WebView) view.findViewById(R.id.ww_app_flash);
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -250,6 +254,8 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
                 String app=jsonObject.optString("app");
                 if (!app.equals("true")) {
                     view.loadUrl(url);
+                    ((MainActivity)getActivity()).setCodeVisible(View.INVISIBLE);
+                    ((MainActivity)getActivity()).setWebBack(View.VISIBLE);
                 }else {
                     int i=jsonObject.optInt("goods_id");
                     Intent intent = new Intent(getActivity(), GoodsDetail.class);
@@ -265,12 +271,17 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
                 if (event.getAction() == KeyEvent.ACTION_DOWN) {
                     if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {  //表示按返回键时的操作
                         webView.goBack();   //后退
+                        if (!webView.canGoBack()){
+                            ((MainActivity)getActivity()).setCodeVisible(View.VISIBLE);
+                            ((MainActivity)getActivity()).setWebBack(View.GONE);
+                        }
                         return true;    //已处理
                     }
                 }
                 return false;
             }
         });
+
 
     }
 
@@ -657,7 +668,7 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
             String message = response.optString("message");
 
             if (response == null) {
-                Toast.makeText(getActivity(), message, 1).show();
+                Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
                 ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
                 return;
             }
@@ -665,11 +676,11 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
             storeList.get(position).setAttention(1);
             storeAdapter.notifyDataSetChanged();
 
-            Toast.makeText(getActivity(), message, 1).show();
+            Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            Toast.makeText(getActivity(), "关注失败", 1).show();
+            Toast.makeText(getActivity(), "关注失败", Toast.LENGTH_SHORT).show();
         }
 
         ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
@@ -844,4 +855,17 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
         listView.setRefreshTime(refleshSimpleDateFormat.format(new Date()));
     }
 
+    @Override
+    public void onClick(View v) {
+        try {
+            switch (v.getId()) {
+                case R.id.gou_wu_message:
+                    getActivity().onBackPressed();
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

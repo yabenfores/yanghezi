@@ -166,6 +166,7 @@ public class AllOrderFragment extends Fragment implements OnClickListener, XList
                 mOrder.setOrder_state(obj.optInt("order_state"));
                 mOrder.setPay_sn(obj.optString("pay_sn"));
                 mOrder.setAdd_time(obj.optLong("add_time"));
+                mOrder.setEvaluation_state(obj.optInt("evaluation_state"));
                 orderList.add(mOrder);
 
             }

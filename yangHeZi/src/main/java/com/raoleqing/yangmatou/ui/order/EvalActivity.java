@@ -76,7 +76,6 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
         image = getIntent().getStringExtra("goods_image");
         viewInfo();
     }
-
     protected void viewInfo() {
         et_eval= (EditText) findViewById(R.id.et_eval);
         rat_eval_jiage= (RatingBar) findViewById(R.id.rat_eval_jiage);
@@ -166,10 +165,8 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
             public void onStart() {
                 setProgressVisibility(View.VISIBLE);
             }
-
             @Override
             public void onFinish() {
-
                 setProgressVisibility(View.GONE);
             }
 
@@ -257,7 +254,6 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
                     @Override
                     public void onNetError() {
                         mProgressDialog.dismiss();
-
                     }
 
                     @Override

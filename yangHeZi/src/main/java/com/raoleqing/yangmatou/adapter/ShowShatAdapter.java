@@ -14,6 +14,7 @@ import com.raoleqing.yangmatou.ui.showwhat.ShowShatActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.TimeUitls;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.uitls.UserUitls;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
@@ -107,6 +108,8 @@ public class ShowShatAdapter extends BaseAdapter {
         final ImageView like=holder.iv_show_like;
         if (mShowShat.getIs_like()==1){
             like.setImageResource(R.drawable.ic_like);
+        }else {
+            like.setImageResource(R.drawable.like_icon);
         }
         holder.tv_show_time.setText(TimeUitls.getDate(mShowShat.getGeval_addtime()*1000));
         holder.tv_show_comm.setText(mShowShat.getGeval_content());
@@ -147,6 +150,10 @@ public class ShowShatAdapter extends BaseAdapter {
         holder.lyo_show_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!UserUitls.isLongin(context)) {
+                    UserUitls.longInDialog(context);
+                    return;
+                }
                 if (mShowShat.getIs_like()==1){
                     NetHelper.likedo(mShowShat.getGeval_id() + "", "0", new NetConnectionInterface.iConnectListener3() {
                         @Override

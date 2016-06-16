@@ -14,11 +14,11 @@
         <TextView
             android:id="@+id/activity_title"
             style="@style/text01_type04"
-            android:textColor="#000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="结算" />
+            android:text="结算"
+            android:textColor="#000" />
 
         <ImageView
             android:id="@+id/goods_pay_return"
@@ -31,17 +31,18 @@
         <TextView
             android:id="@+id/goods_pay_explanation"
             style="@style/text01_type03"
-            android:textColor="#000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:text="进口税说明" />
+            android:text="进口税说明"
+            android:textColor="#000" />
+
         <View
-            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="1px"
+            android:layout_alignParentBottom="true"
             android:background="@color/line01" />
 
     </RelativeLayout>
@@ -121,18 +122,19 @@
                 </RelativeLayout>
 
             </LinearLayout>
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_app_buy"/>
+                android:background="@drawable/ic_app_buy" />
 
             <LinearLayout
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="#FFFFFF"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:orientation="vertical"
                 android:padding="10dp">
 
@@ -145,17 +147,17 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:background="@drawable/ic_app_buy_idcard"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_app_buy_idcard" />
 
                     <EditText
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
                         android:id="@+id/user_card"
-                        android:layout_marginLeft="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:background="#00000000"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
                         android:hint="请输入收货人的身份证信息" />
                 </LinearLayout>
 
@@ -172,16 +174,16 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_marginTop="2dp"
                         android:layout_width="wrap_content"
-                        android:background="@drawable/ic_app_buy_tip"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/ic_app_buy_tip" />
 
                     <TextView
-                        android:layout_marginLeft="5dp"
                         style="@style/text04_type03"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:background="#00000000"
                         android:hint="据《中华人民共和国海关对进出境快件监管办法》规定，需 审查收货人身份信息。" />
                 </LinearLayout>
@@ -214,12 +216,12 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:gravity="center_vertical"
-                            android:layout_weight="1"
                             android:id="@+id/goods_name"
                             style="@style/text03_type01"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
                             android:lines="2"
                             android:text="名字" />
 
@@ -287,8 +289,8 @@
 
 
                         <TextView
-                            style="@style/tv_button"
                             android:id="@+id/goods_del"
+                            style="@style/tv_button"
                             android:text="-" />
 
                         <TextView
@@ -453,74 +455,16 @@
 
             </LinearLayout>
 
-            <LinearLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#FFFFFF"
-                android:orientation="vertical"
-                android:padding="10dp">
+                android:layout_height="1dp"
+                android:background="@color/line01" />
 
-                <TextView
-                    style="@style/text03_type03"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="支付方式：" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/line01" />
-
-                <RadioButton
-                    android:id="@+id/radio1"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:checked="true"
-                    android:drawableLeft="@drawable/ic_pay_un"
-                    android:gravity="center_vertical"
-                    android:text=" 通联支付" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/line01" />
-                <RadioButton
-                    android:id="@+id/radio2"
-                    android:layout_width="match_parent"
-                    android:drawableLeft="@drawable/ic_pay_wechat"
-                    android:layout_height="40dp"
-                    android:checked="false"
-                    android:visibility="gone"
-                    android:gravity="center_vertical"
-                    android:text=" 微信支付" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_marginTop="5dp"
-                    android:visibility="gone"
-                    android:background="@color/line01" />
-                <RadioButton
-                    android:id="@+id/radio3"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:drawableLeft="@drawable/ic_pay_ali"
-                    android:checked="false"
-                    android:visibility="gone"
-                    android:gravity="center_vertical"
-                    android:text=" 支付宝支付" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:visibility="gone"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/line01" />
-
-            </LinearLayout>
+            <ListView
+                android:id="@+id/lv_pay_paylist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></ListView>
 
             <RelativeLayout
                 android:layout_width="match_parent"

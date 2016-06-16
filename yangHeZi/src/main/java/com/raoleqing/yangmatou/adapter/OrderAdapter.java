@@ -33,8 +33,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class OrderAdapter extends BaseAdapter {
-
-
     private List<Order> orderList;
     private LayoutInflater mInflater;
     private Context context;
@@ -85,8 +83,7 @@ public class OrderAdapter extends BaseAdapter {
         final Order mOrder = orderList.get(position);
         holder.store_name.setText(mOrder.getStore_name());
         holder.store_orderId.setText("订单号: " + mOrder.getOrder_sn());
-        holder.order_time.setText("下单时间 : " + TimeUitls.getDate(mOrder.getAdd_time()*1000));
-
+        holder.order_time.setText("下单时间 : " + TimeUitls.getDate(mOrder.getAdd_time() * 1000));
         holder.order_number.setText("数量：" + mOrder.getGoods_num() + "件        共计： ￥" + mOrder.getOrder_amount());
         holder.order_shipping.setText("（含运费" + mOrder.getShipping_fee() + "元）");
         ImageLoader.getInstance().displayImage(mOrder.getStore_label(), holder.store_icon,
@@ -96,7 +93,6 @@ public class OrderAdapter extends BaseAdapter {
             ImageLoader.getInstance().displayImage(object.optString("goods_image"), holder.goods_image,
                     YangHeZiApplication.imageOption(R.drawable.image_icon01));
             holder.goods_name.setText(object.optString("goods_name"));
-
             holder.goods_price.setText("￥" + object.optString("goods_price"));
             holder.goods_price01.setText("原价： " + object.optString("goods_marketprice"));
         }
@@ -138,7 +134,7 @@ public class OrderAdapter extends BaseAdapter {
             case 30:
                 //待收货
                 holder.order_state.setText("待收货");
-                holder.btn_order_back.setVisibility(View.GONE);
+                holder.btn_order_back.setVisibility(View.VISIBLE);
                 holder.btn_order_cancel.setVisibility(View.GONE);
                 holder.btn_order_pay.setVisibility(View.GONE);
                 holder.btn_order_tip.setVisibility(View.GONE);
@@ -147,13 +143,19 @@ public class OrderAdapter extends BaseAdapter {
                 break;
             case 40:
                 //待评价
-                holder.order_state.setText("待评价");
+                if (mOrder.getEvaluation_state() == 0) {
+                    holder.btn_order_eval.setVisibility(View.VISIBLE);
+                    holder.order_state.setText("待评价");
+                } else {
+                    holder.order_state.setText("已完成");
+                    holder.btn_order_eval.setVisibility(View.GONE);
+                }
                 holder.btn_order_back.setVisibility(View.VISIBLE);
                 holder.btn_order_cancel.setVisibility(View.GONE);
                 holder.btn_order_pay.setVisibility(View.GONE);
                 holder.btn_order_tip.setVisibility(View.GONE);
                 holder.btn_order_confirm.setVisibility(View.GONE);
-                holder.btn_order_eval.setVisibility(View.VISIBLE);
+
                 //AftermarketActivity
                 break;
             case 50:
@@ -204,12 +206,11 @@ public class OrderAdapter extends BaseAdapter {
                         JSONObject object = result.optJSONObject("data");
                         try {
                             object.put("productName", mOrder.getExtend_order_goods().optString("goods_name").trim());
-                            object.put("orderAmount", ((int) mOrder.getOrder_amount() * 100) + "");
+//                            object.put("orderAmount", ((int) mOrder.getOrder_amount() * 100) + "");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         JSONObject payData = PaaCreator.randomPaa(object);
-
                         System.out.println("aaaaaaaaa:" + payData.toString());
                         APPayAssistEx.startPay((OrderActivity) context, payData.toString(), APPayAssistEx.MODE_DEBUG);
 
@@ -285,7 +286,6 @@ public class OrderAdapter extends BaseAdapter {
 
                     @Override
                     public void onSuccess(JSONObject result) {
-
                         BaseActivity.sendNotifyUpdate(OrderActivity.class, ORDERCOM);
                     }
 
@@ -301,7 +301,13 @@ public class OrderAdapter extends BaseAdapter {
         holder.btn_order_back.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i =new Intent(context, RefuActivity.class);
+                Intent i = new Intent(context, RefuActivity.class);
+                i.putExtra("goods_image", object.optString("goods_image"));
+                i.putExtra("goods_name", object.optString("goods_name"));
+                i.putExtra("goods_price", object.optString("goods_price"));
+                i.putExtra("goods_marketprice", object.optString("goods_marketprice"));
+                i.putExtra("order_id", mOrder.getOrder_id());
+                i.putExtra("goods_num", mOrder.getGoods_num());
                 context.startActivity(i);
             }
         });
@@ -311,7 +317,6 @@ public class OrderAdapter extends BaseAdapter {
     }
 
     class ViewHolder {
-
         ImageView store_icon;
         TextView store_name;
         TextView order_state;

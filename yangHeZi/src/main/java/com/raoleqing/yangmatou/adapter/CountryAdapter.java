@@ -84,7 +84,7 @@ public class CountryAdapter extends BaseAdapter {
         try {
 
             final Pavilion pavilion = pavilionList.get(position);
-            ImageLoader.getInstance().displayImage(pavilion.getAdv_url(), holder.iv_country,YangHeZiApplication.imageOption(R.drawable.pavilion_icon));
+            ImageLoader.getInstance().displayImage(pavilion.getFlag_imgSrc(), holder.iv_country,YangHeZiApplication.imageOption(R.drawable.pavilion_icon));
             holder.tv_country.setText(pavilion.getFlag_name());
             // 进入店铺
             holder.lyo_country.setOnClickListener(new View.OnClickListener() {

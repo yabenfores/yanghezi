@@ -3,6 +3,7 @@ package com.raoleqing.yangmatou.ui.showwhat;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -22,8 +23,11 @@ import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.EvaluationAdapter;
 import com.raoleqing.yangmatou.ben.Evaluation;
 import com.raoleqing.yangmatou.ben.ShowShat;
+import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
+import com.raoleqing.yangmatou.ui.ImageBrowseActivity;
 import com.raoleqing.yangmatou.uitls.TimeUitls;
+import com.raoleqing.yangmatou.uitls.UserUitls;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
@@ -33,16 +37,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ShowShatActivity extends BaseActivity implements View.OnClickListener, XListView.IXListViewListener {
 
 
-    private ImageView user_iocn, iv_show_main, iv_show1, iv_show2, iv_show3, iv_show4, iv_show5, iv_return,iv_like;
+    private ImageView user_iocn, iv_show_main, iv_show1, iv_show2, iv_show3, iv_show4, iv_show5, iv_return, iv_like;
     private TextView tv_show_username, tv_show_time, tv_show_comm, tv_show_storename, tv_show_goodsname, tv_show_comment_num, tv_show_like_num, tv_eval_con;
     private RatingBar xing_sheng_ratingbar;
-    private LinearLayout lyo_show_like, lyo_show_eval, lyo_show_share,lyo_show_re;
+    private LinearLayout lyo_show_like, lyo_show_eval, lyo_show_share, lyo_show_re, lyo_show_image;
 
+    private ArrayList<String> goodsImageList=new ArrayList<>();
     private Button btn_show_re;
     private View showHrad;
     private EvaluationAdapter adapter;
@@ -51,8 +57,7 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
     private XListView xListView;
     private List<Evaluation> evaluationList = new ArrayList<>();
     private ShowShat showShat;
-
-    private int page = 1, maxPage = 1,evalNum=0,likeNum=0;
+    private int page = 1, maxPage = 1, evalNum = 0, likeNum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,16 +67,15 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
         setTitleText("晒单详情");
         viewInfo();
     }
-
     protected void viewInfo() {
-        et_show_re= (EditText) findViewById(R.id.et_show_re);
-        btn_show_re= (Button) findViewById(R.id.btn_show_re);
+        et_show_re = (EditText) findViewById(R.id.et_show_re);
+        btn_show_re = (Button) findViewById(R.id.btn_show_re);
         btn_show_re.setOnClickListener(this);
-        lyo_show_re= (LinearLayout) findViewById(R.id.lyo_show_re);
-        iv_like= (ImageView) findViewById(R.id.iv_like);
-        lyo_show_like= (LinearLayout) findViewById(R.id.lyo_show_like);
-        lyo_show_eval= (LinearLayout) findViewById(R.id.lyo_show_eval);
-        lyo_show_share= (LinearLayout) findViewById(R.id.lyo_show_share);
+        lyo_show_re = (LinearLayout) findViewById(R.id.lyo_show_re);
+        iv_like = (ImageView) findViewById(R.id.iv_like);
+        lyo_show_like = (LinearLayout) findViewById(R.id.lyo_show_like);
+        lyo_show_eval = (LinearLayout) findViewById(R.id.lyo_show_eval);
+        lyo_show_share = (LinearLayout) findViewById(R.id.lyo_show_share);
         lyo_show_share.setOnClickListener(this);
         lyo_show_eval.setOnClickListener(this);
         lyo_show_like.setOnClickListener(this);
@@ -79,12 +83,14 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
         xListView = (XListView) findViewById(R.id.lv_show);
         adapter = new EvaluationAdapter(this, evaluationList);
         xListView.setAdapter(adapter);
-        if (showShat.getIs_like()==1){
+        if (showShat.getIs_like() == 1) {
             iv_like.setImageResource(R.drawable.ic_like);
         }
         try {
             showHrad = this.getLayoutInflater().from(this)
                     .inflate(R.layout.show_aty, null);
+            lyo_show_image = (LinearLayout) showHrad.findViewById(R.id.lyo_show_image);
+            lyo_show_image.setOnClickListener(this);
             user_iocn = (ImageView) showHrad.findViewById(R.id.user_iocn);
             iv_show_main = (ImageView) showHrad.findViewById(R.id.iv_show_main);
             iv_show1 = (ImageView) showHrad.findViewById(R.id.iv_show1);
@@ -111,25 +117,25 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
             for (int i = 0; i < imageViewList.size(); i++) {
                 imageViewList.get(i).setVisibility(View.GONE);
             }
-            if (showShat.getGeval_isanonymous()==0){
+            if (showShat.getGeval_isanonymous() == 0) {
                 tv_show_username.setText(showShat.getMember_name());
                 ImageLoader.getInstance().displayImage(showShat.getMember_avatar(), user_iocn,
                         YangHeZiApplication.imageOption(R.drawable.user_icon));
             }
 
-            tv_show_time.setText(TimeUitls.getDate(showShat.getGeval_addtime()*1000));
+            tv_show_time.setText(TimeUitls.getDate(showShat.getGeval_addtime() * 1000));
             tv_show_comm.setText(showShat.getGeval_content());
             tv_show_storename.setText(" " + showShat.getGeval_storename());
             tv_show_goodsname.setText(" " + showShat.getGeval_goodsname());
             xing_sheng_ratingbar.setRating(showShat.getGeval_scores());
             tv_eval_con.setText("共" + showShat.getGeval_comment_num() + "条评论");
             tv_show_comment_num.setText("(" + showShat.getGeval_comment_num() + ")");
-            likeNum=showShat.getGeval_like_num();
+            likeNum = showShat.getGeval_like_num();
             tv_show_like_num.setText("(" + likeNum + ")");
-
             String[] strings = showShat.getGeval_image().split(";");
             for (int a = 0; a < strings.length; a++) {
                 imageViewList.get(a).setVisibility(View.VISIBLE);
+                goodsImageList.add(strings[a]);
                 ImageLoader.getInstance().displayImage(strings[a], imageViewList.get(a));
             }
         } catch (Exception e) {
@@ -143,7 +149,7 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
         et_show_re.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if (keyCode == KeyEvent.KEYCODE_BACK){
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
                     lyo_show_re.setVisibility(View.GONE);
                     return true;
                 }
@@ -183,13 +189,13 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
 
     private void ResolveJson(JSONObject result) {
         JSONObject json = result.optJSONObject(Constant.DATA);
-        if (json==null){
+        if (json == null) {
             return;
         }
         try {
             maxPage = json.optInt("pagetotal");
             evalNum = json.optInt("rowcount");
-            tv_eval_con.setText("共" + evalNum+ "条评论");
+            tv_eval_con.setText("共" + evalNum + "条评论");
             tv_show_comment_num.setText("(" + evalNum + ")");
             JSONArray jsonArray = json.optJSONArray("comments");
             if (jsonArray == null) return;
@@ -220,11 +226,19 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                     break;
 
                 case R.id.lyo_show_eval:
+                    if (!UserUitls.isLongin(ShowShatActivity.this)) {
+                        UserUitls.longInDialog(ShowShatActivity.this);
+                        return;
+                    }
                     lyo_show_re.setVisibility(View.VISIBLE);
 //                    inputTitleDialog();
                     break;
                 case R.id.lyo_show_like:
-                    if (showShat.getIs_like()==1){
+                    if (!UserUitls.isLongin(ShowShatActivity.this)) {
+                        UserUitls.longInDialog(ShowShatActivity.this);
+                        return;
+                    }
+                    if (showShat.getIs_like() == 1) {
                         NetHelper.likedo(showShat.getGeval_id() + "", "0", new NetConnectionInterface.iConnectListener3() {
                             @Override
                             public void onStart() {
@@ -251,7 +265,7 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                                 makeShortToast(result.optString(Constant.INFO));
                             }
                         });
-                    }else {
+                    } else {
                         NetHelper.likedo(showShat.getGeval_id() + "", "1", new NetConnectionInterface.iConnectListener3() {
                             @Override
                             public void onStart() {
@@ -301,7 +315,7 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                             makeShortToast(result.optString(Constant.INFO));
                             evaluationList.removeAll(evaluationList);
                             lyo_show_re.setVisibility(View.GONE);
-                            ((InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(et_show_re.getWindowToken(),0);
+                            ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(et_show_re.getWindowToken(), 0);
                             getInfo();
                         }
 
@@ -310,6 +324,11 @@ public class ShowShatActivity extends BaseActivity implements View.OnClickListen
                             makeShortToast(result.optString(Constant.INFO));
                         }
                     });
+                    break;
+                case R.id.lyo_show_image:
+                    Intent intent = new Intent(getAppContext(), ImageBrowseActivity.class);
+                    intent.putStringArrayListExtra("imageList", goodsImageList);
+                    startActivity(intent);
 
                     break;
                 default:

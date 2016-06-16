@@ -198,6 +198,7 @@ public class ShowShatFragment extends Fragment implements OnClickListener, XList
             public void onFinish() {
 
                 ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
+
             }
 
             @Override
@@ -209,8 +210,6 @@ public class ShowShatFragment extends Fragment implements OnClickListener, XList
 
             @Override
             public void onFail(JSONObject result) {
-
-
                 ((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
             }
         });
@@ -250,9 +249,9 @@ public class ShowShatFragment extends Fragment implements OnClickListener, XList
                 showShat.setStore_label(object.optString("store_label"));
                 showShat.setMember_avatar(object.optString("member_avatar"));
                 showShat.setMember_name(object.optString("member_name"));
-
                 sowShatList.add(showShat);
             }
+            ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
             adapter.notifyDataSetChanged();
 
 
@@ -516,6 +515,8 @@ public class ShowShatFragment extends Fragment implements OnClickListener, XList
 
     @Override
     public void onRefresh() {
+        sowShatList.removeAll(sowShatList);
+        page=1;
         getInfo();
     }
 

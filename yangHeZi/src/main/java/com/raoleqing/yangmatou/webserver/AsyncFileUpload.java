@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.loopj.android.http.RequestParams;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.common.ImageUtils;
 import com.raoleqing.yangmatou.uitls.LogUtil;
@@ -27,8 +28,9 @@ import java.net.URL;
 public class AsyncFileUpload extends AsyncTask<Void, Void, String> {
 
     ResultCallback resultCallback;
-    String url, filePath,type;
+    String url, filePath,type,dotype;
     Result resultType = Result.None;
+
 
     public enum Result {
         FileError, NetError, ServerError, Success, None
@@ -39,6 +41,13 @@ public class AsyncFileUpload extends AsyncTask<Void, Void, String> {
 
     public AsyncFileUpload(String url, String filePath, String type ,ResultCallback resultCallback) {
         this.url = url;
+        this.filePath = filePath;
+        this.type=type;
+        this.resultCallback = resultCallback;
+    }
+    public AsyncFileUpload(String url, String filePath, String type ,String params,ResultCallback resultCallback) {
+        this.url = url;
+        this.dotype=params;
         this.filePath = filePath;
         this.type=type;
         this.resultCallback = resultCallback;
@@ -76,7 +85,6 @@ public class AsyncFileUpload extends AsyncTask<Void, Void, String> {
             getimage(filePath).compress(Bitmap.CompressFormat.JPEG, 100, bos);
             bos.flush();
             bos.close();
-
             File file = f;
             if (!file.exists() || !file.isFile()) {
                 resultType = Result.FileError;
@@ -92,6 +100,7 @@ public class AsyncFileUpload extends AsyncTask<Void, Void, String> {
             con.setRequestProperty("Charset", NetParams.CHARSET);
             String auth = SharedPreferencesUtil.getString(BaseActivity.getAppContext(), "Authorization");
             con.addRequestProperty("Authorization", auth);
+            con.addRequestProperty("Dotype", dotype);
             con.setRequestProperty("Content-Type", type);
             OutputStream out = con.getOutputStream();
             FileInputStream fInStream = new FileInputStream(file);

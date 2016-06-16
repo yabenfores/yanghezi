@@ -27,7 +27,7 @@ public class PaaCreator {
 			paaParams.put("signType", "1");
 			paaParams.put("merchantId", object.optString("tl_merchantid"));
 			paaParams.put("orderNo", object.optString("tl_orderno"));
-			paaParams.put("orderAmount", object.optString("orderAmount"));
+			paaParams.put("orderAmount", object.optString("tl_order_amount"));
 			paaParams.put("orderCurrency", object.optString("tl_ordercurrency"));
 			paaParams.put("orderDatetime", object.optString("tl_order_add_time"));
 			paaParams.put("productName", object.optString("productName"));
@@ -50,7 +50,7 @@ public class PaaCreator {
 				"1","signType",
 				object.optString("tl_merchantid"),"merchantId",
 				object.optString("tl_orderno"),"orderNo",
-				object.optString("orderAmount"),"orderAmount",
+				object.optString("tl_order_amount"),"orderAmount",
 				object.optString("tl_ordercurrency"),"orderCurrency",
 				object.optString("tl_order_add_time"),"orderDatetime",
 				object.optString("productName"), "productName",

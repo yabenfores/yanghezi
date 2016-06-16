@@ -21,7 +21,6 @@
             android:text="个人中心" />
 
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/show_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,27 +31,23 @@
             android:orientation="vertical"
             android:paddingLeft="10dp"
             android:paddingRight="10dp">
-
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/iv_user_massage"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_user_massage" />
 
-                android:background="@drawable/show_icon02" />
-
-            <TextView
-                style="@style/text03_type01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="在线" />
         </LinearLayout>
     </RelativeLayout>
     <ScrollView
+        android:background="@color/bg04"
         android:scrollbars="none"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
+            android:background="@color/bg04"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -433,6 +428,28 @@
                     android:padding="10dp"
                     android:text="设置" />
             </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="#FFFFFF"-->
+                <!--android:paddingLeft="5dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/ic_user_setting"/>-->
+                <!--<TextView-->
+                    <!--android:id="@+id/user_share"-->
+                    <!--style="@style/text03_type02"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:drawableRight="@drawable/user_icon02"-->
+                    <!--android:padding="10dp"-->
+                    <!--android:text="设置" />-->
+            <!--</LinearLayout>-->
         </LinearLayout>
     </ScrollView>
 

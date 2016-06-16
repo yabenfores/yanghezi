@@ -2,6 +2,7 @@ package com.raoleqing.yangmatou.ui.login;
 
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
@@ -26,7 +27,7 @@ import org.json.JSONObject;
  */
 public class RegisteredActivity extends BaseActivity implements OnClickListener {
 
-    private String code;
+    private String code = "";
     private TimeCount time;
     private ImageView activity_return;
     private TextView registered_codes;
@@ -103,9 +104,6 @@ public class RegisteredActivity extends BaseActivity implements OnClickListener 
                     makeShortToast("请输入正确的手机号码");
                     return;
                 }
-                if (!checkPhone()){
-                    return;
-                }
                 NetHelper.MsgInfo(mEtPhone.getText().toString().trim(), new NetConnectionInterface.iConnectListener3() {
                     @Override
                     public void onStart() {
@@ -121,8 +119,8 @@ public class RegisteredActivity extends BaseActivity implements OnClickListener 
                     @Override
                     public void onSuccess(JSONObject result) {
                         time.start();
-                        JSONObject obj=result.optJSONObject(Constant.DATA);
-                        code=obj.optString("verification_code");
+                        JSONObject obj = result.optJSONObject(Constant.DATA);
+                        code = obj.optString("verification_code");
                     }
 
                     @Override
@@ -147,12 +145,14 @@ public class RegisteredActivity extends BaseActivity implements OnClickListener 
 
                         @Override
                         public void onFinish() {
-
                             setProgressVisibility(View.GONE);
                         }
 
                         @Override
                         public void onSuccess(JSONObject result) {
+                            SharedPreferencesUtil.putString(getBaseContext(), "user_name", mEtPhone.getText().toString().trim());
+                            SharedPreferencesUtil.putString(getBaseContext(), "user_password", getMD5(newPwd));
+                            SharedPreferencesUtil.putBoolean(getBaseContext(), "remember_password", true);
                             makeShortToast(result.optString(Constant.INFO));
                             finish();
                         }
@@ -172,59 +172,59 @@ public class RegisteredActivity extends BaseActivity implements OnClickListener 
 
     }
 
-    private boolean checkPhone() {
-        final boolean[] b = {false};
-        NetHelper.CheckMember( mEtPhone.getText().toString().trim(), new NetConnectionInterface.iConnectListener3() {
-            @Override
-            public void onStart() {
-                setProgressVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onFinish() {
-                setProgressVisibility(View.GONE);
-            }
-
-            @Override
-            public void onSuccess(JSONObject result) {
-                b[0] =true;
-            }
-            @Override
-            public void onFail(JSONObject result) {
-                makeShortToast(result.optString(Constant.INFO));
-            }
-        });
-        return b[0];
-    }
-
-    private boolean checkId(){
-        String idCard=et_reg_card.getText().toString().trim();
-        final boolean[] id = {false};
-        NetHelper.CheckMemberId(idCard, new NetConnectionInterface.iConnectListener3() {
-            @Override
-            public void onStart() {
-
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-
-            @Override
-            public void onSuccess(JSONObject result) {
-                id[0] =true;
-
-            }
-
-            @Override
-            public void onFail(JSONObject result) {
-                makeShortToast(result.optString(Constant.INFO));
-            }
-        });
-        return id[0];
-
-    }
+//    private boolean checkPhone() {
+//        final boolean[] b = {false};
+//        NetHelper.CheckMember( mEtPhone.getText().toString().trim(), new NetConnectionInterface.iConnectListener3() {
+//            @Override
+//            public void onStart() {
+//                setProgressVisibility(View.VISIBLE);
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                setProgressVisibility(View.GONE);
+//            }
+//
+//            @Override
+//            public void onSuccess(JSONObject result) {
+//                b[0] =true;
+//            }
+//            @Override
+//            public void onFail(JSONObject result) {
+//                makeShortToast(result.optString(Constant.INFO));
+//            }
+//        });
+//        return b[0];
+//    }
+//
+//    private boolean checkId(){
+//        String idCard=et_reg_card.getText().toString().trim();
+//        final boolean[] id = {false};
+//        NetHelper.CheckMemberId(idCard, new NetConnectionInterface.iConnectListener3() {
+//            @Override
+//            public void onStart() {
+//
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//
+//            }
+//
+//            @Override
+//            public void onSuccess(JSONObject result) {
+//                id[0] =true;
+//
+//            }
+//
+//            @Override
+//            public void onFail(JSONObject result) {
+//                makeShortToast(result.optString(Constant.INFO));
+//            }
+//        });
+//        return id[0];
+//
+//    }
 
     private boolean inputCorrectPhone() {
         if (TextUtils.isEmpty(mEtPhone.getText().toString().trim())) {
@@ -239,9 +239,6 @@ public class RegisteredActivity extends BaseActivity implements OnClickListener 
             makeShortToast("请输入身份证");
             return false;
         }
-        if (!checkId()){
-            return false;
-        }
         if (TextUtils.isEmpty(et_reg_name.getText().toString().trim())) {
             makeShortToast("请输入姓名");
             return false;
@@ -250,7 +247,7 @@ public class RegisteredActivity extends BaseActivity implements OnClickListener 
             makeShortToast("请输入验证码");
             return false;
         }
-        if (!code.equals(et_reg_code.getText().toString().trim())){
+        if (!code.equals(et_reg_code.getText().toString().trim())) {
             makeShortToast("验证码不正确，请重新输入");
             return false;
         }

@@ -586,25 +586,34 @@ public class EditAddressActivity extends BaseActivity implements OnClickListener
 
     private void setPostId(String province, String city, String district) {
         try {
+            List<City> mcityList = null;
+            List<Zone> mzoneList=null;
             int pro;
             getProvince();
             for (int i = 0; i < provinceList.size(); i++) {
-                if (provinceList.get(i).getProName() == province) {
+                if (province.equals(provinceList.get(i).getProName())) {
                     pro = provinceList.get(i).getProSort();
-                    getCity(pro);
-                }
-                for (int a = 0; a < cityList.size(); a++) {
-                    if (city == cityList.get(a).getCityName()) {
-                        city_id = cityList.get(a).getCitySort();
-                        getZone(city_id);
-                    }
-                    for (int b = 0; b < zoneList.size(); b++) {
-                        if (district == zoneList.get(b).getZoneName()) {
-                            area_id = zoneList.get(b).getArea_id();
-                        }
-                    }
+                    CtiyDBManage db = new CtiyDBManage(EditAddressActivity.this);
+                    mcityList = db.queryCity(pro + "");
+                    break;
                 }
             }
+            for (int a = 0; a < mcityList.size(); a++) {
+                if (city.equals(mcityList.get(a).getCityName())) {
+                    city_id = mcityList.get(a).getCitySort();
+                    CtiyDBManage db = new CtiyDBManage(EditAddressActivity.this);
+                    mzoneList = db.queryZone(city_id + "");
+                    break;
+                }
+            }
+            for (int b = 0; b < mzoneList.size(); b++) {
+                if (district.equals(mzoneList.get(b).getZoneName())) {
+                    area_id = mzoneList.get(b).getArea_id();
+                    break;
+                }
+            }
+
+
         } catch (Exception e) {
             throwEx(e);
         }

@@ -39,6 +39,14 @@
                     android:layout_marginTop="2dp"
                     android:text="扫描" />
             </LinearLayout>
+            <ImageView
+                android:id="@+id/iv_web_back"
+                android:visibility="gone"
+                android:layout_marginLeft="15dp"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/return_icon"/>
 
             <RelativeLayout
                 android:focusable="true"
@@ -253,10 +261,11 @@
         android:layout_marginBottom="65dp"
         android:layout_height="wrap_content">
         <ImageView
-            android:layout_width="wrap_content"
-            android:background="@drawable/ic_app_to_top"
+            android:scaleType="fitCenter"
+            android:layout_width="36dp"
+            android:src="@drawable/ic_app_to_top"
             android:layout_marginRight="10dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="36dp" />
     </RelativeLayout>
 
 

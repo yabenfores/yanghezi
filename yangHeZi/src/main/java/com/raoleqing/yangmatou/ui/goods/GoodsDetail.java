@@ -1,5 +1,6 @@
 package com.raoleqing.yangmatou.ui.goods;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.MyPagerAdapter;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.mi.ChatActivity;
+import com.raoleqing.yangmatou.ui.ImageBrowseActivity;
 import com.raoleqing.yangmatou.ui.shop.ShopActivity;
 import com.raoleqing.yangmatou.uitls.LogUtil;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
@@ -38,6 +40,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Parcelable;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -51,11 +54,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ImageView.ScaleType;
 
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
+
 public class GoodsDetail extends BaseActivity implements OnClickListener {
 
+
+    private String transaction_type;
     private ImageView activity_return;
+    private ImageView share;
     private TextView activity_title01;
     private TextView activity_title02;
+    private TextView goods_evaluation;
     private Button goods_detaile_advisory;
     private Button goods_detaile_collect;
     private Button goods_detaile_shop;
@@ -88,7 +98,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
     private LinearLayout goodsSvc;
     private ListView goods_evaluation_list;//
 
-    private List<String> goodsImageList = new ArrayList<String>();
+    private ArrayList<String> goodsImageList = new ArrayList<String>();
     private List<DefaultValueEntity> whRreaList;
     private List<Evaluation> evaluationList = new ArrayList<Evaluation>();
     private EvaluationAdapter adapter;
@@ -137,6 +147,11 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
     protected void viewInfo() {
 
+//        goods_evaluation= (TextView) findViewById(R.id.goods_evaluation);
+        share= (ImageView) findViewById(R.id.activity_qrode);
+        share.setImageResource(R.drawable.share_icon01);
+        share.setVisibility(View.VISIBLE);
+        share.setOnClickListener(this);
         activity_return = (ImageView) findViewById(R.id.activity_return);
         //goods_detaile_advisory = (Button) findViewById(R.id.goods_detaile_advisory);
         //goods_detaile_collect = (Button) findViewById(R.id.goods_detaile_collect);
@@ -259,6 +274,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                         intent.putExtra("goods_promotion_price", goods_promotion_price);
                         intent.putExtra("goods_marketprice", goods_marketprice);
                         intent.putExtra("goods_lineposttax", goods_lineposttax);
+                        intent.putExtra("transaction_type", transaction_type);
                         intent.putExtra("wh_id", whRrea.getWh_id());
                         intent.putExtra("goods_id", goods_id);
                         intent.putExtra("goodsName", goodsName);
@@ -288,7 +304,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                 case R.id.tv_goods_detail:
                     tv_goods_comment.setTextColor(0xFF666666);
                     divider_goods_comment.setVisibility(View.INVISIBLE);
-                    goods_evaluation_list.setVisibility(View.GONE);
+                    goods_evaluation_list.setVisibility(View.VISIBLE);
                     goods_evaluation_empty.setVisibility(View.GONE);
                     tv_goods_detail.setTextColor(0xFFE81258);
                     divider_goods_detail.setVisibility(View.VISIBLE);
@@ -307,6 +323,10 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     goods_detaile_webview.setVisibility(View.GONE);
                     break;
                 case R.id.but_attention:
+                    if (!UserUitls.isLongin(GoodsDetail.this)) {
+                        UserUitls.longInDialog(GoodsDetail.this);
+                        return;
+                    }
                     if (but_attention.isSelected()) {
                         cancelShopStore(store_id);
                     } else {
@@ -314,6 +334,10 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     }
                     break;
                 case R.id.lyo_goods_favorite:
+                    if (!UserUitls.isLongin(GoodsDetail.this)) {
+                        UserUitls.longInDialog(GoodsDetail.this);
+                        return;
+                    }
                     if (tv_product_favorite.isSelected()) {
                         cancelPorductStore(goods_id);
                     } else {
@@ -321,6 +345,10 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     }
                     break;
                 case R.id.lyo_goods_svc:
+                    if (!UserUitls.isLongin(GoodsDetail.this)) {
+                        UserUitls.longInDialog(GoodsDetail.this);
+                        return;
+                    }
                     String user_msg_helper= SharedPreferencesUtil.getString(getBaseContext(),"user_msg_helper");
                     Intent i=new Intent(getBaseContext(),ChatActivity.class);
                     i.putExtra(EaseConstant.EXTRA_USER_ID, user_msg_helper);
@@ -330,6 +358,10 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     Intent intent =new Intent(getBaseContext(), ShopActivity.class);
                     intent.putExtra("store_id",store_id);
                     startActivity(intent);
+                    break;
+                case R.id.activity_qrode:
+                    showShare();
+                    break;
                 default:
                     break;
             }
@@ -384,7 +416,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                 return;
             }
 
-
             JSONObject data = response.optJSONObject("data");
             JSONArray more_image = data.optJSONArray("more_image");
             if (goodsImageList.size() > 0) {
@@ -394,10 +425,9 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                 String goods_image = more_image.optString(i);
                 goodsImageList.add(goods_image);
             }
-
             setGoodsImage();
-
             geval_goodsid = data.optString("geval_goodsid");
+            transaction_type = data.optString("transaction_type");
             store_id = data.optInt("store_id");
             goodsName = data.optString("goods_name");
             goods_name.setText(goodsName);
@@ -579,7 +609,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
         ArrayList<View> viewList = new ArrayList<View>();
         for (int i = 0; i < goodsImageList.size(); i++) {
-
             ImageView img = new ImageView(this);
             img.setScaleType(ScaleType.CENTER_CROP);
             img.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
@@ -593,6 +622,14 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         pointsCount = goodsImageList.size();
 
         loadPositionImage();
+        goods_viewPager.setOnSingleTouchListener(new ChildViewPager.OnSingleTouchListener() {
+            @Override
+            public void onSingleTouch() {
+                Intent intent = new Intent(getAppContext(), ImageBrowseActivity.class);
+                intent.putStringArrayListExtra("imageList",goodsImageList);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -841,6 +878,33 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         super.onBackPressed();
         overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
         finish();
+    }
+    private void showShare() {
+        ShareSDK.initSDK(getBaseContext());
+        OnekeyShare oks = new OnekeyShare();
+        //关闭sso授权
+        oks.disableSSOWhenAuthorize();
+
+// 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+        //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+        oks.setTitle("yaben");
+        // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
+        oks.setTitleUrl("http://baidu.cn");
+        // text是分享文本，所有平台都需要这个字段
+        oks.setText("我是分享文本");
+        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+        //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+        // url仅在微信（包括好友和朋友圈）中使用
+        oks.setUrl("http://sharesdk.cn");
+        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+        oks.setComment("我是测试评论文本");
+        // site是分享此内容的网站名称，仅在QQ空间使用
+        oks.setSite(getString(R.string.app_name));
+        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+        oks.setSiteUrl("http://sharesdk.cn");
+// 启动分享GUI
+        oks.show(getBaseContext());
     }
 
 }

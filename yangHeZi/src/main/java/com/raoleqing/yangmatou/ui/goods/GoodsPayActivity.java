@@ -12,15 +12,21 @@ import org.json.JSONObject;
 import com.allinpay.appayassistex.APPayAssistEx;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.mining.app.zxing.decoding.Intents;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.utils.L;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.adapter.PayAdapter;
 import com.raoleqing.yangmatou.ben.Address;
+import com.raoleqing.yangmatou.ben.Order;
 import com.raoleqing.yangmatou.ui.address.AddressActivity;
+import com.raoleqing.yangmatou.ui.order.OrderActivity;
 import com.raoleqing.yangmatou.ui.user.AboutActivity;
 import com.raoleqing.yangmatou.uitls.PaaCreator;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
@@ -32,10 +38,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,14 +54,15 @@ import entity.NotifyUpdateEntity;
  **/
 public class GoodsPayActivity extends BaseActivity implements OnClickListener {
 
+    private ListView lv_pay_paylist;
     private ImageView activity_return;
     private LinearLayout goods_pay_address_layout;
     private TextView goods_pay_explanation;
     private TextView pay_name;
     private TextView pay_phone;
     private TextView pay_address;
-    private EditText user_card,et_app_massage;
-
+    private EditText user_card, et_app_massage;
+    private String transaction_type;
     private ImageView goods_image;
     private String pay_type;
     private String url;
@@ -76,7 +85,9 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     private String goodsName;
     private String orderPrice;
     private double tax;
+    private PayAdapter adapte;
     double price;
+    private List<PayList> payList = new ArrayList<>();
     private List<Address> addressList = new ArrayList<Address>();
     private int addressIndex = 0;
 
@@ -102,7 +113,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.goods_pay);
-
         Intent intent = this.getIntent();
         goods_id = intent.getIntExtra("goods_id", 0);
         goodsNumber = intent.getIntExtra("goodsNumber", 1);
@@ -110,9 +120,10 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         goods_promotion_price = intent.getDoubleExtra("goods_promotion_price", 0.00);
         goods_marketprice = intent.getDoubleExtra("goods_marketprice", 0.00);
         goodsName = intent.getStringExtra("goodsName");
+        transaction_type = intent.getStringExtra("transaction_type");
         tax = intent.getDoubleExtra("goods_lineposttax", 0);
 
-        url=intent.getStringExtra("goods_image");
+        url = intent.getStringExtra("goods_image");
         setTitleVisibility(View.GONE);
         pay_name = (TextView) findViewById(R.id.pay_name);
         pay_phone = (TextView) findViewById(R.id.pay_phone);
@@ -124,7 +135,9 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     }
 
     protected void viewInfo() {
-
+        lv_pay_paylist = (ListView) findViewById(R.id.lv_pay_paylist);
+        adapte = new PayAdapter(this, payList);
+        lv_pay_paylist.setAdapter(adapte);
         activity_return = (ImageView) findViewById(R.id.goods_pay_return);
         goods_pay_address_layout = (LinearLayout) findViewById(R.id.goods_pay_address_layout);
         user_card = (EditText) findViewById(R.id.user_card);
@@ -140,15 +153,15 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         goods_del = (TextView) findViewById(R.id.goods_del);
         goodsd_detail_buy = (Button) findViewById(R.id.goodsd_detail_buy);
 
-        goods_image= (ImageView) findViewById(R.id.goods_image);
-        ImageLoader.getInstance().displayImage(url,goods_image);
+        goods_image = (ImageView) findViewById(R.id.goods_image);
+        ImageLoader.getInstance().displayImage(url, goods_image);
 
         String member_card = SharedPreferencesUtil.getString(GoodsPayActivity.this, "member_card");
         user_card.setText(member_card);
 
         goods_name.setText(goodsName);
         goods_price.setText("￥" + goods_promotion_price);
-        goods_price01.setText("原价: ￥" + goods_promotion_price);
+        goods_price01.setText("原价: ￥" + goods_marketprice);
         goods_number.setText(goodsNumber + "");
 
         double discount = goods_promotion_price / goods_marketprice * 10;
@@ -167,13 +180,14 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         goods_pay_explanation.setOnClickListener(this);
 
         getAddress();
+        getPayList();
         setProgressVisibility(View.GONE);
     }
 
     private void setPrice() {
         // TODO Auto-generated method stub
         DecimalFormat df = new DecimalFormat("###.0");
-        price = (goods_promotion_price+tax) * goodsNumber;
+        price = (goods_promotion_price + tax) * goodsNumber;
         orderPrice = df.format(price);
         goods_pay_price.setText(orderPrice);
         tv_goods_tax.setText("￥" + (tax * goodsNumber));
@@ -208,7 +222,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 break;
 
             case R.id.goods_add:
-
                 goodsNumber++;
                 goods_number.setText(goodsNumber + "");
                 setPrice();
@@ -221,9 +234,12 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 }
                 break;
             case R.id.goodsd_detail_buy:
-
-                if (mMaddress==null){
+                if (mMaddress == null) {
                     makeShortToast("请输入地址");
+                    return;
+                }
+                if (pay_type.isEmpty()) {
+                    makeShortToast("请选择支付方式");
                     return;
                 }
                 String userCard = user_card.getText().toString();
@@ -232,8 +248,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 } else {
                     makeLongToast("请输入身份证号码");
                 }
-
-
                 break;
 
             default:
@@ -326,7 +340,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     }
 
 
-
     /*wh_id	y	int	场区id
     quantity	y	int	产品数量
     uid	y	int	用户id
@@ -336,18 +349,18 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     pay_type	Y	string	支付方式	*/
     private void submitOrder(String userCard) {
         // TODO Auto-generated method stub
+//        [{"goods_id":2029,"quantity":1}]
+        String goods_array = "[{\"goods_id\":" + goods_id + ",\"quantity\":" + goodsNumber + "}]";
+//        RequestParams params = new RequestParams();
+//        params.put("wh_id", wh_id);
+//        params.put("quantity", goodsNumber);
+//        params.put("pid", goods_id);
+//        params.put("order_message", "");
+//        params.put("sfzno", userCard);
+//        params.put("pay_type", "1");
+//        params.put("address_id", mMaddress.getAddress_id()+"");
 
-        pay_type="1";
-        RequestParams params = new RequestParams();
-        params.put("wh_id", wh_id);
-        params.put("quantity", goodsNumber);
-        params.put("pid", goods_id);
-        params.put("order_message", "");
-        params.put("sfzno", userCard);
-        params.put("pay_type", "1");
-        params.put("address_id", mMaddress.getAddress_id()+"");
-
-        NetHelper.submitOrder(wh_id + "", goodsNumber + "", goods_id + "", et_app_massage.getText().toString().trim(), userCard, pay_type, mMaddress.getAddress_id() + "", new NetConnectionInterface.iConnectListener3() {
+        NetHelper.submitOrder(wh_id + "", transaction_type, goods_array, et_app_massage.getText().toString().trim(), userCard, pay_type, mMaddress.getAddress_id() + "", new NetConnectionInterface.iConnectListener3() {
             @Override
             public void onStart() {
 
@@ -367,6 +380,10 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
 
             @Override
             public void onFail(JSONObject result) {
+                if (result.optString(Constant.DATA).isEmpty()) {
+                    makeShortToast("网络异常");
+                    return;
+                }
                 makeShortToast(result.optString(Constant.DATA));
             }
         });
@@ -378,12 +395,12 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         // TODO Auto-generated method stub
 
         System.out.println("aaaaaaaaa:" + response);
-        JSONObject object=response.optJSONObject("data");
+        JSONObject object = response.optJSONObject("data");
 
         try {
 //            object.put("userCard",user_card.getText().toString().trim());
-            object.put("productName",goodsName.trim());
-            object.put("orderAmount",((int) price*100)+"");
+            object.put("productName", goodsName.trim());
+//            object.put("orderAmount", ( price * 100) + "");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -411,10 +428,12 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                if (null != payRes &&
-                        payRes.equals(APPayAssistEx.RES_SUCCESS)) {
+                if (null != payRes && payRes.equals(APPayAssistEx.RES_SUCCESS)) {
                     makeShortToast("支付成功！");
                     System.out.println("支付成功！");
+                    Intent intent=new Intent(this, OrderActivity.class);
+                    intent.putExtra("index",2);
+                    startActivity(intent);
                     finish();
                 } else {
                     System.out.println("支付失败！");
@@ -431,22 +450,85 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
         finish();
     }
+
+    public void getPayList() {
+        NetHelper.payList(new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(JSONObject result) {
+                JSONArray array = result.optJSONArray(Constant.DATA);
+                for (int i = 0; i < array.length(); i++) {
+                    try {
+                        JSONObject obj = array.getJSONObject(i);
+                        PayList pay = new PayList();
+                        pay.setPayment_ico(obj.optString("payment_ico"));
+                        pay.setPayment_id(obj.optInt("payment_id"));
+                        pay.setPayment_name(obj.optString("payment_name"));
+                        if (i == 0) {
+                            pay.setSelect(true);
+                            pay_type=pay.getPayment_id()+"";
+                        }
+                        payList.add(pay);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                int hight = UnitConverterUtils.dip2px(getAppContext(), 45) * payList.size();
+                lv_pay_paylist.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, hight));
+                adapte.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFail(JSONObject result) {
+
+            }
+        });
+    }
+
+
+    //---------------
+    public final static String SELECTPAY = "selectpay";
     //---------------
     public final static String ADDRESSSELECT = "addressSelect";
+
     protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
         super.notifyUpdate(notifyUpdateEntity);
         try {
             switch (notifyUpdateEntity.getNotifyTag()) {
                 case ADDRESSSELECT:
-                    Address address= (Address) notifyUpdateEntity.getObj();
-                    mMaddress=address;
+                    Address address = (Address) notifyUpdateEntity.getObj();
+                    mMaddress = address;
                     pay_phone.setText(address.getMob_phone());
                     pay_name.setText(address.getTrue_name());
                     pay_address.setText(address.getArea_info());
+                    break;
+                case SELECTPAY:
+                    pay_type = (String) notifyUpdateEntity.getObj();
+                    for (int i = 0; i < payList.size(); i++) {
+                        PayList p = payList.get(i);
+                        String id = p.getPayment_id() + "";
+                        if (id.equals(pay_type)) {
+                            p.setSelect(true);
+                        } else {
+                            p.setSelect(false);
+                        }
+                    }
+                    adapte.notifyDataSetChanged();
                     break;
             }
         } catch (Exception ex) {
             throwEx(ex);
         }
     }
+
 }

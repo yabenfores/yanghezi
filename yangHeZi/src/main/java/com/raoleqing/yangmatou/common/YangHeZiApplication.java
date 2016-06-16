@@ -33,6 +33,8 @@ import android.view.View;
 
 import org.json.JSONObject;
 
+import cn.jpush.android.api.JPushInterface;
+
 public class YangHeZiApplication extends Application {
     private static Context appContext;
     public static String TAG = "YangHeZi";
@@ -53,8 +55,8 @@ public class YangHeZiApplication extends Application {
         // 在做打包混淆时，关闭debug模式，避免消耗不必要的资源
         EMClient.getInstance().setDebugMode(true);
 
-
-
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
 
     }
 
@@ -77,7 +79,7 @@ public class YangHeZiApplication extends Application {
      */
     public static void initImageLoader(Context context) {
 
-        File cacheDir = ImageUtils.getAlbumDir(context); // 缓存文件的存放地址
+        File cacheDir = ImageUtils.getAlbumDir(getAppContext()); // 缓存文件的存放地址
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
                 .memoryCacheExtraOptions(480, 800) // max width, max height

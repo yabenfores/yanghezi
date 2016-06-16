@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="horizontal"
+    android:id="@+id/lyo_pay"
+    android:background="@color/encode_view"
+    android:padding="10dp"
+    android:gravity="center_vertical"
+    android:layout_width="match_parent"
+    android:layout_height="45dp">
+    <ImageView
+        android:src="@drawable/ic_pay"
+        android:id="@+id/iv_pay_select"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <ImageView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/iv_pay_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/tv_pay"
+        android:text="支付"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
+
+</LinearLayout>

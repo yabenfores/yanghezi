@@ -180,9 +180,8 @@ public class CollectShopAdapter extends BaseAdapter{
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-
 					Intent intent = new Intent(context, ShopActivity.class);
-					intent.putExtra("store_id", mStore.getId());
+					intent.putExtra("store_id", mStore.getStore_id());
 					context.startActivity(intent);
 					((Activity) context).overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
 				}

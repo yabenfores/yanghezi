@@ -11,6 +11,8 @@ public class Order {
 	private double goods_amount;//商品价格
 	private double order_amount;//订单总价
 	private String store_name;//
+	private int refund_state;//1，2待审核,3为已完成,
+	private int refund_type;//1为退款,2为退货，3为换货
 
 	public long getAdd_time() {
 		return add_time;
@@ -32,6 +34,31 @@ public class Order {
 		return goods_num;
 	}
 
+	public int getEvaluation_state() {
+		return evaluation_state;
+	}
+
+	public void setEvaluation_state(int evaluation_state) {
+		this.evaluation_state = evaluation_state;
+	}
+
+	public int getRefund_state() {
+		return refund_state;
+	}
+
+	public void setRefund_state(int refund_state) {
+		this.refund_state = refund_state;
+	}
+
+	public int getRefund_type() {
+		return refund_type;
+	}
+
+	public void setRefund_type(int refund_type) {
+		this.refund_type = refund_type;
+	}
+
+	private int evaluation_state;
 	public void setGoods_num(int goods_num) {
 		this.goods_num = goods_num;
 	}

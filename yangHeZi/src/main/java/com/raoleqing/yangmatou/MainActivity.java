@@ -1,6 +1,7 @@
 package com.raoleqing.yangmatou;
 
 import android.app.AlertDialog;
+import android.app.Instrumentation;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -74,6 +75,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     private EditText activity_search;// 搜索
     private LinearLayout gor_wu_title_layout;
 
+    private ImageView webBack;
     private LinearLayout main_host01;
     private LinearLayout main_host02;
     private LinearLayout main_host03;
@@ -159,6 +161,8 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }
         main_title_layout = (RelativeLayout) findViewById(R.id.main_title_layout);
         gou_wu_message = (LinearLayout) findViewById(R.id.gou_wu_message);
+        webBack= (ImageView) findViewById(R.id.iv_web_back);
+        webBack.setOnClickListener(this);
         activity_search = (EditText) findViewById(R.id.main_search);
         gor_wu_title_layout = (LinearLayout) findViewById(R.id.gor_wu_title_layout);
         gou_wu_advisory = (LinearLayout) findViewById(R.id.gou_wu_advisory);
@@ -314,6 +318,17 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                     gouWuGuangChangFragment.getListView().setSelection(0);
                     break;
 
+                case R.id.iv_web_back:
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Instrumentation inst = new Instrumentation();
+                            inst.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+                        }
+                    }).start();
+
+//                    onKeyDown(KeyEvent.KEYCODE_BACK,KeyEvent.);
+                    break;
                 default:
                     break;
             }
@@ -671,6 +686,14 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         } catch (Exception ex) {
             throwEx(ex);
         }
+    }
+
+
+    public void setCodeVisible(int visible){
+        gou_wu_message.setVisibility(visible);
+    }
+    public void setWebBack(int visible){
+        webBack.setVisibility(visible);
     }
 
 

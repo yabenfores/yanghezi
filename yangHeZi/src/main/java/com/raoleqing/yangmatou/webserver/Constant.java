@@ -57,5 +57,11 @@ public class Constant {
     public final static String DELIVERY="Home/Orders/delivery";//发货方式
     public final static String ORDERRECEIVE="Home/Orders/orderreceive";//
     public final static String RESETPWD="Home/Index/ResetPwd";//发货方式
+    public final static String MODFIYCARD="Home/Users/modfiycard";//修改身份证
+    public final static String AfterSales="Home/Orders/AfterSales";//提交退换货数据
+    public final static String Upload="Home/Upload/Index";//退换照片
+    public final static String PAYLIST="Home/Orders/payList";//支付列表
+    public final static String AFTERREASON="Home/Orders/AfterReason";//退换原因
+    public final static String MESSAGEINFO="Home/MessageInfo/Index";//消息列表
 
 }

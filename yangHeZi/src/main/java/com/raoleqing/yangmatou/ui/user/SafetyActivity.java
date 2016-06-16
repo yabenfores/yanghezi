@@ -12,6 +12,7 @@ import com.raoleqing.yangmatou.webserver.NetHelper;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -34,6 +35,7 @@ public class SafetyActivity extends BaseActivity implements OnClickListener {
     private LinearLayout safety_set_password;
     private TextView user_name;
     private TextView user_card;
+    private TextView tv_safe_bun;
     private TextView safety_address;
     private Button exit_account;
     private String isBind;
@@ -66,7 +68,7 @@ public class SafetyActivity extends BaseActivity implements OnClickListener {
     }
 
     protected void viewInfo() {
-
+        tv_safe_bun= (TextView) findViewById(R.id.tv_safe_bun);
         activity_return = (ImageView) findViewById(R.id.activity_return);
         safety_bound_phone = (LinearLayout) findViewById(R.id.safety_bound_phone);
         safety_set_password = (LinearLayout) findViewById(R.id.safety_set_password);
@@ -79,7 +81,10 @@ public class SafetyActivity extends BaseActivity implements OnClickListener {
         String member_card = SharedPreferencesUtil.getString(SafetyActivity.this, "member_card");
         user_name.setText(member_name);
         user_card.setText(member_card+" ");
-
+        if (!isBind.equals("1")){
+            tv_safe_bun.setText("绑定手机 ");
+            tv_safe_bun.setTextColor(0xFF343434);
+        }
         activity_return.setOnClickListener(this);
         safety_bound_phone.setOnClickListener(this);
         safety_set_password.setOnClickListener(this);
@@ -127,7 +132,8 @@ public class SafetyActivity extends BaseActivity implements OnClickListener {
                 showExitAccountDialog();
                 break;
             case R.id.user_card:
-
+                Intent intent=new Intent(this,IdCardActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;

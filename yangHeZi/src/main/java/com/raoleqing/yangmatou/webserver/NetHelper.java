@@ -3,6 +3,7 @@ package com.raoleqing.yangmatou.webserver;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.mining.app.zxing.decoding.Intents;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.uitls.UserUitls;
@@ -54,6 +55,9 @@ public class NetHelper {
 
     public static void goodsDetails(String goods_id, NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.GOODS_DETAILS, NetParams.HttpMethod.Post, false, connectListener, "goods_id", goods_id);
+    }
+    public static void goodsDetails(String goods_serial,String search_type, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.GOODS_DETAILS, NetParams.HttpMethod.Post, false, connectListener, "goods_serial", goods_serial,"search_type",search_type);
     }
 
     public static void goodsReview(String goods_id, NetConnectionInterface.iConnectListener3 connectListener) {
@@ -141,8 +145,8 @@ public class NetHelper {
     }
 
     //提交订单
-    public static void submitOrder(String wh_id, String quantity, String pid, String order_message, String sfzno, String pay_type, String address_id, NetConnectionInterface.iConnectListener3 connectListener) {
-        new BaseNetConnection(Constant.SUBMITORDER, NetParams.HttpMethod.Post, true, connectListener, "wh_id", wh_id, "quantity", quantity, "pid", pid, "order_message", order_message, "sfzno", sfzno, "pay_type", pay_type, "address_id", address_id);
+    public static void submitOrder(String wh_id, String transaction_type, String goods_array, String order_message, String sfzno, String payment_id, String address_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.SUBMITORDER, NetParams.HttpMethod.Post, true, connectListener, "wh_id", wh_id, "transaction_type", transaction_type, "goods_array", goods_array, "order_message", order_message, "sfzno", sfzno, "payment_id", payment_id, "address_id", address_id);
     }
 
     //编辑地址
@@ -157,19 +161,17 @@ public class NetHelper {
 
     //修改昵称
     public static void editUserName(String member_name, NetConnectionInterface.iConnectListener3 connectListener) {
-        new BaseNetConnection(Constant.EDITUSERNAME, NetParams.HttpMethod.Post, false, connectListener, "member_name", member_name);
+        new BaseNetConnection(Constant.EDITUSERNAME, NetParams.HttpMethod.Post, true, connectListener, "member_name", member_name);
     }
 
     //删除地址
     public static void del_address(String address_id, NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(HttpUtil.DEL_ADDRESS, NetParams.HttpMethod.Post, true, connectListener, "address_id", address_id);
     }
-
     //秀一秀
     public static void Evaluate(String dotype, String page, String city_id, String brand_id, NetConnectionInterface.iConnectListener3 connectListener) {
-        new BaseNetConnection(Constant.EVALUATE, NetParams.HttpMethod.Post, false, connectListener, "dotype", dotype, "page", page, "city_id", city_id, "brand_id", brand_id);
+        new BaseNetConnection(Constant.EVALUATE, NetParams.HttpMethod.Post, true, connectListener, "dotype", dotype, "page", page, "city_id", city_id, "brand_id", brand_id);
     }
-
     //秀一秀广告
     public static void adImginfo(NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.ADIMGINFO, NetParams.HttpMethod.Post, false, connectListener);
@@ -240,6 +242,27 @@ public class NetHelper {
     //重置密码
     public static void ResetPwd(String member_mobile,String verification_code,String member_passwd, NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.RESETPWD, NetParams.HttpMethod.Post, false, connectListener, "member_mobile", member_mobile,"verification_code",verification_code,"member_passwd",member_passwd);
+    }
+    //修改身份证
+    public static void modfiycard(String member_card, String member_mobile,String verification_code, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.MODFIYCARD, NetParams.HttpMethod.Post, true, connectListener, "member_card", member_card,"member_mobile",member_mobile,"verification_code",verification_code);
+    }
+    //提交退换货数据
+    public static void AfterSales(String order_id, String refund_type ,String quantity, String reason_id,String buyer_message,String pic_info,NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.AfterSales, NetParams.HttpMethod.Post, true, connectListener, "order_id", order_id,"refund_type",refund_type,"quantity",quantity,"reason_id",reason_id,"buyer_message",buyer_message,"pic_info",pic_info);
+    }
+
+    //支付列表
+    public static void payList(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.PAYLIST, NetParams.HttpMethod.Post, true, connectListener);
+    }
+    //退换原因
+    public static void AfterReason(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.AFTERREASON, NetParams.HttpMethod.Post, true, connectListener);
+    }
+    //退换原因
+    public static void MessageInfo(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.MESSAGEINFO, NetParams.HttpMethod.Post, true, connectListener);
     }
 
 

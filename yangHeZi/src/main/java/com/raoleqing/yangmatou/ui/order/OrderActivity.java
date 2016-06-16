@@ -175,7 +175,6 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 		transaction = manager.beginTransaction();
 
 		switch (i) {
-
 		case 0:
 			contentIndex = 0;
 			user_fragment_view01.setVisibility(View.VISIBLE);
@@ -320,7 +319,6 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 
 		case 5:
 			contentIndex = 4;
-
 			user_fragment_view01.setVisibility(View.GONE);
 			user_fragment_view02.setVisibility(View.GONE);
 			user_fragment_view03.setVisibility(View.GONE);
@@ -340,7 +338,6 @@ public class OrderActivity extends BaseActivity implements OnClickListener {
 			tv_order3.setTextColor(Color.BLACK);
 			tv_order4.setTextColor(Color.BLACK);
 			tv_order5.setTextColor(0xFFE81258);
-
 			Fragment fragment06 = ReturnFragment.newInstance();
 			transaction.replace(R.id.order_contnet, fragment06, "MainFragment");
 			transaction.commitAllowingStateLoss();

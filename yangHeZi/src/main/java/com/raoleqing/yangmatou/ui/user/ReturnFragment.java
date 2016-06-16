@@ -43,8 +43,7 @@ import android.widget.Toast;
  **/
 public class ReturnFragment extends Fragment implements OnClickListener,XListView.IXListViewListener {
 
-    private int page = 1;
-    private boolean noMore = false;
+    private int page = 1,maxPage=1;
 
     private LinearLayout null_data_layout;
     private XListView payment_listview;
@@ -72,7 +71,6 @@ public class ReturnFragment extends Fragment implements OnClickListener,XListVie
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         View view = inflater.inflate(R.layout.payment_fragment, null);
-
         viewInfo(view);
         getData();
         return view;
@@ -82,15 +80,12 @@ public class ReturnFragment extends Fragment implements OnClickListener,XListVie
         // TODO Auto-generated method stub
         null_data_layout = (LinearLayout) view.findViewById(R.id.null_data_layout);
         payment_listview = (XListView) view.findViewById(R.id.payment_listview);
-
-
         adapter = new OrderAdapter(getActivity(), orderList);
         payment_listview.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
         payment_listview.setXListViewListener(this);
         payment_listview.setPullLoadEnable(true);
         payment_listview.setPullRefreshEnable(true);
         payment_listview.setAdapter(adapter);
-
     }
 
     @Override
@@ -109,9 +104,6 @@ public class ReturnFragment extends Fragment implements OnClickListener,XListVie
     private void getData() {
 
         ((OrderActivity) getActivity()).setMainProgress(View.VISIBLE);
-
-//        int uid = SharedPreferencesUtil.getInt(getActivity(), "member_id");
-
         NetHelper.getRefundList(new NetConnectionInterface.iConnectListener3() {
             @Override
             public void onStart() {
@@ -145,19 +137,18 @@ public class ReturnFragment extends Fragment implements OnClickListener,XListVie
 
 
         try {
-            JSONArray data = response.optJSONArray("data");
-            if (data==null){
+            JSONObject object = response.optJSONObject("data");
+            if (object==null){
                 return;
             }
-            if (data.length() < 10) {
-                noMore = true;
-            }
-            if (data.length()==0){
+            if (object.length()==0){
                 if (page==1){
                     null_data_layout.setVisibility(View.VISIBLE);
                 }
                 return;
             }
+            maxPage=object.optInt("pagetotal");
+            JSONArray data=object.optJSONArray("refund_array");
             for (int i = 0; i < data.length(); i++) {
                 JSONObject obj = data.optJSONObject(i);
                 Order mOrder = new Order();
@@ -195,18 +186,18 @@ public class ReturnFragment extends Fragment implements OnClickListener,XListVie
     @Override
     public void onRefresh() {
         orderList.removeAll(orderList);
-        noMore=false;
+        page=1;
         getData();
     }
 
     @Override
     public void onLoadMore() {
-        if (noMore){
-            payment_listview.stopLoadMore();
-            ToastUtil.MakeShortToast(getContext(),"没有更多了");
-        }else {
+        if (maxPage>page){
             page++;
             getData();
+        }else {
+            payment_listview.stopLoadMore();
+            ToastUtil.MakeShortToast(getContext(),"没有更多了");
         }
     }
 }

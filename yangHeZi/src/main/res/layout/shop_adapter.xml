@@ -181,6 +181,7 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/lyo_eval"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -236,6 +237,7 @@
                     android:background="@color/line01" />
 
                 <LinearLayout
+                    android:id="@+id/lyo_like"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

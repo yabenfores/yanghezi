@@ -114,6 +114,8 @@ public class ShopAdapter extends BaseAdapter {
         holder.tv_shop_adapter_mprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         holder.tv_shop_adapter_eval.setText(mShop.getComment_total());
 
+
+
         holder.shop_pay_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,6 +134,14 @@ public class ShopAdapter extends BaseAdapter {
             }
         });
 
+        holder.lyo_eval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, GoodsDetail.class);
+                intent.putExtra("goods_id", mShop.getGoods_id());
+                context.startActivity(intent);
+            }
+        });
         holder.lyo_shop_adapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,13 +151,21 @@ public class ShopAdapter extends BaseAdapter {
             }
         });
 
+        holder.lyo_like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!UserUitls.isLongin(context)) {
+                    UserUitls.longInDialog(context);
+                }
+            }
+        });
 
         return convertView;
     }
 
     class ViewHolder {
 
-        LinearLayout lyo_shop_adapter;
+        LinearLayout lyo_shop_adapter,lyo_eval,lyo_like;
         ImageView tv_shop_adapter_image1, tv_shop_adapter_image2, tv_shop_adapter_image3, tv_shop_adapter_image4, tv_shop_adapter_image5, tv_shop_adapter_image6, iv_flg;
         TextView tv_shop_adapter_time, tv_shop_adapter_com, tv_flg, tv_shop_adapter_sale, tv_shop_adapter_sto, tv_shop_adapter_sprice, tv_shop_adapter_mprice, tv_shop_adapter_eval, tv_shop_adapter_share, tv_shop_adapter_fov;
 
@@ -172,6 +190,8 @@ public class ShopAdapter extends BaseAdapter {
             this.tv_shop_adapter_fov = (TextView) convertView.findViewById(R.id.tv_shop_adapter_fov);
 
             this.lyo_shop_adapter = (LinearLayout) convertView.findViewById(R.id.lyo_shop_adapter);
+            this.lyo_eval = (LinearLayout) convertView.findViewById(R.id.lyo_eval);
+            this.lyo_like = (LinearLayout) convertView.findViewById(R.id.lyo_like);
             this.shop_pay_but= (Button) convertView.findViewById(R.id.shop_pay_but);
         }
 

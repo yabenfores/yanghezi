@@ -113,7 +113,8 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-
+        ((MainActivity)getActivity()).setCodeVisible(View.VISIBLE);
+        ((MainActivity)getActivity()).setWebBack(View.GONE);
         WindowManagerUtils manage = new WindowManagerUtils(getActivity());
         width = manage.getWidth();
         height = manage.getHeight();
@@ -191,18 +192,14 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 
         try {
 
-
-            ((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
-
             NetHelper.advManage(new NetConnectionInterface.iConnectListener3() {
                 @Override
                 public void onStart() {
-
+                    ((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
                 }
 
                 @Override
                 public void onFinish() {
-                    ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
                 }
 
@@ -270,7 +267,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
         // TODO Auto-generated method stub
 
         try {
-
 
             ArrayList<View> viewList = new ArrayList<View>();
             for (int i = 0; i < advManageList.size(); i++) {
@@ -427,10 +423,8 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
      **/
     private void getPavilion() {
         // TODO Auto-generated method stub
-        ((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
 
         HttpUtil.post(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
-
             // 获取数据成功会调用这里
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -444,7 +438,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONArray errorResponse) {
                 // TODO Auto-generated method stub
                 super.onFailure(statusCode, headers, throwable, errorResponse);
-                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
             }
 
             // 结束
@@ -497,7 +490,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
             e.printStackTrace();
         }
 
-        ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
     }
 

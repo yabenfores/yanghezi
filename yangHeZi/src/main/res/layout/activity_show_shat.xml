@@ -137,12 +137,11 @@
             android:padding="5dp" />
 
         <Button
-
             android:id="@+id/btn_show_re"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:background="@drawable/background_selector9"
-            android:text="回复"
+            android:background="@drawable/background_selector10"
+            android:text="发送"
             android:textColor="@color/line02" />
     </LinearLayout>
 

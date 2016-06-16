@@ -71,7 +71,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println(SharedPreferencesUtil.getString(BaseActivity.getAppContext(), "user_name"));
+//        System.out.println(SharedPreferencesUtil.getString(BaseActivity.getAppContext(), "user_name"));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         setTitleText("登录");
