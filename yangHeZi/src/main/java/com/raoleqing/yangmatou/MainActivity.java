@@ -690,10 +690,12 @@ public class MainActivity extends BaseActivity implements OnClickListener {
 
 
     public void setCodeVisible(int visible){
-        gou_wu_message.setVisibility(visible);
+        if (gou_wu_message!=null){
+        gou_wu_message.setVisibility(visible);}
     }
     public void setWebBack(int visible){
-        webBack.setVisibility(visible);
+        if (webBack!=null){
+        webBack.setVisibility(visible);}
     }
 
 

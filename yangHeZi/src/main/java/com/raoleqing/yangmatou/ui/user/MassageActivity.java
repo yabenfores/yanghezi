@@ -17,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class MassageActivity extends BaseActivity implements View.OnClickListener {
@@ -91,7 +93,6 @@ public class MassageActivity extends BaseActivity implements View.OnClickListene
 
     private void setMsg(JSONArray obj) {
         try {
-
             for (int i=0;i<obj.length();i++){
                 JSONObject object=obj.getJSONObject(i);
                 Massage massage=new Massage(object);
