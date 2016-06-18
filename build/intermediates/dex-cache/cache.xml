@@ -1,3 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\ShareSDK-Wechat-Moments-2.7.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="e77e9127a0d9dadf0cf4963f14a6449a4e1dbe37">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\ShareSDK-Wechat-Moments-2.7.2_dd598320f6224b025097721128bd1e3b1d73b7c0\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="245d993230128143821cc898dc9fd19713c76067">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_29bc73e8bc3ac92ebeec5a6b46b7b1cbb4d8bfe6\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\zxing.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="96b67e377ff4637ff1fa3bbe9ad7183773935f39">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\zxing_76cf800cc8f7bc0256fae7f8da8fe057bcc96c86\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\MobCommons-2016.0426.1819.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="5fce3a96cadb15dd2980863f403d7d1ab8732989">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\MobCommons-2016.0426.1819_79ca414482903d5a41a0d879800025905bcbe442\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\jpush-android-2.1.5.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="0f26f97f6d6c7cb02247e1ec35034732f234badb">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\jpush-android-2.1.5_a19c38cd952063a9a69009cf6791b3447d00ee31\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\MobTools-2016.0426.1819.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="e2c5ab92b762c42cd30e6787cc401ae01e002512">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\MobTools-2016.0426.1819_670fbd93ee4edd3c617aa3dfafa0d57bd5320c3b\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\alipaySdk-20160516.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="6dbd15e12806634fb809af9b565d1cf22dca9d2c">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\alipaySdk-20160516_23ada5874c4bdd18ea0b28031664eae7f0476d4b\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\build\intermediates\exploded-aar\yanghezi\easeui\unspecified\jars\libs\BaiduLBS_Android.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="cfaa8bd61b459e50157955fc260b8b552b0dfd31">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\8\BaiduLBS_Android_ba99a91fa8fed2081d4a025b8a6a76257f26a91c\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\ShareSDK-QQ-2.7.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c3717539454ca4b61bf8323a6f307c248a1bd0ef">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\ShareSDK-QQ-2.7.2_30060129f96ca1026e5ec2ee060b302c4c855141\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\build\intermediates\exploded-aar\yanghezi\easeui\unspecified\jars\libs\org.apache.http.legacy.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8342af986a1d52994ff62762044ebf019456dc45">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\8\org.apache.http.legacy_40ea670d9cde3bc773256ca4552888a07f099ceb\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\ShareSDK-Wechat-Core-2.7.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="8d2e75c7f5b644b69198a6c89deffab067fa5e88">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\ShareSDK-Wechat-Core-2.7.2_043273e33f1adbfe651e04f67811fb80dd8b3a2e\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\build\intermediates\exploded-aar\yanghezi\easeui\unspecified\jars\libs\MiPush_SDK_Client_2_2_19.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="227b65c4f5ab5ad7ac9036313aa35c6d6fb3d0b1">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\8\MiPush_SDK_Client_2_2_19_3d039c5c6ef5967cb3d66ffbb3216399bf84fd8f\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\build\intermediates\exploded-aar\yanghezi\easeui\unspecified\jars\libs\hyphenatechat_3.1.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="9b663be1a76a7cb6fff7ec3085f6288a802156a8">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\8\hyphenatechat_3.1.2_6f05fe481a59baea1393f5c51bf3cce6edf3b379\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\ShareSDK-Wechat-2.7.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="6d87b1916e872678665a0d06c873c7712ed91457">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\ShareSDK-Wechat-2.7.2_c5a5a7b420755158ecd59cfead6904f01533770d\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\APPayAssistEx.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="f56d44044286426a10103acd8129e0015b4d6901">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\APPayAssistEx_39310ef9d6f4567235e05bb1378b37ee9bb0f7b0\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\build\intermediates\exploded-aar\yanghezi\easeui\unspecified\jars\libs\glide-3.6.1.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="425d4ed950af2a29c62c26297cd4c61dd88e64ec">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\8\glide-3.6.1_0a19db0802e045d221cde77992d0277c3917d034\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\universal-image-loader-1.9.4-SNAPSHOT.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="831368dfdef2c9396955489e9058e6ad8a8e4244">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\universal-image-loader-1.9.4-SNAPSHOT_7bd157d4f02a13ae8218c5afba29859135725fe2\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="c0a60a389ebf978a881e88f719188dfe00978a4d">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_3144e93f09f96e2f4faebbc9b0f1803f0cf3842f\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\ShareSDK-Core-2.7.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="484d87cb8abd3c6d05eeca5abfac1cdd1aa1dc2e">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\ShareSDK-Core-2.7.2_115a8ea888a3d01232481b467889a0957592161d\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\android-async-http-1.4.5.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\android-async-http-1.4.5_6e07d3f5354e66542566de3c9e812dc7294e73ab\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\build\intermediates\exploded-aar\yanghezi\easeui\unspecified\jars\libs\google-play-services.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="1f7743c00b37d4f4f623b08a2b552627663b435f">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\8\google-play-services_eba07cfaf58f6d241e030a79b8383bdbaf6bd674\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\build\intermediates\exploded-aar\yanghezi\easeui\unspecified\jars\libs\android-support-v4.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="89576a68c75e479a1cfe20a0a1358c645326beaa">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\8\android-support-v4_c8b382d43ae389d34c3f1e3959597090b73440ff\classes.dex" />
+    </item>
+    <item
+        jar="C:\my project\yanghezi\yangHeZi\libs\ShareSDK-SinaWeibo-2.7.2.jar"
+        jumboMode="true"
+        revision="23.0.3"
+        sha1="7d038932c1902316f542e2ca7b7d73c16265185a">
+        <dex dex="C:\my project\yanghezi\yangHeZi\build\intermediates\transforms\dex\debug\folders\1000\2\ShareSDK-SinaWeibo-2.7.2_fc98277e0030cdedc1fe63bccd8ec94d41152039\classes.dex" />
+    </item>
+
+</items>
