@@ -423,8 +423,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 makeShortToast(result.optString(Constant.INFO));
             }
         });
-
-
     }
 
     protected void orderResolveJson(JSONObject response) {
@@ -434,7 +432,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 final String payInfo = response.optString(Constant.DATA);
 
                 Runnable payRunnable = new Runnable() {
-
                     @Override
                     public void run() {
                         // 构造PayTask 对象
