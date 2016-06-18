@@ -4,7 +4,7 @@ package com.raoleqing.yangmatou.webserver;
  * Created by ybin on 2016/5/10.
  */
 public class NetParams {
-    public static final String NET_ERROR = "net_error";
+    public static final String NET_ERROR = "{{\"code\":0,\"message\":\"网络异常\",\"data\":\"\"}}";
     public static final String CONNECT_FAIL = "connect_fail";
     public static final String OPERATE_SUCCESS = "operate_success";
     public static final String OPERATE_FAIL = "operate_fail";

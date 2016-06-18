@@ -3,432 +3,439 @@
     xmlns:my="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg04"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/base_title_layout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/encode_view"
-        android:gravity="center_vertical">
-
-        <TextView
-            style="@style/text18sp_typeblack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="个人中心" />
-
-        <LinearLayout
-            android:id="@+id/show_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/button_selector_background01"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
-            <ImageView
-                android:id="@+id/iv_user_massage"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_user_massage" />
-
-        </LinearLayout>
-    </RelativeLayout>
-    <ScrollView
+    <LinearLayout
+        android:orientation="vertical"
         android:background="@color/bg04"
-        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:background="@color/bg04"
+        <RelativeLayout
+            android:id="@+id/base_title_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="50dp"
+            android:background="@color/encode_view"
+            android:gravity="center_vertical">
 
-
-
-            <!-- 用户资料 -->
-
-            <LinearLayout
-                android:id="@+id/main_useer_layout"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:background="@drawable/bg_app_user"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <com.raoleqing.yangmatou.common.CircleImageView
-                    android:id="@+id/main_user_icon"
-                    android:layout_gravity="center"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_marginLeft="25dp"
-                    android:src="@drawable/user_icon"
-                    my:border_color="@color/text03"
-                    my:border_width="1dp"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/main_user_name"
-                        android:textSize="18sp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="用户名" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/background_selector5"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:visibility="gone">
-
-                        <ImageView
-                            android:id="@+id/main_user_income"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:text="白金会员" />
-                    </LinearLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                style="@style/text18sp_typeblack"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
+                android:layout_centerInParent="true"
+                android:text="个人中心" />
+
+            <LinearLayout
+                android:id="@+id/show_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_selector_background01"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                <ImageView
+                    android:id="@+id/iv_user_massage"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_user_massage" />
 
-                    <TextView
-                        style="@style/text03_type02"
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg04"
+                android:orientation="vertical">
+                <!-- 用户资料 -->
+                <LinearLayout
+                    android:id="@+id/main_useer_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@drawable/bg_app_user"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.raoleqing.yangmatou.common.CircleImageView
+                        android:id="@+id/main_user_icon"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="25dp"
+                        android:src="@drawable/user_icon"
+                        my:border_color="@color/text03"
+                        my:border_width="1dp" />
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="我的订单" />
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/user_order"
-                        style="@style/text02_type03"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:text="全部订单 >" />
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/main_user_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="用户名"
+                            android:textSize="18sp" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/line01" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/background_selector5"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:id="@+id/main_user_income"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="白金会员" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
 
                     <RelativeLayout
-                        android:id="@+id/user_fragment_item01"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_selector_background01"
-                        android:gravity="center">
-
-                        <Button
-                            android:id="@+id/navBtn01"
-                            style="@style/PersonalNavButtomStyle"
-                            android:drawableTop="@drawable/personal_nav_icon01"
-                            android:text="待付款" />
+                        android:layout_marginTop="10dp">
 
                         <TextView
-                            android:id="@+id/unreadNum01"
-                            style="@style/unreadMsgStyle"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="5dp"
-                            android:text="0"
-                            android:visibility="gone" />
-
-                        <View
-                            android:id="@+id/user_fragment_view01"
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:layout_alignParentBottom="true"
-                            android:background="@color/line02"
-                            android:visibility="gone" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/user_fragment_item02"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_selector_background01"
-                        android:gravity="center">
-
-                        <Button
-                            android:id="@+id/navBtn02"
-                            style="@style/PersonalNavButtomStyle"
-                            android:drawableTop="@drawable/personal_nav_icon02"
-                            android:text="待发货" />
+                            style="@style/text03_type02"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="我的订单" />
 
                         <TextView
-                            android:id="@+id/unreadNum02"
-                            style="@style/unreadMsgStyle"
+                            android:id="@+id/user_order"
+                            style="@style/text02_type03"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:layout_marginRight="5dp"
-                            android:text="0"
-                            android:visibility="gone" />
-
-                        <View
-                            android:id="@+id/user_fragment_view02"
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:layout_alignParentBottom="true"
-                            android:background="@color/line02"
-                            android:visibility="gone" />
+                            android:text="全部订单 >" />
                     </RelativeLayout>
 
-                    <RelativeLayout
-                        android:id="@+id/user_fragment_item03"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_selector_background01"
-                        android:gravity="center">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/line01" />
 
-                        <Button
-                            android:id="@+id/navBtn03"
-                            style="@style/PersonalNavButtomStyle"
-                            android:drawableTop="@drawable/personal_nav_icon03"
-                            android:text="待收货" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/unreadNum03"
-                            style="@style/unreadMsgStyle"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="5dp"
-                            android:text="0"
-                            android:visibility="gone" />
+                        <RelativeLayout
+                            android:id="@+id/user_fragment_item01"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_selector_background01"
+                            android:gravity="center">
 
-                        <View
-                            android:id="@+id/user_fragment_view03"
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:layout_alignParentBottom="true"
-                            android:background="@color/line02"
-                            android:visibility="gone" />
-                    </RelativeLayout>
+                            <Button
+                                android:id="@+id/navBtn01"
+                                style="@style/PersonalNavButtomStyle"
+                                android:drawableTop="@drawable/personal_nav_icon01"
+                                android:text="待付款" />
 
-                    <RelativeLayout
-                        android:id="@+id/user_fragment_item04"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_selector_background01"
-                        android:gravity="center">
+                            <TextView
+                                android:id="@+id/unreadNum01"
+                                style="@style/unreadMsgStyle"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="5dp"
+                                android:text="0"
+                                android:visibility="gone" />
 
-                        <Button
-                            android:id="@+id/navBtn04"
-                            style="@style/PersonalNavButtomStyle"
-                            android:drawableTop="@drawable/personal_nav_icon04"
-                            android:text="待评价" />
+                            <View
+                                android:id="@+id/user_fragment_view01"
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/line02"
+                                android:visibility="gone" />
+                        </RelativeLayout>
 
-                        <TextView
-                            android:id="@+id/unreadNum04"
-                            style="@style/unreadMsgStyle"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="5dp"
-                            android:text="0"
-                            android:visibility="gone" />
+                        <RelativeLayout
+                            android:id="@+id/user_fragment_item02"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_selector_background01"
+                            android:gravity="center">
 
-                        <View
-                            android:id="@+id/user_fragment_view04"
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:layout_alignParentBottom="true"
-                            android:background="@color/line02"
-                            android:visibility="gone" />
-                    </RelativeLayout>
+                            <Button
+                                android:id="@+id/navBtn02"
+                                style="@style/PersonalNavButtomStyle"
+                                android:drawableTop="@drawable/personal_nav_icon02"
+                                android:text="待发货" />
 
-                    <RelativeLayout
-                        android:id="@+id/user_fragment_item05"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@drawable/button_selector_background01"
-                        android:gravity="center">
+                            <TextView
+                                android:id="@+id/unreadNum02"
+                                style="@style/unreadMsgStyle"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="5dp"
+                                android:text="0"
+                                android:visibility="gone" />
 
-                        <Button
-                            android:id="@+id/navBtn05"
-                            style="@style/PersonalNavButtomStyle"
-                            android:drawableTop="@drawable/personal_nav_icon05"
-                            android:text="退换货" />
+                            <View
+                                android:id="@+id/user_fragment_view02"
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/line02"
+                                android:visibility="gone" />
+                        </RelativeLayout>
 
-                        <TextView
-                            android:id="@+id/unreadNum05"
-                            style="@style/unreadMsgStyle"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginRight="5dp"
-                            android:text="0"
-                            android:visibility="gone" />
+                        <RelativeLayout
+                            android:id="@+id/user_fragment_item03"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_selector_background01"
+                            android:gravity="center">
 
-                        <View
-                            android:id="@+id/user_fragment_view05"
-                            android:layout_width="match_parent"
-                            android:layout_height="1px"
-                            android:layout_alignParentBottom="true"
-                            android:background="@color/line02"
-                            android:visibility="gone" />
-                    </RelativeLayout>
+                            <Button
+                                android:id="@+id/navBtn03"
+                                style="@style/PersonalNavButtomStyle"
+                                android:drawableTop="@drawable/personal_nav_icon03"
+                                android:text="待收货" />
+
+                            <TextView
+                                android:id="@+id/unreadNum03"
+                                style="@style/unreadMsgStyle"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="5dp"
+                                android:text="0"
+                                android:visibility="gone" />
+
+                            <View
+                                android:id="@+id/user_fragment_view03"
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/line02"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/user_fragment_item04"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_selector_background01"
+                            android:gravity="center">
+
+                            <Button
+                                android:id="@+id/navBtn04"
+                                style="@style/PersonalNavButtomStyle"
+                                android:drawableTop="@drawable/personal_nav_icon04"
+                                android:text="待评价" />
+
+                            <TextView
+                                android:id="@+id/unreadNum04"
+                                style="@style/unreadMsgStyle"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="5dp"
+                                android:text="0"
+                                android:visibility="gone" />
+
+                            <View
+                                android:id="@+id/user_fragment_view04"
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/line02"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/user_fragment_item05"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/button_selector_background01"
+                            android:gravity="center">
+
+                            <Button
+                                android:id="@+id/navBtn05"
+                                style="@style/PersonalNavButtomStyle"
+                                android:drawableTop="@drawable/personal_nav_icon05"
+                                android:text="退换货" />
+
+                            <TextView
+                                android:id="@+id/unreadNum05"
+                                style="@style/unreadMsgStyle"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="5dp"
+                                android:text="0"
+                                android:visibility="gone" />
+
+                            <View
+                                android:id="@+id/user_fragment_view05"
+                                android:layout_width="match_parent"
+                                android:layout_height="1px"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/line02"
+                                android:visibility="gone" />
+                        </RelativeLayout>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="5dp"
-                android:background="#FFFFFF"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_user_safe"/>
-                <TextView
-                    android:id="@+id/user_fragemnt_tiem01"
-                    style="@style/text03_type02"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_selector_background01"
-                    android:drawableRight="@drawable/user_icon02"
+                    android:layout_marginTop="10dp"
+                    android:background="#FFFFFF"
                     android:gravity="center_vertical"
-                    android:padding="10dp"
-                    android:text="账号安全" />
-            </LinearLayout>
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="5dp"
-                android:background="#FFFFFF"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_user_safe" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_user_fev"/>
-                <TextView
-                    android:id="@+id/user_fragemnt_tiem02"
-                    style="@style/text03_type02"
+                    <TextView
+                        android:id="@+id/user_fragemnt_tiem01"
+                        style="@style/text03_type02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_selector_background01"
+                        android:drawableRight="@drawable/user_icon02"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="账号安全" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/button_selector_background01"
-                    android:drawableRight="@drawable/user_icon02"
+                    android:layout_marginTop="10dp"
+                    android:background="#FFFFFF"
                     android:gravity="center_vertical"
-                    android:padding="10dp"
-                    android:text="我的收藏" />
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
 
-            </LinearLayout>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_user_fev" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="5dp"
-                android:background="#FFFFFF"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/user_fragemnt_tiem02"
+                        style="@style/text03_type02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_selector_background01"
+                        android:drawableRight="@drawable/user_icon02"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="我的收藏" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_user_sve"/>
-                <TextView
-                    android:id="@+id/user_fragemnt_tiem04"
-                    style="@style/text03_type02"
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/user_icon02"
-                    android:padding="10dp"
-                    android:text="在线客服" />
-            </LinearLayout>
+                    android:layout_marginTop="10dp"
+                    android:background="#FFFFFF"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="5dp"
-                android:background="#FFFFFF"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_user_about"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_user_sve" />
 
-                <TextView
-                    android:id="@+id/user_fragemnt_tiem05"
-                    style="@style/text03_type02"
+                    <TextView
+                        android:id="@+id/user_fragemnt_tiem04"
+                        style="@style/text03_type02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/user_icon02"
+                        android:padding="10dp"
+                        android:text="在线客服" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/user_icon02"
-                    android:padding="10dp"
-                    android:text="关于洋盒子" />
-            </LinearLayout>
+                    android:layout_marginTop="10dp"
+                    android:background="#FFFFFF"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#FFFFFF"
-                android:paddingLeft="5dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_user_about" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_user_setting"/>
-                <TextView
-                    android:id="@+id/user_fragemnt_tiem06"
-                    style="@style/text03_type02"
+                    <TextView
+                        android:id="@+id/user_fragemnt_tiem05"
+                        style="@style/text03_type02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/user_icon02"
+                        android:padding="10dp"
+                        android:text="关于洋盒子" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/user_icon02"
-                    android:padding="10dp"
-                    android:text="设置" />
-            </LinearLayout>
-            <!--<LinearLayout-->
+                    android:layout_marginTop="10dp"
+                    android:background="#FFFFFF"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="5dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_user_setting" />
+
+                    <TextView
+                        android:id="@+id/user_fragemnt_tiem06"
+                        style="@style/text03_type02"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/user_icon02"
+                        android:padding="10dp"
+                        android:text="设置" />
+                </LinearLayout>
+                <!--<LinearLayout-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content"-->
                 <!--android:layout_marginTop="10dp"-->
@@ -438,19 +445,19 @@
                 <!--android:orientation="horizontal">-->
 
                 <!--<ImageView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:src="@drawable/ic_user_setting"/>-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/ic_user_setting"/>-->
                 <!--<TextView-->
-                    <!--android:id="@+id/user_share"-->
-                    <!--style="@style/text03_type02"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:drawableRight="@drawable/user_icon02"-->
-                    <!--android:padding="10dp"-->
-                    <!--android:text="设置" />-->
-            <!--</LinearLayout>-->
-        </LinearLayout>
-    </ScrollView>
-
+                <!--android:id="@+id/user_share"-->
+                <!--style="@style/text03_type02"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:drawableRight="@drawable/user_icon02"-->
+                <!--android:padding="10dp"-->
+                <!--android:text="设置" />-->
+                <!--</LinearLayout>-->
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>
