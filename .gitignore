@@ -2,7 +2,7 @@ YangMaTou/build/
 library/build/
 easeUI/build/
 yangHeZi/build/
-.gradle/
+.gradle
 QQ图片20160513135244.jpg
 移动支付控件包接入规范V2.8(适用APP客户端).rar
 移动支付控件包接入规范V2.8(适用APP客户端)/移动支付控件包接入规范V2.8(适用APP客户端)/.DS_Store
@@ -21,11 +21,9 @@ QQ图片20160513135244.jpg
 移动支付控件包接入规范V2.8(适用APP客户端)/移动支付控件包接入规范V2.8(适用APP客户端)/通联SDK支付控件包/通联SDK支付控件包2.5.2(IOS版)/sdk_iOS_2.5.2.zip
 移动支付控件包接入规范V2.8(适用APP客户端)/移动支付控件包接入规范V2.8(适用APP客户端)/通联移动支付商户接入接口技术规范V2.8(支付控件版）.pdf
 yangHeZi/yangMaTou-release.apk
-yangHeZi/src/main/jniLibs/
 yangHeZi/src/main/assets/APPayAssistEx.apk
-yangHeZi/libs/
-easeui/
 .idea/
 library/library.iml
 local.properties
 yanghezi.iml
+easeUI/build.xml
