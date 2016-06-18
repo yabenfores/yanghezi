@@ -18,7 +18,101 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1ef894bb-560d-43c5-ab9d-e56c2f2e4dcd" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/ic_fahuo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/ic_tonggao.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-hdpi/ic_xinxiaoxi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/ic_fahuo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/ic_tonggao.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-mdpi/ic_xinxiaoxi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-xhdpi/ic_fahuo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-xhdpi/ic_tongggao.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/drawable-xhdpi/ic_xinxiaoxi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/MobCommons_2016_0426_1819.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/MobTools_2016_0426_1819.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ShareSDK_Core_2_7_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ShareSDK_QQ_2_7_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ShareSDK_SinaWeibo_2_7_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ShareSDK_Wechat_2_7_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ShareSDK_Wechat_Core_2_7_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/ShareSDK_Wechat_Moments_2_7_2.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/jpush_android_2_1_5.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/MassageAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/PayAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ReasonAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/ImageBrowseActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/PayList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/Massage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/MassageActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_image_browse.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_massage.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/image_browse.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/massage_adapter.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/pay_adapter.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/refun_adapter.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_appindexing_8_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_basement_8_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_22_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_22_2_0.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/IdCareActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/IdCardActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_id_care.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_id_card.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_library_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_library_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_library_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_library_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_library_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_library_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.10/tasks/_library_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.10/tasks/_library_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/library/library.iml" afterPath="$PROJECT_DIR$/library/library.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/build.gradle" afterPath="$PROJECT_DIR$/yangHeZi/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CollectShopAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CollectShopAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CountryAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/CountryAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/OrderAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/OrderAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShowShatAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShowShatAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Order.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ben/Order.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/CircleImageView.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/CircleImageView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/MyPagerAdapter.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/MyPagerAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/YangHeZiApplication.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/YangHeZiApplication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/DealsFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/DealsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/EditAddressActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/address/EditAddressActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/classification/MipcaActivityCapture.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/classification/MipcaActivityCapture.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsPayActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/login/RegisteredActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/login/RegisteredActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/login/loginActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/login/loginActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/AllOrderFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/AllOrderFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/EvalActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/EvalActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/OrderActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/OrderActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/RefuActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/RefuActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ReturnFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/ReturnFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SafetyActivity.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/SafetyActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/UserFragment.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/UserFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/uitls/PaaCreator.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/uitls/PaaCreator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/AsyncFileUpload.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/AsyncFileUpload.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java" afterPath="$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_eval.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_eval.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_refu.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_refu.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_show_shat.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_show_shat.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_detail.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_detail.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_pay.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/goods_pay.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/order_adapter.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/order_adapter.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/safety_activity.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/safety_activity.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_adapter.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_adapter.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_aty.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_aty.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/user_fragment.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/layout/user_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yangHeZi/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/yangHeZi/src/main/res/values/styles.xml" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
     </list>
     <ignored path="YangMaTou.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,6 +148,7 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
               <folding>
+<<<<<<< HEAD
                 <element signature="imports" expanded="false" />
               </folding>
             </state>
@@ -77,11 +172,16 @@
                 <element signature="e#24600#24601#0" expanded="false" />
                 <element signature="e#24632#24633#0" expanded="false" />
                 <element signature="e#24663#24664#0" expanded="false" />
+=======
+                <element signature="e#1933#1934#0" expanded="true" />
+                <element signature="e#2000#2001#0" expanded="true" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="DealsFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/DealsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -95,6 +195,35 @@
                 <element signature="e#14342#14343#0" expanded="false" />
                 <element signature="e#14909#14910#0" expanded="false" />
                 <element signature="e#14969#14970#0" expanded="false" />
+=======
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.084746">
+              <caret line="276" column="41" selection-start-line="274" selection-start-column="24" selection-end-line="276" selection-end-column="41" />
+              <folding>
+                <element signature="e#12353#12644#0" expanded="true" />
+                <element signature="e#12643#12644#0" expanded="true" />
+                <element signature="e#25714#25715#0" expanded="true" />
+                <element signature="e#25767#25768#0" expanded="true" />
+                <element signature="e#25808#25809#0" expanded="true" />
+                <element signature="e#25854#25855#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DealsFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/DealsFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0847456">
+              <caret line="270" column="61" selection-start-line="270" selection-start-column="41" selection-end-line="270" selection-end-column="61" />
+              <folding>
+                <element signature="e#8334#9687#0" expanded="true" />
+                <element signature="e#9686#9687#0" expanded="true" />
+                <element signature="e#9723#10440#0" expanded="true" />
+                <element signature="e#10439#10440#0" expanded="true" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
               </folding>
             </state>
           </provider>
@@ -102,19 +231,42 @@
       </file>
       <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+<<<<<<< HEAD
+=======
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-3.5084746">
               <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
               <folding>
                 <element signature="e#566#1579#0" expanded="false" />
               </folding>
             </state>
           </provider>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
         </entry>
       </file>
+      <file leaf-file-name="Massage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/Massage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+              <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+              <folding>
+                <element signature="e#566#1579#0" expanded="false" />
+=======
+              <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+              <folding>
+                <element signature="e#2041#2042#0" expanded="true" />
+                <element signature="e#2077#2078#0" expanded="true" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="Massage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/Massage.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -165,21 +317,43 @@
                 <element signature="e#2889#2890#0" expanded="false" />
                 <element signature="e#2938#2939#0" expanded="false" />
                 <element signature="e#2982#2983#0" expanded="false" />
+=======
+      <file leaf-file-name="MassageAdapter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/MassageAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.41908714">
+              <caret line="100" column="23" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
+              <folding>
+                <element signature="e#3351#3919#0" expanded="true" />
+                <element signature="e#3918#3919#0" expanded="true" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="MassageAdapter.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/MassageAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.75518674">
               <caret line="100" column="23" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
+=======
+      <file leaf-file-name="massage_adapter.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/massage_adapter.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.338983">
+              <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
               <folding />
             </state>
           </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="massage_adapter.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/massage_adapter.xml">
           <provider editor-type-id="android-designer">
@@ -188,11 +362,19 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+=======
+      <file leaf-file-name="GouWuGuangChangFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="70" column="35" selection-start-line="70" selection-start-column="35" selection-end-line="70" selection-end-column="35" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="GouWuGuangChangFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -218,9 +400,30 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="396" column="59" selection-start-line="396" selection-start-column="59" selection-end-line="396" selection-end-column="59" />
               <folding>
+=======
+      <file leaf-file-name="user_fragment.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/user_fragment.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.423729">
+              <caret line="396" column="59" selection-start-line="396" selection-start-column="59" selection-end-line="396" selection-end-column="59" />
+              <folding>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
                 <element signature="e#4551#13767#0" expanded="false" />
                 <element signature="e#16037#17016#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="color.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/values/color.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.5172415">
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1395,6 +1598,7 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/easeui" />
                 <option name="name" value="packageReleaseRenderscript" />
+<<<<<<< HEAD
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/easeui" />
@@ -1402,6 +1606,15 @@
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/easeui" />
+=======
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/easeui" />
+                <option name="name" value="packageReleaseResources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/easeui" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
                 <option name="name" value="preBuild" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
@@ -2966,6 +3179,8 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-debug-all/5.0.1/asm-debug-all-5.0.1-sources.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-debug-all/5.0.1/asm-debug-all-5.0.1.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3-sources.jar" />
+<<<<<<< HEAD
+=======
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/17.0/guava-17.0-sources.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/17.0/guava-17.0.jar" />
@@ -3169,6 +3384,197 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/25.1.2/sdk-common-25.1.2.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3-sources.jar" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/manifest-merger/25.1.2/manifest-merger-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-test-api/2.1.2/builder-test-api-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-model/2.1.2/builder-model-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/jill/jill-api/0.10.0/jill-api-0.10.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/ddms/ddmlib/25.1.2/ddmlib-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdklib/25.1.2/sdklib-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/17.0/guava-17.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/17.0/guava-17.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/annotations/25.1.2/annotations-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-base/5.2.1/proguard-base-5.2.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-base/5.2.1/proguard-base-5.2.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-checks/25.1.2/lint-checks-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/eclipse/jdt/core/compiler/ecj/4.4.2/ecj-4.4.2-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/eclipse/jdt/core/compiler/ecj/4.4.2/ecj-4.4.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/tunnelvisionlabs/antlr4/4.5/antlr4-4.5.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-io/commons-io/2.4/commons-io-2.4-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-io/commons-io/2.4/commons-io-2.4.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/baseLibrary/2.1.2/baseLibrary-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/code/gson/gson/2.2.4/gson-2.2.4-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/dvlib/25.1.2/dvlib-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/layoutlib/layoutlib-api/25.1.2/layoutlib-api-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/repository/25.1.2/repository-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/5.0.3/asm-analysis-5.0.3-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/5.0.3/asm-analysis-5.0.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-api/25.1.2/lint-api-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/tunnelvisionlabs/antlr4-runtime/4.5/antlr4-runtime-4.5.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/tunnelvisionlabs/antlr4-annotations/4.5/antlr4-annotations-4.5.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/antlr/ST4/4.0.8/ST4-4.0.8.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/intellij/annotations/12.0/annotations-12.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/intellij/annotations/12.0/annotations-12.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.3/lombok-ast-0.2.3-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.3/lombok-ast-0.2.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/abego/treelayout/org.abego.treelayout.core/1.0.1/org.abego.treelayout.core-1.0.1.jar" />
+                          </list>
+                        </option>
+                        <option name="path" value="$PROJECT_DIR$/library" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+<<<<<<< HEAD
+                  <entry key="$PROJECT_DIR$/easeui">
+=======
+                  <entry key="$PROJECT_DIR$/yangHeZi">
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="entries">
+                          <list>
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/2.1.2/gradle-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-core/2.1.2/gradle-core-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jacoco/org.jacoco.core/0.7.4.201502262128/org.jacoco.core-0.7.4.201502262128-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jacoco/org.jacoco.core/0.7.4.201502262128/org.jacoco.core-0.7.4.201502262128.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder/2.1.2/builder-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/transform-api/2.0.0-deprecated-use-gradle-api/transform-api-2.0.0-deprecated-use-gradle-api.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-commons/5.0.3/asm-commons-5.0.3-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-commons/5.0.3/asm-commons-5.0.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-api/2.1.2/gradle-api-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-gradle/5.2.1/proguard-gradle-5.2.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-gradle/5.2.1/proguard-gradle-5.2.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm/5.0.3/asm-5.0.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint/25.1.2/lint-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/compilerCommon/2.1.2/compilerCommon-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-debug-all/5.0.1/asm-debug-all-5.0.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-debug-all/5.0.1/asm-debug-all-5.0.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/common/25.1.2/common-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/jack/jack-api/0.10.0/jack-api-0.10.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/25.1.2/sdk-common-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/manifest-merger/25.1.2/manifest-merger-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-test-api/2.1.2/builder-test-api-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder-model/2.1.2/builder-model-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/jill/jill-api/0.10.0/jill-api-0.10.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/ddms/ddmlib/25.1.2/ddmlib-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdklib/25.1.2/sdklib-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcpkix-jdk15on/1.48/bcpkix-jdk15on-1.48.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/17.0/guava-17.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/guava/guava/17.0/guava-17.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/annotations/25.1.2/annotations-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-base/5.2.1/proguard-base-5.2.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-base/5.2.1/proguard-base-5.2.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-checks/25.1.2/lint-checks-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/eclipse/jdt/core/compiler/ecj/4.4.2/ecj-4.4.2-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/eclipse/jdt/core/compiler/ecj/4.4.2/ecj-4.4.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/googlecode/juniversalchardet/juniversalchardet/1.0.3/juniversalchardet-1.0.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/tunnelvisionlabs/antlr4/4.5/antlr4-4.5.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-io/commons-io/2.4/commons-io-2.4-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-io/commons-io/2.4/commons-io-2.4.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/baseLibrary/2.1.2/baseLibrary-2.1.2.jar" />
+<<<<<<< HEAD
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/code/gson/gson/2.2.4/gson-2.2.4-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpclient/4.1.1/httpclient-4.1.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/dvlib/25.1.2/dvlib-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpmime/4.1/httpmime-4.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/layoutlib/layoutlib-api/25.1.2/layoutlib-api-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/repository/25.1.2/repository-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/5.0.3/asm-analysis-5.0.3-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-analysis/5.0.3/asm-analysis-5.0.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint-api/25.1.2/lint-api-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/tunnelvisionlabs/antlr4-runtime/4.5/antlr4-runtime-4.5.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/tunnelvisionlabs/antlr4-annotations/4.5/antlr4-annotations-4.5.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/antlr/ST4/4.0.8/ST4-4.0.8.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/apache/httpcomponents/httpcore/4.1/httpcore-4.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-codec/commons-codec/1.4/commons-codec-1.4.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/intellij/annotations/12.0/annotations-12.0-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/intellij/annotations/12.0/annotations-12.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.3/lombok-ast-0.2.3-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/external/lombok/lombok-ast/0.2.3/lombok-ast-0.2.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/abego/treelayout/org.abego.treelayout.core/1.0.1/org.abego.treelayout.core-1.0.1.jar" />
+                            <option value="$MODULE_DIR$/libs/android-support-v4.jar" />
+                            <option value="$MODULE_DIR$/libs/BaiduLBS_Android.jar" />
+                            <option value="$MODULE_DIR$/libs/glide-3.6.1.jar" />
+                            <option value="$MODULE_DIR$/libs/google-play-services.jar" />
+                            <option value="$MODULE_DIR$/libs/hyphenatechat_3.1.2.jar" />
+                            <option value="$MODULE_DIR$/libs/MiPush_SDK_Client_2_2_19.jar" />
+                            <option value="$MODULE_DIR$/libs/org.apache.http.legacy.jar" />
+                          </list>
+                        </option>
+                        <option name="path" value="$PROJECT_DIR$/easeui" />
+                      </ExternalModuleBuildClasspathPojo>
+                    </value>
+                  </entry>
+                  <entry key="$PROJECT_DIR$/library">
+                    <value>
+                      <ExternalModuleBuildClasspathPojo>
+                        <option name="entries">
+                          <list>
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/2.1.2/gradle-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-core/2.1.2/gradle-core-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jacoco/org.jacoco.core/0.7.4.201502262128/org.jacoco.core-0.7.4.201502262128-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/jacoco/org.jacoco.core/0.7.4.201502262128/org.jacoco.core-0.7.4.201502262128.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/builder/2.1.2/builder-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/transform-api/2.0.0-deprecated-use-gradle-api/transform-api-2.0.0-deprecated-use-gradle-api.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-commons/5.0.3/asm-commons-5.0.3-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-commons/5.0.3/asm-commons-5.0.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-api/2.1.2/gradle-api-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-gradle/5.2.1/proguard-gradle-5.2.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/proguard/proguard-gradle/5.2.1/proguard-gradle-5.2.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm/5.0.3/asm-5.0.3-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm/5.0.3/asm-5.0.3.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/lint/lint/25.1.2/lint-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/compilerCommon/2.1.2/compilerCommon-2.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-debug-all/5.0.1/asm-debug-all-5.0.1-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-debug-all/5.0.1/asm-debug-all-5.0.1.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/common/25.1.2/common-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/jack/jack-api/0.10.0/jack-api-0.10.0.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48-sources.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/bouncycastle/bcprov-jdk15on/1.48/bcprov-jdk15on-1.48.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/sdk-common/25.1.2/sdk-common-25.1.2.jar" />
+                            <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3-sources.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/org/ow2/asm/asm-tree/5.0.3/asm-tree-5.0.3.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0-sources.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/squareup/javawriter/2.5.0/javawriter-2.5.0.jar" />
@@ -3282,6 +3688,8 @@
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-io/commons-io/2.4/commons-io-2.4-sources.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/commons-io/commons-io/2.4/commons-io-2.4.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/databinding/baseLibrary/2.1.2/baseLibrary-2.1.2.jar" />
+=======
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0-sources.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/net/sf/kxml/kxml2/2.3.0/kxml2-2.3.0.jar" />
                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/google/code/gson/gson/2.2.4/gson-2.2.4-sources.jar" />
@@ -3558,7 +3966,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="PackagesPane" />
+=======
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3568,6 +3983,8 @@
             </PATH_ELEMENT>
           </PATH>
           <PATH>
+<<<<<<< HEAD
+=======
             <PATH_ELEMENT>
               <option name="myItemId" value="YangMaTou" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
@@ -3668,12 +4085,196 @@
               <option name="myItemId" value="com" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yangmatou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yangHeZi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="YangMaTou" />
+=======
+              <option name="myItemId" value="yangmatou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yangHeZi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yangHeZi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+=======
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+<<<<<<< HEAD
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yangHeZi" />
+=======
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+=======
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yangHeZi" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="YangMaTou" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="yangHeZi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+=======
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="Scope" />
+=======
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -4060,6 +4661,10 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28874025" sideWeight="0.5042644" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4303233" sideWeight="0.49573562" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
+=======
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21481876" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27759197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -4067,7 +4672,11 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15831557" sideWeight="0.4943274" order="0" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15831557" sideWeight="0.4943274" order="0" side_tool="false" content_ui="tabs" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -4080,7 +4689,10 @@
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21481876" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+=======
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3188406" sideWeight="0.4968017" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -4291,6 +4903,7 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_eval.xml">
+<<<<<<< HEAD
       <provider editor-type-id="android-designer">
         <state />
       </provider>
@@ -4299,6 +4912,16 @@
           <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
         </state>
       </provider>
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.025839793">
+          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/BaseNetConnection.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -4322,6 +4945,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/push_set_dialog.xml">
+<<<<<<< HEAD
       <provider editor-type-id="android-designer">
         <state />
       </provider>
@@ -4381,6 +5005,66 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/drawable/background_selector6.xml">
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25322998">
+          <caret line="77" column="49" selection-start-line="77" selection-start-column="49" selection-end-line="77" selection-end-column="49" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/common/YangHeZiApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.0833334">
+          <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29143897">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36429873">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/yangHeZi/libs/jpush-android-2.1.5.jar!/cn/jpush/android/api/InstrumentedActivity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30710173">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/AddressAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.708561">
+          <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/library/src/main/java/entity/NotifyUpdateEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1985428">
+          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/login/loginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29143897">
+          <caret line="359" column="100" selection-start-line="359" selection-start-column="100" selection-end-line="359" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/drawable/background_selector6.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -4388,12 +5072,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/drawable/button_selector_background03.xml">
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/drawable/button_selector_background03.xml">
+=======
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/drawable/button_selector_background01.xml">
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/drawable/button_selector_background01.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -4424,6 +5121,31 @@
           <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
         </state>
       </provider>
+=======
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/drawable/background_selector10_host.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30769232">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="365" column="13" selection-start-line="365" selection-start-column="13" selection-end-line="365" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36734694">
+          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
     </entry>
     <entry file="jar://$PROJECT_DIR$/easeui/libs/android-support-v4.jar!/android/support/v4/widget/CircleImageView.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -4436,6 +5158,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="62" column="5" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1992#1993#0" expanded="false" />
+            <element signature="e#2031#2032#0" expanded="false" />
+            <element signature="e#2867#2868#0" expanded="false" />
+            <element signature="e#2900#2901#0" expanded="false" />
+            <element signature="e#3885#3886#0" expanded="false" />
+            <element signature="e#3920#3921#0" expanded="false" />
+            <element signature="e#4335#4336#0" expanded="false" />
+            <element signature="e#4370#4371#0" expanded="false" />
+            <element signature="e#4594#4595#0" expanded="false" />
+            <element signature="e#4631#4632#0" expanded="false" />
+          </folding>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
         </state>
       </provider>
     </entry>
@@ -4443,10 +5181,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="40" />
+<<<<<<< HEAD
+=======
+          <folding />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/AndroidManifest.xml">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.965517">
           <caret line="243" column="79" selection-start-line="243" selection-start-column="79" selection-end-line="243" selection-end-column="79" />
@@ -4480,10 +5223,29 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_adapter.xml">
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.965517">
+          <caret line="243" column="79" selection-start-line="243" selection-start-column="79" selection-end-line="243" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/progress.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45558086">
+          <caret line="10" column="37" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/BaseActivity.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.45330295">
           <caret line="212" column="38" selection-start-line="212" selection-start-column="38" selection-end-line="212" selection-end-column="38" />
         </state>
@@ -4500,9 +5262,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+=======
+        <state vertical-scroll-proportion="0.73293173">
+          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/order/OrderActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32128513">
+          <caret line="415" column="26" selection-start-line="415" selection-start-column="26" selection-end-line="415" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/show_shat_adapter.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45330295">
+          <caret line="212" column="38" selection-start-line="212" selection-start-column="38" selection-end-line="212" selection-end-column="38" />
+          <folding />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://E:/l/Android/sdk/sources/android-23/android/view/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -4560,10 +5347,73 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/gou_wu_guang_chang.xml">
+=======
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopSaiAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2811245">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/shop/ShopActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/l/Android/sdk/sources/android-23/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="17991" column="19" selection-start-line="17991" selection-start-column="19" selection-end-line="17991" selection-end-column="19" />
+          <folding>
+            <element signature="e#697100#697101#0" expanded="false" />
+            <element signature="e#697160#697161#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShowShatAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.48192772">
+          <caret line="155" column="17" selection-start-line="155" selection-start-column="17" selection-end-line="155" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/showwhat/ShowShatActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="241" column="11" selection-start-line="241" selection-start-column="11" selection-end-line="241" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/goods/GoodsDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8305085">
+          <caret line="871" column="5" selection-start-line="777" selection-start-column="4" selection-end-line="871" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/shop_adapter.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4692483">
+          <caret line="249" column="57" selection-start-line="249" selection-start-column="57" selection-end-line="249" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/ShopAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="-3.7288136">
           <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
         </state>
@@ -4577,32 +5427,99 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/massage_adapter.xml">
-      <provider editor-type-id="android-designer">
-        <state />
+=======
+        <state vertical-scroll-proportion="0.60240966">
+          <caret line="158" column="17" selection-start-line="158" selection-start-column="17" selection-end-line="158" selection-end-column="17" />
+          <folding>
+            <element signature="e#5971#5972#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/Constant.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+          <caret line="64" column="74" selection-start-line="64" selection-start-column="70" selection-end-line="64" selection-end-column="74" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/base_activity.xml">
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/gou_wu_guang_chang.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.7288136">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/webserver/NetHelper.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
+          <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+=======
+          <caret line="264" column="11" selection-start-line="264" selection-start-column="11" selection-end-line="264" selection-end-column="11" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/base_activity.xml">
+=======
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/massage_adapter.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.338983">
+          <caret line="22" column="51" selection-start-line="22" selection-start-column="51" selection-end-line="22" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/base_activity.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.501182">
+          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.501182">
           <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/activity_main.xml">
+=======
+        <state vertical-scroll-proportion="-3.5084746">
+          <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+          <folding>
+            <element signature="e#566#1579#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/GouWuGuangChangFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+<<<<<<< HEAD
           <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
           <folding>
             <element signature="e#566#1579#0" expanded="false" />
@@ -4620,10 +5537,27 @@
             <element signature="e#3832#3833#0" expanded="false" />
             <element signature="e#11073#11074#0" expanded="false" />
             <element signature="e#11104#11105#0" expanded="false" />
+=======
+          <caret line="70" column="35" selection-start-line="70" selection-start-column="35" selection-end-line="70" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/DealsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0847456">
+          <caret line="270" column="61" selection-start-line="270" selection-start-column="41" selection-end-line="270" selection-end-column="61" />
+          <folding>
+            <element signature="e#8334#9687#0" expanded="true" />
+            <element signature="e#9686#9687#0" expanded="true" />
+            <element signature="e#9723#10440#0" expanded="true" />
+            <element signature="e#10439#10440#0" expanded="true" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/main/DealsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -4659,9 +5593,47 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
           <folding />
+=======
+    <entry file="file://E:/l/Android/sdk/sources/android-19/android/app/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20746888">
+          <caret line="2104" column="56" selection-start-line="2104" selection-start-column="51" selection-end-line="2104" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/easeui/libs/android-support-v4.jar!/android/support/v4/app/FragmentActivity.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5726872">
+          <caret line="193" column="30" selection-start-line="193" selection-start-column="30" selection-end-line="193" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/values/color.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.5172415">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/user_fragment.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.423729">
+          <caret line="396" column="59" selection-start-line="396" selection-start-column="59" selection-end-line="396" selection-end-column="59" />
+          <folding>
+            <element signature="e#4551#13767#0" expanded="false" />
+            <element signature="e#16037#17016#0" expanded="false" />
+          </folding>
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/res/layout/user_fragment.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -4689,10 +5661,39 @@
           <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/OrderAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29045644">
+          <caret line="103" column="42" selection-start-line="103" selection-start-column="42" selection-end-line="103" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/MassageActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
+          <folding>
+            <element signature="e#1933#1934#0" expanded="true" />
+            <element signature="e#2000#2001#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/Massage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
+          <folding>
+            <element signature="e#2041#2042#0" expanded="true" />
+            <element signature="e#2077#2078#0" expanded="true" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
+          </folding>
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/ui/user/Massage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -4742,10 +5743,24 @@
             <element signature="e#2889#2890#0" expanded="false" />
             <element signature="e#2938#2939#0" expanded="false" />
             <element signature="e#2982#2983#0" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.084746">
+          <caret line="276" column="41" selection-start-line="274" selection-start-column="24" selection-end-line="276" selection-end-column="41" />
+          <folding>
+            <element signature="e#12353#12644#0" expanded="true" />
+            <element signature="e#12643#12644#0" expanded="true" />
+            <element signature="e#25714#25715#0" expanded="true" />
+            <element signature="e#25767#25768#0" expanded="true" />
+            <element signature="e#25808#25809#0" expanded="true" />
+            <element signature="e#25854#25855#0" expanded="true" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -4762,6 +5777,15 @@
             <element signature="e#24600#24601#0" expanded="false" />
             <element signature="e#24632#24633#0" expanded="false" />
             <element signature="e#24663#24664#0" expanded="false" />
+=======
+    <entry file="file://$PROJECT_DIR$/yangHeZi/src/main/java/com/raoleqing/yangmatou/adapter/MassageAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41908714">
+          <caret line="100" column="23" selection-start-line="100" selection-start-column="23" selection-end-line="100" selection-end-column="23" />
+          <folding>
+            <element signature="e#3351#3919#0" expanded="true" />
+            <element signature="e#3918#3919#0" expanded="true" />
+>>>>>>> 2474d94b311332aa0e4f17ec2202aea82347d887
           </folding>
         </state>
       </provider>
