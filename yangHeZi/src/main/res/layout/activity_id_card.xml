@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg04"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/encode_view"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                style="@style/text03_type01"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="手机号码" />
+
+            <EditText
+                android:hint="请输入与身份证绑定的手机号"
+                android:id="@+id/et_idcard_phone"
+                style="@style/text03_type01"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/encode_view"
+                android:inputType="phone" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/encode_view"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView
+                style="@style/text03_type01"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="身份证号" />
+
+            <EditText
+                android:id="@+id/et_idcard_num"
+                android:hint="请输入15或18位身份证号码"
+                style="@style/text03_type01"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:background="#00000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@color/encode_view"
+            android:layout_marginTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/et_idcard_code"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@color/encode_view"
+                android:hint="请输入验证码" />
+
+            <Button
+                android:id="@+id/btn_send_massage"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textColor="@color/line02"
+                android:background="@color/encode_view"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="发送验证码" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_idcard_set"
+        style="@style/text01_type03"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_selector_background04"
+        android:text="修改" />
+
+
+</LinearLayout>

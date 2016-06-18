@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg04"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/text03_type01"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="用户名" />
+
+            <TextView
+                android:id="@+id/user_name"
+                style="@style/text03_type01"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_vertical|right"
+                android:text="aaa@qq.com" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line01" />
+
+        <LinearLayout
+            android:id="@+id/safety_set_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector_background01"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/text03_type01"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="登陆密码" />
+
+            <TextView
+                style="@style/text03_type01"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawableRight="@drawable/user_icon02"
+                android:gravity="center_vertical|right"
+                android:text="点击修改  " />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <LinearLayout
+            android:id="@+id/safety_bound_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector_background01"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/text03_type01"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="绑定手机" />
+
+            <TextView
+                android:id="@+id/tv_safe_bun"
+                style="@style/text02_type03"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawableRight="@drawable/user_icon02"
+                android:gravity="center_vertical|right"
+                android:text="已绑定  " />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/line01" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/text03_type01"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center_vertical"
+                android:text="身份证号" />
+
+            <TextView
+                android:id="@+id/user_card"
+                style="@style/text03_type01"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:drawableRight="@drawable/user_icon02"
+                android:gravity="center_vertical|right"
+                android:text="43012120101010101010  " />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/safety_address"
+            style="@style/text03_type01"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/button_selector_background01"
+            android:drawableRight="@drawable/user_icon02"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="收货地址  " />
+    </LinearLayout>
+    
+    
+     <Button
+        android:id="@+id/exit_account"
+        style="@style/text01_type03"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_selector_background04"
+        android:text="退出登录" />
+
+</LinearLayout>

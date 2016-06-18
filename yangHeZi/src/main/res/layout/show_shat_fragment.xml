@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg04">
+
+    <RelativeLayout
+        android:paddingTop="5dp"
+        android:id="@+id/base_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/text03"
+        android:gravity="center_vertical" >
+
+        <LinearLayout
+            android:id="@+id/show_write_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_selector_background01"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/show_icon01" />
+
+            <TextView
+                style="@style/text02_type02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="写秀" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/text02_type04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="秀一下" />
+
+        <LinearLayout
+            android:id="@+id/show_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/button_selector_background01"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/show_icon02" />
+
+            <TextView
+                style="@style/text02_type02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="客服" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+   
+    <com.raoleqing.yangmatou.xlist.XListView
+        android:layout_below="@id/base_title_layout"
+        android:id="@+id/show_lsit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+    </com.raoleqing.yangmatou.xlist.XListView>
+
+
+    <View
+        android:layout_below="@+id/base_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/line01" />
+
+</RelativeLayout>

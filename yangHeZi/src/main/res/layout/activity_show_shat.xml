@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.raoleqing.yangmatou.ui.showwhat.ShowShatActivity">
+
+    <com.raoleqing.yangmatou.xlist.XListView
+        android:id="@+id/lv_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="45dp"></com.raoleqing.yangmatou.xlist.XListView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="5dp"
+            android:background="@color/line01" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/lyo_show_share"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/show_ic"
+                    android:src="@drawable/share_icon01" />
+
+                <TextView
+                    style="@style/text04_type02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 分享" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="30dp"
+                android:background="@color/line01" />
+
+            <LinearLayout
+                android:id="@+id/lyo_show_eval"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/show_ic"
+                    android:src="@drawable/reply_iocn" />
+
+                <TextView
+                    style="@style/text04_type02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 回复" />
+
+                <TextView
+                    android:id="@+id/tv_show_comment_num"
+                    style="@style/text04_type03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="30dp"
+                android:background="@color/line01" />
+
+            <LinearLayout
+                android:id="@+id/lyo_show_like"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_like"
+                    style="@style/show_ic"
+                    android:src="@drawable/like_icon" />
+
+                <TextView
+                    style="@style/text04_type02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 点赞" />
+
+                <TextView
+                    android:id="@+id/tv_show_like_num"
+                    style="@style/text04_type03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyo_show_re"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/encode_view"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_show_re"
+            style="@style/text16sp_typeblack"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/background_selector10"
+            android:hint="输入回复内容"
+            android:padding="5dp" />
+
+        <Button
+            android:id="@+id/btn_show_re"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/background_selector10"
+            android:text="发送"
+            android:textColor="@color/line02" />
+    </LinearLayout>
+
+
+</RelativeLayout>

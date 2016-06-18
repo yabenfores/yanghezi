@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 按下时的背景图片 -->
+    <item android:drawable="@color/line02" android:state_selected="true" />
+    <!-- 默认时的背景图片 -->
+    <item android:drawable="@color/encode_view" />
+
+
+    <!--<item android:state_selected="true" android:color="@color/software_textColor_selected"></item>-->
+    <!--<item android:state_selected="false" android:color="@color/software_textColor_unselected"></item>-->
+</selector>
