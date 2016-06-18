@@ -2,7 +2,7 @@ YangMaTou/build/
 library/build/
 easeUI/build/
 yangHeZi/build/
-.gradle
+.gradle/
 QQ图片20160513135244.jpg
 移动支付控件包接入规范V2.8(适用APP客户端).rar
 移动支付控件包接入规范V2.8(适用APP客户端)/移动支付控件包接入规范V2.8(适用APP客户端)/.DS_Store
@@ -26,4 +26,5 @@ yangHeZi/src/main/assets/APPayAssistEx.apk
 library/library.iml
 local.properties
 yanghezi.iml
+YangMaTou.iml
 easeUI/build.xml
