@@ -33,12 +33,20 @@ import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
+import com.tencent.mm.sdk.constants.ConstantsAPI;
+import com.tencent.mm.sdk.modelbase.BaseReq;
+import com.tencent.mm.sdk.modelbase.BaseResp;
+import com.tencent.mm.sdk.modelpay.PayReq;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -55,8 +63,9 @@ import entity.NotifyUpdateEntity;
 /**
  * 购买界面
  **/
-public class GoodsPayActivity extends BaseActivity implements OnClickListener {
+public class GoodsPayActivity extends BaseActivity implements OnClickListener, IWXAPIEventHandler {
 
+    private IWXAPI wxApi;
     private ListView lv_pay_paylist;
     private ImageView activity_return;
     private LinearLayout goods_pay_address_layout;
@@ -93,6 +102,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     private List<PayList> payList = new ArrayList<>();
     private List<Address> addressList = new ArrayList<Address>();
     private int addressIndex = 0;
+    private final static String WXAPPID = "wxc17de1d8065faefa";
 
     private static final int SDK_PAY_FLAG = 1;
     Handler myHandler = new Handler() {
@@ -132,7 +142,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                         }
                     }
                 }
-                    break;
+                break;
 
                 default:
                     break;
@@ -142,8 +152,8 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
     };
 
     private void startOrder() {
-        Intent intent=new Intent(this, OrderActivity.class);
-        intent.putExtra("index",2);
+        Intent intent = new Intent(this, OrderActivity.class);
+        intent.putExtra("index", 2);
         startActivity(intent);
         finish();
     }
@@ -153,6 +163,8 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.goods_pay);
         Intent intent = this.getIntent();
+        wxApi = WXAPIFactory.createWXAPI(this, WXAPPID);
+        wxApi.registerApp(WXAPPID);
         goods_id = intent.getIntExtra("goods_id", 0);
         goodsNumber = intent.getIntExtra("goodsNumber", 1);
         wh_id = intent.getIntExtra("wh_id", 0);
@@ -341,7 +353,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
 
 
             JSONArray data = response.optJSONArray("data");
-            if (data.length()==0){
+            if (data.length() == 0) {
                 return;
             }
             for (int i = 0; i < data.length(); i++) {
@@ -427,7 +439,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
 
     protected void orderResolveJson(JSONObject response) {
 
-        switch (pay_type){
+        switch (pay_type) {
             case "2"://支付宝
                 final String payInfo = response.optString(Constant.DATA);
 
@@ -450,9 +462,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 payThread.start();
                 break;
             case "8"://通联
-                System.out.println("aaaaaaaaa:" + response);
                 JSONObject object = response.optJSONObject("data");
-
                 try {
 //            object.put("userCard",user_card.getText().toString().trim());
                     object.put("productName", goodsName.trim());
@@ -466,6 +476,26 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                 APPayAssistEx.startPay(this, payData.toString(), APPayAssistEx.MODE_DEBUG);
                 break;
             case "3"://微信
+                try {
+                    JSONObject json = response.optJSONObject("data");
+                    Log.e("get server pay params:", json.toString());
+                    if (null != json && !json.has("retcode")) {
+                        PayReq req = new PayReq();
+                        req.appId = json.getString("appid");
+                        req.partnerId = json.getString("partnerid");
+                        req.prepayId = json.getString("prepayid");
+                        req.nonceStr = json.getString("noncestr");
+                        req.timeStamp = json.getString("timestamp");
+                        req.packageValue = json.getString("package");
+                        req.sign = json.getString("sign");
+                        req.extData = "app data"; // optional
+                        // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
+                        wxApi.sendReq(req);
+                    }
+                } catch (Exception e) {
+                    Log.e("PAY_GET", "异常：" + e.getMessage());
+                }
+
                 break;
 
             default:
@@ -536,7 +566,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
                         pay.setPayment_name(obj.optString("payment_name"));
                         if (i == 0) {
                             pay.setSelect(true);
-                            pay_type=pay.getPayment_id()+"";
+                            pay_type = pay.getPayment_id() + "";
                         }
                         payList.add(pay);
                     } catch (JSONException e) {
@@ -592,4 +622,22 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener {
         }
     }
 
-}
+    @Override
+    public void onReq(BaseReq baseReq) {
+
+    }
+
+    @Override
+    public void onResp(BaseResp baseResp) {
+        if (baseResp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
+            switch (baseResp.errCode){
+                case Constant.WX_PAY_FAIL:
+                    makeShortToast("支付失败");
+                    break;
+                case Constant.WX_PAY_SUCCESS:
+                    startOrder();
+                    break;
+            }
+        }
+        }
+    }

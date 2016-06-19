@@ -1,10 +1,14 @@
 package com.raoleqing.yangmatou.ui.user;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Criteria;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
@@ -13,6 +17,8 @@ import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.CircularAdapter;
 import com.raoleqing.yangmatou.ben.Circular;
 import com.raoleqing.yangmatou.ben.SendOut;
+import com.raoleqing.yangmatou.ui.login.loginActivity;
+import com.raoleqing.yangmatou.uitls.UserUitls;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
@@ -24,6 +30,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import entity.NotifyUpdateEntity;
 
 public class CircularActivity extends BaseActivity implements XListView.IXListViewListener {
 
@@ -119,5 +127,21 @@ public class CircularActivity extends BaseActivity implements XListView.IXListVi
         }
         msgList.stopLoadMore();
     }
+    //--------------
+    private final static String MSGCHANGE="msgchange";
 
+    protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
+        super.notifyUpdate(notifyUpdateEntity);
+        try {
+            switch (notifyUpdateEntity.getNotifyTag()) {
+                case MSGCHANGE:
+                    int id= (int) notifyUpdateEntity.getObj();
+                    criteriaList.remove(id);
+                    adapter.notifyDataSetChanged();
+                    break;
+            }
+        } catch (Exception ex) {
+            throwEx(ex);
+        }
+    }
 }

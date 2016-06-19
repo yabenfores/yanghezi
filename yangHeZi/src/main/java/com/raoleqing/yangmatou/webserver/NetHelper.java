@@ -268,6 +268,10 @@ public class NetHelper {
     public static void Msglist(String msg_groupid,String msg_grouptype,String page,NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.MSGLIST, NetParams.HttpMethod.Post, true, connectListener,"msg_groupid",msg_groupid,"msg_grouptype",msg_grouptype,"page",page);
     }
+    //删除消息
+    public static void delMsg(String msg_id,NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.MSGLIST, NetParams.HttpMethod.Post, true, connectListener,"msg_id",msg_id);
+    }
 
 
 }

@@ -1,6 +1,8 @@
 package com.raoleqing.yangmatou.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +18,22 @@ import com.raoleqing.yangmatou.MainActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.Circular;
 import com.raoleqing.yangmatou.ben.Pavilion;
+import com.raoleqing.yangmatou.ben.SendOut;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.ui.showwhat.CountryActivity;
+import com.raoleqing.yangmatou.ui.user.CircularActivity;
+import com.raoleqing.yangmatou.ui.user.Massage;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
 import com.raoleqing.yangmatou.webserver.WebActivity;
 
+import org.json.JSONObject;
+
 import java.util.List;
+
+import entity.NotifyUpdateEntity;
 
 /**
  * Created by ybin on 2016/5/27.
@@ -28,13 +41,13 @@ import java.util.List;
 public class CircularAdapter extends BaseAdapter {
     private List<Circular> pavilionList;
     private LayoutInflater mInflater;
-    private Context context;
+    private CircularActivity context;
 
     CircularAdapter() {
 
     }
 
-    public CircularAdapter(Context context, List<Circular> pavilionList) {
+    public CircularAdapter(CircularActivity context, List<Circular> pavilionList) {
         this.context = context;
         this.pavilionList = pavilionList;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -57,7 +70,7 @@ public class CircularAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.circular_adapter, parent, false);
@@ -81,6 +94,42 @@ public class CircularAdapter extends BaseAdapter {
                 }
             });
 
+            holder.lyo_cir.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("确定删除？").setTitle("提示")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    NetHelper.delMsg(circular.getMsg_id() + "", new NetConnectionInterface.iConnectListener3() {
+                                        @Override
+                                        public void onStart() {
+
+                                        }
+
+                                        @Override
+                                        public void onFinish() {
+
+                                        }
+
+                                        @Override
+                                        public void onSuccess(JSONObject result) {
+                                            context.sendNotifyUpdate(CircularActivity.class,MSGCHANGE,position,0);
+                                        }
+
+                                        @Override
+                                        public void onFail(JSONObject result) {
+
+                                            ToastUtil.MakeShortToast(context,result.optString(Constant.INFO));
+                                        }
+                                    });
+                                }
+                            }).setNegativeButton("取消", null).show();
+                    return true;
+                }
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,5 +150,8 @@ public class CircularAdapter extends BaseAdapter {
 
         }
     }
+    //--------------
+    private final static String MSGCHANGE="msgchange";
+
 
 }
