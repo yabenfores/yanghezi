@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.raoleqing.yangmatou.ui.user.SendOutActivity">
-
+    tools:context="com.raoleqing.yangmatou.ui.user.CircularActivity">
     <com.raoleqing.yangmatou.xlist.XListView
-        android:id="@+id/list_fahuo"
+        android:id="@+id/list_cir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

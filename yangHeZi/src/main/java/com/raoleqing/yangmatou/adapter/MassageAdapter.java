@@ -20,7 +20,9 @@ import com.raoleqing.yangmatou.ben.Pavilion;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.mi.ChatActivity;
 import com.raoleqing.yangmatou.ui.showwhat.CountryActivity;
+import com.raoleqing.yangmatou.ui.user.CircularActivity;
 import com.raoleqing.yangmatou.ui.user.Massage;
+import com.raoleqing.yangmatou.ui.user.SendOutActivity;
 
 import java.util.List;
 
@@ -86,7 +88,10 @@ public class MassageAdapter extends BaseAdapter {
                     holder.lyo_massage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
+                            Intent intent=new Intent(context,CircularActivity.class);
+                            intent.putExtra("msg_groupid",massage.getMsg_groupid());
+                            intent.putExtra("msg_grouptype",massage.getMsg_grouptype());
+                            context.startActivity(intent);
                         }
                     });
                     break;
@@ -94,7 +99,10 @@ public class MassageAdapter extends BaseAdapter {
                     holder.lyo_massage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
+                            Intent intent=new Intent(context,SendOutActivity.class);
+                            intent.putExtra("msg_groupid",massage.getMsg_groupid());
+                            intent.putExtra("msg_grouptype",massage.getMsg_grouptype());
+                            context.startActivity(intent);
                         }
                     });
                     break;

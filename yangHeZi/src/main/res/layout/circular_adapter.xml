@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="10dp"
+    android:id="@+id/lyo_cir"
+    android:layout_marginBottom="10dp"
+    android:background="@color/encode_view"
+    android:orientation="vertical">
+    <TextView
+        style="@style/text04_type01"
+        android:id="@+id/tv_cir_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="5dp"
+        android:id="@+id/tv_cir_title"
+        style="@style/text18sp_typeblack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

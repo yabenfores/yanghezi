@@ -7,124 +7,108 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.Goods;
+import com.raoleqing.yangmatou.ben.SendOut;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class FhuoMsgAdapter extends BaseAdapter {
 
-	List<Goods> goodsList;
-	private LayoutInflater mInflater;
+    Context context;
+    List<SendOut> goodsList;
+    private LayoutInflater mInflater;
 
-	FhuoMsgAdapter() {
+    FhuoMsgAdapter() {
 
-	}
+    }
 
-	public FhuoMsgAdapter(Context context, List<Goods> goodsList ) {
-		this.goodsList = goodsList;
-		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	}
+    public FhuoMsgAdapter(Context context, List<SendOut> goodsList) {
+        this.goodsList = goodsList;
+        this.context=context;
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
 
-	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return goodsList.size();
-	}
+    @Override
+    public int getCount() {
+        // TODO Auto-generated method stub
+        return goodsList.size();
+    }
 
-	@Override
-	public Object getItem(int arg0) {
-		// TODO Auto-generated method stub
-		return goodsList.get(arg0);
-	}
+    @Override
+    public Object getItem(int arg0) {
+        // TODO Auto-generated method stub
+        return goodsList.get(arg0);
+    }
 
-	@Override
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
+    @Override
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO Auto-generated method stub
+        ViewHolder holder = null;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.fahuo_msg_adapter, parent, false);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
 
-		ViewHolder holder = null;
-		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.goods_list_adapter, parent, false);
-			holder = new ViewHolder(convertView);
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
-		
-		try {
-			
-			Goods mGoods = goodsList.get(position);
-			
-			ImageLoader.getInstance().displayImage(mGoods.getGoods_image(), holder.goods_image,
-					YangHeZiApplication.imageOption(R.drawable.image_icon01));
-			// 0无促销，1团购，2限时折扣
-			// goods_promotion_price 原价是：goods_marketprice
-			// 折扣：goods_promotion_price/goods_marketprice*10
-			double goods_promotion_price = mGoods.getGoods_promotion_price();
-			double goods_marketprice = mGoods.getGoods_marketprice();
-			holder.goods_price.setText("￥" + goods_promotion_price);
-			holder.goods_price01.setText("￥" + goods_marketprice);
+        try {
+            SendOut mGoods = goodsList.get(position);
+            holder.tv_msg_orderid.setText(mGoods.getOrder_sn());
+            holder.tv_ship_num.setText(mGoods.getShipping_code());
+//			holder.tv_ship.setText(mGoods.get);
+            holder.tv_send_time.setText(mGoods.getMsg_createtime());
+            JSONArray goods=mGoods.getGoods_array();
+            for (int i=0;i<goods.length();i++){
+                JSONObject object=goods.getJSONObject(i);
+                holder.tv_goods_comment.setText(object.optString("goods_name"));
+                ImageLoader.getInstance().displayImage(object.optString("goods_image"),holder.iv_goods);
+                holder.lyo_goods_list.addView(holder.lyo_goods);
+            }
 
-			double discount = goods_promotion_price / goods_marketprice * 10;
-			DecimalFormat df = new DecimalFormat("###.0");
-			if (mGoods.getGoods_promotion_type() == 0) {
-				holder.goods_discount.setText(df.format(discount) + "");
-				holder.goods_discount.setVisibility(View.GONE);
-			} else if (mGoods.getGoods_promotion_type() == 1) {
-				holder.goods_discount.setText("团购");
-				holder.goods_discount.setVisibility(View.VISIBLE);
-			} else {
-				holder.goods_discount.setText(df.format(discount) + "");
-				holder.goods_discount.setVisibility(View.VISIBLE);
-			}
 
-			holder.goods_name.setText(mGoods.getGoods_name());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
 
-		
-		
-		
-		
-		
-		return convertView;
-	}
+        return convertView;
+    }
 
-	class ViewHolder {
+    class ViewHolder {
 
-		ImageView goods_image;
-		TextView goods_price;
-		TextView goods_price01;
-		TextView goods_discount;
-		TextView goods_name;
+        ImageView iv_goods;
+        LinearLayout lyo_goods_list, lyo_goods;
+        TextView tv_msg_orderid, tv_goods_comment, tv_ship, tv_ship_num, tv_send_time;
 
-		public ViewHolder(View convertView) {
+        public ViewHolder(View convertView) {
+            lyo_goods_list = (LinearLayout) convertView.findViewById(R.id.lyo_goods_list);
+            lyo_goods = (LinearLayout) convertView.findViewById(R.id.lyo_goods);
+            tv_msg_orderid = (TextView) convertView.findViewById(R.id.tv_msg_orderid);
+            tv_goods_comment = (TextView) convertView.findViewById(R.id.tv_goods_comment);
+            tv_ship = (TextView) convertView.findViewById(R.id.tv_ship);
+            tv_ship_num = (TextView) convertView.findViewById(R.id.tv_ship_num);
+            tv_send_time = (TextView) convertView.findViewById(R.id.tv_send_time);
+            iv_goods= (ImageView) convertView.findViewById(R.id.iv_goods);
+        }
 
-			this.goods_image = (ImageView) convertView.findViewById(R.id.goods_image);
-			this.goods_price = (TextView) convertView.findViewById(R.id.goods_price);
-			this.goods_price01 = (TextView) convertView.findViewById(R.id.goods_price01);
-			this.goods_discount = (TextView) convertView.findViewById(R.id.goods_discount);
-			this.goods_name = (TextView) convertView.findViewById(R.id.goods_name);
-			
-			this.goods_price01.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);  
-
-		}
-
-	}
+    }
 
 
 }

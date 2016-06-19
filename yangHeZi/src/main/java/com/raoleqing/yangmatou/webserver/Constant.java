@@ -63,5 +63,6 @@ public class Constant {
     public final static String PAYLIST="Home/Orders/payList";//支付列表
     public final static String AFTERREASON="Home/Orders/AfterReason";//退换原因
     public final static String MESSAGEINFO="Home/MessageInfo/Index";//消息列表
+    public final static String MSGLIST="Home/MessageInfo/Msglist";//发货列表
 
 }

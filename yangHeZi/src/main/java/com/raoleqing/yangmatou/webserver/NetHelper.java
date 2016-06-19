@@ -260,9 +260,13 @@ public class NetHelper {
     public static void AfterReason(NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.AFTERREASON, NetParams.HttpMethod.Post, true, connectListener);
     }
-    //退换原因
+    //消息列表
     public static void MessageInfo(NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.MESSAGEINFO, NetParams.HttpMethod.Post, true, connectListener);
+    }
+    //发货消息
+    public static void Msglist(String msg_groupid,String msg_grouptype,String page,NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.MSGLIST, NetParams.HttpMethod.Post, true, connectListener,"msg_groupid",msg_groupid,"msg_grouptype",msg_grouptype,"page",page);
     }
 
 
