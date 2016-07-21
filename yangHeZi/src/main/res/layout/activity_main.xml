@@ -25,14 +25,15 @@
                 android:orientation="vertical"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:paddingTop="5dp">
+                >
 
                 <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:background="@drawable/qrcode_icon" />
 
                 <TextView
+                    android:visibility="gone"
                     style="@style/text01_type02"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,14 +67,15 @@
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:paddingTop="5dp">
+                    >
 
                     <ImageView
-                        android:layout_width="22dp"
-                        android:layout_height="22dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:background="@drawable/main_advisory_icon" />
 
                     <TextView
+                        android:visibility="gone"
                         style="@style/text01_type02"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

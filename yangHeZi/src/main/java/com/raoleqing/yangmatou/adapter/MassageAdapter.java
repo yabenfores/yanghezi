@@ -8,21 +8,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.hyphenate.easeui.EaseConstant;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.raoleqing.yangmatou.BaseActivity;
-import com.raoleqing.yangmatou.MainActivity;
 import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.ben.Pavilion;
-import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.mi.ChatActivity;
-import com.raoleqing.yangmatou.ui.showwhat.CountryActivity;
 import com.raoleqing.yangmatou.ui.user.CircularActivity;
 import com.raoleqing.yangmatou.ui.user.Massage;
 import com.raoleqing.yangmatou.ui.user.SendOutActivity;
+import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 
 import java.util.List;
 
@@ -111,12 +106,9 @@ public class MassageAdapter extends BaseAdapter {
 
                         @Override
                         public void onClick(View v) {
-                            int id=massage.getMsg_serviceid();
-                            if (id==0){
-                                return;
-                            }
+                            String user_msg_helper= SharedPreferencesUtil.getString(context,"user_msg_helper");
                             Intent i = new Intent(context, ChatActivity.class);
-                            i.putExtra(EaseConstant.EXTRA_USER_ID, massage.getMsg_serviceid());
+                            i.putExtra(EaseConstant.EXTRA_USER_ID, user_msg_helper);
                             context.startActivity(i);
                         }
                     });

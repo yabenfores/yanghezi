@@ -13,20 +13,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
 import com.loopj.android.http.RequestParams;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.MainActivity;
 import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.ui.user.ForgetPasswordActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
-import com.raoleqing.yangmatou.uitls.UserUitls;
 import com.raoleqing.yangmatou.webserver.BaseNetConnection;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
@@ -34,6 +30,11 @@ import com.raoleqing.yangmatou.webserver.NetHelper;
 import com.raoleqing.yangmatou.webserver.NetParams;
 
 import org.json.JSONObject;
+
+import java.util.Set;
+
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 
 /**
  * 登录
@@ -95,7 +96,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
         login_but.setOnClickListener(this);
         password_show.setOnClickListener(this);
 
-        String UserName = UserUitls.getLonginUserName(loginActivity.this);
+        String UserName = SharedPreferencesUtil.getString(loginActivity.this,"user_name");
         if (UserName != null) {
             user_name.setText(UserName);
             String member_avatar = SharedPreferencesUtil.getString(loginActivity.this, "member_avatar");
@@ -154,13 +155,13 @@ public class loginActivity extends BaseActivity implements OnClickListener {
 
         String userName = user_name.getText().toString().trim();
         if (userName == null || userName.trim().equals("")) {
-            Toast.makeText(this, "请输入用户名", 1).show();
+            makeShortToast("请输入用户名");
             return;
         }
 
         String userPassword = user_password.getText().toString().trim();
         if (userPassword == null || userPassword.trim().equals("")) {
-            Toast.makeText(this, "请输入密码", 1).show();
+            makeShortToast("请输入密码");
             return;
         }
 
@@ -178,7 +179,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
     /**
      * 登陆
      **/
-    private void userLongin(String loginName, String loginPwd) {
+    private void userLongin(final String loginName, String loginPwd) {
         //Home/Users/checkLogin
         String authorization, md5, auth;
         md5 = getMD5(loginPwd);
@@ -203,11 +204,15 @@ public class loginActivity extends BaseActivity implements OnClickListener {
             public void onSuccess(JSONObject result) {
                 try {
                     JSONObject json = result.optJSONObject(Constant.DATA);
-                    ToastUtil.MakeShortToast(BaseActivity.getAppContext(), "登录成功");
                     String member_auth = json.optString("Authorization");//认证
                     SharedPreferencesUtil.putString(loginActivity.this, "Authorization", member_auth);
                     getUsers();
-
+                    JPushInterface.setAlias(getAppContext(), getMD5(loginName), new TagAliasCallback() {
+                        @Override
+                        public void gotResult(int i, String s, Set<String> set) {
+                            Log.e("qqqqq",s);
+                        }
+                    });
 
                 } catch (Exception e) {
                     throwEx(e);

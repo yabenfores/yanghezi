@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -23,7 +22,6 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.adapter.BrandAdapter;
 import com.raoleqing.yangmatou.adapter.ReasonAdapter;
 import com.raoleqing.yangmatou.common.CustomDialog;
 import com.raoleqing.yangmatou.common.ImageUtils;
@@ -410,14 +408,12 @@ public class RefuActivity extends BaseActivity implements View.OnClickListener, 
 
                         @Override
                         public void onSuccess(JSONObject result) {
-
                             makeShortToast(result.optString(Constant.INFO));
                             finish();
                         }
 
                         @Override
                         public void onFail(JSONObject result) {
-
                             makeShortToast(result.optString(Constant.INFO));
                         }
                     });

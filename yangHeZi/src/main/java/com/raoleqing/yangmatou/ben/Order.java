@@ -1,9 +1,6 @@
 package com.raoleqing.yangmatou.ben;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.Arrays;
 
 public class Order {
 	
@@ -11,6 +8,26 @@ public class Order {
 	private double goods_amount;//商品价格
 	private double order_amount;//订单总价
 	private String store_name;//
+
+	public String getRefund_id() {
+		return refund_id;
+	}
+
+	public void setRefund_id(String refund_id) {
+		this.refund_id = refund_id;
+	}
+
+	private String refund_id;//
+
+	public String getStore_id() {
+		return store_id;
+	}
+
+	public void setStore_id(String store_id) {
+		this.store_id = store_id;
+	}
+
+	private String store_id;//
 	private int refund_state;//1，2待审核,3为已完成,
 	private int refund_type;//1为退款,2为退货，3为换货
 

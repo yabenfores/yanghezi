@@ -1,2 +1,2 @@
-include ':library', ':easeui'
+include ':library', ':easeui',':wxpay'
 include ':yangHeZi'

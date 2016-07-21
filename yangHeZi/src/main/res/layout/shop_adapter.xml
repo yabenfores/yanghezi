@@ -209,6 +209,7 @@
                     android:background="@color/line01" />
 
                 <LinearLayout
+                    android:id="@+id/lyo_shop_share"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

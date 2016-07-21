@@ -1,16 +1,15 @@
 package com.raoleqing.yangmatou.uitls;
 
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 public class PaaCreator {
 	public static JSONObject randomPaa(JSONObject object) {
@@ -30,7 +29,7 @@ public class PaaCreator {
 			paaParams.put("orderAmount", object.optString("tl_order_amount"));
 			paaParams.put("orderCurrency", object.optString("tl_ordercurrency"));
 			paaParams.put("orderDatetime", object.optString("tl_order_add_time"));
-			paaParams.put("productName", object.optString("productName"));
+			paaParams.put("productName", object.optString("tl_orderno"));
 //			paaParams.put("ext1", ext1FromInput());
 //			paaParams.put("ext1", "<USER>201406231006545</USER>");
 			paaParams.put("payType", "27");

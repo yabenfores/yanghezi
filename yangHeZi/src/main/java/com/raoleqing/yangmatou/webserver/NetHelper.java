@@ -1,18 +1,5 @@
 package com.raoleqing.yangmatou.webserver;
 
-import android.widget.Toast;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.mining.app.zxing.decoding.Intents;
-import com.raoleqing.yangmatou.BaseActivity;
-import com.raoleqing.yangmatou.uitls.ToastUtil;
-import com.raoleqing.yangmatou.uitls.UserUitls;
-
-import org.json.JSONObject;
-
-import java.io.File;
-
-
 /**
  * Created by ybin on 2016/5/10.
  */
@@ -188,8 +175,8 @@ public class NetHelper {
     }
 
     //继续支付
-    public static void order_conpay(String order_id, NetConnectionInterface.iConnectListener3 connectListener) {
-        new BaseNetConnection(Constant.ORDER_CONPAY, NetParams.HttpMethod.Post, true, connectListener, "order_id", order_id);
+    public static void order_conpay(String order_id,String payment_id  ,NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.ORDER_CONPAY, NetParams.HttpMethod.Post, true, connectListener, "order_id", order_id,"payment_id",payment_id);
     }
 
     //品牌
@@ -271,6 +258,14 @@ public class NetHelper {
     //删除消息
     public static void delMsg(String msg_id,NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.MSGLIST, NetParams.HttpMethod.Post, true, connectListener,"msg_id",msg_id);
+    }
+    //专题
+    public static void topics(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.TOPICS, NetParams.HttpMethod.Post, true, connectListener);
+    }
+    //退货详情
+    public static void REFUNDDETAIL(String refund_id,NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.REFUNDDETAIL, NetParams.HttpMethod.Post, true, connectListener,"refund_id",refund_id);
     }
 
 

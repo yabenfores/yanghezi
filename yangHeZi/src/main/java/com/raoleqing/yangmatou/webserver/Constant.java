@@ -4,8 +4,10 @@ package com.raoleqing.yangmatou.webserver;
  * Created by ybin on 2016/5/10.
  */
 public class Constant {
+    public final static String WXAPPID = "wxc17de1d8065faefa";
     public static final int WX_PAY_SUCCESS = 0;
     public static final int WX_PAY_FAIL = -1;
+    public static final int WX_PAY_CANCEL = -2;
     public static final String API_BASE = "http://114.67.59.57/app/index.php/";
     public static final String REGULAR_PHONE = "^1[3-9]\\d{9}$";   // 手机号码正则表达式
     public static final String CHARSET = "utf-8";
@@ -67,5 +69,7 @@ public class Constant {
     public final static String MESSAGEINFO="Home/MessageInfo/Index";//消息列表
     public final static String MSGLIST="Home/MessageInfo/Msglist";//发货列表
     public final static String DELMSG="Home/MessageInfo/delMsg";//发货列表
+    public final static String TOPICS="Home/Index/topics";//专题
+    public final static String REFUNDDETAIL="Home/Users/RefundDetail";//退货详情
 
 }

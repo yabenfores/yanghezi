@@ -1,13 +1,21 @@
 package com.raoleqing.yangmatou.main;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -24,9 +32,9 @@ import com.raoleqing.yangmatou.ben.Store;
 import com.raoleqing.yangmatou.common.CheckNet;
 import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.ChildViewPager.OnSingleTouchListener;
-import com.raoleqing.yangmatou.ui.goods.GoodsListActivity;
 import com.raoleqing.yangmatou.common.MyPagerAdapter;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
+import com.raoleqing.yangmatou.ui.goods.GoodsListActivity;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.uitls.WindowManagerUtils;
@@ -37,23 +45,14 @@ import com.raoleqing.yangmatou.webserver.NetHelper;
 import com.raoleqing.yangmatou.webserver.WebActivity;
 import com.raoleqing.yangmatou.xlist.XListView;
 
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RadioGroup;
-import android.widget.Toast;
-import android.widget.ImageView.ScaleType;
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /*
  *购物广场
@@ -145,7 +144,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
         listView.setPullRefreshEnable(true);// 下拉刷新
 
         if (listView.getHeaderViewsCount() < 2) {
-
             if (advManageView == null) {
                 advManageView = getActivity().getLayoutInflater().from(getActivity()).inflate(R.layout.adv_manage,
                         null);
@@ -188,7 +186,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
      * 广告数据加载
      **/
     private void getAdvertising() {
-        // TODO Auto-generated method stub
+        if (advManageList.size()>0) return;
 
         try {
 
@@ -256,6 +254,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
             e.printStackTrace();
         }
 
+        if (getActivity()==null) return;
         ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
     }
@@ -264,6 +263,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
      * 广告内容
      **/
     private void setAdvManage() {
+
         // TODO Auto-generated method stub
 
         try {
@@ -292,10 +292,9 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
 
                 @Override
                 public void onSingleTouch() {
-                    // TODO Auto-generated method stub
                     // System.out.println("ChildViewPager --> onclick()");
                     if (!CheckNet.isNetworkConnected(getActivity())) {
-                        Toast.makeText(getActivity(), "没有可用的网络连接，请检查网络设置", 1).show();
+                        ToastUtil.MakeShortToast(getContext(),"没有可用的网络连接，请检查网络设置");
                         return;
                     }
                     AdvManage nAdvManage = advManageList.get(pagerIndex);
@@ -321,18 +320,17 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
     private void getStoreList() {
         // TODO Auto-generated method stub
 
-        ((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
-
-
         NetHelper.getStoreList(page + "", new NetConnectionInterface.iConnectListener3() {
             @Override
             public void onStart() {
-
+                ((MainActivity) getActivity()).setProgressVisibility(View.VISIBLE);
             }
 
             @Override
             public void onFinish() {
 
+                if (getActivity()==null) return;
+                ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
             }
 
             @Override
@@ -414,15 +412,13 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
             e.printStackTrace();
         }
 
-        ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
-
     }
 
     /**
      * 国家馆:
      **/
     private void getPavilion() {
-        // TODO Auto-generated method stub
+        if (pavilionList.size()>0) return;
 
         HttpUtil.post(getActivity(), HttpUtil.GET_PAVILION, new JsonHttpResponseHandler() {
             // 获取数据成功会调用这里
@@ -457,7 +453,6 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
      * 国家馆:
      **/
     protected void pavilionResolveJson(JSONObject response) {
-        System.out.println("aaaaaaaaa" + response);
         // TODO Auto-generated method stub
 
         try {
@@ -574,7 +569,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
             storeList.get(position).setFans(likeNum+"");
             storeAdapter.notifyDataSetChanged();
 
-            Toast.makeText(getActivity(), message, 1).show();
+            ToastUtil.MakeShortToast(getContext(),message);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
@@ -633,7 +628,7 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
             String message = response.optString("message");
 
             if (response == null) {
-                Toast.makeText(getActivity(), message, 1).show();
+                ToastUtil.MakeShortToast(getContext(),message);
                 ((MainActivity) getActivity()).setMainProgress(View.GONE);
                 return;
             }
@@ -644,11 +639,11 @@ public class GouWuGuangChangFragment extends Fragment implements XListView.IXLis
             storeList.get(position).setFans(likeNum+"");
 
             storeAdapter.notifyDataSetChanged();
-            Toast.makeText(getActivity(), message, 1).show();
+            ToastUtil.MakeShortToast(getContext(),message);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
-            Toast.makeText(getActivity(), "取消失败", 1).show();
+            ToastUtil.MakeShortToast(getContext(),"取消失败");
         }
 
         ((MainActivity) getActivity()).setProgressVisibility(View.GONE);

@@ -12,6 +12,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ui.goods.GoodsPayActivity;
+import com.raoleqing.yangmatou.ui.goods.JixuPayActivity;
 import com.raoleqing.yangmatou.ui.goods.PayList;
 import java.util.List;
 
@@ -72,6 +73,7 @@ public class PayAdapter extends BrandAdapter {
                 @Override
                 public void onClick(View v) {
                     BaseActivity.sendNotifyUpdate(GoodsPayActivity.class,SELECTPAY,pay.getPayment_id()+"");
+                    BaseActivity.sendNotifyUpdate(JixuPayActivity.class,SELECTPAY,pay.getPayment_id()+"");
                 }
             });
         } catch (Exception e) {

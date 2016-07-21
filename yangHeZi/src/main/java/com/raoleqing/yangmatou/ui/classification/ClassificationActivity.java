@@ -1,31 +1,6 @@
 package com.raoleqing.yangmatou.ui.classification;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-import com.raoleqing.yangmatou.BaseActivity;
-import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.adapter.CatGoodesAdapter;
-import com.raoleqing.yangmatou.adapter.OneCatAdapter;
-import com.raoleqing.yangmatou.ben.CatGoods;
-import com.raoleqing.yangmatou.ben.OneCat;
-import com.raoleqing.yangmatou.ben.ThreeData;
-import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
-import com.raoleqing.yangmatou.ui.goods.GoodsListActivity;
-import com.raoleqing.yangmatou.uitls.ToastUtil;
-import com.raoleqing.yangmatou.webserver.Constant;
-import com.raoleqing.yangmatou.webserver.HttpUtil;
-import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
-import com.raoleqing.yangmatou.webserver.NetHelper;
-
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,11 +13,29 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.loopj.android.http.RequestParams;
+import com.raoleqing.yangmatou.BaseActivity;
+import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.adapter.CatGoodesAdapter;
+import com.raoleqing.yangmatou.adapter.OneCatAdapter;
+import com.raoleqing.yangmatou.ben.CatGoods;
+import com.raoleqing.yangmatou.ben.OneCat;
+import com.raoleqing.yangmatou.ben.ThreeData;
+import com.raoleqing.yangmatou.ui.goods.GoodsListActivity;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 一级分类
@@ -257,7 +250,6 @@ public class ClassificationActivity extends BaseActivity implements OnClickListe
                 setProgressVisibility(View.GONE);
                 return;
             }
-            System.out.println("aaaaaaaaaaaa" + data.toString());
             if (goodsList.size() > 0) {
                 goodsList.retainAll(goodsList);
                 goodsList.clear();

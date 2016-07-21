@@ -23,19 +23,14 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import android.widget.Toast;
 
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
-import com.hyphenate.chat.EMOptions;
 import com.hyphenate.easeui.EaseConstant;
-import com.hyphenate.easeui.controller.EaseUI;
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.raoleqing.yangmatou.ben.OneCat;
 import com.raoleqing.yangmatou.main.DealsFragment;
@@ -54,7 +49,6 @@ import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.uitls.UserUitls;
 import com.raoleqing.yangmatou.webserver.BaseNetConnection;
 import com.raoleqing.yangmatou.webserver.Constant;
-import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
 import com.raoleqing.yangmatou.webserver.NetParams;
@@ -74,7 +68,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     private LinearLayout gou_wu_advisory;// 在线
     private EditText activity_search;// 搜索
     private LinearLayout gor_wu_title_layout;
-
     private ImageView webBack;
     private LinearLayout main_host01;
     private LinearLayout main_host02;
@@ -358,7 +351,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 main_host_image05.setImageResource(R.drawable.main_host05);
                 gor_wu_title_layout.setVisibility(View.VISIBLE);
                 main_title_layout.setVisibility(View.VISIBLE);
-                to_top.setVisibility(View.VISIBLE);
+                to_top.setVisibility(View.GONE);
 
                 main_host_text01.setTextColor(text01);
                 main_host_text02.setTextColor(text02);
@@ -409,7 +402,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 main_host_image03.setImageResource(R.drawable.main_host03_host);
                 main_host_image04.setImageResource(R.drawable.main_host04);
                 main_host_image05.setImageResource(R.drawable.main_host05);
-                gor_wu_title_layout.setVisibility(View.VISIBLE);
+                gor_wu_title_layout.setVisibility(View.GONE);
                 main_title_layout.setVisibility(View.VISIBLE);
                 to_top.setVisibility(View.GONE);
 

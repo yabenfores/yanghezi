@@ -1,10 +1,11 @@
 package com.raoleqing.yangmatou.common;
 
-import java.io.File;
+import android.app.Application;
+import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
-import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -15,23 +16,9 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
-import com.raoleqing.yangmatou.BaseActivity;
-import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
-import com.raoleqing.yangmatou.uitls.ToastUtil;
-import com.raoleqing.yangmatou.webserver.BaseNetConnection;
-import com.raoleqing.yangmatou.webserver.Constant;
-import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
-import com.raoleqing.yangmatou.webserver.NetParams;
 
-import android.app.Application;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.util.Base64;
-import android.util.Log;
-import android.view.View;
-
-import org.json.JSONObject;
+import java.io.File;
+import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -41,12 +28,12 @@ public class YangHeZiApplication extends Application {
     private static ImageCache mImageCache;
     private static YangHeZiApplication instance;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
         appContext = this;
         initImageLoader(this);
-
         EMOptions options = new EMOptions();
         // 默认添加好友时，是不需要验证的，改成需要验证
         options.setAcceptInvitationAlways(false);
@@ -54,7 +41,6 @@ public class YangHeZiApplication extends Application {
         EMClient.getInstance().init(this, options);
         // 在做打包混淆时，关闭debug模式，避免消耗不必要的资源
         EMClient.getInstance().setDebugMode(true);
-
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
 
@@ -92,11 +78,6 @@ public class YangHeZiApplication extends Application {
                 .discCache(new UnlimitedDiskCache(cacheDir))
                 .defaultDisplayImageOptions(DisplayImageOptions.createSimple())
                 .imageDownloader(new BaseImageDownloader(context, 5 * 1000, 30 * 1000)) // connectTimeout
-                // (5
-                // s),
-                // readTimeout
-                // (30
-                // s)
                 .writeDebugLogs() // Remove for release app
                 .build();
 

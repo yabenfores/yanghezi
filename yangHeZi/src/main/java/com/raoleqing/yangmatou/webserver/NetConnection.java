@@ -3,7 +3,12 @@ package com.raoleqing.yangmatou.webserver;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.uitls.LogUtil;
+import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -19,13 +24,13 @@ import java.net.URLEncoder;
 public class NetConnection {
     public NetConnection(final boolean doEncode, final String charset,
                          final String url, final NetParams.HttpMethod method, final NetConnectionInterface.iSetHeader headerInterface,
-                         final NetConnectionInterface.iConnectListener conectListener, final String... kvs) {
+                         final NetConnectionInterface.iConnectListener3 conectListener, final String... kvs) {
         this(doEncode, charset, url, method, headerInterface, conectListener, 10, kvs);
     }
 
     public NetConnection(final boolean doEncode, final String charset,
                          final String url, final NetParams.HttpMethod method, final NetConnectionInterface.iSetHeader headerInterface,
-                         final NetConnectionInterface.iConnectListener conectListener, final int timeOut, final String... kvs) {
+                         final NetConnectionInterface.iConnectListener3 conectListener, final int timeOut, final String... kvs) {
         if (conectListener instanceof NetConnectionInterface.iConnectListener2)
             ((NetConnectionInterface.iConnectListener2) conectListener).onStart();
         new AsyncTask<Void, Void, String>() {
@@ -98,19 +103,40 @@ public class NetConnection {
 
             protected void onPostExecute(String result) {
 //                super.onPostExecute(result);
-                Log.e(String.valueOf(this.getClass()), result);
-                if (conectListener == null) return;
-                if (result != null) {
-                    conectListener.onSuccess(result);
-                } else {
-                    conectListener.onFail(result);
+                try {
+                    Log.e(String.valueOf(this.getClass()), result);
+                    JSONObject json = new JSONObject(result);
+                        String status = json.optString(Constant.NET_STATUS);
+                        if (status.equals(Constant.NET_STATUS_SUCCESS)||status.equals(Constant.NET_STATUS_SUCCESS1)) {
+                            conectListener.onSuccess( json);
+
+                        } else {
+                            if (json.optString("message").equals("请重新登录")){
+                                SharedPreferencesUtil.putBoolean(BaseActivity.getAppContext(), "isLongin", false);
+                                BaseActivity.sendNotifyUpdate(BaseActivity.class,NOTIFY_LOGIN);
+                            }
+                            else {
+                            conectListener.onFail( json);}
+                        }
+//                    if (conectListener == null) return;
+//                    if (result != null) {
+//                        conectListener.onSuccess(object);
+//                    } else {
+//                        conectListener.onFail(object);
+//                    }
+//                    if (conectListener instanceof NetConnectionInterface.iConnectListener2)
+//                        ((NetConnectionInterface.iConnectListener2) conectListener).onFinish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                if (conectListener instanceof NetConnectionInterface.iConnectListener2)
-                    ((NetConnectionInterface.iConnectListener2) conectListener).onFinish();
+                finally {
+                    conectListener.onFinish();
+                }
             }
 
         }.execute();
     }
 
+    public final static String NOTIFY_LOGIN="notify_login";
 
 }

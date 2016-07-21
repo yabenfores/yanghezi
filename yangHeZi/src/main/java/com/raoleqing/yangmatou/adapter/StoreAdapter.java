@@ -1,16 +1,5 @@
 package com.raoleqing.yangmatou.adapter;
 
-import java.util.List;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.ben.Goods;
-import com.raoleqing.yangmatou.ben.Store;
-import com.raoleqing.yangmatou.common.YangHeZiApplication;
-import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
-import com.raoleqing.yangmatou.ui.shop.ShopActivity;
-import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
-import com.raoleqing.yangmatou.uitls.UserUitls;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -25,10 +14,22 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.ImageView.ScaleType;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.ben.Goods;
+import com.raoleqing.yangmatou.ben.Store;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
+import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
+import com.raoleqing.yangmatou.ui.shop.ShopActivity;
+import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
+import com.raoleqing.yangmatou.uitls.UserUitls;
+
+import java.util.List;
 
 /**
  * 首页
@@ -86,10 +87,9 @@ public class StoreAdapter extends BaseAdapter {
 		}
 
 		try {
-
+			holder.store_icon.setImageResource(R.color.transparent);
 			final Store mStore = storeList.get(position);
-			ImageLoader.getInstance().displayImage(mStore.getImg(), holder.store_icon,
-					YangHeZiApplication.imageOption(R.drawable.store_icon));
+			ImageLoader.getInstance().displayImage(mStore.getImg(), holder.store_icon);
 			holder.store_name.setText(mStore.getStore_name());
 			holder.store_fans.setText("|  粉丝：" + mStore.getFans());
 			holder.store_content.setText(mStore.getContent());

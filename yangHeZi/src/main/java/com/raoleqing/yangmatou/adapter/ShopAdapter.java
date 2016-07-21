@@ -1,19 +1,5 @@
 package com.raoleqing.yangmatou.adapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.adapter.ShowShatAdapter.ViewHolder;
-import com.raoleqing.yangmatou.ben.Shop;
-import com.raoleqing.yangmatou.ben.ShowShat;
-import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
-import com.raoleqing.yangmatou.ui.goods.GoodsPayActivity;
-import com.raoleqing.yangmatou.ui.shop.ShopActivity;
-import com.raoleqing.yangmatou.uitls.UserUitls;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
@@ -26,12 +12,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.ben.Shop;
+import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
+import com.raoleqing.yangmatou.ui.goods.GoodsPayActivity;
+import com.raoleqing.yangmatou.ui.shop.ShopActivity;
+import com.raoleqing.yangmatou.uitls.UserUitls;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShopAdapter extends BaseAdapter {
 
 
     private List<Shop> sowShatList;
     private LayoutInflater mInflater;
-    private Context context;
+    private ShopActivity context;
 
     private int ItemHeight = 0;
 
@@ -39,7 +36,7 @@ public class ShopAdapter extends BaseAdapter {
 
     }
 
-    public ShopAdapter(Context context, List<Shop> sowShatList) {
+    public ShopAdapter(ShopActivity context, List<Shop> sowShatList) {
         this.sowShatList = sowShatList;
         this.context = context;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -160,12 +157,18 @@ public class ShopAdapter extends BaseAdapter {
             }
         });
 
+        holder.lyo_shop_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.showShare();
+            }
+        });
         return convertView;
     }
 
     class ViewHolder {
 
-        LinearLayout lyo_shop_adapter,lyo_eval,lyo_like;
+        LinearLayout lyo_shop_adapter,lyo_eval,lyo_like,lyo_shop_share;
         ImageView tv_shop_adapter_image1, tv_shop_adapter_image2, tv_shop_adapter_image3, tv_shop_adapter_image4, tv_shop_adapter_image5, tv_shop_adapter_image6, iv_flg;
         TextView tv_shop_adapter_time, tv_shop_adapter_com, tv_flg, tv_shop_adapter_sale, tv_shop_adapter_sto, tv_shop_adapter_sprice, tv_shop_adapter_mprice, tv_shop_adapter_eval, tv_shop_adapter_share, tv_shop_adapter_fov;
 
@@ -190,6 +193,7 @@ public class ShopAdapter extends BaseAdapter {
             this.tv_shop_adapter_fov = (TextView) convertView.findViewById(R.id.tv_shop_adapter_fov);
 
             this.lyo_shop_adapter = (LinearLayout) convertView.findViewById(R.id.lyo_shop_adapter);
+            this.lyo_shop_share = (LinearLayout) convertView.findViewById(R.id.lyo_shop_share);
             this.lyo_eval = (LinearLayout) convertView.findViewById(R.id.lyo_eval);
             this.lyo_like = (LinearLayout) convertView.findViewById(R.id.lyo_like);
             this.shop_pay_but= (Button) convertView.findViewById(R.id.shop_pay_but);

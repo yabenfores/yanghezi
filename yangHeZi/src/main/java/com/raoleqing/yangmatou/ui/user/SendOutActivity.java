@@ -1,6 +1,5 @@
 package com.raoleqing.yangmatou.ui.user;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +22,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SendOutActivity extends BaseActivity implements XListView.IXListViewListener {
+public class SendOutActivity extends BaseActivity implements XListView.IXListViewListener,View.OnClickListener {
 
     private XListView msgList;
     private FhuoMsgAdapter adapter;
@@ -43,6 +42,7 @@ public class SendOutActivity extends BaseActivity implements XListView.IXListVie
     }
 
     private void initView() {
+        activity_return.setOnClickListener(this);
         msgList = (XListView) findViewById(R.id.list_fahuo);
         msgList.setXListViewListener(this);
         msgList.setPullLoadEnable(true);
@@ -116,5 +116,21 @@ public class SendOutActivity extends BaseActivity implements XListView.IXListVie
             makeShortToast("没有更多了");
         }
         msgList.stopLoadMore();
+    }
+
+    @Override
+    public void onClick(View v) {
+        try {
+            switch (v.getId()) {
+                case R.id.activity_return:
+                    onBackPressed();
+                    break;
+                default:
+                    break;
+            }
+
+        } catch (Exception e) {
+            throwEx(e);
+        }
     }
 }

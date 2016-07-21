@@ -1,7 +1,6 @@
 package com.raoleqing.yangmatou.adapter;
 
 import android.content.Context;
-import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +11,11 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.ben.Goods;
 import com.raoleqing.yangmatou.ben.SendOut;
-import com.raoleqing.yangmatou.common.YangHeZiApplication;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class FhuoMsgAdapter extends BaseAdapter {
@@ -72,6 +68,7 @@ public class FhuoMsgAdapter extends BaseAdapter {
             SendOut mGoods = goodsList.get(position);
             holder.tv_msg_orderid.setText(mGoods.getOrder_sn());
             holder.tv_ship_num.setText(mGoods.getShipping_code());
+            holder.tv_ship.setText(mGoods.getShipping_name());
 //			holder.tv_ship.setText(mGoods.get);
             holder.tv_send_time.setText(mGoods.getMsg_createtime());
             JSONArray goods=mGoods.getGoods_array();

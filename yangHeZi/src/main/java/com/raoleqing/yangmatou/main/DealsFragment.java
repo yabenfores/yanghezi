@@ -142,7 +142,9 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
         return view;
     }
 
+    private String url="";
     private void getWeb() {
+        if (!url.isEmpty()) return;
         try {
 
             NetHelper.flashSale(new NetConnectionInterface.iConnectListener3() {
@@ -159,12 +161,13 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
                 @Override
                 public void onSuccess(JSONObject result) {
                     JSONObject jsonObject = result.optJSONObject(Constant.DATA);
-                    String url = jsonObject.optString("url");
+                    url = jsonObject.optString("url");
                     webView.loadUrl(url);
                 }
 
                 @Override
                 public void onFail(JSONObject result) {
+                    if (getActivity()==null) return;
                     ((MainActivity) getActivity()).makeShortToast(result.optString(Constant.INFO));
                 }
             });
@@ -233,7 +236,13 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 //
 //		}
         webView = (WebView) view.findViewById(R.id.ww_app_flash);
-        webView.getSettings().setJavaScriptEnabled(true);
+        WebSettings webSettings=webView.getSettings();
+        webSettings.setSupportZoom(true);//支持缩放
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);//适应
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setJavaScriptEnabled(true);//支持JS
+        webSettings.setBuiltInZoomControls(false); //隐藏放大缩小按键
+        webSettings.setUseWideViewPort(false);  //不允许用户双击放大
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -468,7 +477,6 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
 
             for (int i = 0; i < data.length(); i++) {
                 JSONObject obj = data.optJSONObject(i);
-                System.out.println("aaaaaaaaaa:" + response.toString());
                 Store mStore = new Store();
                 mStore.setId(obj.optInt("id"));
                 mStore.setStore_id(obj.optInt("store_id"));
@@ -558,7 +566,6 @@ public class DealsFragment extends Fragment implements XListView.IXListViewListe
      * 国家馆:
      **/
     protected void pavilionResolveJson(JSONObject response) {
-        System.out.println("aaaaaaaaa" + response);
         // TODO Auto-generated method stub
 
         try {

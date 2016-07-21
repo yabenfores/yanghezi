@@ -197,6 +197,7 @@ public class ShowShatFragment extends Fragment implements OnClickListener, XList
             @Override
             public void onFinish() {
 
+                if (getActivity()==null) return;
                 ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
             }
@@ -371,6 +372,7 @@ public class ShowShatFragment extends Fragment implements OnClickListener, XList
 
             @Override
             public void onFinish() {
+                if (getActivity()==null) return;
                 ((MainActivity) getActivity()).setProgressVisibility(View.GONE);
 
             }

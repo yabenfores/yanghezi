@@ -24,15 +24,17 @@
             android:paddingRight="10dp" >
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:background="@drawable/show_icon01" />
 
             <TextView
+                android:visibility="gone"
                 style="@style/text02_type02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+                android:textColor="@color/text02"
                 android:text="写秀" />
         </LinearLayout>
 
@@ -41,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:textColor="@color/text02"
             android:text="秀一下" />
 
         <LinearLayout
@@ -56,15 +59,17 @@
             android:paddingRight="10dp" >
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:background="@drawable/show_icon02" />
 
             <TextView
+                android:visibility="gone"
                 style="@style/text02_type02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
+                android:textColor="@color/text02"
                 android:text="客服" />
         </LinearLayout>
 

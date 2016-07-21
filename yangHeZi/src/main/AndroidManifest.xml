@@ -86,7 +86,6 @@
             android:theme="@style/startingTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -109,7 +108,13 @@
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
             android:name=".ui.goods.GoodsPayActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="wxc17de1d8065faefa"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.shop.ShopActivity"
             android:screenOrientation="portrait" />
@@ -338,7 +343,24 @@
         <!-- </>值来自开发者平台取得的AppKey -->
 
         <activity android:name=".ui.user.SendOutActivity" />
-        <activity android:name=".ui.user.CircularActivity"></activity>
+        <activity android:name=".ui.user.CircularActivity"/>
+        <activity android:name=".ui.order.RefuCheckActivity"/>
+        <activity android:name=".ui.goods.JixuPayActivity"/>
+        <activity android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter >
+                <action android:name ="android.intent.action.VIEW"/>
+                <category android:name= "android.intent.category.DEFAULT" />
+                <data android:scheme ="wxc17de1d8065faefa"/><!--  注意这里，似乎对程序有影响，要加上-->
+            </intent-filter >
+        </activity>
+        <receiver
+            android:name= ".AppRegister">
+            <intent-filter >
+                <action android:name= "com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter >
+        </receiver >
     </application>
 
 </manifest>

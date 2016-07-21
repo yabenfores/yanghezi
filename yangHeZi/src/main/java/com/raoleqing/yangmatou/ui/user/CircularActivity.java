@@ -1,14 +1,8 @@
 package com.raoleqing.yangmatou.ui.user;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Criteria;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
@@ -16,9 +10,6 @@ import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.CircularAdapter;
 import com.raoleqing.yangmatou.ben.Circular;
-import com.raoleqing.yangmatou.ben.SendOut;
-import com.raoleqing.yangmatou.ui.login.loginActivity;
-import com.raoleqing.yangmatou.uitls.UserUitls;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
@@ -33,7 +24,7 @@ import java.util.List;
 
 import entity.NotifyUpdateEntity;
 
-public class CircularActivity extends BaseActivity implements XListView.IXListViewListener {
+public class CircularActivity extends BaseActivity implements XListView.IXListViewListener,View.OnClickListener {
 
     private XListView msgList;
     private int page = 1, maxPage = 1;
@@ -53,6 +44,7 @@ public class CircularActivity extends BaseActivity implements XListView.IXListVi
     }
 
     private void initView() {
+        activity_return.setOnClickListener(this);
         msgList = (XListView) findViewById(R.id.list_cir);
         msgList.setXListViewListener(this);
         msgList.setPullLoadEnable(true);
@@ -107,6 +99,21 @@ public class CircularActivity extends BaseActivity implements XListView.IXListVi
         adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onClick(View v) {
+        try {
+            switch (v.getId()) {
+                case R.id.activity_return:
+                    onBackPressed();
+                    break;
+                default:
+                    break;
+            }
+
+        } catch (Exception e) {
+            throwEx(e);
+        }
+    }
     @Override
     public void onRefresh() {
         if (criteriaList.size() != 0) {

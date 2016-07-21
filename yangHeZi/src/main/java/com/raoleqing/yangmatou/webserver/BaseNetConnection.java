@@ -16,10 +16,10 @@ import java.net.URLConnection;
  */
 
     public class BaseNetConnection {
-        private NetConnectionInterface.iConnectListener3 connectListener;
+
 
         public BaseNetConnection(String action, NetParams.HttpMethod method, boolean addAuth, NetConnectionInterface.iConnectListener3 connectListener, String... kvs) {
-            this(false, Constant.CHARSET, action, method, addAuth, connectListener, 10000, kvs);
+            this(false, Constant.CHARSET, action, method, addAuth, connectListener, 15000, kvs);
         }
 
         public BaseNetConnection(boolean doEncode, String charset, String action, NetParams.HttpMethod method, final boolean addAuth, NetConnectionInterface.iConnectListener3 connectListener, int timeOut, final String... kvs) {
@@ -41,16 +41,36 @@ import java.net.URLConnection;
                             auth = SharedPreferencesUtil.getString(BaseActivity.getAppContext(),"Authorization");
                             urlConnection.addRequestProperty("Authorization", auth);
                         }
-                        LogUtil.loge(this.getClass(), "auth:" + auth);
+                        LogUtil.loge(this.getClass(), "Authorization:" + auth);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-            }, netConnectListener, timeOut, kvs);
+            }, connectListener, timeOut, kvs);
 
 
         }
 
+        private NetConnectionInterface.iConnectListener3 connectListener= new NetConnectionInterface.iConnectListener3() {
+        @Override
+        public void onStart() {
+            if (connectListener == null) return;
+            connectListener.onStart();
+        }
+
+        @Override
+        public void onFinish() {
+        }
+
+        @Override
+        public void onSuccess(JSONObject result) {
+        }
+
+        @Override
+        public void onFail(JSONObject result) {
+
+        }
+    };
         private NetConnectionInterface.iConnectListener2 netConnectListener = new NetConnectionInterface.iConnectListener2() {
             @Override
             public void onStart() {
@@ -66,7 +86,6 @@ import java.net.URLConnection;
             public void onSuccess(String result) {
                 if (connectListener == null) return;
                 callback(result);
-
             }
 
             @Override

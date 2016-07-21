@@ -1,31 +1,9 @@
 package com.raoleqing.yangmatou.adapter;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.raoleqing.yangmatou.BaseActivity;
-import com.raoleqing.yangmatou.MainActivity;
-import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.ben.ShowShat;
-import com.raoleqing.yangmatou.common.YangHeZiApplication;
-import com.raoleqing.yangmatou.ui.showwhat.ShowShatActivity;
-import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
-import com.raoleqing.yangmatou.uitls.TimeUitls;
-import com.raoleqing.yangmatou.uitls.ToastUtil;
-import com.raoleqing.yangmatou.uitls.UserUitls;
-import com.raoleqing.yangmatou.webserver.Constant;
-import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
-import com.raoleqing.yangmatou.webserver.NetHelper;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Parcelable;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +14,23 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.raoleqing.yangmatou.MainActivity;
+import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.ben.ShowShat;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
+import com.raoleqing.yangmatou.ui.showwhat.ShowShatActivity;
+import com.raoleqing.yangmatou.uitls.TimeUitls;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.uitls.UserUitls;
+import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
+
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShowShatAdapter extends BaseAdapter {
 
@@ -96,7 +90,8 @@ public class ShowShatAdapter extends BaseAdapter {
         imageViewList.add(holder.iv_show5);
         for (int i = 0; i < imageViewList.size(); i++) {
             imageViewList.get(i).setVisibility(View.GONE);
-            imageViewList.get(i).setImageResource(R.drawable.show_imag01);
+//            imageViewList.get(i).setImageResource(R.drawable.show_imag01);
+            imageViewList.get(i).setImageResource(R.color.transparent);
 
         }
         final ShowShat mShowShat = sowShatList.get(position);
@@ -136,6 +131,7 @@ public class ShowShatAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
+                context.showShare();
             }
         });
         holder.lyo_show_eval.setOnClickListener(new View.OnClickListener() {

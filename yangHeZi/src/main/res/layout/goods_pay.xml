@@ -206,7 +206,7 @@
                         android:id="@+id/goods_image"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:background="@drawable/image_icon01"
+                        android:src="@drawable/image_icon01"
                         android:scaleType="fitCenter" />
 
                     <LinearLayout

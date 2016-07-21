@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg04"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/lyo_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/activity_title"
+            style="@style/text01_type04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="支付"
+            android:textColor="#000" />
+
+        <ImageView
+            android:id="@+id/goods_pay_return"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_selector_background01"
+            android:scaleType="center"
+            android:src="@drawable/ic_app_back" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/line01" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lyo_top"
+        android:layout_above="@+id/lyo_bottom"
+        android:orientation="vertical">
+        <ListView
+            android:id="@+id/lv_pay_paylist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/lyo_bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="#f6f6f6">
+        <Button
+            android:id="@+id/goodsd_detail_buy"
+            style="@style/text01_type03"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_selector_background03"
+            android:text="确认支付" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/text03_type01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总金额：" />
+
+            <TextView
+                android:id="@+id/goods_pay_price"
+                style="@style/text02_type04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥0.00" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,8 +1,5 @@
 package com.raoleqing.yangmatou;
 
-import com.raoleqing.yangmatou.common.YangHeZiApplication;
-import com.raoleqing.yangmatou.uitls.ToastUtil;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,8 +19,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
+import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.uitls.UserUitls;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
+
+import org.json.JSONObject;
+
 import java.util.HashMap;
 
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import entity.NotifyUpdateEntity;
 
 /**
@@ -34,7 +42,7 @@ public class BaseActivity extends FragmentActivity {
 	private LinearLayout parentLinearLayout;// 把父类activity和子类activity的view都add到这里
 	private RelativeLayout base_title_layout;// 标题布局
 	private TextView activity_title;// 标题布局
-	private ImageView activity_return;// 返回
+	public ImageView activity_return;// 返回
 	private EditText activity_search;
 	protected View progress;
 	private int progressIndex = 1;
@@ -46,8 +54,33 @@ public class BaseActivity extends FragmentActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		initContentView(R.layout.base_activity);
 		infoView();
+//		checkLogin();
 		addNotifyUpdate();
 		Log.e("Activity:",getClass().getName());
+	}
+
+	private void checkLogin() {
+		NetHelper.Users(new NetConnectionInterface.iConnectListener3() {
+			@Override
+			public void onStart() {
+
+			}
+
+			@Override
+			public void onFinish() {
+
+			}
+
+			@Override
+			public void onSuccess(JSONObject result) {
+
+			}
+
+			@Override
+			public void onFail(JSONObject result) {
+				SharedPreferencesUtil.putBoolean(getAppContext(), "isLongin", false);
+			}
+		});
 	}
 
 	/**
@@ -146,7 +179,7 @@ public class BaseActivity extends FragmentActivity {
 	 * 加载条的显示与隐藏
 	 **/
 	public void setProgressVisibility(int visibility) {
-
+		if (progress==null) return;
 		progress.setVisibility(visibility);
 
 	}
@@ -230,11 +263,40 @@ public class BaseActivity extends FragmentActivity {
 //		}
 	}
 
+	public void showShare() {
+		ShareSDK.initSDK(getBaseContext());
+		OnekeyShare oks = new OnekeyShare();
+		//关闭sso授权
+		oks.disableSSOWhenAuthorize();
+
+// 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+		//oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+		// title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+		oks.setTitle("yaben");
+		// titleUrl是标题的网络链接，仅在人人网和QQ空间使用
+		oks.setTitleUrl("http://baidu.cn");
+		// text是分享文本，所有平台都需要这个字段
+		oks.setText("我是分享文本");
+		// imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+		//oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+		// url仅在微信（包括好友和朋友圈）中使用
+		oks.setUrl("http://sharesdk.cn");
+		// comment是我对这条分享的评论，仅在人人网和QQ空间使用
+		oks.setComment("我是测试评论文本");
+		// site是分享此内容的网站名称，仅在QQ空间使用
+		oks.setSite(getString(R.string.app_name));
+		// siteUrl是分享此内容的网站地址，仅在QQ空间使用
+		oks.setSiteUrl("http://sharesdk.cn");
+// 启动分享GUI
+		oks.show(getBaseContext());
+	}
+
 
 	//---------------------------------------------------------------------------------------
 	public final static String NOTIFY_CREATE = "notify_create";
 	public final static String NOTIFY_RESUME = "notify_resume";
 	public final static String NOTIFY_FINISH = "notify_finish";
+	public final static String NOTIFY_LOGIN="notify_login";
 	private Handler notifyUpdateHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -246,6 +308,8 @@ public class BaseActivity extends FragmentActivity {
 		switch (notifyUpdateEntity.getNotifyTag()) {
 			case NOTIFY_FINISH:
 				finish();
+			case NOTIFY_LOGIN:
+				UserUitls.longInDialog(this);
 				break;
 		}
 	}

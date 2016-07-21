@@ -18,6 +18,7 @@ public class SendOut {
         this.msg_title = object.optString("msg_title");
         this.order_sn = object.optString("order_sn");
         this.shipping_code = object.optString("shipping_code");
+        this.shipping_name = object.optString("shipping_name");
     }
 
 
@@ -70,6 +71,16 @@ public class SendOut {
     private String order_sn;
     private String shipping_code;
     private String msg_createtime;
+
+    public String getShipping_name() {
+        return shipping_name;
+    }
+
+    public void setShipping_name(String shipping_name) {
+        this.shipping_name = shipping_name;
+    }
+
+    private String shipping_name;
 
     private JSONArray goods_array;
 }

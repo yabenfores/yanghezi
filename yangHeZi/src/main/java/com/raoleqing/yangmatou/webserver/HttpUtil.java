@@ -1,13 +1,7 @@
 package com.raoleqing.yangmatou.webserver;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import android.content.Context;
+import android.graphics.Bitmap;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -17,17 +11,13 @@ import com.loopj.android.http.RequestParams;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-
-import internal.org.apache.http.entity.mime.MultipartEntity;
-import internal.org.apache.http.entity.mime.content.FileBody;
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /*
  * 网络请求
@@ -70,8 +60,6 @@ public class HttpUtil extends NetWorkBase {
         String urlConnection = urlString + method;
         System.out.println("请求数据1： " + urlConnection);
         baseMethod(context).get(urlConnection, res);
-
-
     }
 
 
