@@ -5,8 +5,6 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,20 +13,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.common.CustomDialog;
 import com.raoleqing.yangmatou.common.ImageUtils;
-import com.raoleqing.yangmatou.common.YangHeZiApplication;
-import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.webserver.AsyncFileUpload;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
@@ -40,7 +33,6 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class EvalActivity extends BaseActivity implements View.OnClickListener, CustomDialog.MyDialogInterface {
@@ -244,12 +236,6 @@ public class EvalActivity extends BaseActivity implements View.OnClickListener, 
             File file = new File(path);
 
             if (file.exists() && file.length() > 0) {
-//                RequestParams req = new RequestParams();
-//                //req.put("upfile", file);
-//                req.put("image", file);
-//                System.out.println("headImage: " + file.getPath());
-//                //Home/Users/member_avatar  Home/Users/reviewImg
-//				NetHelper.reviewImg(file);
                 new AsyncFileUpload(Constant.API_BASE + Constant.REVIEWIMG, path, "image", new AsyncFileUpload.ResultCallback() {
                     @Override
                     public void onNetError() {
