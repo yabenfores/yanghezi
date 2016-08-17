@@ -451,7 +451,6 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener ,I
                 try {
                     JSONObject json = response.optJSONObject("data");
 //                    sendNotifyUpdate(WXPayEntryActivity.class,WXPAY_REQ,json);
-
                     Intent intent=new Intent(this,WXPayEntryActivity.class);
                     intent.putExtra("req", json.toString());
                     startActivity(intent);

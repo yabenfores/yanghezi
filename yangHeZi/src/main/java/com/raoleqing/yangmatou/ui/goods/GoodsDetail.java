@@ -26,6 +26,7 @@ import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.EvaluationAdapter;
 import com.raoleqing.yangmatou.ben.Evaluation;
+import com.raoleqing.yangmatou.ben.Share;
 import com.raoleqing.yangmatou.ben.WhRrea;
 import com.raoleqing.yangmatou.common.ChildViewPager;
 import com.raoleqing.yangmatou.common.MyPagerAdapter;
@@ -355,7 +356,29 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     startActivity(intent);
                     break;
                 case R.id.activity_qrode:
-                    showShare();
+                    NetHelper.Share("1", goods_id+"", new NetConnectionInterface.iConnectListener3() {
+                        @Override
+                        public void onStart() {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+
+                        }
+
+                        @Override
+                        public void onSuccess(JSONObject result) {
+                            Share share=new Share(result.optJSONObject(Constant.DATA));
+                            showShare(share);
+                        }
+
+                        @Override
+                        public void onFail(JSONObject result) {
+
+                        }
+                    });
+
                     break;
                 default:
                     break;
@@ -865,6 +888,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         });
 
     }
+
 
 
     @Override

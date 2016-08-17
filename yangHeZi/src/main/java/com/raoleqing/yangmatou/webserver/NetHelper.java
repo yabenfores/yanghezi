@@ -267,6 +267,10 @@ public class NetHelper {
     public static void REFUNDDETAIL(String refund_id,NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.REFUNDDETAIL, NetParams.HttpMethod.Post, true, connectListener,"refund_id",refund_id);
     }
+    //获取分享数据
+    public static void Share(String share_type, String share_id, NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.Share, NetParams.HttpMethod.Post, true, connectListener,"share_type",share_type,"share_id",share_id);
+    }
 
 
 }

@@ -1,11 +1,13 @@
 package com.raoleqing.yangmatou;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.opengl.Visibility;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+
+import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
+import com.raoleqing.yangmatou.ui.showwhat.ShowShatActivity;
 
 public class StartActivity extends BaseActivity {
 
@@ -15,14 +17,34 @@ public class StartActivity extends BaseActivity {
         setTitleVisibility(View.GONE);
         setProgressVisibility(View.GONE);
         setContentView(R.layout.activity_start);
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(StartActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        if (Intent.ACTION_VIEW.equals(action)) {
+            Uri uri = intent.getData();
+            if (uri != null) {
+                String type = uri.getQueryParameter("share_type");
+                String id = uri.getQueryParameter("share_id");
+                if (type.equals("1")) {
+                    Intent i = new Intent(getAppContext(), GoodsDetail.class);
+                    i.putExtra("goods_id", Integer.parseInt(id));
+                    startActivity(i);
+                    finish();
+                }
+                if (type.equals("2")){
+                    Intent i = new Intent(getAppContext(), ShowShatActivity.class);
+                    i.putExtra("goods_id", Integer.parseInt(id));
+                }
             }
-        }, 1500);
+        } else {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(StartActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, 1500);
+        }
     }
 }

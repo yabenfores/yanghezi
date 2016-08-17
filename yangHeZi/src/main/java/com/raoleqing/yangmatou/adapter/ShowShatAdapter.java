@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.MainActivity;
 import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.ben.Share;
 import com.raoleqing.yangmatou.ben.ShowShat;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.ui.showwhat.ShowShatActivity;
@@ -130,8 +131,29 @@ public class ShowShatAdapter extends BaseAdapter {
         holder.lyo_show_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                NetHelper.Share("2", mShowShat.getGeval_id()+"", new NetConnectionInterface.iConnectListener3() {
+                    @Override
+                    public void onStart() {
 
-                context.showShare();
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void onSuccess(JSONObject result) {
+                        Share share=new Share(result.optJSONObject(Constant.DATA));
+                        context.showShare(share);
+                    }
+
+                    @Override
+                    public void onFail(JSONObject result) {
+
+                    }
+                });
+
             }
         });
         holder.lyo_show_eval.setOnClickListener(new View.OnClickListener() {

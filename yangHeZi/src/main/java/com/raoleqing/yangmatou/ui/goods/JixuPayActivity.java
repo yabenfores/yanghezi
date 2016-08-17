@@ -219,7 +219,6 @@ public class JixuPayActivity extends BaseActivity implements OnClickListener ,IW
                         PayTask alipay = new PayTask(JixuPayActivity.this);
                         // 调用支付接口，获取支付结果
                         String result = alipay.pay(payInfo, true);
-
                         Message msg = new Message();
                         msg.what = SDK_PAY_FLAG;
                         msg.obj = result;
@@ -244,9 +243,7 @@ public class JixuPayActivity extends BaseActivity implements OnClickListener ,IW
                 } catch (Exception e) {
                     Log.e("PAY_GET", "异常：" + e.getMessage());
                 }
-
                 break;
-
             default:
                 break;
         }

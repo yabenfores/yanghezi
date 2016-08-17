@@ -74,6 +74,15 @@ public  class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHand
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Intent intent = new Intent(this, OrderActivity.class);
+        intent.putExtra("index", 2);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     public void onResp(BaseResp resp) {
         Log.e(TAG, "onPayFinish, errCode = " + resp.errCode);
         if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
@@ -94,7 +103,6 @@ public  class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHand
                         finish();
                         break;
                 }
-
             } catch (Exception e) {
                 throwEx(e);
             }
