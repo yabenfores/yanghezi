@@ -367,6 +367,15 @@
                 <action android:name= "com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
             </intent-filter >
         </receiver >
+        <receiver
+            android:name=".JPushRegister"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <category android:name="com.raoleqing.yanghezi" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

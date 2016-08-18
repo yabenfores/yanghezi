@@ -14,11 +14,17 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.ben.Share;
 import com.raoleqing.yangmatou.ben.Shop;
 import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
 import com.raoleqing.yangmatou.ui.goods.GoodsPayActivity;
 import com.raoleqing.yangmatou.ui.shop.ShopActivity;
 import com.raoleqing.yangmatou.uitls.UserUitls;
+import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -160,7 +166,28 @@ public class ShopAdapter extends BaseAdapter {
         holder.lyo_shop_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.showShare();
+
+                NetHelper.Share("1", mShop.getGoods_id()+"", new NetConnectionInterface.iConnectListener3() {
+                    @Override
+                    public void onStart() {
+                        context.setProgressVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        context.setProgressVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onSuccess(JSONObject result) {
+                        Share share=new Share(result.optJSONObject(Constant.DATA));
+                        context.showShare(share);
+                    }
+                    @Override
+                    public void onFail(JSONObject result) {
+                        if (!UserUitls.isLongin(context)) UserUitls.longInDialog(context);
+                    }
+                });
             }
         });
         return convertView;

@@ -1,5 +1,6 @@
 package com.raoleqing.yangmatou.ui.goods;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -359,12 +360,12 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     NetHelper.Share("1", goods_id+"", new NetConnectionInterface.iConnectListener3() {
                         @Override
                         public void onStart() {
-
+                            setProgressVisibility(View.VISIBLE);
                         }
 
                         @Override
                         public void onFinish() {
-
+                            setProgressVisibility(View.GONE);
                         }
 
                         @Override
@@ -375,7 +376,7 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
                         @Override
                         public void onFail(JSONObject result) {
-
+                            if (!UserUitls.isLongin(getThis())) UserUitls.longInDialog(getThis());
                         }
                     });
 
@@ -387,6 +388,9 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
             throwEx(e);
         }
 
+    }
+    public Activity getThis(){
+        return this;
     }
 
     private void getData() {

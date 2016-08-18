@@ -96,10 +96,9 @@ public class loginActivity extends BaseActivity implements OnClickListener {
         login_but.setOnClickListener(this);
         password_show.setOnClickListener(this);
 
-        String UserName = SharedPreferencesUtil.getString(loginActivity.this,"user_name");
+        String UserName = SharedPreferencesUtil.getString(loginActivity.this,"m_user_name");
         if (UserName != null) {
             user_name.setText(UserName);
-            String member_avatar = SharedPreferencesUtil.getString(loginActivity.this, "member_avatar");
         }
         boolean rememberPassword = SharedPreferencesUtil.getBoolean(loginActivity.this, "remember_password", false);
         if (rememberPassword) {
@@ -166,7 +165,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
         }
 
         //存入用户信息
-        SharedPreferencesUtil.putString(loginActivity.this, "user_name", userName);
+        SharedPreferencesUtil.putString(loginActivity.this, "m_user_name", userName);
         SharedPreferencesUtil.putString(loginActivity.this, "user_password", userPassword);
         SharedPreferencesUtil.putBoolean(loginActivity.this, "remember_password", true);
 
@@ -283,7 +282,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
     }
     private void IMLogin() {
         String user_name,user_pwd;
-        user_name= SharedPreferencesUtil.getString(getAppContext(),"user_name");
+        user_name= SharedPreferencesUtil.getString(getAppContext(),"m_user_name");
         user_pwd= SharedPreferencesUtil.getString(getAppContext(),"user_pwd");
         // TODO Auto-generated method stub
         EMClient.getInstance().login(user_name, user_pwd, new EMCallBack() {// 回调
@@ -356,8 +355,6 @@ public class loginActivity extends BaseActivity implements OnClickListener {
             String user_pwd = json.optString("user_pwd");//环信密码
             String user_nickname = json.optString("user_nickname");//用户昵称
             String user_msg_helper = json.optString("user_msg_helper");//客服帐号
-
-
 
             SharedPreferencesUtil.putString(loginActivity.this, "user_name", user_name);
             SharedPreferencesUtil.putString(loginActivity.this, "user_pwd", user_pwd);

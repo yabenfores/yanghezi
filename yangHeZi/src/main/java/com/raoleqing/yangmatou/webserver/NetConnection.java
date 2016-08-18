@@ -81,8 +81,8 @@ public class NetConnection {
                                 headerInterface.setHeader(uc);
                             break;
                     }
-                    LogUtil.loge(getClass(),"url:", uc.getURL().toString());
-                    LogUtil.loge(getClass(),"parama:", paramsBuffer.toString());
+                    LogUtil.loge(getClass(), "url:", uc.getURL().toString());
+                    LogUtil.loge(getClass(), "parama:", paramsBuffer.toString());
                     BufferedReader br = new BufferedReader(
                             new InputStreamReader(uc.getInputStream(), charset));
                     String line = null;
@@ -106,18 +106,16 @@ public class NetConnection {
                 try {
                     Log.e(String.valueOf(this.getClass()), result);
                     JSONObject json = new JSONObject(result);
-                        String status = json.optString(Constant.NET_STATUS);
-                        if (status.equals(Constant.NET_STATUS_SUCCESS)||status.equals(Constant.NET_STATUS_SUCCESS1)) {
-                            conectListener.onSuccess( json);
+                    String status = json.optString(Constant.NET_STATUS);
+                    if (status.equals(Constant.NET_STATUS_SUCCESS) || status.equals(Constant.NET_STATUS_SUCCESS1)) {
+                        conectListener.onSuccess(json);
 
-                        } else {
-                            if (json.optString("message").equals("请重新登录")){
-                                SharedPreferencesUtil.putBoolean(BaseActivity.getAppContext(), "isLongin", false);
-                                BaseActivity.sendNotifyUpdate(BaseActivity.class,NOTIFY_LOGIN);
-                            }
-                            else {
-                            conectListener.onFail( json);}
+                    } else {
+                        if (json.optString("message").equals("请重新登录")) {
+                            SharedPreferencesUtil.putBoolean(BaseActivity.getAppContext(), "isLongin", false);
                         }
+                        conectListener.onFail(json);
+                    }
 //                    if (conectListener == null) return;
 //                    if (result != null) {
 //                        conectListener.onSuccess(object);
@@ -128,8 +126,7 @@ public class NetConnection {
 //                        ((NetConnectionInterface.iConnectListener2) conectListener).onFinish();
                 } catch (JSONException e) {
                     e.printStackTrace();
-                }
-                finally {
+                } finally {
                     conectListener.onFinish();
                 }
             }
@@ -137,6 +134,5 @@ public class NetConnection {
         }.execute();
     }
 
-    public final static String NOTIFY_LOGIN="notify_login";
 
 }

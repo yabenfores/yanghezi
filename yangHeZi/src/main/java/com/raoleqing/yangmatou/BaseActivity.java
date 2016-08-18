@@ -308,7 +308,7 @@ public class BaseActivity extends FragmentActivity {
 		}
 	}
 
-	private static HashMap<String, HashMap<Integer, Handler>> notifyUpdateMap = new HashMap<>(20, 10);
+	public static HashMap<String, HashMap<Integer, Handler>> notifyUpdateMap = new HashMap<>(20, 10);
 
 	public static <Aty extends BaseActivity> void sendNotifyUpdate(Class<Aty> fgmClass, String notifyTag, Object entity) {
 		sendNotifyUpdate(fgmClass, notifyTag, entity, 0);

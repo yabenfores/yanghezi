@@ -134,12 +134,12 @@ public class ShowShatAdapter extends BaseAdapter {
                 NetHelper.Share("2", mShowShat.getGeval_id()+"", new NetConnectionInterface.iConnectListener3() {
                     @Override
                     public void onStart() {
-
+                        context.setMainProgress(View.VISIBLE);
                     }
 
                     @Override
                     public void onFinish() {
-
+                        context.setMainProgress(View.GONE);
                     }
 
                     @Override
@@ -150,7 +150,7 @@ public class ShowShatAdapter extends BaseAdapter {
 
                     @Override
                     public void onFail(JSONObject result) {
-
+                        if (!UserUitls.isLongin(context)) UserUitls.longInDialog(context);
                     }
                 });
 
