@@ -2,6 +2,7 @@ package com.raoleqing.yangmatou.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import com.raoleqing.yangmatou.ui.user.CircularActivity;
 import com.raoleqing.yangmatou.ui.user.Massage;
 import com.raoleqing.yangmatou.ui.user.SendOutActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -68,24 +71,30 @@ public class MassageAdapter extends BaseAdapter {
 
         try {
             final Massage massage = massageList.get(position);
+
             holder.tv_massage_title.setText(massage.getMsg_grouptitle());
-            holder.tv_massage_time.setText(massage.getMsg_createtime());
-            holder.tv_massage_com.setText(massage.getMsg_title());
             ImageLoader.getInstance().displayImage(massage.getMsg_groupimg(), holder.iv_massage);
-            if (massage.getMsg_is_read()==0){
-                holder.newmsg.setVisibility(View.VISIBLE);
-            }else {
-                holder.newmsg.setVisibility(View.GONE);
+
+            String message = massage.getMessage_array();
+            if (!TextUtils.isEmpty(message)) {
+                JSONObject object = new JSONObject(message);
+                holder.tv_massage_time.setText(object.optString("msg_createtime"));
+                holder.tv_massage_com.setText(object.optString("msg_title"));
+                if (object.optInt("msg_is_read") != 0) {
+                    holder.newmsg.setVisibility(View.GONE);
+                } else {
+                    holder.newmsg.setVisibility(View.VISIBLE);
+                }
             }
             //1-洋盒子通告，2-发货提醒，3-客服信息
-            switch(massage.getMsg_grouptype()){
+            switch (massage.getMsg_grouptype()) {
                 case 1:
                     holder.lyo_massage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent=new Intent(context,CircularActivity.class);
-                            intent.putExtra("msg_groupid",massage.getMsg_groupid());
-                            intent.putExtra("msg_grouptype",massage.getMsg_grouptype());
+                            Intent intent = new Intent(context, CircularActivity.class);
+                            intent.putExtra("msg_groupid", massage.getMsg_groupid());
+                            intent.putExtra("msg_grouptype", massage.getMsg_grouptype());
                             context.startActivity(intent);
                         }
                     });
@@ -94,9 +103,9 @@ public class MassageAdapter extends BaseAdapter {
                     holder.lyo_massage.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Intent intent=new Intent(context,SendOutActivity.class);
-                            intent.putExtra("msg_groupid",massage.getMsg_groupid());
-                            intent.putExtra("msg_grouptype",massage.getMsg_grouptype());
+                            Intent intent = new Intent(context, SendOutActivity.class);
+                            intent.putExtra("msg_groupid", massage.getMsg_groupid());
+                            intent.putExtra("msg_grouptype", massage.getMsg_grouptype());
                             context.startActivity(intent);
                         }
                     });
@@ -106,7 +115,7 @@ public class MassageAdapter extends BaseAdapter {
 
                         @Override
                         public void onClick(View v) {
-                            String user_msg_helper= SharedPreferencesUtil.getString(context,"user_msg_helper");
+                            String user_msg_helper = SharedPreferencesUtil.getString(context, "user_msg_helper");
                             Intent i = new Intent(context, ChatActivity.class);
                             i.putExtra(EaseConstant.EXTRA_USER_ID, user_msg_helper);
                             context.startActivity(i);

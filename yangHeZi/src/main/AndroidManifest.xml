@@ -371,8 +371,7 @@
             android:name=".JPushRegister"
             android:enabled="true">
             <intent-filter>
-                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
                 <category android:name="com.raoleqing.yanghezi" />
             </intent-filter>
         </receiver>

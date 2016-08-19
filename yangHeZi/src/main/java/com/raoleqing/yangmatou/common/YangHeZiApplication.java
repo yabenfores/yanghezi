@@ -18,7 +18,6 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 
 import java.io.File;
-import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -43,7 +42,6 @@ public class YangHeZiApplication extends Application {
         EMClient.getInstance().setDebugMode(true);
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
-
     }
 
     public static YangHeZiApplication getInstance() {

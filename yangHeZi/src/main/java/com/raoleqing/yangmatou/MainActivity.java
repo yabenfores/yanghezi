@@ -58,7 +58,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
+import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.api.TagAliasCallback;
 import entity.NotifyUpdateEntity;
 
 public class MainActivity extends BaseActivity implements OnClickListener {
@@ -655,7 +658,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     //-------------------------
     public final static String USER_LOGIN = "user_login";
 
-
+    public final static String JPUSH_SETTAG = "jpush_settag";
     public final static String COUNTRY = "country";
     public final static String BRAND = "brand";
     protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
@@ -675,13 +678,41 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                     showType=3;
                     setView(3);
                     break;
+                case JPUSH_SETTAG:
+                    setTag((String) notifyUpdateEntity.getObj());
+                    break;
             }
         } catch (Exception ex) {
             throwEx(ex);
         }
     }
 
-
+    private static String TAG = "mainActivity";
+    private void setTag(final String name) {
+        JPushInterface.setAlias(getAppContext(), getMD5(name), new TagAliasCallback() {
+            @Override
+            public void gotResult(int i, String s, Set<String> set) {
+                String logs;
+                switch (i) {
+                    case 0:
+                        logs = "Set tag and alias success";
+                        Log.i(TAG, logs);
+                        SharedPreferencesUtil.putBoolean(getAppContext(),name, true);
+                        // 建议这里往 SharePreference 里写一个成功设置的状态。成功设置一次后，以后不必再次设置了。
+                        break;
+                    case 6002:
+                        logs = "Failed to set alias and tags due to timeout. Try again after 60s.";
+                        Log.i(TAG, logs);
+                        // 延迟 60 秒来调用 Handler 设置别名
+                        sendNotifyUpdate(MainActivity.class, JPUSH_SETTAG,name, 60 * 1000);
+                        break;
+                    default:
+                        logs = "Failed with errorCode = " + i;
+                        Log.e(TAG, logs);
+                }
+            }
+        });
+    }
     public void setCodeVisible(int visible){
         if (gou_wu_message!=null){
         gou_wu_message.setVisibility(visible);}

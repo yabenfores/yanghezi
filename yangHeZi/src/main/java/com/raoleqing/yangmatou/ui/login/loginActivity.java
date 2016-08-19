@@ -35,6 +35,7 @@ import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.TagAliasCallback;
+import entity.NotifyUpdateEntity;
 
 /**
  * 登录
@@ -44,7 +45,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
     private ImageView activity_return;
     private ImageView user_icon;
 
-    private TextView login_registered,tv_login_forget;
+    private TextView login_registered, tv_login_forget;
     private Button login_but;
     private EditText user_name;
     private EditText user_password;
@@ -81,7 +82,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
 
     protected void viewInfo() {
 
-        tv_login_forget= (TextView) findViewById(R.id.tv_login_forget);
+        tv_login_forget = (TextView) findViewById(R.id.tv_login_forget);
         tv_login_forget.setOnClickListener(this);
         activity_return = (ImageView) findViewById(R.id.activity_return);
         user_icon = (ImageView) findViewById(R.id.user_icon);
@@ -96,7 +97,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
         login_but.setOnClickListener(this);
         password_show.setOnClickListener(this);
 
-        String UserName = SharedPreferencesUtil.getString(loginActivity.this,"m_user_name");
+        String UserName = SharedPreferencesUtil.getString(loginActivity.this, "m_user_name");
         if (UserName != null) {
             user_name.setText(UserName);
         }
@@ -116,7 +117,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
         // TODO Auto-generated method stub
         switch (v.getId()) {
             case R.id.tv_login_forget:
-                Intent i =new Intent(this, ForgetPasswordActivity.class);
+                Intent i = new Intent(this, ForgetPasswordActivity.class);
                 startActivity(i);
                 break;
             case R.id.activity_return:
@@ -206,12 +207,9 @@ public class loginActivity extends BaseActivity implements OnClickListener {
                     String member_auth = json.optString("Authorization");//认证
                     SharedPreferencesUtil.putString(loginActivity.this, "Authorization", member_auth);
                     getUsers();
-                    JPushInterface.setAlias(getAppContext(), getMD5(loginName), new TagAliasCallback() {
-                        @Override
-                        public void gotResult(int i, String s, Set<String> set) {
-                            Log.e("qqqqq",s);
-                        }
-                    });
+                    if (!(SharedPreferencesUtil.getBoolean(getAppContext(), loginName, false))) {
+                        sendNotifyUpdate(loginActivity.class, JPUSH_SETTAG, loginName);
+                    }
 
                 } catch (Exception e) {
                     throwEx(e);
@@ -255,7 +253,8 @@ public class loginActivity extends BaseActivity implements OnClickListener {
             }
         });
     }
-    private void getHxUser(){
+
+    private void getHxUser() {
         NetHelper.customerIndex(new NetConnectionInterface.iConnectListener3() {
             @Override
             public void onStart() {
@@ -280,10 +279,11 @@ public class loginActivity extends BaseActivity implements OnClickListener {
             }
         });
     }
+
     private void IMLogin() {
-        String user_name,user_pwd;
-        user_name= SharedPreferencesUtil.getString(getAppContext(),"m_user_name");
-        user_pwd= SharedPreferencesUtil.getString(getAppContext(),"user_pwd");
+        String user_name, user_pwd;
+        user_name = SharedPreferencesUtil.getString(getAppContext(), "m_user_name");
+        user_pwd = SharedPreferencesUtil.getString(getAppContext(), "user_pwd");
         // TODO Auto-generated method stub
         EMClient.getInstance().login(user_name, user_pwd, new EMCallBack() {// 回调
             @Override
@@ -338,6 +338,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
         }
         return s;
     }
+
     protected void HXuserInfo(JSONObject response) {
         // TODO Auto-generated method stub
 
@@ -361,7 +362,6 @@ public class loginActivity extends BaseActivity implements OnClickListener {
             SharedPreferencesUtil.putString(loginActivity.this, "user_nickname", user_nickname);
             SharedPreferencesUtil.putString(loginActivity.this, "user_msg_helper", user_msg_helper);
 
-            loginActivity.this.onBackPressed();
 
         } catch (Exception e) {
             // TODO: handle exception
@@ -421,13 +421,55 @@ public class loginActivity extends BaseActivity implements OnClickListener {
     @Override
     public void onBackPressed() {
         // TODO Auto-generated method stub
+
         super.onBackPressed();
         overridePendingTransition(R.anim.push_right_in, R.anim.push_right_out);
         finish();
     }
 
     //----------------
+    private static String TAG = "login";
     public final static String USER_LOGIN = "user_login";
+    public final static String JPUSH_SETTAG = "jpush_settag";
+
+    protected void notifyUpdate(final NotifyUpdateEntity notifyUpdateEntity) {
+        super.notifyUpdate(notifyUpdateEntity);
+        try {
+            switch (notifyUpdateEntity.getNotifyTag()) {
+                case JPUSH_SETTAG:
+                    setTag((String) notifyUpdateEntity.getObj());
+                    break;
+            }
+        } catch (Exception ex) {
+            throwEx(ex);
+        }
+    }
+
+    private void setTag(final String name) {
+        JPushInterface.setAlias(getAppContext(), getMD5(name), new TagAliasCallback() {
+            @Override
+            public void gotResult(int i, String s, Set<String> set) {
+                String logs;
+                switch (i) {
+                    case 0:
+                        logs = "Set tag and alias success";
+                        Log.i(TAG, logs);
+                        SharedPreferencesUtil.putBoolean(getAppContext(),name, true);
+                        // 建议这里往 SharePreference 里写一个成功设置的状态。成功设置一次后，以后不必再次设置了。
+                        break;
+                    case 6002:
+                        logs = "Failed to set alias and tags due to timeout. Try again after 60s.";
+                        Log.i(TAG, logs);
+                        // 延迟 60 秒来调用 Handler 设置别名
+                        sendNotifyUpdate(MainActivity.class, JPUSH_SETTAG,name, 60 * 1000);
+                        break;
+                    default:
+                        logs = "Failed with errorCode = " + i;
+                        Log.e(TAG, logs);
+                }
+            }
+        });
+    }
 
 
 }
