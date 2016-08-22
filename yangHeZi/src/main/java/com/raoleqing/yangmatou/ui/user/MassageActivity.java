@@ -1,6 +1,5 @@
 package com.raoleqing.yangmatou.ui.user;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,8 +16,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class MassageActivity extends BaseActivity implements View.OnClickListener {
@@ -43,7 +40,6 @@ public class MassageActivity extends BaseActivity implements View.OnClickListene
         adapter=new MassageAdapter(this,massageList);
         listView.setAdapter(adapter);
         activity_return.setOnClickListener(this);
-
     }
 
     @Override

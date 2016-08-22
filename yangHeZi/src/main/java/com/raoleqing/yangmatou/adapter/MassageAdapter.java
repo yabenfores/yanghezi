@@ -76,7 +76,7 @@ public class MassageAdapter extends BaseAdapter {
             ImageLoader.getInstance().displayImage(massage.getMsg_groupimg(), holder.iv_massage);
 
             String message = massage.getMessage_array();
-            if (!TextUtils.isEmpty(message)) {
+            if (!TextUtils.isEmpty(message)&&!message.equals("[]")) {
                 JSONObject object = new JSONObject(message);
                 holder.tv_massage_time.setText(object.optString("msg_createtime"));
                 holder.tv_massage_com.setText(object.optString("msg_title"));

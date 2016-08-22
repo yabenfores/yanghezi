@@ -72,5 +72,6 @@ public class Constant {
     public final static String TOPICS="Home/Index/topics";//专题
     public final static String REFUNDDETAIL="Home/Users/RefundDetail";//退货详情
     public final static String Share="Home/Share/Index";//分享数据
+    public final static String SendOrderMsg="Home/Orders/sendOrderMsg";//提醒发货
 
 }

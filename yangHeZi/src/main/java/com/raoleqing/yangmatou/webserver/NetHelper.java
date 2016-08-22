@@ -271,6 +271,10 @@ public class NetHelper {
     public static void Share(String share_type, String share_id, NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.Share, NetParams.HttpMethod.Post, true, connectListener,"share_type",share_type,"share_id",share_id);
     }
+    //提醒发货
+    public static void SendOrderMsg(String order_id,  NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.SendOrderMsg, NetParams.HttpMethod.Post, true, connectListener,"order_id",order_id);
+    }
 
 
 }

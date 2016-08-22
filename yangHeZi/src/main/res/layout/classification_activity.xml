@@ -88,6 +88,7 @@
         android:padding="5dp" >
 
         <ImageView
+            android:id="@+id/iv_class"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/image_icon01" />

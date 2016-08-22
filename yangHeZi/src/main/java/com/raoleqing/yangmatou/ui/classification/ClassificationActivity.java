@@ -262,6 +262,7 @@ public class ClassificationActivity extends BaseActivity implements OnClickListe
                 mCatGoods.setGc_id(obj.optInt("gc_id"));
                 List<ThreeData> threeList = new ArrayList<ThreeData>();
                 JSONArray three_data = obj.optJSONArray("three_data");
+                if (three_data==null) return;
                 for (int j = 0; j < three_data.length(); j++) {
                     JSONObject threrObj = three_data.getJSONObject(j);
                     ThreeData mThreeData = new ThreeData();

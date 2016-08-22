@@ -190,7 +190,7 @@ public class OrderAdapter extends BaseAdapter {
             default:
                 break;
         }
-        if (mOrder.getRefund_state()!=0){
+        if (mOrder.getRefund_state() != 0) {
             holder.lyo_re.setVisibility(View.GONE);
             holder.goods_price01.setVisibility(View.GONE);
         }
@@ -233,39 +233,9 @@ public class OrderAdapter extends BaseAdapter {
         holder.btn_order_pay.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-//                NetHelper.order_conpay(mOrder.getOrder_id() + "", new NetConnectionInterface.iConnectListener3() {
-//                    @Override
-//                    public void onStart() {
-//                        ((OrderActivity) context).setProgressVisibility(View.VISIBLE);
-//                    }
-//
-//                    @Override
-//                    public void onFinish() {
-//                        ((OrderActivity) context).setProgressVisibility(View.GONE);
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(JSONObject result) {
-//
-//                        JSONObject object = result.optJSONObject("data");
-//                        try {
-//                            object.put("productName", mOrder.getExtend_order_goods().optString("goods_name").trim());
-////                            object.put("orderAmount", ((int) mOrder.getOrder_amount() * 100) + "");
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                        JSONObject payData = PaaCreator.randomPaa(object);
-//                        APPayAssistEx.startPay((OrderActivity) context, payData.toString(), APPayAssistEx.MODE_DEBUG);
-//
-//                    }
-//                    @Override
-//                    public void onFail(JSONObject result) {
-//                        ToastUtil.MakeShortToast(context, result.optString(Constant.INFO));
-//                    }
-//                });
-                Intent intent=new Intent(context, JixuPayActivity.class);
-                intent.putExtra("order_amount",mOrder.getOrder_amount());
-                intent.putExtra("order_id",mOrder.getOrder_id());
+                Intent intent = new Intent(context, JixuPayActivity.class);
+                intent.putExtra("order_amount", mOrder.getOrder_amount());
+                intent.putExtra("order_id", mOrder.getOrder_id());
 
                 context.startActivity(intent);
 
@@ -348,6 +318,7 @@ public class OrderAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(context, RefuActivity.class);
+                if (object == null) return;
                 i.putExtra("goods_image", object.optString("goods_image"));
                 i.putExtra("goods_name", object.optString("goods_name"));
                 i.putExtra("goods_price", object.optString("goods_price"));
@@ -363,6 +334,32 @@ public class OrderAdapter extends BaseAdapter {
                 Intent i = new Intent(context, RefuCheckActivity.class);
                 i.putExtra("refund_id", mOrder.getRefund_id());
                 context.startActivity(i);
+            }
+        });
+        holder.btn_order_tip.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NetHelper.SendOrderMsg(mOrder.getOrder_id(), new NetConnectionInterface.iConnectListener3() {
+                    @Override
+                    public void onStart() {
+                        ((OrderActivity) context).setProgressVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onFinish() {
+                        ((OrderActivity) context).setProgressVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onSuccess(JSONObject result) {
+                        ((OrderActivity) context).makeShortToast("提醒成功");
+                    }
+
+                    @Override
+                    public void onFail(JSONObject result) {
+                        ((OrderActivity) context).makeShortToast(result.optString(Constant.INFO));
+                    }
+                });
             }
         });
 
@@ -381,12 +378,13 @@ public class OrderAdapter extends BaseAdapter {
         TextView goods_price01;
         TextView order_number;
         TextView order_shipping;
-        TextView btn_order_cancel, btn_order_pay, btn_order_tip, btn_order_confirm, btn_order_eval, btn_order_back,btn_order_doing;
+        TextView btn_order_cancel, btn_order_pay, btn_order_tip, btn_order_confirm, btn_order_eval, btn_order_back, btn_order_doing;
 
         LinearLayout lyo_re;
+
         public ViewHolder(View convertView) {
 
-            this.lyo_re= (LinearLayout) convertView.findViewById(R.id.lyo_re);
+            this.lyo_re = (LinearLayout) convertView.findViewById(R.id.lyo_re);
             this.store_icon = (ImageView) convertView.findViewById(R.id.store_icon);
             this.store_name = (TextView) convertView.findViewById(R.id.store_name);
             this.order_state = (TextView) convertView.findViewById(R.id.order_state);
