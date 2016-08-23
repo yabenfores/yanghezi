@@ -88,7 +88,6 @@ public class RefuCheckActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             public void onSuccess(JSONObject result) {
-
                 setView(result);
             }
 

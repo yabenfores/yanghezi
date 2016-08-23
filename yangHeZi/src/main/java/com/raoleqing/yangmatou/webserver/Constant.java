@@ -32,6 +32,7 @@ public class Constant {
     public final static String CANCELSTORE = "Home/Users/cancelStore";//取消关注店铺
     public final static String REVIEWIMG = "Home/Users/reviewImg";//上传评论图片
     public final static String MEMBER_FSLIST = "Home/Users/member_fslist";//获取关注列表
+    public final static String MEMBER_FGLIST = "Home/Users/member_fglist";//获取关注列表
     public final static String LOGOUT="Home/Login/Logout";//退出登录
     public final static String GETREFUNDLIST="Home/Users/RefundList";//退货列表
     public final static String GOODSLIST="Home/Cate/goodsList";//退出登录

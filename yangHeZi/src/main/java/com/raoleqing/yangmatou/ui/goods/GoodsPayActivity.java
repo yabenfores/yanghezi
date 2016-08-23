@@ -34,13 +34,12 @@ import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
-import com.raoleqing.yangmatou.wxapi.WXPayEntryActivity;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
-import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
-import com.tencent.mm.sdk.openapi.WXAPIFactory;
+
+import net.sourceforge.simcpux.wxapi.WXPayEntryActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -93,7 +92,7 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener ,I
     private List<PayList> payList = new ArrayList<>();
     private List<Address> addressList = new ArrayList<Address>();
     private int addressIndex = 0;
-    private static IWXAPI wxApi;
+//    private static IWXAPI wxApi;
 
 
     private static final int SDK_PAY_FLAG = 1;
@@ -155,9 +154,9 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener ,I
         super.onCreate(savedInstanceState);
         setContentView(R.layout.goods_pay);
         Intent intent = this.getIntent();
-        wxApi = WXAPIFactory.createWXAPI(getAppContext(), null);
-        wxApi.registerApp(Constant.WXAPPID);
-        wxApi.handleIntent(getIntent(), this);
+//        wxApi = WXAPIFactory.createWXAPI(getAppContext(), null);
+//        wxApi.registerApp(Constant.WXAPPID);
+//        wxApi.handleIntent(getIntent(), this);
         goods_id = intent.getIntExtra("goods_id", 0);
         goodsNumber = intent.getIntExtra("goodsNumber", 1);
         wh_id = intent.getIntExtra("wh_id", 0);
@@ -454,21 +453,20 @@ public class GoodsPayActivity extends BaseActivity implements OnClickListener ,I
                     Intent intent=new Intent(this,WXPayEntryActivity.class);
                     intent.putExtra("req", json.toString());
                     startActivity(intent);
-
-//                    if (null != json && !json.has("retcode")) {
-//                        PayReq req = new PayReq();
-//                        req.appId = Constant.WXAPPID;
-//                        req.partnerId = json.getString("partnerid");
-//                        req.prepayId =  json.getString("prepayid");
-//                        req.nonceStr =  json.getString("noncestr");
-//                        req.timeStamp = json.getString("timestamp");
-//                        req.packageValue = json.getString("package");
-//                        req.sign = json.getString("sign");
-////                        req.extData = "app data"; // optional
-//                        // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
-////                        wxApi.sendReq(req);
-//                        Log.e("get server pay params:", json.toString());
-//
+//                    WXPayEntity wxPayEntity = new WXPayEntity();
+//                    wxPayEntity.setAppId(Constant.WXAPPID);
+//                    wxPayEntity.setPartnerId(json.getString("partnerid"));
+//                    wxPayEntity.setPrepayId(json.getString("prepayid"));
+//                    wxPayEntity.setPackageName(json.getString("package"));
+//                    wxPayEntity.setNonceStr(json.getString("noncestr"));
+//                    wxPayEntity.setTimeStamp(json.getString("timestamp"));
+//                    wxPayEntity.setSign(json.getString("sign"));
+//                    if ( !WXPayHelper.init(getBaseContext())) {
+//                        makeShortToast("网络异常，请稍后重试！");
+//                        return;
+//                    }
+//                    if (!WXPayHelper.pay(wxPayEntity)) {
+//                        makeShortToast("微信支付失败，请联系客服！！");
 //                    }
                 } catch (Exception e) {
                     Log.e("PAY_GET", "异常：" + e.getMessage());

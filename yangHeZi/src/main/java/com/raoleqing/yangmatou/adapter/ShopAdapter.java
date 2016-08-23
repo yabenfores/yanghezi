@@ -88,9 +88,19 @@ public class ShopAdapter extends BaseAdapter {
         imageViewList.add(holder.tv_shop_adapter_image4);
         imageViewList.add(holder.tv_shop_adapter_image5);
         imageViewList.add(holder.tv_shop_adapter_image6);
-        for (int i=0;i<imageViewList.size();i++){
+        for (int i = 0; i < imageViewList.size(); i++) {
             imageViewList.get(i).setImageDrawable(null);
             imageViewList.get(i).setVisibility(View.GONE);
+        }
+        if (imageViewList.size() > 3) {
+            holder.shop_more_img.setVisibility(View.VISIBLE);
+        } else {
+            holder.shop_more_img.setVisibility(View.GONE);
+        }
+        if (mShop.getIs_favorite() == 1) {
+            holder.ic_shop_like.setImageResource(R.drawable.ic_like);
+        } else {
+            holder.ic_shop_like.setImageResource(R.drawable.like_icon);
         }
         final String[] image = str.split(";");
         try {
@@ -103,11 +113,11 @@ public class ShopAdapter extends BaseAdapter {
         }
         ImageLoader.getInstance().displayImage(mShop.getFlag_imgSrc(), holder.iv_flg);
 
-        if (mShop.getIs_favorite()==1){
+        if (mShop.getIs_favorite() == 1) {
 
         }
 
-        holder.tv_shop_adapter_time.setText("发布于"+mShop.getGoods_publictime());
+        holder.tv_shop_adapter_time.setText("发布于" + mShop.getGoods_publictime());
         holder.tv_shop_adapter_com.setText(mShop.getGoods_name());
         holder.tv_flg.setText(mShop.getFlag_name());
         holder.tv_shop_adapter_sale.setText("销量：" + mShop.getGoods_salenum());
@@ -116,7 +126,6 @@ public class ShopAdapter extends BaseAdapter {
         holder.tv_shop_adapter_mprice.setText("￥" + mShop.getGoods_marketprice());
         holder.tv_shop_adapter_mprice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         holder.tv_shop_adapter_eval.setText(mShop.getComment_total());
-
 
 
         holder.shop_pay_but.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +138,7 @@ public class ShopAdapter extends BaseAdapter {
                     intent.putExtra("goods_marketprice", mShop.getGoods_marketprice());
                     intent.putExtra("goods_id", mShop.getGoods_id());
                     intent.putExtra("goodsName", mShop.getGoods_name());
-                    intent.putExtra("goods_image",image[0]);
+                    intent.putExtra("goods_image", image[0]);
                     context.startActivity(intent);
                 } else {
                     UserUitls.longInDialog(context);
@@ -154,11 +163,63 @@ public class ShopAdapter extends BaseAdapter {
             }
         });
 
+        final ViewHolder finalHolder = holder;
         holder.lyo_like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!UserUitls.isLongin(context)) {
                     UserUitls.longInDialog(context);
+                    return;
+                }
+                if (mShop.getIs_favorite() == 1) {
+                    NetHelper.cancelPro(mShop.getGoods_id() + "", new NetConnectionInterface.iConnectListener3() {
+                        @Override
+                        public void onStart() {
+                            context.setProgressVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            context.setProgressVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onSuccess(JSONObject result) {
+                            mShop.setIs_favorite(0);
+                            finalHolder.ic_shop_like.setImageResource(R.drawable.like_icon);
+                        }
+
+                        @Override
+                        public void onFail(JSONObject result) {
+                            context.makeShortToast(result.optString(Constant.INFO));
+                        }
+                    });
+                } else {
+                    NetHelper.favoritespro(mShop.getGoods_id() + "", new NetConnectionInterface.iConnectListener3() {
+                        @Override
+                        public void onStart() {
+                            context.setProgressVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            context.setProgressVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onSuccess(JSONObject result) {
+                            mShop.setIs_favorite(1);
+                            finalHolder.ic_shop_like.setImageResource(R.drawable.ic_like);
+
+
+                        }
+
+                        @Override
+                        public void onFail(JSONObject result) {
+                            context.makeShortToast(result.optString(Constant.INFO));
+
+                        }
+                    });
                 }
             }
         });
@@ -167,7 +228,7 @@ public class ShopAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                NetHelper.Share("1", mShop.getGoods_id()+"", new NetConnectionInterface.iConnectListener3() {
+                NetHelper.Share("1", mShop.getGoods_id() + "", new NetConnectionInterface.iConnectListener3() {
                     @Override
                     public void onStart() {
                         context.setProgressVisibility(View.VISIBLE);
@@ -180,9 +241,10 @@ public class ShopAdapter extends BaseAdapter {
 
                     @Override
                     public void onSuccess(JSONObject result) {
-                        Share share=new Share(result.optJSONObject(Constant.DATA));
+                        Share share = new Share(result.optJSONObject(Constant.DATA));
                         context.showShare(share);
                     }
+
                     @Override
                     public void onFail(JSONObject result) {
                         if (!UserUitls.isLongin(context)) UserUitls.longInDialog(context);
@@ -195,18 +257,21 @@ public class ShopAdapter extends BaseAdapter {
 
     class ViewHolder {
 
-        LinearLayout lyo_shop_adapter,lyo_eval,lyo_like,lyo_shop_share;
-        ImageView tv_shop_adapter_image1, tv_shop_adapter_image2, tv_shop_adapter_image3, tv_shop_adapter_image4, tv_shop_adapter_image5, tv_shop_adapter_image6, iv_flg;
+        LinearLayout lyo_shop_adapter, lyo_eval, lyo_like, lyo_shop_share;
+        ImageView tv_shop_adapter_image1, tv_shop_adapter_image2, tv_shop_adapter_image3, tv_shop_adapter_image4, tv_shop_adapter_image5, tv_shop_adapter_image6, iv_flg, ic_shop_like;
         TextView tv_shop_adapter_time, tv_shop_adapter_com, tv_flg, tv_shop_adapter_sale, tv_shop_adapter_sto, tv_shop_adapter_sprice, tv_shop_adapter_mprice, tv_shop_adapter_eval, tv_shop_adapter_share, tv_shop_adapter_fov;
-
+        View shop_more_img;
         Button shop_pay_but;
+
         public ViewHolder(View convertView) {
+            this.shop_more_img = convertView.findViewById(R.id.shop_more_img);
             this.tv_shop_adapter_image1 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image1);
             this.tv_shop_adapter_image2 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image2);
             this.tv_shop_adapter_image3 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image3);
             this.tv_shop_adapter_image4 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image4);
             this.tv_shop_adapter_image5 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image5);
             this.tv_shop_adapter_image6 = (ImageView) convertView.findViewById(R.id.tv_shop_adapter_image6);
+            this.ic_shop_like = (ImageView) convertView.findViewById(R.id.ic_shop_like);
             this.iv_flg = (ImageView) convertView.findViewById(R.id.iv_flg);
             this.tv_shop_adapter_time = (TextView) convertView.findViewById(R.id.tv_shop_adapter_time);
             this.tv_shop_adapter_com = (TextView) convertView.findViewById(R.id.tv_shop_adapter_com);
@@ -223,7 +288,7 @@ public class ShopAdapter extends BaseAdapter {
             this.lyo_shop_share = (LinearLayout) convertView.findViewById(R.id.lyo_shop_share);
             this.lyo_eval = (LinearLayout) convertView.findViewById(R.id.lyo_eval);
             this.lyo_like = (LinearLayout) convertView.findViewById(R.id.lyo_like);
-            this.shop_pay_but= (Button) convertView.findViewById(R.id.shop_pay_but);
+            this.shop_pay_but = (Button) convertView.findViewById(R.id.shop_pay_but);
         }
 
     }

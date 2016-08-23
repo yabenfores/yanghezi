@@ -71,9 +71,13 @@ public class NetHelper {
         new BaseNetConnection(Constant.CANCELSTORE, NetParams.HttpMethod.Post, true, connectListener, "fid", fid);
     }
 
-    //关注列表
+    //关注商店列表
     public static void member_fslist(NetConnectionInterface.iConnectListener3 connectListener) {
         new BaseNetConnection(Constant.MEMBER_FSLIST, NetParams.HttpMethod.Post, true, connectListener);
+    }
+    //关注商品列表
+    public static void member_fglist(NetConnectionInterface.iConnectListener3 connectListener) {
+        new BaseNetConnection(Constant.MEMBER_FGLIST, NetParams.HttpMethod.Post, true, connectListener);
     }
 
     //退出登录

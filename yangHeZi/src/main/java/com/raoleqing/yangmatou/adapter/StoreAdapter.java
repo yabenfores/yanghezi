@@ -85,7 +85,6 @@ public class StoreAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-
 		try {
 			holder.store_icon.setImageResource(R.color.transparent);
 			final Store mStore = storeList.get(position);
@@ -93,7 +92,7 @@ public class StoreAdapter extends BaseAdapter {
 			holder.store_name.setText(mStore.getStore_name());
 			holder.store_fans.setText("|  粉丝：" + mStore.getFans());
 			holder.store_content.setText(mStore.getContent());
-			holder.store_address.setText(mStore.getAddress());
+			holder.store_address.setText(mStore.getAddress()+"");
 			final int attention = mStore.getAttention();
 			if (attention == 0) {
 				holder.but_attention.setText("+ 关注");

@@ -1,8 +1,9 @@
-package com.raoleqing.yangmatou.wxapi;
+package net.sourceforge.simcpux.wxapi;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
@@ -22,21 +23,23 @@ import org.json.JSONObject;
 /**
  * Created by ybin on 2016/7/19.
  */
-public  class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHandler {
+public class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHandler {
 
     private static final String TAG = "MicroMsg.SDKSample.WXPayEntryActivity";
     private IWXAPI api;
 
     private JSONObject json;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pay_result);
-        api = WXAPIFactory.createWXAPI(getAppContext(),null);
+        api = WXAPIFactory.createWXAPI(this, null);
+//        api = WXPayHelper.getIWXAPI();
         api.handleIntent(getIntent(), this);
-        String string=getIntent().getStringExtra("req");
+        String string = getIntent().getStringExtra("req");
         try {
-            json=new JSONObject(string);
+            json = new JSONObject(string);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -57,7 +60,7 @@ public  class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHand
                 api.sendReq(req);
             }
         } catch (Exception e) {
-            throwEx(e);
+            e.printStackTrace();
         }
 
     }
@@ -73,13 +76,18 @@ public  class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHand
     public void onReq(BaseReq req) {
     }
 
+    private int ti = 1;
+
     @Override
     protected void onResume() {
         super.onResume();
-        Intent intent = new Intent(this, OrderActivity.class);
-        intent.putExtra("index", 2);
-        startActivity(intent);
-        finish();
+        if (ti == 0) {
+            Intent intent = new Intent(this, OrderActivity.class);
+            intent.putExtra("index", 2);
+            startActivity(intent);
+            finish();
+        }
+        ti--;
     }
 
     @Override
@@ -89,22 +97,20 @@ public  class WXPayEntryActivity extends BaseActivity implements IWXAPIEventHand
             try {
                 switch (resp.errCode) {
                     case Constant.WX_PAY_FAIL:
-                        makeShortToast("支付失败");
-                        finish();
+                        Toast.makeText(WXPayEntryActivity.this,"支付失败",Toast.LENGTH_SHORT).show();
                         break;
                     case Constant.WX_PAY_CANCEL:
-                        makeShortToast("已取消");
-                        finish();
+                        Toast.makeText(WXPayEntryActivity.this,"已取消",Toast.LENGTH_SHORT).show();
                         break;
                     case Constant.WX_PAY_SUCCESS:
                         Intent intent = new Intent(this, OrderActivity.class);
                         intent.putExtra("index", 2);
                         startActivity(intent);
-                        finish();
                         break;
                 }
+                finish();
             } catch (Exception e) {
-                throwEx(e);
+                e.printStackTrace();
             }
 
         }

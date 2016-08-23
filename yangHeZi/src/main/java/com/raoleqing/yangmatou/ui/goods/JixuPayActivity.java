@@ -28,7 +28,7 @@ import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
 import com.raoleqing.yangmatou.webserver.Constant;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
-import com.raoleqing.yangmatou.wxapi.WXPayEntryActivity;
+import net.sourceforge.simcpux.wxapi.WXPayEntryActivity;
 import com.tencent.mm.sdk.constants.ConstantsAPI;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;

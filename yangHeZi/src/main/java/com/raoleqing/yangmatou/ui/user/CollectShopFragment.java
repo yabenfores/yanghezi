@@ -1,36 +1,29 @@
 package com.raoleqing.yangmatou.ui.user;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.adapter.CollectShopAdapter;
-import com.raoleqing.yangmatou.ben.CollectShop;
-import com.raoleqing.yangmatou.ben.Goods;
-import com.raoleqing.yangmatou.ben.Order;
-import com.raoleqing.yangmatou.ui.order.OrderActivity;
-import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
-import com.raoleqing.yangmatou.uitls.ToastUtil;
-import com.raoleqing.yangmatou.webserver.Constant;
-import com.raoleqing.yangmatou.webserver.HttpUtil;
-import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
-import com.raoleqing.yangmatou.webserver.NetHelper;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.adapter.CollectShopAdapter;
+import com.raoleqing.yangmatou.ben.CollectShop;
+import com.raoleqing.yangmatou.ben.Goods;
+import com.raoleqing.yangmatou.ui.order.OrderActivity;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 商加收藏
@@ -61,7 +54,7 @@ public class CollectShopFragment extends Fragment implements OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-        View view = inflater.inflate(R.layout.payment_fragment, null);
+        View view = inflater.inflate(R.layout.coll_fragment, null);
 
         viewInfo(view);
         return view;
@@ -128,7 +121,6 @@ public class CollectShopFragment extends Fragment implements OnClickListener {
         System.out.println("Home/Users/member_fslist: " + response);
 
         try {
-
             if (response == null) {
                 ((OrderActivity) getActivity()).setMainProgress(View.GONE);
                 return;
@@ -147,6 +139,7 @@ public class CollectShopFragment extends Fragment implements OnClickListener {
                 mCollectShop.setContent(obj.optString("content"));
                 mCollectShop.setCreate_time(obj.optLong("create_time"));
                 mCollectShop.setState(obj.optInt("state"));
+                mCollectShop.setGoods_id(obj.optInt("goods_id"));
                 mCollectShop.setAddress(obj.optString("address"));
                 mCollectShop.setFans(obj.optString("fans"));
                 mCollectShop.setImg(obj.optString("img"));

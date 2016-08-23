@@ -8,12 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.raoleqing.yangmatou.BaseActivity;
-import com.raoleqing.yangmatou.BaseFragment;
 import com.raoleqing.yangmatou.MainActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ui.showwhat.Brand;
 import com.raoleqing.yangmatou.ui.showwhat.BrandsActivity;
-import com.raoleqing.yangmatou.ui.showwhat.ShowShatFragment;
 
 import java.util.List;
 
@@ -68,7 +66,6 @@ public class BrandAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
-
                     String brand_id=brand.getBrand_id()+"";
                     BaseActivity.sendNotifyUpdate(MainActivity.class,BRAND,brand_id);
                     context.onBackPressed();

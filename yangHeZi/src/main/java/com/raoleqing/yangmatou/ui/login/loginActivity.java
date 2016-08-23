@@ -227,7 +227,6 @@ public class loginActivity extends BaseActivity implements OnClickListener {
 
     private void getUsers() {
 
-
         NetHelper.Users(new NetConnectionInterface.iConnectListener3() {
             @Override
             public void onStart() {
@@ -282,7 +281,7 @@ public class loginActivity extends BaseActivity implements OnClickListener {
 
     private void IMLogin() {
         String user_name, user_pwd;
-        user_name = SharedPreferencesUtil.getString(getAppContext(), "m_user_name");
+        user_name = SharedPreferencesUtil.getString(getAppContext(), "user_name");
         user_pwd = SharedPreferencesUtil.getString(getAppContext(), "user_pwd");
         // TODO Auto-generated method stub
         EMClient.getInstance().login(user_name, user_pwd, new EMCallBack() {// 回调

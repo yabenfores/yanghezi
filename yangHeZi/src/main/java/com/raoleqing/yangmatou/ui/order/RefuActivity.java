@@ -222,7 +222,7 @@ public class RefuActivity extends BaseActivity implements View.OnClickListener, 
     private void upLoadOicture2(String path) {
 
         try {
-            mProgressDialog.setCancelable(false);
+            mProgressDialog.setCancelable(true);
             mProgressDialog.show();
             File file = new File(path);
             if (file.exists() && file.length() > 0) {

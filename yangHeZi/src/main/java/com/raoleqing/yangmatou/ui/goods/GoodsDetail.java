@@ -802,7 +802,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
         // Home/Index/favoritesstore
         setProgressVisibility(View.VISIBLE);
 
-
         NetHelper.favoritespro(goods_id + "", new NetConnectionInterface.iConnectListener3() {
             @Override
             public void onStart() {
@@ -814,7 +813,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                 setProgressVisibility(View.GONE);
 
             }
-
             @Override
             public void onSuccess(JSONObject result) {
                 try {
@@ -878,7 +876,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
                     setProgressVisibility(View.GONE);
                     return;
                 }
-
                 tv_product_favorite.setSelected(false);
                 tv_product_favorite.setText("收藏");
 
@@ -886,7 +883,6 @@ public class GoodsDetail extends BaseActivity implements OnClickListener {
 
             @Override
             public void onFail(JSONObject result) {
-
                 makeShortToast(result.optString(Constant.INFO));
             }
         });

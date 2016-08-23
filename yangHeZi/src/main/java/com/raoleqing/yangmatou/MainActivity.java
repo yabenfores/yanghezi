@@ -133,8 +133,9 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();
-        if (activity_search!=null){
-        activity_search.setFocusableInTouchMode(true);}
+        if (activity_search != null) {
+            activity_search.setFocusableInTouchMode(true);
+        }
         if (UserUitls.exitBut == 2) {
             UserUitls.exitBut = 1;
             setView(0);
@@ -144,10 +145,9 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     protected void viewInfo() {
         // TODO Auto-generated method stub
         String loginName, loginPwd;
-        loginName = SharedPreferencesUtil.getString(getAppContext(), "user_name");
+        loginName = SharedPreferencesUtil.getString(getAppContext(), "m_user_name");
         loginPwd = SharedPreferencesUtil.getString(getAppContext(), "user_pwd");
         try {
-
             if (!TextUtils.isEmpty(loginName) && TextUtils.isEmpty(loginPwd)) {
                 userLongin(loginName, loginPwd);
             }
@@ -157,7 +157,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         }
         main_title_layout = (RelativeLayout) findViewById(R.id.main_title_layout);
         gou_wu_message = (LinearLayout) findViewById(R.id.gou_wu_message);
-        webBack= (ImageView) findViewById(R.id.iv_web_back);
+        webBack = (ImageView) findViewById(R.id.iv_web_back);
         webBack.setOnClickListener(this);
         activity_search = (EditText) findViewById(R.id.main_search);
         gor_wu_title_layout = (LinearLayout) findViewById(R.id.gor_wu_title_layout);
@@ -215,7 +215,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         });
 
         setView(0);
-        IMLogin();
 
     }
 
@@ -271,7 +270,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                         Intent i = new Intent(this, ChatActivity.class);
                         i.putExtra(EaseConstant.EXTRA_USER_ID, user_msg_helper);
                         startActivity(i);
-                    }else {
+                    } else {
                         UserUitls.longInDialog(this);
                     }
                     break;
@@ -444,7 +443,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 main_host_text04.setTextColor(text01);
                 main_host_text05.setTextColor(text02);
 
-               Fragment fragment04 = ShowShatFragment.newInstance();
+                Fragment fragment04 = ShowShatFragment.newInstance();
                 transaction.replace(R.id.main_content, fragment04, "MainFragment");
                 transaction.commitAllowingStateLoss();
 
@@ -549,7 +548,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
             }
 
 
-
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
@@ -640,7 +638,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     }
 
 
-
     public String getCity_id() {
         return city_id;
     }
@@ -653,14 +650,15 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         return showType;
     }
 
-    private String city_id,brand_id;
-    private int showType=0;
+    private String city_id, brand_id;
+    private int showType = 0;
     //-------------------------
     public final static String USER_LOGIN = "user_login";
 
     public final static String JPUSH_SETTAG = "jpush_settag";
     public final static String COUNTRY = "country";
     public final static String BRAND = "brand";
+
     protected void notifyUpdate(NotifyUpdateEntity notifyUpdateEntity) {
         super.notifyUpdate(notifyUpdateEntity);
         try {
@@ -669,13 +667,13 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                     setView(4);
                     break;
                 case COUNTRY:
-                    city_id= (String) notifyUpdateEntity.getObj();
-                    showType=2;
+                    city_id = (String) notifyUpdateEntity.getObj();
+                    showType = 2;
                     setView(3);
                     break;
                 case BRAND:
-                    brand_id=(String) notifyUpdateEntity.getObj();
-                    showType=3;
+                    brand_id = (String) notifyUpdateEntity.getObj();
+                    showType = 3;
                     setView(3);
                     break;
                 case JPUSH_SETTAG:
@@ -688,6 +686,7 @@ public class MainActivity extends BaseActivity implements OnClickListener {
     }
 
     private static String TAG = "mainActivity";
+
     private void setTag(final String name) {
         JPushInterface.setAlias(getAppContext(), getMD5(name), new TagAliasCallback() {
             @Override
@@ -697,14 +696,14 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                     case 0:
                         logs = "Set tag and alias success";
                         Log.i(TAG, logs);
-                        SharedPreferencesUtil.putBoolean(getAppContext(),name, true);
+                        SharedPreferencesUtil.putBoolean(getAppContext(), name, true);
                         // 建议这里往 SharePreference 里写一个成功设置的状态。成功设置一次后，以后不必再次设置了。
                         break;
                     case 6002:
                         logs = "Failed to set alias and tags due to timeout. Try again after 60s.";
                         Log.i(TAG, logs);
                         // 延迟 60 秒来调用 Handler 设置别名
-                        sendNotifyUpdate(MainActivity.class, JPUSH_SETTAG,name, 60 * 1000);
+                        sendNotifyUpdate(MainActivity.class, JPUSH_SETTAG, name, 60 * 1000);
                         break;
                     default:
                         logs = "Failed with errorCode = " + i;
@@ -713,20 +712,24 @@ public class MainActivity extends BaseActivity implements OnClickListener {
             }
         });
     }
-    public void setCodeVisible(int visible){
-        if (gou_wu_message!=null){
-        gou_wu_message.setVisibility(visible);}
+
+    public void setCodeVisible(int visible) {
+        if (gou_wu_message != null) {
+            gou_wu_message.setVisibility(visible);
+        }
     }
-    public void setWebBack(int visible){
-        if (webBack!=null){
-        webBack.setVisibility(visible);}
+
+    public void setWebBack(int visible) {
+        if (webBack != null) {
+            webBack.setVisibility(visible);
+        }
     }
 
 
     /**
      * 登陆
      **/
-    private void userLongin(String loginName, String loginPwd) {
+    private void userLongin(final String loginName, String loginPwd) {
         //Home/Users/checkLogin
         String authorization, md5, auth;
         md5 = getMD5(loginPwd);
@@ -751,11 +754,15 @@ public class MainActivity extends BaseActivity implements OnClickListener {
             public void onSuccess(JSONObject result) {
                 try {
                     JSONObject json = result.optJSONObject(Constant.DATA);
-                    ToastUtil.MakeShortToast(BaseActivity.getAppContext(), "登录成功");
                     String member_auth = json.optString("Authorization");//认证
-                    SharedPreferencesUtil.putString(getAppContext(), "Authorization", member_auth);
+                    SharedPreferencesUtil.putString(MainActivity.this, "Authorization", member_auth);
+                    getUsers();
+                    if (!(SharedPreferencesUtil.getBoolean(getAppContext(), loginName, false))) {
+                        sendNotifyUpdate(loginActivity.class, JPUSH_SETTAG, loginName);
+                    }
+
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    throwEx(e);
                 }
             }
 
@@ -766,6 +773,134 @@ public class MainActivity extends BaseActivity implements OnClickListener {
         });
 
     }
+    private void getUsers() {
+
+        NetHelper.Users(new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(JSONObject result) {
+                getHxUser();
+                ResolveJson(result);
+            }
+
+            @Override
+            public void onFail(JSONObject result) {
+                setProgressVisibility(View.GONE);
+                ToastUtil.MakeShortToast(getAppContext(), result.optString(Constant.INFO));
+
+            }
+        });
+    }
+
+    protected void HXuserInfo(JSONObject response) {
+        // TODO Auto-generated method stub
+
+        System.out.println("环信： " + response);
+
+        try {
+            String message = response.optString("message");
+
+            if (response == null) {
+                setProgressVisibility(View.GONE);
+                return;
+            }
+            JSONObject json = response.optJSONObject(Constant.DATA);
+            String user_name = json.optString("user_name");//环信账户
+            String user_pwd = json.optString("user_pwd");//环信密码
+            String user_nickname = json.optString("user_nickname");//用户昵称
+            String user_msg_helper = json.optString("user_msg_helper");//客服帐号
+
+            SharedPreferencesUtil.putString(MainActivity.this, "user_name", user_name);
+            SharedPreferencesUtil.putString(MainActivity.this, "user_pwd", user_pwd);
+            SharedPreferencesUtil.putString(MainActivity.this, "user_nickname", user_nickname);
+            SharedPreferencesUtil.putString(MainActivity.this, "user_msg_helper", user_msg_helper);
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        finish();
+        sendNotifyUpdate(MainActivity.class, USER_LOGIN, 20);
+    }
+    protected void ResolveJson(JSONObject response) {
+        // TODO Auto-generated method stub
+
+        System.out.println("登录： " + response);
+
+        try {
+            String message = response.optString("message");
+
+            if (response == null) {
+                setProgressVisibility(View.GONE);
+                return;
+            }
+            JSONObject json = response.optJSONObject(Constant.DATA);
+            String member_name = json.optString("member_name");//用户名
+            String member_truename = json.optString("member_truename");//真实信名
+            String member_card = json.optString("member_card");//身份证
+            String member_mobile = json.optString("member_mobile");//手机号码
+            String member_email = json.optString("member_email");//邮箱
+            String member_avatar = json.optString("member_avatar");//图象地址
+
+
+            String member_id = json.optString("member_id");//用户id
+            String member_mobile_bind = json.optString("member_mobile_bind");//是否绑定
+            String wh_id = json.optString("wh_id");//区域id
+
+            SharedPreferencesUtil.putString(MainActivity.this, "member_name", member_name);
+            SharedPreferencesUtil.putString(MainActivity.this, "member_truename", member_truename);
+            SharedPreferencesUtil.putString(MainActivity.this, "member_card", member_card);
+            SharedPreferencesUtil.putString(MainActivity.this, "member_mobile", member_mobile);
+            SharedPreferencesUtil.putString(MainActivity.this, "member_email", member_email);
+            SharedPreferencesUtil.putString(MainActivity.this, "member_avatar", member_avatar);
+            SharedPreferencesUtil.putString(MainActivity.this, "member_id", member_id);
+            SharedPreferencesUtil.putString(MainActivity.this, "member_mobile_bind", member_mobile_bind);
+
+            SharedPreferencesUtil.putString(MainActivity.this, "wh_id", wh_id);
+            SharedPreferencesUtil.putBoolean(MainActivity.this, "isLongin", true);
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+        setProgressVisibility(View.GONE);
+        sendNotifyUpdate(MainActivity.class, USER_LOGIN, 20);
+    }
+    private void getHxUser() {
+        NetHelper.customerIndex(new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(JSONObject result) {
+                HXuserInfo(result);
+                IMLogin();
+            }
+
+            @Override
+            public void onFail(JSONObject result) {
+                makeShortToast(result.optString(Constant.DATA));
+
+            }
+        });
+    }
+
 
     public static String getMD5(String old) {
         byte[] source = old.getBytes();

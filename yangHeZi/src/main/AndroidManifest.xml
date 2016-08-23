@@ -115,11 +115,7 @@
         <activity
             android:name=".ui.goods.GoodsPayActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="wxc17de1d8065faefa"/>
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".ui.shop.ShopActivity"
@@ -212,12 +208,6 @@
             </intent-filter>
         </activity>
         <!-- 微信分享回调 -->
-        <activity
-            android:name=".wxapi.WXEntryActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- 环信 -->
 
@@ -352,21 +342,15 @@
         <activity android:name=".ui.user.CircularActivity"/>
         <activity android:name=".ui.order.RefuCheckActivity"/>
         <activity android:name=".ui.goods.JixuPayActivity"/>
-        <activity android:name=".wxapi.WXPayEntryActivity"
+        <activity android:name="net.sourceforge.simcpux.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop">
-            <intent-filter >
-                <action android:name ="android.intent.action.VIEW"/>
-                <category android:name= "android.intent.category.DEFAULT" />
-                <data android:scheme ="wxc17de1d8065faefa"/><!--  注意这里，似乎对程序有影响，要加上-->
-            </intent-filter >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="wxc17de1d8065faefa" />
+            </intent-filter>
         </activity>
-        <receiver
-            android:name= ".AppRegister">
-            <intent-filter >
-                <action android:name= "com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
-            </intent-filter >
-        </receiver >
         <receiver
             android:name=".JPushRegister"
             android:enabled="true">

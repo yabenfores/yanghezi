@@ -1,13 +1,5 @@
 package com.raoleqing.yangmatou.ui.user;
 
-import com.raoleqing.yangmatou.BaseActivity;
-import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
-import com.raoleqing.yangmatou.webserver.Constant;
-import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
-import com.raoleqing.yangmatou.webserver.NetHelper;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,27 +8,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.raoleqing.yangmatou.BaseActivity;
+import com.raoleqing.yangmatou.R;
+import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
+
 import org.json.JSONObject;
 
 public class SetTextActivity extends BaseActivity implements OnClickListener {
 
-	private ImageView activity_return;
 	private TextView activity_save;
 	private EditText set_text_edit;
 	private String title,mName;
 
+	private ImageView back;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.set_text_activity);
-
 		setProgressVisibility(View.GONE);
 		setTitleVisibility(View.GONE);
-		activity_return = (ImageView) findViewById(R.id.activity_return);
 		activity_save = (TextView) findViewById(R.id.activity_save);
 		set_text_edit = (EditText) findViewById(R.id.set_text_edit);
-
-		activity_return.setOnClickListener(this);
+		back= (ImageView) findViewById(R.id.activity_back);
+		back.setOnClickListener(this);
 		activity_save.setOnClickListener(this);
 	}
 
@@ -44,7 +41,7 @@ public class SetTextActivity extends BaseActivity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.activity_return:
+		case R.id.activity_back:
 			SetTextActivity.this.onBackPressed();
 			break;
 		case R.id.activity_save:
@@ -82,11 +79,11 @@ public class SetTextActivity extends BaseActivity implements OnClickListener {
 
 
 				} else {
-					Toast.makeText(SetTextActivity.this, "昵称长度不对", 1).show();
+					Toast.makeText(SetTextActivity.this, "昵称长度不对", Toast.LENGTH_SHORT).show();
 				}
 
 			} else {
-				Toast.makeText(SetTextActivity.this, "请输入昵称", 1).show();
+				Toast.makeText(SetTextActivity.this, "请输入昵称", Toast.LENGTH_SHORT).show();
 			}
 
 			break;

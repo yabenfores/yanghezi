@@ -50,15 +50,6 @@
                     android:singleLine="true"
                     android:text="店名：" />
 
-                <TextView
-                    android:visibility="gone"
-                    android:id="@+id/store_fans"
-                    style="@style/text04_type01"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:singleLine="true"
-                    android:text="|  粉丝：" />
             </LinearLayout>
         </RelativeLayout>
 
@@ -75,32 +66,77 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="简介：" />
-
-        <HorizontalScrollView
-            android:id="@+id/horizontalScrollView1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/goods_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/image_icon01"
+                android:scaleType="fitCenter" />
 
             <LinearLayout
-                android:id="@+id/store_image_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:orientation="horizontal"
-                >
-            </LinearLayout>
-        </HorizontalScrollView>
+                android:paddingBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
 
-        <Button
-            android:background="@drawable/button_selector_background05"
-            android:id="@+id/btn_cancel"
-            android:layout_gravity="right"
-            android:layout_marginRight="10dp"
-            style="@style/text04_type01"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
+                <TextView
+                    android:id="@+id/goods_name"
+                    style="@style/text03_type01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:lines="2"
+                    android:text="名字" />
+
+                <TextView
+                    android:id="@+id/goods_price"
+                    style="@style/text02_type02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="￥0.00" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
             android:layout_marginTop="10dp"
-            android:text="取消收藏" />
+            android:background="@color/line01" />
+
+        <LinearLayout
+            android:gravity="right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:background="@drawable/button_selector_background05"
+                android:id="@+id/btn_cancel"
+                android:layout_marginRight="10dp"
+                style="@style/text04_type01"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:text="取消收藏" />
+            <Button
+                android:background="@drawable/button_selector_background05"
+                android:id="@+id/btn_buy"
+                android:layout_marginRight="10dp"
+                style="@style/text02_type02"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:text="立即购买" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

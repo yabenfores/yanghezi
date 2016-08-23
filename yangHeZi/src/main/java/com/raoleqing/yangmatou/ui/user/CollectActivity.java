@@ -1,10 +1,5 @@
 package com.raoleqing.yangmatou.ui.user;
 
-import com.raoleqing.yangmatou.BaseActivity;
-import com.raoleqing.yangmatou.R;
-import com.raoleqing.yangmatou.ui.order.AllOrderFragment;
-import com.raoleqing.yangmatou.ui.order.OrderActivity;
-
 import android.annotation.TargetApi;
 import android.graphics.Color;
 import android.os.Build;
@@ -17,6 +12,9 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.raoleqing.yangmatou.BaseActivity;
+import com.raoleqing.yangmatou.R;
 
 import entity.NotifyUpdateEntity;
 
@@ -43,7 +41,6 @@ public class CollectActivity extends BaseActivity implements OnClickListener {
     }
 
     protected void viewInfo() {
-
         country_return = (ImageView) findViewById(R.id.activity_return);
         collect_itemt01 = (LinearLayout) findViewById(R.id.collect_itemt01);
         collect_itemt02 = (LinearLayout) findViewById(R.id.collect_itemt02);
@@ -52,11 +49,7 @@ public class CollectActivity extends BaseActivity implements OnClickListener {
         country_return.setOnClickListener(this);
         collect_itemt01.setOnClickListener(this);
         collect_itemt02.setOnClickListener(this);
-
-
         setView(0);
-
-
         setProgressVisibility(View.GONE);
     }
 

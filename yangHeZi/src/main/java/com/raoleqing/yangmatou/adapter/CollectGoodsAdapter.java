@@ -3,8 +3,6 @@ package com.raoleqing.yangmatou.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +17,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.ben.CollectShop;
-import com.raoleqing.yangmatou.ben.Goods;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
-import com.raoleqing.yangmatou.ui.goods.GoodsDetail;
+import com.raoleqing.yangmatou.ui.goods.GoodsPayActivity;
 import com.raoleqing.yangmatou.ui.shop.ShopActivity;
 import com.raoleqing.yangmatou.ui.user.CollectActivity;
 import com.raoleqing.yangmatou.uitls.UnitConverterUtils;
@@ -33,8 +30,8 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class CollectShopAdapter extends BaseAdapter{
-	
+public class CollectGoodsAdapter extends BaseAdapter{
+
 	private List<CollectShop> sowShatList;
 	private LayoutInflater mInflater;
 	private CollectActivity context;
@@ -42,11 +39,11 @@ public class CollectShopAdapter extends BaseAdapter{
 
 	private int ItemHeight = 0;
 
-	CollectShopAdapter() {
+	CollectGoodsAdapter() {
 
 	}
 
-	public CollectShopAdapter(CollectActivity context, List<CollectShop> sowShatList ) {
+	public CollectGoodsAdapter(CollectActivity context, List<CollectShop> sowShatList ) {
 		this.context = context;
 		this.sowShatList = sowShatList;
 		height = UnitConverterUtils.dip2px(context, 80);
@@ -78,77 +75,41 @@ public class CollectShopAdapter extends BaseAdapter{
 
 		ViewHolder holder = null;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.collect_shop_adapter, parent, false);
+			convertView = mInflater.inflate(R.layout.collect_goods_adapter, parent, false);
 			holder = new ViewHolder(convertView);
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		try {
-
 			final CollectShop mStore = sowShatList.get(position);
-			ImageLoader.getInstance().displayImage(mStore.getImg(), holder.store_icon,
+			ImageLoader.getInstance().displayImage(mStore.getStore_img(), holder.store_icon,
 					YangHeZiApplication.imageOption(R.drawable.store_icon));
+			ImageLoader.getInstance().displayImage(mStore.getGoods_image(), holder.goods_image);
 			holder.store_name.setText(mStore.getStore_name());
-			holder.store_fans.setText("|  粉丝：" + mStore.getFans());
 			holder.store_content.setText(mStore.getContent());
-//			holder.store_address.setText(mStore.getAddress());
-			final int attention = mStore.getAttention();
-//			if (attention == 0) {
-//				holder.but_attention.setText("+ 关注");
-//			} else {
-//				holder.but_attention.setText("已关注");
-//			}
 
-			holder.store_image_layout.removeAllViews();
-			List<Goods> goodsList = mStore.getGoods_list();
-			for (int i = 0; i < goodsList.size(); i++) {
-				final Goods mGoods = goodsList.get(i);
-				RelativeLayout lyo=new RelativeLayout(context);
-				lyo.setLayoutParams(new RelativeLayout.LayoutParams(height,height));
-				ImageView image = new ImageView(context);
-				image.setScaleType(ImageView.ScaleType.CENTER_CROP);
-				image.setLayoutParams(new LinearLayout.LayoutParams(height, height));
-				ImageLoader.getInstance().displayImage(mGoods.getGoods_image(), image,
-						YangHeZiApplication.imageOption(R.drawable.image_icon01));
-				lyo.addView(image);
-				TextView price=new TextView(context);
-				RelativeLayout.LayoutParams tv_params = new RelativeLayout.LayoutParams(
-						RelativeLayout.LayoutParams.MATCH_PARENT,
-						RelativeLayout.LayoutParams.WRAP_CONTENT);
-				tv_params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-				price.setLayoutParams(tv_params);
-				price.setText(mGoods.getGoods_promotion_price()+"");
-				price.setGravity(Gravity.CENTER_HORIZONTAL);
-				price.setTextColor(Color.WHITE);
-				price.setBackgroundColor(0xB0000000);
-				lyo.addView(price);
-				holder.store_image_layout.addView(lyo);
-				View view = new View(context);
-				view.setLayoutParams(new LinearLayout.LayoutParams(10, 10));
-				holder.store_image_layout.addView(view);
+			holder.goods_name.setText(mStore.getGoods_name());
+			holder.goods_price.setText(mStore.getGoods_price()+"");
 
-				// 每个图片的点击
-				image.setOnClickListener(new View.OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-
-						Intent intent = new Intent(context, GoodsDetail.class);
-						intent.putExtra("goods_id", mGoods.getGoods_id());
-						context.startActivity(intent);
-						((Activity) context).overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-
-					}
-				});
-			}
-
+			holder.btn_buy.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(context, GoodsPayActivity.class);
+					intent.putExtra("goodsNumber", 1);
+					intent.putExtra("goods_promotion_price", mStore.getGoods_price());
+					intent.putExtra("goods_marketprice", mStore.getGoods_marketprice());
+					intent.putExtra("goods_id", mStore.getGoods_id());
+					intent.putExtra("goodsName", mStore.getGoods_name());
+					intent.putExtra("goods_image", mStore.getGoods_image());
+					context.startActivity(intent);
+				}
+			});
 			holder.btn_cancel.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {
 
-					NetHelper.cancelStore(mStore.getStore_id()+"", new NetConnectionInterface.iConnectListener3() {
+					NetHelper.cancelPro(mStore.getGoods_id()+"", new NetConnectionInterface.iConnectListener3() {
 						@Override
 						public void onStart() {
 							context.setProgressVisibility(View.VISIBLE);
@@ -201,11 +162,15 @@ public class CollectShopAdapter extends BaseAdapter{
 	class ViewHolder {
 
 		Button btn_cancel;
+		Button btn_buy;
 		ImageView cat_goodes_image;
 		TextView cat_goodes_text;
 		ImageView store_icon;
+		ImageView goods_image;
 //		Button but_attention;
 		TextView store_name;
+		TextView goods_name;
+		TextView goods_price;
 		TextView store_fans;
 		TextView store_content;
 		LinearLayout store_image_layout;
@@ -216,14 +181,18 @@ public class CollectShopAdapter extends BaseAdapter{
 			this.cat_goodes_image = (ImageView) convertView.findViewById(R.id.cat_goodes_image);
 			this.cat_goodes_text = (TextView) convertView.findViewById(R.id.cat_goodes_text);
 			this.store_icon = (ImageView) convertView.findViewById(R.id.store_icon);
+			this.goods_image = (ImageView) convertView.findViewById(R.id.goods_image);
 //			this.but_attention = (Button) convertView.findViewById(R.id.but_attention);
 			this.store_name = (TextView) convertView.findViewById(R.id.store_name);
+			this.goods_name = (TextView) convertView.findViewById(R.id.goods_name);
+			this.goods_price = (TextView) convertView.findViewById(R.id.goods_price);
 			this.store_fans = (TextView) convertView.findViewById(R.id.store_fans);
 			this.store_content = (TextView) convertView.findViewById(R.id.store_content);
 			this.store_image_layout = (LinearLayout) convertView.findViewById(R.id.store_image_layout);
 			this.store_layout = (RelativeLayout) convertView.findViewById(R.id.store_layout);
 //			this.store_address = (TextView) convertView.findViewById(R.id.store_address);
 			this.btn_cancel= (Button) convertView.findViewById(R.id.btn_cancel);
+			this.btn_buy= (Button) convertView.findViewById(R.id.btn_buy);
 		}
 
 	}

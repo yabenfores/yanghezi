@@ -5,6 +5,16 @@ import java.util.List;
 public class CollectShop {
     private int id;
     private int store_id;
+
+    public int getGoods_id() {
+        return goods_id;
+    }
+
+    public void setGoods_id(int goods_id) {
+        this.goods_id = goods_id;
+    }
+
+    private int goods_id;
     private String store_name;
     private String title;
     private String content;
@@ -87,4 +97,52 @@ public class CollectShop {
     public void setGoods_list(List<Goods> goods_list) {
         this.goods_list = goods_list;
     }
+
+    public String getStore_img() {
+        return store_img;
+    }
+
+    public void setStore_img(String store_img) {
+        this.store_img = store_img;
+    }
+
+    public String getGoods_image() {
+        return goods_image;
+    }
+
+    public void setGoods_image(String goods_image) {
+        this.goods_image = goods_image;
+    }
+
+    public String getGoods_name() {
+        return goods_name;
+    }
+
+    public void setGoods_name(String goods_name) {
+        this.goods_name = goods_name;
+    }
+
+    public double getGoods_price() {
+        return goods_price;
+    }
+
+    public void setGoods_price(double goods_price) {
+        this.goods_price = goods_price;
+    }
+
+    public double goods_price;
+
+    public double getGoods_marketprice() {
+        return goods_marketprice;
+    }
+
+    public void setGoods_marketprice(double goods_marketprice) {
+        this.goods_marketprice = goods_marketprice;
+    }
+
+    public double goods_marketprice;
+
+    public String goods_name;
+    public String goods_image;
+
 }

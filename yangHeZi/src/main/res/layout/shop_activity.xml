@@ -20,7 +20,7 @@
                 android:id="@+id/goods_shop_iocn"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/store_icon" />
+                android:src="@drawable/store_icon" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
