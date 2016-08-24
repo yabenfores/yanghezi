@@ -19,6 +19,7 @@ public class StartActivity extends BaseActivity {
         setContentView(R.layout.activity_start);
         Intent intent = getIntent();
         String action = intent.getAction();
+
         if (Intent.ACTION_VIEW.equals(action)) {
             Uri uri = intent.getData();
             if (uri != null) {

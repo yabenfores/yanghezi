@@ -9,6 +9,7 @@ public class Constant {
     public static final int WX_PAY_FAIL = -1;
     public static final int WX_PAY_CANCEL = -2;
     public static final String API_BASE = "http://114.67.59.57/app/index.php/";
+    public static final String API_CHECK = "http://http://120.27.112.168:8080/yanghezi.html";
     public static final String REGULAR_PHONE = "^1[3-9]\\d{9}$";   // 手机号码正则表达式
     public static final String CHARSET = "utf-8";
     public static final String NET_STATUS = "code";

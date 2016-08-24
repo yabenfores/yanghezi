@@ -50,6 +50,34 @@ import java.net.URLConnection;
 
 
         }
+        public BaseNetConnection(boolean doEncode,  String action, NetParams.HttpMethod method, final boolean addAuth, NetConnectionInterface.iConnectListener3 connectListener, int timeOut, final String... kvs) {
+            this.connectListener = connectListener;
+
+            new NetConnection(doEncode, Constant.CHARSET, action, method, new NetConnectionInterface.iSetHeader() {
+                @Override
+                public void setHeader(URLConnection urlConnection) {
+                    try {
+                        StringBuilder paramsBuffer = new StringBuilder();
+                        for (int i = 0; i < kvs.length - 1; i += 2) {
+                            if (kvs[i + 1] == null) {
+                                continue;
+                            }
+                            paramsBuffer.append(kvs[i] + "=" + kvs[i + 1]);
+                        }
+                        String auth = null;
+                        if (addAuth) {
+                            auth = SharedPreferencesUtil.getString(BaseActivity.getAppContext(),"Authorization");
+                            urlConnection.addRequestProperty("Authorization", auth);
+                        }
+                        LogUtil.loge(this.getClass(), "Authorization:" + auth);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, connectListener, timeOut, kvs);
+
+
+        }
 
         private NetConnectionInterface.iConnectListener3 connectListener= new NetConnectionInterface.iConnectListener3() {
         @Override

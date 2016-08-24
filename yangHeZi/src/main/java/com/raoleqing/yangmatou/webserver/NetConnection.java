@@ -1,9 +1,12 @@
 package com.raoleqing.yangmatou.webserver;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.raoleqing.yangmatou.BaseActivity;
+import com.raoleqing.yangmatou.common.YangHeZiApplication;
+import com.raoleqing.yangmatou.ui.login.loginActivity;
 import com.raoleqing.yangmatou.uitls.LogUtil;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 
@@ -113,6 +116,9 @@ public class NetConnection {
                     } else {
                         if (json.optString("message").equals("请重新登录")) {
                             SharedPreferencesUtil.putBoolean(BaseActivity.getAppContext(), "isLongin", false);
+                            Intent intent=new Intent(YangHeZiApplication.getAppContext(), loginActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            YangHeZiApplication.getAppContext().startActivity(intent);
                         }
                         conectListener.onFail(json);
                     }

@@ -16,6 +16,13 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import com.raoleqing.yangmatou.webserver.BaseNetConnection;
+import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 
@@ -42,6 +49,37 @@ public class YangHeZiApplication extends Application {
         EMClient.getInstance().setDebugMode(true);
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
+        getType();
+    }
+
+    public static int tppe = 1;
+
+    private void getType() {
+        new BaseNetConnection(false, Constant.API_CHECK, NetParams.HttpMethod.Post, false, new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(JSONObject result) {
+                try {
+                    tppe = result.getInt("v");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFail(JSONObject result) {
+
+            }
+        }, 15000, "");
     }
 
     public static YangHeZiApplication getInstance() {
@@ -69,10 +107,10 @@ public class YangHeZiApplication extends Application {
                 .memoryCacheExtraOptions(480, 800) // max width, max height
                 .threadPoolSize(3)// 线程池内加载的数量
                 .threadPriority(Thread.NORM_PRIORITY - 2) // 降低线程的优先级保证主UI线程不受太大影响
-                .denyCacheImageMultipleSizesInMemory().memoryCache(new LruMemoryCache(5 * 1024 * 1024)) // 建议内存设在5-10M,可以有比较好的表现
-                .memoryCacheSize(5 * 1024 * 1024).discCacheSize(50 * 1024 * 1024)
+                .denyCacheImageMultipleSizesInMemory().memoryCache(new LruMemoryCache(10 * 1024 * 1024)) // 建议内存设在5-10M,可以有比较好的表现
+                .memoryCacheSize(10 * 1024 * 1024).discCacheSize(100 * 1024 * 1024)
                 .discCacheFileNameGenerator(new Md5FileNameGenerator()).tasksProcessingOrder(QueueProcessingType.LIFO)
-                .discCacheFileCount(100) // 缓存的文件数量
+                .discCacheFileCount(50) // 缓存的文件数量
                 .discCache(new UnlimitedDiskCache(cacheDir))
                 .defaultDisplayImageOptions(DisplayImageOptions.createSimple())
                 .imageDownloader(new BaseImageDownloader(context, 5 * 1000, 30 * 1000)) // connectTimeout
@@ -97,7 +135,6 @@ public class YangHeZiApplication extends Application {
 
         return options;
     }
-
 
 
     public static Context getAppContext() {

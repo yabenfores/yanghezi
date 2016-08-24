@@ -52,6 +52,7 @@ public class BaseActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		if (YangHeZiApplication.tppe==0) return;
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		initContentView(R.layout.base_activity);
 		infoView();

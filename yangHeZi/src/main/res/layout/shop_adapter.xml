@@ -250,8 +250,8 @@
                     <ImageView
                         android:id="@+id/ic_shop_like"
                         android:src="@drawable/like_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
                     <TextView
                         style="@style/text04_type02"
                         android:layout_width="wrap_content"

@@ -30,7 +30,7 @@
                     android:id="@+id/personal_nav_icon00"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/personal_nav_icon00" />
 
                 <TextView
@@ -60,7 +60,7 @@
                     android:id="@+id/personal_nav_icon01"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/personal_nav_icon01" />
 
                 <TextView
@@ -90,7 +90,7 @@
                     android:layout_width="32dp"
                     android:layout_height="30dp"
                     android:id="@+id/personal_nav_icon02"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/personal_nav_icon02" />
 
                 <TextView
@@ -120,7 +120,7 @@
                    android:layout_width="30dp"
                     android:id="@+id/personal_nav_icon03"
                     android:layout_height="30dp"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/personal_nav_icon03" />
 
                 <TextView
@@ -150,7 +150,7 @@
                   android:layout_width="30dp"
                     android:id="@+id/personal_nav_icon04"
                     android:layout_height="30dp"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/personal_nav_icon04" />
 
                 <TextView
@@ -180,7 +180,7 @@
                   android:layout_width="30dp"
                     android:id="@+id/personal_nav_icon05"
                     android:layout_height="30dp"
-                    android:scaleType="center"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/personal_nav_icon05" />
 
                 <TextView

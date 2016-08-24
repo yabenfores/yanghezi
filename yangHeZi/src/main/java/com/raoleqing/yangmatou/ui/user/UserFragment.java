@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hyphenate.easeui.EaseConstant;
-import com.mining.app.zxing.decoding.Intents;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
@@ -89,11 +88,11 @@ public class UserFragment extends Fragment implements OnClickListener {
         user_name = (TextView) view.findViewById(R.id.main_user_name);
         main_user_icon = (CircleImageView) view.findViewById(R.id.main_user_icon);
         user_order = (TextView) view.findViewById(R.id.user_order);
-        navBtn01 = (Button) view.findViewById(R.id.navBtn01);
-        navBtn02 = (Button) view.findViewById(R.id.navBtn02);
-        navBtn03 = (Button) view.findViewById(R.id.navBtn03);
-        navBtn04 = (Button) view.findViewById(R.id.navBtn04);
-        navBtn05 = (Button) view.findViewById(R.id.navBtn05);
+//        navBtn01 = (Button) view.findViewById(R.id.navBtn01);
+//        navBtn02 = (Button) view.findViewById(R.id.navBtn02);
+//        navBtn03 = (Button) view.findViewById(R.id.navBtn03);
+//        navBtn04 = (Button) view.findViewById(R.id.navBtn04);
+//        navBtn05 = (Button) view.findViewById(R.id.navBtn05);
         user_fragment_view01 = (View) view.findViewById(R.id.user_fragment_view01);
         user_fragment_view02 = (View) view.findViewById(R.id.user_fragment_view02);
         user_fragment_view03 = (View) view.findViewById(R.id.user_fragment_view03);
@@ -113,11 +112,11 @@ public class UserFragment extends Fragment implements OnClickListener {
         user_fragemnt_tiem06.setOnClickListener(this);
 
         user_order.setOnClickListener(this);
-        navBtn01.setOnClickListener(this);
-        navBtn02.setOnClickListener(this);
-        navBtn03.setOnClickListener(this);
-        navBtn04.setOnClickListener(this);
-        navBtn05.setOnClickListener(this);
+        view.findViewById(R.id.navBtn01).setOnClickListener(this);
+        view.findViewById(R.id.navBtn02).setOnClickListener(this);
+        view.findViewById(R.id.navBtn03).setOnClickListener(this);
+        view.findViewById(R.id.navBtn04).setOnClickListener(this);
+        view.findViewById(R.id.navBtn05).setOnClickListener(this);
 
         String member_avatar = SharedPreferencesUtil.getString(getActivity().getBaseContext(), "member_avatar");
 //		String member_avatar="http://rescdn.qqmail.com/dyimg/20140409/72B8663B7F23.jpg";
