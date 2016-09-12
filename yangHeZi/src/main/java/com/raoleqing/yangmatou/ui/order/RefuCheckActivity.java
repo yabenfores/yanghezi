@@ -1,7 +1,5 @@
 package com.raoleqing.yangmatou.ui.order;
 
-import android.annotation.TargetApi;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -82,7 +80,6 @@ public class RefuCheckActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             public void onFinish() {
-
                 setProgressVisibility(View.GONE);
             }
 
@@ -93,18 +90,16 @@ public class RefuCheckActivity extends BaseActivity implements View.OnClickListe
 
             @Override
             public void onFail(JSONObject result) {
-
                 makeShortToast(result.optString(Constant.INFO));
             }
         });
     }
 
     private String[] imgList;
-    @TargetApi(Build.VERSION_CODES.M)
     private void setView(JSONObject result) {
         JSONObject object=result.optJSONObject(Constant.DATA);
         if (object.optString("refund_type").equals("3")){
-            tv_re_huan.setTextColor(getColor(R.color.line02));
+            tv_re_huan.setTextColor(0xFFE81258);
         }
         sn_reason.setText(object.optString("reason_info"));
         et_re_massage.setText(object.optString("buyer_message"));
@@ -112,12 +107,12 @@ public class RefuCheckActivity extends BaseActivity implements View.OnClickListe
             case "1":
             case "2":
                 iv_app_run.setImageResource(R.drawable.bg_refu_2);
-                tv_shouli.setTextColor(getColor(R.color.line02));
+                tv_shouli.setTextColor(0xFFE81258);
                 break;
             case "3":
                 iv_app_run.setImageResource(R.drawable.bg_refu_3);
-                tv_shouli.setTextColor(getColor(R.color.line02));
-                tv_chengong.setTextColor(getColor(R.color.line02));
+                tv_shouli.setTextColor(0xFFE81258);
+                tv_chengong.setTextColor(0xFFE81258);
                 break;
             default:
                 break;
@@ -136,7 +131,6 @@ public class RefuCheckActivity extends BaseActivity implements View.OnClickListe
         } catch (Exception e) {
             throwEx(e);
         }
-
     }
 
 

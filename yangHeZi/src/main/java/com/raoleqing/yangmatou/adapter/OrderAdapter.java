@@ -153,12 +153,17 @@ public class OrderAdapter extends BaseAdapter {
                     holder.order_state.setText("已完成");
                     holder.btn_order_eval.setVisibility(View.GONE);
                 }
-                holder.btn_order_back.setVisibility(View.VISIBLE);
+                if (mOrder.getRefund_id().equals("0")) {
+                    holder.btn_order_back.setVisibility(View.VISIBLE);
+                    holder.btn_order_doing.setVisibility(View.GONE);
+                } else {
+                    holder.btn_order_back.setVisibility(View.GONE);
+                    holder.btn_order_doing.setVisibility(View.VISIBLE);
+                }
                 holder.btn_order_cancel.setVisibility(View.GONE);
                 holder.btn_order_pay.setVisibility(View.GONE);
                 holder.btn_order_tip.setVisibility(View.GONE);
                 holder.btn_order_confirm.setVisibility(View.GONE);
-                holder.btn_order_doing.setVisibility(View.GONE);
 
                 //AftermarketActivity
                 break;
@@ -217,8 +222,8 @@ public class OrderAdapter extends BaseAdapter {
                 holder.btn_order_doing.setVisibility(View.VISIBLE);
                 break;
             case 3:
-                holder.order_state.setText("退换货");
-                holder.btn_order_back.setVisibility(View.VISIBLE);
+                holder.order_state.setText("已退换货");
+                holder.btn_order_back.setVisibility(View.GONE);
                 holder.btn_order_cancel.setVisibility(View.GONE);
                 holder.btn_order_pay.setVisibility(View.GONE);
                 holder.btn_order_tip.setVisibility(View.GONE);
@@ -287,7 +292,6 @@ public class OrderAdapter extends BaseAdapter {
         holder.btn_order_confirm.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 NetHelper.orderreceive(mOrder.getOrder_id(), new NetConnectionInterface.iConnectListener3() {
                     @Override
                     public void onStart() {

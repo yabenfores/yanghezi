@@ -215,7 +215,6 @@ public class RefuActivity extends BaseActivity implements View.OnClickListener, 
     }
 
 
-
     /**
      * 图片上传2
      */
@@ -403,13 +402,12 @@ public class RefuActivity extends BaseActivity implements View.OnClickListener, 
                         @Override
                         public void onFinish() {
                             setProgressVisibility(View.GONE);
-
                         }
 
                         @Override
                         public void onSuccess(JSONObject result) {
                             makeShortToast(result.optString(Constant.INFO));
-                            finish();
+                            RefuActivity.this.finish();
                         }
 
                         @Override
@@ -471,7 +469,6 @@ public class RefuActivity extends BaseActivity implements View.OnClickListener, 
                 }
 
             }
-
             @Override
             public void onFail(JSONObject result) {
 

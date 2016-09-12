@@ -1,41 +1,31 @@
 package com.raoleqing.yangmatou.ui.user;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.adapter.OrderAdapter;
 import com.raoleqing.yangmatou.ben.Order;
-import com.raoleqing.yangmatou.common.CircleImageView;
-import com.raoleqing.yangmatou.ui.login.loginActivity;
 import com.raoleqing.yangmatou.ui.order.OrderActivity;
-import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.uitls.ToastUtil;
 import com.raoleqing.yangmatou.webserver.Constant;
-import com.raoleqing.yangmatou.webserver.HttpUtil;
 import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
 import com.raoleqing.yangmatou.webserver.NetHelper;
 import com.raoleqing.yangmatou.xlist.XListView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -178,6 +168,8 @@ public class ReviewFragment extends Fragment implements OnClickListener ,XListVi
                 mOrder.setOrder_state(obj.optInt("order_state"));
                 mOrder.setPay_sn(obj.optString("pay_sn"));
                 mOrder.setAdd_time(obj.optLong("add_time"));
+                mOrder.setRefund_state(obj.optInt("refund_state"));
+                mOrder.setRefund_id(obj.optString("refund_id"));
                 orderList.add(mOrder);
 
             }
