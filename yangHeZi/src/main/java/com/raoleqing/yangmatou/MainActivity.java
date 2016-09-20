@@ -354,7 +354,6 @@ public class MainActivity extends BaseActivity implements OnClickListener {
                 gor_wu_title_layout.setVisibility(View.VISIBLE);
                 main_title_layout.setVisibility(View.VISIBLE);
                 to_top.setVisibility(View.GONE);
-
                 main_host_text01.setTextColor(text01);
                 main_host_text02.setTextColor(text02);
                 main_host_text03.setTextColor(text02);
