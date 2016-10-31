@@ -23,7 +23,7 @@ public class PaaCreator {
 			paaParams.put("inputCharset", "1");
 			paaParams.put("receiveUrl", object.optString("tl_receiveUrl"));
 			paaParams.put("version", "v1.0");
-			paaParams.put("signType", "1");
+			paaParams.put("signType", "0");
 			paaParams.put("merchantId", object.optString("tl_merchantid"));
 			paaParams.put("orderNo", object.optString("tl_orderno"));
 			paaParams.put("orderAmount", object.optString("tl_order_amount"));
@@ -46,13 +46,13 @@ public class PaaCreator {
 				object.optString("tl_receiveUrl"),"receiveUrl",
 				"v1.0","version",
 //				"3","language",
-				"1","signType",
+				"0","signType",
 				object.optString("tl_merchantid"),"merchantId",
 				object.optString("tl_orderno"),"orderNo",
 				object.optString("tl_order_amount"),"orderAmount",
 				object.optString("tl_ordercurrency"),"orderCurrency",
 				object.optString("tl_order_add_time"),"orderDatetime",
-				object.optString("productName"), "productName",
+				object.optString("tl_orderno"), "productName",
 //				ext1FromInput(),"ext1",
 //			    "<USER>201406231006545</USER>","ext1",
 				"27","payType",

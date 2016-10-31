@@ -15,16 +15,23 @@ import android.widget.TextView;
 
 import com.hyphenate.easeui.EaseConstant;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.raoleqing.yangmatou.BaseActivity;
 import com.raoleqing.yangmatou.R;
 import com.raoleqing.yangmatou.common.CircleImageView;
 import com.raoleqing.yangmatou.common.YangHeZiApplication;
 import com.raoleqing.yangmatou.mi.ChatActivity;
 import com.raoleqing.yangmatou.ui.order.OrderActivity;
 import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
+import com.raoleqing.yangmatou.uitls.ToastUtil;
+import com.raoleqing.yangmatou.webserver.Constant;
+import com.raoleqing.yangmatou.webserver.NetConnectionInterface;
+import com.raoleqing.yangmatou.webserver.NetHelper;
+
+import org.json.JSONObject;
 
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+
+import static com.raoleqing.yangmatou.BaseActivity.getAppContext;
 
 
 /**
@@ -118,11 +125,84 @@ public class UserFragment extends Fragment implements OnClickListener {
         view.findViewById(R.id.navBtn04).setOnClickListener(this);
         view.findViewById(R.id.navBtn05).setOnClickListener(this);
 
+
+        getUsers();
+    }
+
+    private void getUsers() {
+
+        NetHelper.Users(new NetConnectionInterface.iConnectListener3() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+
+            @Override
+            public void onSuccess(JSONObject result) {
+
+                ResolveJson(result);
+            }
+
+            @Override
+            public void onFail(JSONObject result) {
+
+                ToastUtil.MakeShortToast(getAppContext(), result.optString(Constant.INFO));
+
+            }
+        });
+    }
+    protected void ResolveJson(JSONObject response) {
+        // TODO Auto-generated method stub
+
+        System.out.println("登录： " + response);
+
+        try {
+            String message = response.optString("message");
+
+            if (response == null) {
+
+                return;
+            }
+            JSONObject json = response.optJSONObject(Constant.DATA);
+            String member_name = json.optString("member_name");//用户名
+            String member_truename = json.optString("member_truename");//真实信名
+            String member_card = json.optString("member_card");//身份证
+            String member_mobile = json.optString("member_mobile");//手机号码
+            String member_email = json.optString("member_email");//邮箱
+            String member_avatar = json.optString("member_avatar");//图象地址
+            String member_id = json.optString("member_id");//用户id
+            String member_mobile_bind = json.optString("member_mobile_bind");//是否绑定
+            String wh_id = json.optString("wh_id");//区域id
+            SharedPreferencesUtil.putString(getActivity(), "member_name", member_name);
+            SharedPreferencesUtil.putString(getActivity(), "member_truename", member_truename);
+            SharedPreferencesUtil.putString(getActivity(), "member_card", member_card);
+            SharedPreferencesUtil.putString(getActivity(), "member_mobile", member_mobile);
+            SharedPreferencesUtil.putString(getActivity(), "member_email", member_email);
+            SharedPreferencesUtil.putString(getActivity(), "member_avatar", member_avatar);
+            SharedPreferencesUtil.putString(getActivity(), "member_id", member_id);
+            SharedPreferencesUtil.putString(getActivity(), "member_mobile_bind", member_mobile_bind);
+            SharedPreferencesUtil.putString(getActivity(), "wh_id", wh_id);
+            SharedPreferencesUtil.putBoolean(getActivity(), "isLongin", true);
+
+            reloadUser();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+    }
+
+    private void reloadUser() {
         String member_avatar = SharedPreferencesUtil.getString(getActivity().getBaseContext(), "member_avatar");
 //		String member_avatar="http://rescdn.qqmail.com/dyimg/20140409/72B8663B7F23.jpg";
         ImageLoader.getInstance().displayImage(member_avatar, main_user_icon,
                 YangHeZiApplication.imageOption(R.drawable.user_icon));
-        String name = SharedPreferencesUtil.getString(BaseActivity.getAppContext(), "member_name");
+        String name = SharedPreferencesUtil.getString(getAppContext(), "member_name");
         user_name.setText(name);
     }
 
@@ -222,6 +302,13 @@ public class UserFragment extends Fragment implements OnClickListener {
         intent.putExtra("index", i);
         startActivity(intent);
         getActivity().overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+
+    }
+
+    @Override
+    public void onResume() {
+        reloadUser();
+        super.onResume();
 
     }
 

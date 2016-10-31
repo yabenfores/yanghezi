@@ -1,12 +1,20 @@
 package com.raoleqing.yangmatou.ui.user;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -21,22 +29,13 @@ import com.raoleqing.yangmatou.uitls.SharedPreferencesUtil;
 import com.raoleqing.yangmatou.webserver.AsyncFileUpload;
 import com.raoleqing.yangmatou.webserver.Constant;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * 个人设置
@@ -85,7 +84,12 @@ public class SetActivity extends BaseActivity implements OnClickListener, MyDial
     @Override
     protected void onResume() {
         // TODO Auto-generated method stub
+        reloadUser();
         super.onResume();
+
+    }
+
+    private void reloadUser() {
         String member_name = SharedPreferencesUtil.getString(SetActivity.this, "member_name");
         String member_avatar = SharedPreferencesUtil.getString(SetActivity.this, "member_avatar");
         user_name.setText(member_name + " ");
@@ -266,13 +270,14 @@ public class SetActivity extends BaseActivity implements OnClickListener, MyDial
 
             if (response == null) {
                 setProgressVisibility(View.GONE);
-                Toast.makeText(SetActivity.this, "修改失败", 1).show();
+                Toast.makeText(SetActivity.this, "修改失败", Toast.LENGTH_SHORT).show();
                 return;
             }
             JSONObject json = response.optJSONObject(Constant.DATA);
             String filename = json.optString("filename");//图象地址
             SharedPreferencesUtil.putString(getAppContext(), "member_avatar", filename);
 
+            reloadUser();
 
         } catch (Exception e) {
             // TODO: handle exception

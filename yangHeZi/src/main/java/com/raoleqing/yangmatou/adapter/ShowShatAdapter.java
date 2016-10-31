@@ -116,7 +116,10 @@ public class ShowShatAdapter extends BaseAdapter {
         holder.tv_show_like_num.setText("(" + mShowShat.getGeval_like_num() + ")");
         final TextView like_num=holder.tv_show_like_num;
         String[] strings = mShowShat.getGeval_image().split(";");
-        for (int a = 0; a < strings.length; a++) {
+        int size;
+        if (strings.length>6) size=6;
+        else size=strings.length;
+        for (int a = 0; a < size; a++) {
             ImageLoader.getInstance().displayImage(strings[a], imageViewList.get(a));
             imageViewList.get(a).setVisibility(View.VISIBLE);
         }
